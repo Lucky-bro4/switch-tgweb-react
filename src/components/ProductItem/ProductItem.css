@@ -21,5 +21,6 @@
 
 .add-btn {
     width: 80%;
-    border-radius: 15%;
+    border-radius: 50%;
+    justify-content: center;
 }
