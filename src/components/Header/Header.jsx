@@ -12,7 +12,7 @@ const Header = () => {
             {/* <span className={'username'}>
                 {user?.username}
             </span> */}
-            <div><img className='mainLogo' src="src\components\images\mainLogo.png" alt="Switch" /></div>
+            <div><img className='mainLogo' src="src\components\Images\mainLogo.png" alt="Switch" /></div>
             <div className='tagline'>Осознанность.Скорость.Стиль.</div>
         </div>
     );
