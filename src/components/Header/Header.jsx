@@ -12,10 +12,13 @@ const Header = () => {
             {/* <span className={'username'}>
                 {user?.username}
             </span> */}
-            <div><img className='header.mainLogo' src="src\components\images\mainLogo.png" alt="Switch" /></div>
-            <div className='header.tagline'>Осознанность.Скорость.Стиль.</div>
+            <div><img src="src\components\images\mainLogo.png" alt="Switch" /></div>
+            <div >Осознанность.Скорость.Стиль.</div>
         </div>
     );
 };
 
 export default Header;
+
+// className='header.mainLogo'
+// className='header.tagline'
