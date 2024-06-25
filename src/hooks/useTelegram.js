@@ -15,7 +15,7 @@ export function useTelegram() {
     }
 
     const showPopup = () => {
-        tg.showPopup(message, [callback])
+        tg.showPopup()
     }
 
     return {
