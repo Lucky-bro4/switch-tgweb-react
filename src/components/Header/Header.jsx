@@ -8,17 +8,15 @@ const Header = () => {
 
     return (
         <div className={'header'}>
-        <Button onClick={onClose}>Закрыть</Button>
+            <Button onClick={onClose}>Закрыть</Button>
             {/* <span className={'username'}>
                 {user?.username}
             </span> */}
-            <div><img src="src\components\images\mainLogo.png" alt="Switch" /></div>
-            <div >Осознанность.Скорость.Стиль.</div>
+            <div><img className='mainLogo' src="src\components\images\mainLogo.png" alt="Switch" /></div>
+            <div className='tagline'>Осознанность.Скорость.Стиль.</div>
         </div>
     );
 };
 
 export default Header;
 
-// className='header.mainLogo'
-// className='header.tagline'
