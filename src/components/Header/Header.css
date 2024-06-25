@@ -19,6 +19,6 @@
 .tagline {
     margin-left: auto;
     margin-right: auto;
-    width: 6em;
+    width: 2em;
     color: var(--tg-theme-hint-color)
 }
