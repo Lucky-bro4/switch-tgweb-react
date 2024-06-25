@@ -3,6 +3,7 @@ import Button from "../Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 import './Header.css';
 
+
 const Header = () => {
     const {user, onClose} = useTelegram();
 
@@ -12,8 +13,10 @@ const Header = () => {
             {/* <span className={'username'}>
                 {user?.username}
             </span> */}
-            <div><img className='mainLogo' src="src\components\Images\mainLogo.png" alt="Switch" /></div>
-            <div className='tagline'>Осознанность.Скорость.Стиль.</div>
+            <div className='mainLogo'>
+                <img src="/Images/mainLogoLarge.png" width={200} alt="Swich" />
+                <div className='tagline'>Осознанность.Скорость.Стиль.</div>
+            </div>
         </div>
     );
 };
