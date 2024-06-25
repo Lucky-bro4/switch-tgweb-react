@@ -62,13 +62,13 @@ const ProductList = () => {
         if(newItems.length === 0) {
             tg.MainButton.hide();
         } else if (newItems.length > 4) {
-            const {showPopup} = useTelegram();
+            const {showAlert} = useTelegram();
             // <div>
             //     <Button className={'pp-btn'} onClick={showPopup}>
             //         4 максимум
             //     </Button>
             // </div>
-            showPopup('4 максимум')
+            showAlert('4 максимум')
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({

@@ -14,14 +14,14 @@ export function useTelegram() {
         }
     }
 
-    const showPopup = () => {
-        tg.showPopup()
+    const showAlert = () => {
+        tg.showAlert()
     }
 
     return {
         onClose,
         onToggleButton,
-        showPopup,
+        showAlert,
         tg,
         user: tg.initDataUnsafe?.user,
         queryId: tg.initDataUnsafe?.query_id,
