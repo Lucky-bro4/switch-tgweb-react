@@ -14,9 +14,14 @@ export function useTelegram() {
         }
     }
 
+    const showPop = () => {
+        tg.showPopup()
+    }
+
     return {
         onClose,
         onToggleButton,
+        showPop,
         tg,
         user: tg.initDataUnsafe?.user,
         queryId: tg.initDataUnsafe?.query_id,

@@ -54,7 +54,11 @@ const ProductList = () => {
         if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
-            newItems = [...addedItems, product];
+            if (newItems.length > 4) {
+                showPop('Не больше 4')
+            } else {
+                newItems = [...addedItems, product];
+            }
         }
 
         setAddedItems(newItems)
