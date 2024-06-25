@@ -54,17 +54,16 @@ const ProductList = () => {
         if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
-            if (newItems.length > 4) {
-                showPop('Не больше 4')
-            } else {
-                newItems = [...addedItems, product];
-            }
+            newItems = [...addedItems, product];
         }
 
         setAddedItems(newItems)
 
         if(newItems.length === 0) {
             tg.MainButton.hide();
+        } else if (newItems.length > 4) {
+            const {showPopup} = useTelegram();
+            showPopup('4 максимум', [useCallback])
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
