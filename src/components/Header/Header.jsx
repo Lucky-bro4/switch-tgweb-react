@@ -8,10 +8,10 @@ const Header = () => {
 
     return (
         <div className={'header'}>
-        <Button onClick={onClose}>Закрыть</Button>
-        <span className={'username'}>
-            {user?.username}
-        </span>
+            <Button onClick={onClose}>Закрыть</Button>
+            <span className={'username'}>
+                {user?.username}
+            </span>
             <div><img className='mainLogo' src="src\components\images\mainLogo.png" alt="Switch" /></div>
             <div className='tagline'>Осознанность.Скорость.Стиль.</div>
         </div>
