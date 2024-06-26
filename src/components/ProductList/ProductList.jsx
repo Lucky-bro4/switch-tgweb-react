@@ -5,36 +5,16 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/синие_джинсы.jpeg'},
+    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/синие_джинсы.jpeg', button: '',},
     {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
     {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые', img: ''},
     {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая', img: ''},
     {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые', img: ''},
     {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые', img: ''},
-    {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '9', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '10', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '11', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '12', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '13', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '14', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '15', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '16', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '17', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '18', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '19', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '20', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '21', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '22', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '23', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '24', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '25', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '26', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '27', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '28', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '29', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '30', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые', img: ''},
+]
+
+const buttonStatus = [
+    {alreadyAdded: '.already_add-btn', notAdded: '.add-btn'}
 ]
 
 const getTotalPrice = (items = []) => {
@@ -76,7 +56,7 @@ const ProductList = () => {
         if(alreadyAdded || newItems.length > 4) {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
-            newItems = [...addedItems, product];
+            newItems = [...addedItems, product, buttonStatus.alreadyAdded];
         }
 
         setAddedItems(newItems)
@@ -91,6 +71,7 @@ const ProductList = () => {
                 text: `Заказать за ${getTotalPrice(newItems)}`
             })
         }
+        return newItems
     }
 
     return (
@@ -100,6 +81,7 @@ const ProductList = () => {
                     product={item}
                     onAdd={onAdd}
                     className={'item'}
+                    buttonStatus={buttonStatus}
                 />
             ))}
         </div>
@@ -107,3 +89,4 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
