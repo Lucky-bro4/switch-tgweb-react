@@ -14,14 +14,9 @@ export function useTelegram() {
         }
     }
 
-    const showAlert = () => {
-        tg.showAlert('Для заказа доступно до 5 вещей. После осмотра вы сможете оставить 4 из них.')
-    }
-
     return {
         onClose,
         onToggleButton,
-        showAlert,
         tg,
         user: tg.initDataUnsafe?.user,
         queryId: tg.initDataUnsafe?.query_id,

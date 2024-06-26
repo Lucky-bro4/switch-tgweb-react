@@ -84,8 +84,7 @@ const ProductList = () => {
         if(newItems.length === 0) {
             tg.MainButton.hide();
         } else if (newItems.length > 5) {
-            const {showAlert} = useTelegram();
-            showAlert();
+            tg.showAlert('Для заказа доступно до 5 вещей. После осмотра вы сможете оставить 4 из них.');
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
