@@ -15,7 +15,7 @@ const Header = () => {
             </span> */}
             <div className='mainLogo'>
                 <img src="/Images/mainLogoLarge.png" width={200} alt="Swich" />
-                <div className='tagline'>Осознанность.Скорость.Стиль.</div>
+                {/* <div className='tagline'>Осознанность.Скорость.Стиль.</div> */}
             </div>
         </div>
     );
