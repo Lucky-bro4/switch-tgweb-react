@@ -5,8 +5,8 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/синие_джинсы.jpeg', img: ''},
-    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg', img: ''},
+    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/синие_джинсы.jpeg'},
+    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
     {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые', img: ''},
     {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая', img: ''},
     {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые', img: ''},
@@ -84,7 +84,7 @@ const ProductList = () => {
         if(newItems.length === 0) {
             tg.MainButton.hide();
         } else if (newItems.length > 5) {
-            tg.showAlert('Для заказа доступно до 5 вещей. После осмотра вы сможете оставить 4 из них.');
+            tg.showAlert('Вы можете выбрать максимум 4 вещи');
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
