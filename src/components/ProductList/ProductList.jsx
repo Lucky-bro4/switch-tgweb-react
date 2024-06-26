@@ -5,7 +5,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/синие_джинсы.jpeg', button: '',},
+    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/синие_джинсы.jpeg',},
     {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
     {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые', img: ''},
     {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая', img: ''},
@@ -56,7 +56,7 @@ const ProductList = () => {
         if(alreadyAdded || newItems.length > 4) {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
-            newItems = [...addedItems, product, buttonStatus.alreadyAdded];
+            newItems = [...addedItems, product];
         }
 
         setAddedItems(newItems)
@@ -81,7 +81,6 @@ const ProductList = () => {
                     product={item}
                     onAdd={onAdd}
                     className={'item'}
-                    buttonStatus={buttonStatus}
                 />
             ))}
         </div>

@@ -18,7 +18,7 @@ const ProductItem = ({product, className, onAdd, buttonStatus}) => {
             <div className={'price'}>
                 <span>Стоимость: <b>{product.price}</b></span>
             </div>
-            <Button className={buttonStatus} onClick={onAddHandler}>
+            <Button className='add-btn' onClick={onAddHandler}>
                 Добавить
             </Button>
         </div>

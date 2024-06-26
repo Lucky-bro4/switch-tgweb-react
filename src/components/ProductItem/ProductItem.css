@@ -10,6 +10,7 @@
 .img {
     width: 100%;
     /* background: lightgray; */
+    /* height: 140px; */
     margin: 0 auto;
     /* background: var(--tg-theme-button-color); */
     background: var(--tg-theme-bg-color);
@@ -26,10 +27,6 @@
     margin: auto;
 }
 
-.already-add-btn {
-    width: 70%;
-    border-radius: 20%;
-    content: center;
-    margin: auto;
-    color: rgb(212, 9, 9);
+.already_add-btn {
+
 }
