@@ -15,7 +15,7 @@ export function useTelegram() {
     }
 
     const showAlert = () => {
-        tg.showAlert('Для выбора доступно максиму 5 вещей. 4 из них вы сможете оставить')
+        tg.showAlert('Для заказа доступно до 5 вещей. После осмотра вы сможете оставить 4 из них.')
     }
 
     return {
