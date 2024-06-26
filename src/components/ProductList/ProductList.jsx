@@ -68,11 +68,11 @@ const ProductList = () => {
             //         4 максимум
             //     </Button>
             // </div>
-            showAlert('4 максимум')
+            tg.showAlert('4 максимум')
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Купить ${getTotalPrice(newItems)}`
+                text: `Заказать ${getTotalPrice(newItems)}`
             })
         }
     }
