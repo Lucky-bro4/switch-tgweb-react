@@ -9,10 +9,11 @@
 
 .img {
     width: 100%;
-    background: lightgray;
-    height: 100px;
+    /* background: lightgray; */
+    height: 120px;
     margin: 0 auto;
-    background: var(--tg-theme-button-color);
+    /* background: var(--tg-theme-button-color); */
+    background: var(--tg-theme-bg-color);
 }
 
 .description {
