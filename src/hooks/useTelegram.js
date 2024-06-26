@@ -15,7 +15,7 @@ export function useTelegram() {
     }
 
     const showAlert = () => {
-        tg.showAlert('Заказать можно до 5 товаров')
+        tg.showPopup('Заказать можно до 5 товаров')
     }
 
     return {
