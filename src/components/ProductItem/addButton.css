@@ -1,0 +1,11 @@
+.add-btn {
+    width: fit-content;
+    border: 5px;
+    border-radius: 20%;
+    content: center;
+    margin: auto;
+}
+
+/* .already_add-btn {
+
+} */

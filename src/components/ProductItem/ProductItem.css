@@ -9,11 +9,10 @@
 
 .img {
     width: 100%;
-    /* background: lightgray; */
-    /* height: 140px; */
+    height: 140px;
     margin: 0 auto;
-    /* background: var(--tg-theme-button-color); */
-    background: var(--tg-theme-bg-color);
+    /* background: var(--tg-theme-button-color);
+    background: var(--tg-theme-bg-color); */
 }
 
 .description {
@@ -28,6 +27,6 @@
     margin: auto;
 }
 
-.already_add-btn {
+/* .already_add-btn {
 
-}
+} */

@@ -13,9 +13,6 @@ const products = [
     {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая', img: ''},
 ]
 
-const buttonStatus = [
-    {alreadyAdded: '.already_add-btn', notAdded: '.add-btn'}
-]
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
