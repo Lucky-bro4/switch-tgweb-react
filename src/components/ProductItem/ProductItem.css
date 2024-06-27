@@ -25,6 +25,7 @@
     border-radius: 20%;
     content: center;
     margin: auto;
+    content: 'Добавить';
 }
 
 .already-add-btn {
@@ -33,5 +34,6 @@
     border-radius: 20%;
     content: center;
     margin: auto;
-    color: red;
+    background-color: red;
+    content: 'Убрать';
 }

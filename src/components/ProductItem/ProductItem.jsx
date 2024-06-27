@@ -1,34 +1,29 @@
 import React, { useState } from 'react';
 import Button from "../Button/Button";
 import './ProductItem.css';
-import './addButton'
 
 
 const ProductItem = ({product, className, onAdd}) => {
 
     const onAddHandler = () => {
         onAdd(product);
+
+        changeButton();
     }
     
-    const [status, setStatus] = useState('add-btn', () => {
-        if (currentStatus !== 'add-btn') {
+    const [status, setStatus, text, setText] = useState('add-btn')
+    const [content, setContent] = useState('Добавить')
+    
+    const changeButton = () => {
+        if (status === 'add-btn') {
             setStatus('already-add-btn')
-            console.log(currentStatus)
+            setContent('Удалить')
         } else {
             setStatus('add-btn')
-            console.log(currentStatus)
+            setContent('Добавить')
         }
-    })
+    }
 
-    // const [currentStatus, setStatus] = useState('add-btn')
-
-    //     if (currentStatus !== 'add-btn') {
-    //         setStatus('already-add-btn')
-    //         console.log(currentStatus)
-    //     } else {
-    //         setStatus('add-btn')
-    //         console.log(currentStatus)
-    //     }
 
     return (
         <div className={'product ' + className}>
@@ -38,12 +33,8 @@ const ProductItem = ({product, className, onAdd}) => {
             <div className={'price'}>
                 <span>Стоимость: <b>{product.price}</b></span>
             </div>
-            <Button 
-                className={status}
-                onClick={onAddHandler}
-                whenAdd={setStatus}
-            >
-                Добавить
+            <Button className={status} onClick={onAddHandler}>
+                {content}
             </Button>
         </div>
     );
