@@ -5,7 +5,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/синие_джинсы.jpeg',},
+    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg',},
     {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
     {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые', img: ''},
     {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая', img: ''},
