@@ -5,10 +5,10 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 export let products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg', href: 'https://photos.google.com/photo/AF1QipO8HdVkY67cD8vuzfrlk_FtkFcJi2LjyfIvp9k9'},
-    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg', href: ''},
-    {id: '3', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '', href: ''},
-    {id: '4', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '', href: ''},
+    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg'},
+    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
+    {id: '3', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
+    {id: '4', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
 ]
 
 const getTotalPrice = (items = []) => {
