@@ -49,8 +49,11 @@ const ProductList = () => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
 
-        if(alreadyAdded && newItems.length > 4) {
+        if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
+        } else if (newItems.length < 4) {
+            newItems = addedItems.pop();
+            tg.showAlert('Вы можете выбрать максимум 4 вещи');
         } else {
             newItems = [...addedItems, product];
         }
@@ -59,8 +62,6 @@ const ProductList = () => {
 
         if(newItems.length === 0) {
             tg.MainButton.hide();
-        } else if (newItems.length > 4) {
-            tg.showAlert('Вы можете выбрать максимум 4 вещи');
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
