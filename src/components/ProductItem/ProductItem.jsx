@@ -7,10 +7,10 @@ let set = 0
 const ProductItem = ({product, className, onAdd}) => {
 
     const onAddHandler = () => {
-        if (set < 4) {
+        if (set <= 4) {
             onAdd(product)
-            changeButton();
-            set += 1
+            changeButton()
+            console.log(set)
         }
     }
     
@@ -18,12 +18,14 @@ const ProductItem = ({product, className, onAdd}) => {
     const [content, setContent] = useState('Добавить')
     
     const changeButton = () => {
-        if (status === 'add-btn' && product) {
+        if (status === 'add-btn' && set < 4) {
             setStatus('already-add-btn')
             setContent('Удалить')
-        } else {
+            set += 1
+        } else if (set <= 4) {
             setStatus('add-btn')
             setContent('Добавить')
+            set -= 1
         }
     }
 
