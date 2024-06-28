@@ -1,0 +1,46 @@
+/* .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.btn-add-clothes {
+    font-size: large;
+    border: 2px black;
+    background: green;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid var(--tg-theme-button-color); */
+    padding: 10px;
+    width: 170px;
+}
+
+.example {
+    padding-left: 20px;
+}
+
+.img {
+    width: 103px;
+    height: 140px;
+    margin: 0 auto;
+    /* background: var(--tg-theme-button-color);
+    background: var(--tg-theme-bg-color); */
+}
+
+.description {
+    font-size: 0.8em;
+} */
