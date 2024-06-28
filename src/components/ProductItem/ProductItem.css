@@ -20,17 +20,17 @@
 }
 
 .add-btn {
-    width: fit-content;
+    width: 80px;
     border: 5px;
-    border-radius: 200px;
+    border-radius: 50px;
     content: center;
     margin: auto;
 }
 
 .already-add-btn {
-    width: fit-content;
+    width: 80px;
     border: 5px;
-    border-radius: 200px;
+    border-radius: 50px;
     content: center;
     margin: auto;
     background-color: red;
