@@ -22,18 +22,16 @@
 .add-btn {
     width: fit-content;
     border: 5px;
-    border-radius: 20%;
+    border-radius: 0%;
     content: center;
     margin: auto;
-    content: 'Добавить';
 }
 
 .already-add-btn {
     width: fit-content;
-    border: 5px;
-    border-radius: 20%;
+    /* border: 5px; */
+    border-radius: 500px;
     content: center;
     margin: auto;
     background-color: red;
-    content: 'Убрать';
 }
