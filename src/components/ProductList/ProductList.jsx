@@ -51,7 +51,7 @@ const ProductList = () => {
 
         if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
-        } else if (newItems.length < 4) {
+        } else if (newItems.length > 4) {
             newItems = addedItems.pop();
             tg.showAlert('Вы можете выбрать максимум 4 вещи');
         } else {
