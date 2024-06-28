@@ -3,7 +3,6 @@ import './ProductList.css';
 import ProductItem, {changeButton} from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
-import {newProduct} from '../AdminPage/AdminPage'
 
 export let products = [
     {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg',},
