@@ -64,6 +64,7 @@ const ProductList = () => {
 
         if (newItems.length > 4) {
             tg.showAlert('Вы можете выбрать максимум 4 вещи');
+            acceptSuccess(newItems, success)
             return newItems.pop();
         }
         

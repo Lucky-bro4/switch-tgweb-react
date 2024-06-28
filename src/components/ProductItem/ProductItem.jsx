@@ -2,19 +2,23 @@ import React, { useState } from 'react';
 import Button from "../Button/Button";
 import './ProductItem.css';
 
+let set = 0
 
 const ProductItem = ({product, className, onAdd}) => {
 
     const onAddHandler = () => {
-        onAdd(product);
-        changeButton();
+        if (set < 4) {
+            onAdd(product)
+            changeButton();
+            set += 1
+        }
     }
     
     const [status, setStatus] = useState('add-btn')
     const [content, setContent] = useState('Добавить')
     
     const changeButton = () => {
-        if (status === 'add-btn') {
+        if (status === 'add-btn' && product) {
             setStatus('already-add-btn')
             setContent('Удалить')
         } else {
