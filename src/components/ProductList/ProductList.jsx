@@ -8,7 +8,12 @@ export let products = [
     {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg'},
     {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
     {id: '3', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '4', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
+    {id: '5', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
+    {id: '6', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
+    {id: '7', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
+    {id: '8', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
+    {id: '9', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
+    {id: '10', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
 ]
 
 const getTotalPrice = (items = []) => {
