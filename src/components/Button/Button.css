@@ -8,5 +8,5 @@
 }
 
 .button:focus {
-    outline: 2px solid var(--tg-theme-button-color)
+    outline: none
 }
