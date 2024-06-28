@@ -22,15 +22,15 @@
 .add-btn {
     width: fit-content;
     border: 5px;
-    border-radius: 0%;
+    border-radius: 200px;
     content: center;
     margin: auto;
 }
 
 .already-add-btn {
     width: fit-content;
-    /* border: 5px; */
-    border-radius: 500px;
+    border: 5px;
+    border-radius: 200px;
     content: center;
     margin: auto;
     background-color: red;
