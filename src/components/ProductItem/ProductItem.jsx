@@ -26,11 +26,7 @@ const ProductItem = ({product, className, onAdd}) => {
 
     return (
         <div className={'product ' + className}>
-            <a href='http://localhost:3000/'>
-                <a href={product.img}>
-                    <img className={'img'} src={product.img} alt={product.title} />
-                </a>
-            </a>
+            <img className={'img'} src={product.img} alt={product.title} />
             <div className={'title'}><b>{product.title}</b></div>
             <div className={'description'}>{product.description}</div>
             <div className={'price'}>

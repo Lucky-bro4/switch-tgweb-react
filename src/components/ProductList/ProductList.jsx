@@ -17,20 +17,10 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-// export const addNewProduct = (newProduct) => {
-//     return products.push(newProduct)
-// }
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
-
-    // const onProductChange = useMemo(() => {
-    //     console.log('OK')
-    //     if (String(products.length + 1) !== newProduct.id) {
-    //         return products.push(newProduct)
-    //     }
-    // }, [newProduct])
 
 
     const onSendData = useCallback(() => {
