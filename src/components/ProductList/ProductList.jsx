@@ -1,6 +1,6 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState} from 'react';
 import './ProductList.css';
-import ProductItem, {changeButton} from "../ProductItem/ProductItem";
+import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
@@ -27,7 +27,6 @@ const getTotalPrice = (items = []) => {
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
-
 
     const onSendData = useCallback(() => {
         const data = {
@@ -65,7 +64,7 @@ const ProductList = () => {
         if (newItems.length > 4) {
             tg.showAlert('Вы можете выбрать максимум 4 вещи');
             acceptSuccess(newItems, success)
-            return newItems.pop();
+            newItems.pop();
         }
         
         setAddedItems(newItems)

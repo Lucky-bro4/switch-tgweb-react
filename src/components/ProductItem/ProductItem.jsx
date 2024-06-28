@@ -10,7 +10,6 @@ const ProductItem = ({product, className, onAdd}) => {
         if (set <= 4) {
             onAdd(product)
             changeButton()
-            console.log(set)
         }
     }
     
