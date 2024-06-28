@@ -26,7 +26,9 @@ const ProductItem = ({product, className, onAdd}) => {
 
     return (
         <div className={'product ' + className}>
-            <img className={'img'} src={product.img} alt={product.title} />
+            <a href={product.href}>
+                <img className={'img'} src={product.img} alt={product.title} />
+            </a>
             <div className={'title'}><b>{product.title}</b></div>
             <div className={'description'}>{product.description}</div>
             <div className={'price'}>

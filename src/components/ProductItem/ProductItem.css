@@ -11,7 +11,7 @@
     width: 100%;
     height: 140px;
     margin: 0 auto;
-    background: red var(--tg-theme-bg-color);
+    cursor: pointer;
     /* background: var(--tg-theme-button-color);*/
 }
 
