@@ -20,7 +20,7 @@
 }
 
 .add-btn {
-    width: 80px;
+    width: fit-content;
     border: 5px;
     border-radius: 50px;
     content: center;
@@ -28,7 +28,7 @@
 }
 
 .already-add-btn {
-    width: 80px;
+    width: fit-content;
     border: 5px;
     border-radius: 50px;
     content: center;
