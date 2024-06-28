@@ -7,11 +7,10 @@ const ProductItem = ({product, className, onAdd}) => {
 
     const onAddHandler = () => {
         onAdd(product);
-
         changeButton();
     }
     
-    const [status, setStatus, text, setText] = useState('add-btn')
+    const [status, setStatus] = useState('add-btn')
     const [content, setContent] = useState('Добавить')
     
     const changeButton = () => {
@@ -36,6 +35,9 @@ const ProductItem = ({product, className, onAdd}) => {
             <Button className={status} onClick={onAddHandler}>
                 {content}
             </Button>
+            <div id='remove'>
+                {changeButton}
+            </div>        
         </div>
     );
 };

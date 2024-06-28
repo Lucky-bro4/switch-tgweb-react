@@ -1,18 +1,14 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import './ProductList.css';
-import ProductItem from "../ProductItem/ProductItem";
+import ProductItem, {changeButton} from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
+import {newProduct} from '../AdminPage/AdminPage'
 
-const products = [
+export let products = [
     {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg',},
     {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
-    {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые', img: ''},
-    {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые', img: ''},
-    {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая', img: ''},
 ]
-
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
@@ -20,9 +16,21 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
+// export const addNewProduct = (newProduct) => {
+//     return products.push(newProduct)
+// }
+
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
+
+    // const onProductChange = useMemo(() => {
+    //     console.log('OK')
+    //     if (String(products.length + 1) !== newProduct.id) {
+    //         return products.push(newProduct)
+    //     }
+    // }, [newProduct])
+
 
     const onSendData = useCallback(() => {
         const data = {
@@ -68,7 +76,6 @@ const ProductList = () => {
                 text: `Заказать за ${getTotalPrice(newItems)}`
             })
         }
-        return newItems
     }
 
     return (
@@ -85,4 +92,3 @@ const ProductList = () => {
 };
 
 export default ProductList;
-
