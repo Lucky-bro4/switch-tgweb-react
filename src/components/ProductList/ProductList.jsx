@@ -8,6 +8,7 @@ export let products = [
     {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg'},
     {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
     {id: '3', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
+    {id: '4', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
     {id: '5', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
     {id: '6', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
     {id: '7', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
@@ -53,16 +54,20 @@ const ProductList = () => {
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
+        
 
         if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
-        } else if (newItems.length > 4) {
-            newItems = addedItems.pop();
-            tg.showAlert('Вы можете выбрать максимум 4 вещи');
         } else {
             newItems = [...addedItems, product];
         }
 
+        if (newItems.length > 4) {
+            tg.showAlert('Вы можете выбрать максимум 4 вещи');
+            return newItems.pop();
+            console.log(newItems)
+        }
+        
         setAddedItems(newItems)
 
         if(newItems.length === 0) {
