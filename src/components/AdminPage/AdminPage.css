@@ -1,8 +1,9 @@
-/* .form {
+.form {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 20px;
+    padding-top: 0px;
 }
 
 .input {
@@ -17,15 +18,16 @@
     background: green;
     margin-top: 10px;
     margin-left: 20px;
-    padding-top: 10px;
+    padding-top: 5px;
     padding-bottom: 10px;
 }
 
-.product {
+.example_product {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid var(--tg-theme-button-color); */
-    /* padding: 10px;
+    border: 1px solid var(--tg-theme-button-color);
+    padding: 10px;
+    padding-top: 5px;
     width: 170px;
 }
 
@@ -33,7 +35,7 @@
     padding-left: 20px;
 }
 
-.img {
+.example_img {
     width: 103px;
     height: 140px;
     margin: 0 auto;
@@ -42,4 +44,4 @@
 
 .description {
     font-size: 0.8em;
-}  */
+} 
