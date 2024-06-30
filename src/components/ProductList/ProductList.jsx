@@ -34,7 +34,7 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId, 
         }
-        fetch('https://switchlarge-lucky-bro4.amvera.io/web-data', {
+        fetch(process.env.BOT_URL + '/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
