@@ -4,8 +4,9 @@
     /* border: 1px solid var(--tg-theme-button-color); */
     padding: 10px;
     width: 170px;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     border-radius: 10px;
+    color:  black;
 }
 
 
@@ -14,7 +15,7 @@
     height: 150px;
     margin: 0 auto;
     /* cursor: pointer; */
-    background: black;
+    background:white;
 }
 
 .description {
