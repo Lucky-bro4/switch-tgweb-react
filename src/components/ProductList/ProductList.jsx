@@ -13,7 +13,13 @@ const getTotalPrice = (items = []) => {
 
 const ProductList = () => {
 
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([{category: 'Куртка', 
+        name: 'NONAME', 
+        condition: 'Отличное', 
+        price: 12000, 
+        image: process.env.WEB_APP_URL + 'Images/Одежда/куртка.jpeg',
+        status: 'available',
+        available: Boolean(true)}])
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
@@ -33,7 +39,7 @@ const ProductList = () => {
 
     const onSendData = useCallback(() => {
         const data = {
-            products: addedItems,
+            items: addedItems,
             totalPrice: getTotalPrice(addedItems),
             queryId, 
         }
