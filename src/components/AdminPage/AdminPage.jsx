@@ -37,6 +37,17 @@ const AdminPage = () => {
         setPhoto(e.target.value)
     }
 
+    const postData = async (url, data) => {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        return response.json(); 
+      }
+
     const sendData = () => {
         console.log(newProduct)
         setNewProduct(
@@ -47,14 +58,19 @@ const AdminPage = () => {
             price: price,
             photo: photo
         })
+
+        postData('https://switchmain-lucky-bro4.amvera.io/newProduct', newProduct)
+            .then((data) => {
+                console.log(data)
+            })
         
-        useEffect(() => fetch('https://switchmain-lucky-bro4.amvera.io/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newProduct)
-        }), [newProduct])
+        // useEffect(() => fetch('https://switchmain-lucky-bro4.amvera.io/web-data', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(newProduct)
+        // }), [newProduct])
         
     }
     
