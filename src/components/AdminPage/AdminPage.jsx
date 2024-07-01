@@ -89,7 +89,7 @@ const AdminPage = () => {
                     onChange={onChangeId}
                 />
                 <input
-                    className={'category'}
+                    className={'input'}
                     type="text"
                     placeholder={'Category'}
                     value={category}
