@@ -48,13 +48,13 @@ const AdminPage = () => {
             photo: photo
         })
         console.log(newProduct)
-        useEffect(() => fetch('https://switchmain-lucky-bro4.amvera.io/data', {
+        useEffect(() => fetch('https://switchmain-lucky-bro4.amvera.io/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(newProduct)
-        }))
+        }), [newProduct])
         
     }
 
