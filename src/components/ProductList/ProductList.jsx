@@ -3,7 +3,6 @@ import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 
-export let productList = []
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
@@ -22,7 +21,6 @@ const ProductList = () => {
         try {
             const response = await fetch('https://switchmain-lucky-bro4.amvera.io/products');
             const products = response.json();
-            productList = products 
             setProducts(products)
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)

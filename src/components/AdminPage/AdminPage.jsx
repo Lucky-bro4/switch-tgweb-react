@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './AdminPage.css';
-import { productList } from '../ProductList/ProductList';
 import Button from '../Button/Button';
 
 const AdminPage = () => {
