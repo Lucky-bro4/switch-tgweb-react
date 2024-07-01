@@ -38,7 +38,7 @@ const AdminPage = () => {
     }
 
     const sendData = () => {
-        
+        console.log(newProduct)
         setNewProduct(
             newProduct = {
             id: id,
@@ -47,7 +47,7 @@ const AdminPage = () => {
             price: price,
             photo: photo
         })
-        console.log(newProduct)
+        
         useEffect(() => fetch('https://switchmain-lucky-bro4.amvera.io/web-data', {
             method: 'POST',
             headers: {
@@ -57,22 +57,6 @@ const AdminPage = () => {
         }), [newProduct])
         
     }
-
-    // const onSendData = useCallback(() => {
-    //     // const data = {
-    //     //     products: addedItems,
-    //     //     totalPrice: getTotalPrice(addedItems),
-    //     //     queryId, 
-    //     // }
-    //     fetch('https://switchmain-lucky-bro4.amvera.io/web-data', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(newProduct)
-    //     })
-    // }, [newProduct])
-
     
     return (
         <div>
