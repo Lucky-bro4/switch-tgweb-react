@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
-import {useCallback, useEffect} from "react";
 
 export let productList = []
 
@@ -29,7 +28,7 @@ const ProductList = () => {
             console.log('Ошибка при получении списка товаров:', e)
         }
     }
-
+//
     useEffect(() => {
         getProducts();
     }, [])
