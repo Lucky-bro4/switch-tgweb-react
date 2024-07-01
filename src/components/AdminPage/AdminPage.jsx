@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AdminPage.css';
-import { products } from '../ProductList/ProductList';
+import { productList } from '../ProductList/ProductList';
 import Button from '../Button/Button';
 
 const AdminPage = () => {
