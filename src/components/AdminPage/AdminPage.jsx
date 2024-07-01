@@ -3,17 +3,12 @@ import './AdminPage.css';
 import Button from '../Button/Button';
 
 const AdminPage = () => {
-    const [id, setId] = useState(String(products.length + 1));
     const [category, setCategory] = useState('');
     const [name, setName] = useState('');
     const [condition, setCondition] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [photo, setPhoto] = useState('/Images/Одежда/');
-
-    const onChangeId = (e) => {
-        setId(e.target.value);
-    };
 
     const onChangeCategory = (e) => {
         setCategory(e.target.value);
@@ -80,13 +75,6 @@ const AdminPage = () => {
         <div>
             <form className={"form"} onSubmit={sendData}>
                 <h3>Добавление товара</h3>
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'id'}
-                    value={id}
-                    onChange={onChangeId}
-                />
                 <input
                     className={'input'}
                     type="text"
