@@ -1,32 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
-export let products = [
-    {id: '1', title: 'Кардиган Befree', price: 5000, description: 'Кардиган в клетку, размер L', img: '/Images/Одежда/Кардиган_Befree.jpg'},
-    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
-    {id: '3', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg'},
-    {id: '4', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '5', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '6', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '7', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '8', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '9', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-    {id: '10', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
-]
-
-const getProducts = async (url, data) => {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
-    return response.json(); 
-  }
+export let productList = []
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
@@ -36,11 +14,26 @@ const getTotalPrice = (items = []) => {
 
 
 const ProductList = () => {
+
+    const [products, setProducts] = useState([])
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
-    products = getProducts('https://switchmain-lucky-bro4.amvera.io/products', {})
-    console.log(products)
+    const getProducts = async () => {
+        try {
+            const response = await fetch('https://switchmain-lucky-bro4.amvera.io/products');
+            const products = response.json();
+            productList = products 
+            setProducts(products)
+        } catch (e) {
+            console.log('Ошибка при получении списка товаров:', e)
+        }
+    }
+
+    useEffect(() => {
+        getProducts();
+    }, [])
+
     const onSendData = useCallback(() => {
         const data = {
             products: addedItems,

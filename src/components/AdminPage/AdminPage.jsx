@@ -7,6 +7,7 @@ const AdminPage = () => {
     const [id, setId] = useState(String(products.length + 1));
     const [category, setCategory] = useState('');
     const [name, setName] = useState('');
+    const [condition, setCondition] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [photo, setPhoto] = useState('/Images/Одежда/');
@@ -21,6 +22,10 @@ const AdminPage = () => {
 
     const onChangeName = (e) => {
         setName(e.target.value);
+    };
+
+    const onChangeCondition = (e) => {
+        setCondition(e.target.value);
     };
 
     const onChangeDescription = (e) => {
@@ -45,7 +50,7 @@ const AdminPage = () => {
         });
 
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Ошибка отправки товара');
         }
 
         return response.json(); 
@@ -55,10 +60,9 @@ const AdminPage = () => {
         e.preventDefault();
 
         const newProduct = {
-            id: id,
             category: category,
             name: name,
-            description: description,
+            condition: description,
             price: price,
             photo: photo
         };
@@ -97,6 +101,13 @@ const AdminPage = () => {
                     placeholder={'Name'}
                     value={name}
                     onChange={onChangeName}
+                />
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Condition'}
+                    value={condition}
+                    onChange={onChangeCondition}
                 />
                 <input
                     className={'input'}
