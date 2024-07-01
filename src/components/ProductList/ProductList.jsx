@@ -17,6 +17,17 @@ export let products = [
     {id: '10', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
 ]
 
+const getProducts = async (url, data) => {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    return response.json(); 
+  }
+
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
         return acc += item.price
@@ -28,6 +39,8 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
+    products = getProducts('https://switchmain-lucky-bro4.amvera.io/products', {})
+    console.log(products)
     const onSendData = useCallback(() => {
         const data = {
             products: addedItems,
