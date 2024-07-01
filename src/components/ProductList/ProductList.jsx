@@ -5,9 +5,9 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 export let products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg'},
+    {id: '1', title: 'Кардиган Befree', price: 5000, description: 'Кардиган в клетку, размер L', img: '/Images/Одежда/Кардиган_Befree.jpg'},
     {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/куртка.jpeg'},
-    {id: '3', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
+    {id: '3', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: '/Images/Одежда/pngtree-ladies-jeans-png-image_2400806.jpg'},
     {id: '4', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
     {id: '5', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
     {id: '6', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', img: ''},
