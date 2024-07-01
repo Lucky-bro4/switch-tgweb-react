@@ -48,8 +48,8 @@ const AdminPage = () => {
         return response.json(); 
       }
 
-    const sendData = () => {
-        console.log(newProduct)
+    const sendData = (e) => {
+        e.preventDefault();
         setNewProduct(
             newProduct = {
             id: id,
