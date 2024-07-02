@@ -33,6 +33,7 @@ const ProductList = () => {
     }, [])
 
     const onSendData = useCallback(() => {
+        console.log(addedItems)
         const data = {
             items: addedItems,
             totalPrice: getTotalPrice(addedItems),
