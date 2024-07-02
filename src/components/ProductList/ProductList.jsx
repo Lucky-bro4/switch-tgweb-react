@@ -27,7 +27,7 @@ const ProductList = () => {
             console.log('Ошибка при получении списка товаров:', e)
         }
     }
-//
+
     useEffect(() => {
         getProducts();
     }, [])

@@ -7,7 +7,7 @@ const AdminPage = () => {
     const [name, setName] = useState('');
     const [condition, setCondition] = useState('');
     const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
+    const [price, setPrice] = useState(0);
     const [photo, setPhoto] = useState('Images/Одежда/');
 
     const onChangeCategory = (e) => {
@@ -58,18 +58,18 @@ const AdminPage = () => {
             name: name,
             condition: condition,
             description: description,
-            price: price,
+            price: Number(price),
             photo: photo
         };
 
         console.log(newProduct);
 
-        try {
-            const data = await postData('https://bottg-lucky-bro4.amvera.io/newProduct', newProduct);
-            console.log(data);
-        } catch (error) {
-            console.error('Ошибка при отправке данных:', error);
-        }
+        // try {
+        //     const data = await postData('https://bottg-lucky-bro4.amvera.io/newProduct', newProduct);
+        //     console.log(data);
+        // } catch (error) {
+        //     console.error('Ошибка при отправке данных:', error);
+        // }
     };
 
     return (
