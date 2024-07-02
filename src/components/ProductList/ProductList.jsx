@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
@@ -10,13 +10,6 @@ const getTotalPrice = (items = []) => {
     }, 0)
 }
 
-const products = [{category: 'Куртка', 
-    name: 'NONAME', 
-    condition: 'Отличное', 
-    price: 12000, 
-    image: process.env.WEB_APP_URL + 'Images/Одежда/куртка.jpeg',
-    status: 'available',
-    available: Boolean(true)}]
 
 const ProductList = () => {
 
@@ -27,7 +20,7 @@ const ProductList = () => {
     const getProducts = async () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
-            const products = response.json();
+            const products = await response.json();
             setProducts(products)
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
