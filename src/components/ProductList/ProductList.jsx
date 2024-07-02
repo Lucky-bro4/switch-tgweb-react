@@ -33,7 +33,7 @@ const ProductList = () => {
     }, [])
 
     const onSendData = useCallback(() => {
-        console.log(addedItems)
+        console.log('addedItems' + addedItems)
         const data = {
             items: addedItems,
             totalPrice: getTotalPrice(addedItems),
@@ -71,7 +71,7 @@ const ProductList = () => {
             acceptSuccess(newItems, success)
             newItems.pop();
         }
-        console.log(newItems)
+        console.log('NewItems:' + newItems)
         setAddedItems(newItems)
 
         if(newItems.length === 0) {
