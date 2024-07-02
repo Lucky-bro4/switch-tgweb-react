@@ -71,7 +71,7 @@ const ProductList = () => {
             acceptSuccess(newItems, success)
             newItems.pop();
         }
-        
+        console.log(newItems)
         setAddedItems(newItems)
 
         if(newItems.length === 0) {
