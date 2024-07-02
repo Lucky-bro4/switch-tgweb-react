@@ -58,14 +58,14 @@ const ProductList = () => {
     const onAdd = (product) => {
 
         const alreadyAdded = addedItems.find(item => item.id === product.id);
-        console.log(alreadyAdded)
+        console.log(alreadyAdded.length)
         let newItems = [];
         
 
         if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
-            newItems = [...addedItems, product];
+            newItems = addedItems.push(product);
         }
 
         // if (newItems.length > 4) {
