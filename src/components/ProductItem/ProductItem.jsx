@@ -9,6 +9,7 @@ const ProductItem = ({product, className, onAdd}) => {
     const onAddHandler = () => {
         if (set <= 4) {
             onAdd(product)
+            console.log(product)
             changeButton()
         }
     }
