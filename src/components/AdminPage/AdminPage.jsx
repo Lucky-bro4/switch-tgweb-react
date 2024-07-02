@@ -64,12 +64,12 @@ const AdminPage = () => {
 
         console.log(newProduct);
 
-        // try {
-        //     const data = await postData('https://bottg-lucky-bro4.amvera.io/newProduct', newProduct);
-        //     console.log(data);
-        // } catch (error) {
-        //     console.error('Ошибка при отправке данных:', error);
-        // }
+        try {
+            const data = await postData('https://bottg-lucky-bro4.amvera.io/newProduct', newProduct);
+            console.log(data);
+        } catch (error) {
+            console.error('Ошибка при отправке данных:', error);
+        }
     };
 
     return (
