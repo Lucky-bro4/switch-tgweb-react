@@ -21,7 +21,7 @@ const ProductList = () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
             const products = await response.json();
-            setProducts([products])
+            setProducts(products)
             console.log(products)
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
