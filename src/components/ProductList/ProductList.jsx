@@ -26,7 +26,7 @@ const ProductList = () => {
 
     const getProducts = async () => {
         try {
-            const response = await fetch('https://switchmain-lucky-bro4.amvera.io/products');
+            const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
             const products = response.json();
             setProducts(products)
         } catch (e) {
@@ -44,7 +44,7 @@ const ProductList = () => {
             totalPrice: getTotalPrice(addedItems),
             queryId, 
         }
-        fetch('https://switchmain-lucky-bro4.amvera.io/web-data', {
+        fetch('https://bottg-lucky-bro4.amvera.io/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
