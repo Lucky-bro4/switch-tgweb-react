@@ -68,11 +68,11 @@ const ProductList = () => {
             newItems = [...addedItems, product];
         }
 
-        if (newItems.length > 4) {
-            tg.showAlert('Вы можете выбрать максимум 4 вещи');
-            acceptSuccess(newItems, success)
-            newItems.pop();
-        }
+        // if (newItems.length > 4) {
+        //     tg.showAlert('Вы можете выбрать максимум 4 вещи');
+        //     acceptSuccess(newItems, success)
+        //     newItems.pop();
+        // }
         console.log('NewItems:' + newItems)
         setAddedItems(newItems)
 
