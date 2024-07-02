@@ -55,10 +55,10 @@ const ProductList = () => {
         }
     }, [onSendData])
 
-    const onAdd = ([product]) => {
+    const onAdd = (product) => {
 
         const alreadyAdded = addedItems.find(item => item.id === product.id);
-        console.log(alreadyAdded.length)
+        console.log(alreadyAdded)
         let newItems = [];
         
 
@@ -66,6 +66,7 @@ const ProductList = () => {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
             newItems = addedItems.push(product);
+            console.log(newItems)
         }
 
         // if (newItems.length > 4) {
