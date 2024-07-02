@@ -8,7 +8,7 @@ const AdminPage = () => {
     const [condition, setCondition] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [photo, setPhoto] = useState('/Images/Одежда/');
+    const [photo, setPhoto] = useState('Images/Одежда/');
 
     const onChangeCategory = (e) => {
         setCategory(e.target.value);
@@ -56,7 +56,8 @@ const AdminPage = () => {
         const newProduct = {
             category: category,
             name: name,
-            condition: description,
+            condition: condition,
+            description: description,
             price: price,
             photo: photo
         };
