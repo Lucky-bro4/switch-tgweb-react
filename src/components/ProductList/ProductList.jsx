@@ -65,7 +65,7 @@ const ProductList = () => {
         if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
-            newItems = addedItems.push(product);
+            newItems = [...addedItems, product];
             console.log(newItems)
         }
 
