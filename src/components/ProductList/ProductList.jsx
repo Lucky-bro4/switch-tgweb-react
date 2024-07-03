@@ -56,7 +56,7 @@ const ProductList = () => {
     }, [onSendData])
 
     const onAdd = (product) => {
-
+        console.log(product)
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         console.log(alreadyAdded)
         let newItems = [];
