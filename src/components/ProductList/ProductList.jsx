@@ -64,10 +64,8 @@ const ProductList = () => {
 
         if(alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
-            setAddedItems(newItems)
         } else {
             newItems = [...addedItems, product];
-            setAddedItems(newItems)
             console.log(newItems)
         }
 
@@ -75,11 +73,10 @@ const ProductList = () => {
             tg.showAlert('Вы можете выбрать максимум 4 вещи');
             acceptSuccess(newItems, success)
             newItems.pop();
-            setAddedItems(newItems)
         }
         // newItems = JSON.stringify(newItems)
         console.log('NewItems:' + newItems)
-        
+        setAddedItems(newItems)
 
         console.log(addedItems)
 
@@ -92,6 +89,10 @@ const ProductList = () => {
             })
         }
     }
+
+    useEffect(() => {
+        console.log('AddedItems updated:', addedItems);
+    }, [addedItems]);
 
     return (
         <div className={'list'}>
