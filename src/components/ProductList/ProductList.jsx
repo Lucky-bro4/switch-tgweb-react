@@ -58,7 +58,7 @@ const ProductList = () => {
     const onAdd = (product) => {
         console.log(product)
         const alreadyAdded = addedItems.find(item => item.id === product.id);
-        console.log(alreadyAdded)
+        
         let newItems = [];
         
 
@@ -69,14 +69,16 @@ const ProductList = () => {
             console.log(newItems)
         }
 
-        // if (newItems.length > 4) {
-        //     tg.showAlert('Вы можете выбрать максимум 4 вещи');
-        //     acceptSuccess(newItems, success)
-        //     newItems.pop();
-        // }
+        if (newItems.length > 4) {
+            tg.showAlert('Вы можете выбрать максимум 4 вещи');
+            acceptSuccess(newItems, success)
+            newItems.pop();
+        }
         // newItems = JSON.stringify(newItems)
         console.log('NewItems:' + newItems)
         setAddedItems(newItems)
+
+        console.log(addedItems)
 
         if(newItems.length === 0) {
             tg.MainButton.hide();
