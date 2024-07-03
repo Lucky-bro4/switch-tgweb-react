@@ -59,7 +59,7 @@ const ProductList = () => {
         console.log(product)
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         console.log(alreadyAdded)
-        let newItems = [];
+        let newItems = {};
         
 
         if(alreadyAdded) {
@@ -74,9 +74,9 @@ const ProductList = () => {
         //     acceptSuccess(newItems, success)
         //     newItems.pop();
         // }
-        newItems = JSON.stringify(newItems)
+        // newItems = JSON.stringify(newItems)
         console.log('NewItems:' + newItems)
-        setAddedItems(newItems)
+        setAddedItems([newItems])
 
         if(newItems.length === 0) {
             tg.MainButton.hide();
