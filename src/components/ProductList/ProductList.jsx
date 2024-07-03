@@ -74,11 +74,8 @@ const ProductList = () => {
             acceptSuccess(newItems, success)
             newItems.pop();
         }
-        // newItems = JSON.stringify(newItems)
-        console.log('NewItems:' + newItems)
+  
         setAddedItems(newItems)
-
-        console.log(addedItems)
 
         if(newItems.length === 0) {
             tg.MainButton.hide();
