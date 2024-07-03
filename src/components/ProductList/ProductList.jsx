@@ -74,7 +74,7 @@ const ProductList = () => {
         //     acceptSuccess(newItems, success)
         //     newItems.pop();
         // }
-        // newItems = JSON.stringify(newItems)
+        newItems = JSON.stringify(newItems)
         console.log('NewItems:' + newItems)
         setAddedItems(newItems)
 
