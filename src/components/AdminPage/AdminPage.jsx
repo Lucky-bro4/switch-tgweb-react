@@ -78,8 +78,7 @@ const AdminPage = () => {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/allProducts');
             const products = await response.json();
             setProducts(products)
-            console.log(`Список товаров:
-${products}`)
+
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
         }
