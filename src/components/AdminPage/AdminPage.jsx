@@ -245,7 +245,7 @@ const AdminPage = () => {
                     className={'input'}
                     type="text"
                     placeholder={'Id'}
-                    value={id}
+                    value={productId}
                     onChange={ifChangeId}
                 />
                 <input
