@@ -143,9 +143,9 @@ const AdminPage = () => {
                     <span>Стоимость: <b>{price}</b></span>
                 </div>
             </div>
-            <form className={"form"} onSubmit={getProducts}>
+            <form className={"form"}>
                 <div>
-                    <Button className='btn-add-clothes'>
+                    <Button className='btn-add-clothes' onClick={getProducts}>
                         Выгрузить товары
                     </Button>
                 </div>
