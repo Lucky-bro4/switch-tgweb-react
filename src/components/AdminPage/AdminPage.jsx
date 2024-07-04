@@ -228,6 +228,7 @@ const AdminPage = () => {
                 <div>
                     {products.map(item => (
                         <div key={item}>
+                            {`${item.id} `}
                             {`${item.category} `}
                             {`${item.name} `}
                             {`${item.condition} `}
