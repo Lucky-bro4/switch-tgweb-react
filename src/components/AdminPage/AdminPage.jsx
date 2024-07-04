@@ -235,7 +235,8 @@ const AdminPage = () => {
                             {`${item.description} `}
                             {`${item.price} `}
                             {`${item.status} `}
-                            {`${String(item.available)}`}
+                            {`${String(item.available)}  `}
+                            {`Пользователь: ${item.userId} `}
                         </div>
                     ))}
                 </div>
