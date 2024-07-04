@@ -154,13 +154,19 @@ const AdminPage = () => {
                 <div>
                     {products.map(item => (
                         <div key={item}>
-                            {item.category}
-                            {item.name}
+                            {`${item.category} `}
+                            {`${item.name} `}
+                            {`${item.condition} `}
+                            {`${item.description} `}
+                            {`${item.price} `}
+                            {`${item.status} `}
+                            {`${String(item.available)}`}
+                            {/* {item.name}
                             {item.condition}
                             {item.description}
                             {item.price}
                             {item.status}
-                            {item.available}
+                            {item.available} */}
                         </div>
                     ))}
                 </div>
