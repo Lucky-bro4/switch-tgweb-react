@@ -9,7 +9,16 @@ const AdminPage = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
     const [photo, setPhoto] = useState('Images/Одежда/');
+
     const [products, setProducts] = useState([])
+
+    const [productId, changeId] = useState('');
+    const [productCategory, changeCategory] = useState('');
+    const [productName, changeName] = useState('');
+    const [productCondition, changeCondition] = useState('');
+    const [productDescription, changeDescription] = useState('');
+    const [productPrice, changePrice] = useState(0);
+    const [productPhoto, changePhoto] = useState('Images/Одежда/');
 
     const onChangeCategory = (e) => {
         setCategory(e.target.value);
@@ -33,6 +42,36 @@ const AdminPage = () => {
 
     const onChangePhoto = (e) => {
         setPhoto(e.target.value);
+    };
+
+
+
+    const ifChangeId = (e) => {
+        changeId(e.target.value);
+    };
+
+    const ifChangeCategory = (e) => {
+        changeCategory(e.target.value);
+    };
+
+    const ifChangeName = (e) => {
+        changeName(e.target.value);
+    };
+
+    const ifChangeCondition = (e) => {
+        changeCondition(e.target.value);
+    };
+
+    const ifChangeDescription = (e) => {
+        changeDescription(e.target.value);
+    };
+
+    const ifChangePrice = (e) => {
+        changePrice(e.target.value);
+    };
+
+    const ifChangePhoto = (e) => {
+        changePhoto(e.target.value);
     };
 
     const postData = async (url, data) => {
@@ -84,6 +123,29 @@ const AdminPage = () => {
             console.log('Ошибка при получении списка товаров:', e)
         }
     }
+
+    const changeData = async (e) => {
+        e.preventDefault();
+
+        const changeProduct = {
+            id: productId,
+            category: productCategory,
+            name: productName,
+            condition: productCondition,
+            description: productDescription,
+            price: Number(productPrice),
+            photo: productPhoto
+        };
+
+        console.log(changeProduct);
+
+        try {
+            const data = await postData('https://bottg-lucky-bro4.amvera.io/changeProduct', changeProduct);
+            console.log(data);
+        } catch (error) {
+            console.error('Ошибка при отправке данных:', error);
+        }
+    };
 
     useEffect(() => {
         getAllProducts();
@@ -149,7 +211,7 @@ const AdminPage = () => {
             </div>
             <form className={"form"}>
                 <div>
-                    <h1>Список всех товаров</h1>
+                    <h2>Список всех товаров</h2>
                 </div>
                 <div>
                     {products.map(item => (
@@ -161,15 +223,64 @@ const AdminPage = () => {
                             {`${item.price} `}
                             {`${item.status} `}
                             {`${String(item.available)}`}
-                            {/* {item.name}
-                            {item.condition}
-                            {item.description}
-                            {item.price}
-                            {item.status}
-                            {item.available} */}
                         </div>
                     ))}
                 </div>
+            </form>
+            <form className={"form"} onSubmit={changeData}>
+                <h2>Изменить данные товара товара</h2>
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Id'}
+                    value={id}
+                    onChange={productId}
+                />
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Category'}
+                    value={productCategory}
+                    onChange={ifChangeCategory}
+                />
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Name'}
+                    value={productName}
+                    onChange={ifChangeName}
+                />
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Condition'}
+                    value={productCondition}
+                    onChange={ifChangeCondition}
+                />
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Description'}
+                    value={productDescription}
+                    onChange={ifChangeDescription}
+                />
+                <input
+                    className={'input'}
+                    type="number"
+                    placeholder={'Price'}
+                    value={productPrice}
+                    onChange={ifChangePrice}
+                />
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Photo'}
+                    value={productPhoto}
+                    onChange={ifChangePhoto}
+                />
+                <Button className='btn-add-clothes'>
+                    Изменить
+                </Button>
             </form>
         </div>
     );
