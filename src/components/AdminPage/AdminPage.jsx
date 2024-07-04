@@ -74,6 +74,7 @@ const AdminPage = () => {
     };
 
     const getProducts = async () => {
+        e.preventDefault();
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/allProducts');
             const products = await response.json();
@@ -142,16 +143,18 @@ const AdminPage = () => {
                     <span>Стоимость: <b>{price}</b></span>
                 </div>
             </div>
-            <div>
-                <Button className='btn-add-clothes' onClick={getProducts}>
-                    Выгрузить товары
-                </Button>
-            </div>
-            <div>
-                {products.map(item => (
-                    <div key={item}>{item}</div>
-                ))}
-            </div>
+            <form className={"form"} onSubmit={getProducts}>
+                <div>
+                    <Button className='btn-add-clothes'>
+                        Выгрузить товары
+                    </Button>
+                </div>
+                <div>
+                    {products.map(item => (
+                        <div key={item}>{item}</div>
+                    ))}
+                </div>
+            </form>
         </div>
     );
 };
