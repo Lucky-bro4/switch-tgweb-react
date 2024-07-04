@@ -148,6 +148,11 @@ ${products}`)
                     Выгрузить товары
                 </Button>
             </div>
+            <div>
+                {products.map(item => (
+                    <div key={item}>{item}</div>
+                ))}
+            </div>
         </div>
     );
 };
