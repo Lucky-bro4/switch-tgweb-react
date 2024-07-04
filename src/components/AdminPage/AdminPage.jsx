@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AdminPage.css';
 import Button from '../Button/Button';
 
@@ -149,7 +149,7 @@ const AdminPage = () => {
             </div>
             <form className={"form"}>
                 <div>
-                    ,<h1>Список всех товаров</h1>
+                    <h1>Список всех товаров</h1>
                 </div>
                 <div>
                     {products.map(item => (
