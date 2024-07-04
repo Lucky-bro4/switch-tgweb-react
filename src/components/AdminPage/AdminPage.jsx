@@ -147,7 +147,7 @@ const AdminPage = () => {
                     Выгрузить товары
                 </Button>
                 <div>
-                    {products.map(item)}
+                    {products}
                 </div>
             </div>
         </div>
