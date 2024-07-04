@@ -75,7 +75,7 @@ const AdminPage = () => {
 
     const getProducts = async () => {
         try {
-            const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
+            const response = await fetch('https://bottg-lucky-bro4.amvera.io/allProducts');
             const products = await response.json();
             setProducts(products)
             
