@@ -73,7 +73,7 @@ const AdminPage = () => {
         }
     };
 
-    const getProducts = async (e) => {
+    const getAllProducts = async (e) => {
         e.preventDefault();
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/allProducts');
@@ -84,6 +84,10 @@ const AdminPage = () => {
             console.log('Ошибка при получении списка товаров:', e)
         }
     }
+
+    useEffect(() => {
+        getAllProducts();
+    }, [])
 
     return (
         <div>
@@ -145,13 +149,19 @@ const AdminPage = () => {
             </div>
             <form className={"form"}>
                 <div>
-                    <Button className='btn-add-clothes' onClick={getProducts}>
-                        Выгрузить товары
-                    </Button>
+                    ,<h1>Список всех товаров</h1>
                 </div>
                 <div>
                     {products.map(item => (
-                        <div key={item}>{item}</div>
+                        <div key={item}>
+                            {item.category}
+                            {item.name}
+                            {item.condition}
+                            {item.description}
+                            {item.price}
+                            {item.status}
+                            {item.available}
+                        </div>
                     ))}
                 </div>
             </form>

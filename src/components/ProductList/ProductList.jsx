@@ -87,9 +87,6 @@ const ProductList = () => {
         }
     }
 
-    useEffect(() => {
-        console.log('AddedItems updated:', addedItems);
-    }, [addedItems]);
 
     return (
         <div className={'list'}>
