@@ -9,6 +9,7 @@ const AdminPage = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
     const [photo, setPhoto] = useState('Images/Одежда/');
+    const [products, setProducts] = useState([])
 
     const onChangeCategory = (e) => {
         setCategory(e.target.value);
@@ -72,6 +73,17 @@ const AdminPage = () => {
         }
     };
 
+    const getProducts = async () => {
+        try {
+            const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
+            const products = await response.json();
+            setProducts(products)
+            
+        } catch (e) {
+            console.log('Ошибка при получении списка товаров:', e)
+        }
+    }
+
     return (
         <div>
             <form className={"form"} onSubmit={sendData}>
@@ -128,6 +140,14 @@ const AdminPage = () => {
                 <div className={'price'}>
                     <div className={'example_description'}>{description}</div>
                     <span>Стоимость: <b>{price}</b></span>
+                </div>
+            </div>
+            <div>
+                <Button className='btn-add-clothes' onClick={getProducts}>
+                    Выгрузить товары
+                </Button>
+                <div>
+                    {products.map(item)}
                 </div>
             </div>
         </div>
