@@ -146,9 +146,9 @@ const AdminPage = () => {
                 <Button className='btn-add-clothes' onClick={getProducts}>
                     Выгрузить товары
                 </Button>
-                <div>
-                    {products}
-                </div>
+            </div>
+            <div>
+                {products}
             </div>
         </div>
     );
