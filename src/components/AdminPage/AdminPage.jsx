@@ -21,6 +21,7 @@ const AdminPage = () => {
     const [productPhoto, changePhoto] = useState('Images/Одежда/');
     const [productStatus, changeStatus] = useState('');
     const [productAvailable, changeAvailable] = useState(0);
+    const [productUserId, changeUserId] = useState(0);
 
     const onChangeCategory = (e) => {
         setCategory(e.target.value);
@@ -82,6 +83,10 @@ const AdminPage = () => {
 
     const ifChangeAvailable = (e) => {
         changeAvailable(e.target.value);
+    };
+
+    const ifChangeUserId = (e) => {
+        changeUserId(e.target.value);
     };
 
     const postData = async (url, data) => {
@@ -146,7 +151,8 @@ const AdminPage = () => {
             price: Number(productPrice),
             photo: productPhoto,
             status: productStatus,
-            available: Boolean(productAvailable)
+            available: Boolean(productAvailable),
+            userId: Number(productUserId),
         };
 
         console.log(changeProduct);
@@ -305,6 +311,13 @@ const AdminPage = () => {
                     placeholder={'Available'}
                     value={productAvailable}
                     onChange={ifChangeAvailable}
+                />
+                <input
+                    className={'input'}
+                    type="number"
+                    placeholder={'UserId'}
+                    value={productUserId}
+                    onChange={ifChangeUserId}
                 />
                 <Button className='btn-add-clothes'>
                     Изменить
