@@ -12,8 +12,9 @@
     margin-top: 15px;
 }
 
-.input {
+.inputItem {
     width: 25%;
+    height: 15px;
     padding: 10px;
     margin-top: 15px;
 }
