@@ -11,7 +11,7 @@ const AdminPage = () => {
     const [price, setPrice] = useState(0);
     const [photo, setPhoto] = useState('Images/Одежда/');
     const [status, setStatus] = useState('available');
-    const [available, setAvailable] = useState(0);
+    const [available, setAvailable] = useState(1);
 
     const [products, setProducts] = useState([])
 
@@ -196,8 +196,8 @@ const AdminPage = () => {
                     <option value={'in order'}>В заказе</option>
                 </select>
                 <select value={available} onChange={onChangeAvailable} className={'select'}>
-                    <option value={0}>Не доступен</option>
                     <option value={1}>Доступен</option>
+                    <option value={0}>Не доступен</option>
                 </select>
                 <div>
                     <Button className='btn-add-clothes' onClick={sendData}>
