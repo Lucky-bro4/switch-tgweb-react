@@ -157,7 +157,7 @@ const AdminPage = () => {
         e.preventDefault();
 
         const changeProduct = {
-            id: id,
+            id: Number(id),
             category: category,
             name: name,
             condition: condition,
