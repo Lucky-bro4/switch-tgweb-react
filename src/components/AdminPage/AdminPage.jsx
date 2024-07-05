@@ -14,9 +14,14 @@ const AdminPage = () => {
     const [available, setAvailable] = useState(1);
 
     const [products, setProducts] = useState([])
-
-
     const [productUserId, changeUserId] = useState(0);
+
+    const [chatId, changeChatId] = useState('');
+    const [item1, changeItem1] = useState(0);
+    const [item2, changeItem2] = useState(0);
+    const [item3, changeItem3] = useState(0);
+    const [item4, changeItem4] = useState(0);
+    const [statusOrder, changestatusOrder] = useState('confirm');
 
     const onChangeId = (e) => {
         setId(e.target.value);
@@ -55,6 +60,30 @@ const AdminPage = () => {
 
     const ifChangeUserId = (e) => {
         changeUserId(e.target.value);
+    };
+
+    const onChangeChatId = (e) => {
+        changeChatId(e.target.value);
+    };
+
+    const onChangeItem1 = (e) => {
+        changeItem1(e.target.value);
+    };
+
+    const onChangeItem2 = (e) => {
+        changeItem2(e.target.value);
+    };
+
+    const onChangeItem3 = (e) => {
+        changeItem3(e.target.value);
+    };
+
+    const onChangeItem4 = (e) => {
+        changeItem4(e.target.value);
+    };
+
+    const onChangestatusOrder = (e) => {
+        changestatusOrder(e.target.value);
     };
 
     const postData = async (url, data) => {
@@ -133,6 +162,28 @@ const AdminPage = () => {
         }
     };
 
+    const confirmStatusOrder = async (e) => {
+        e.preventDefault();
+
+        const order = {
+            chatId: chatId,
+            item1: Number(item1),
+            item2: Number(item2),
+            item3: Number(item3),
+            item4: Number(item4),
+            statusOrder: statusOrder
+        };
+
+        console.log(changeProduct);
+
+        try {
+            const data = await postData('https://bottg-lucky-bro4.amvera.io/statusOrder', order);
+            console.log(data);
+        } catch (error) {
+            console.error('Ошибка при отправке данных:', error);
+        }
+    };
+
     useEffect(() => {
         getAllProducts();
     }, [])
@@ -203,7 +254,7 @@ const AdminPage = () => {
                     <Button className='btn-add-clothes' onClick={sendData}>
                         Добавить
                     </Button>
-                    <Button className='btn-add-clothes' onClick={changeData}>
+                    <Button className='btn-change-clothes' onClick={changeData}>
                         Изменить
                     </Button>
                 </div>
@@ -233,6 +284,53 @@ const AdminPage = () => {
                         {`Пользователь: ${item.userId} `}
                     </div>
                 ))}
+            </div>
+            <div>
+            <h3>Подтверждение заказа</h3>
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'chatId'}
+                    value={chatId}
+                    onChange={onChangeChatId}
+                />
+                <div>
+                    <input
+                        className={'input'}
+                        type="number"
+                        placeholder={'item1'}
+                        value={item1}
+                        onChange={onChangeItem1}
+                    />
+                    <input
+                        className={'input'}
+                        type="number"
+                        placeholder={'item2'}
+                        value={item2}
+                        onChange={onChangeItem2}
+                    />
+                    <input
+                        className={'input'}
+                        type="number"
+                        placeholder={'item3'}
+                        value={item3}
+                        onChange={onChangeItem3}
+                    />
+                    <input
+                        className={'input'}
+                        type="number"
+                        placeholder={'item4'}
+                        value={item4}
+                        onChange={onChangeItem4}
+                    />
+                </div>
+                <select value={statusOrder} onChange={onChangestatusOrder} className={'select'}>
+                    <option value={'confirm'}>Принят</option>
+                    <option value={'canceled'}>Отказ</option>
+                </select>
+                <Button className='btn-confirm' onClick={confirmStatusOrder}>
+                    Отправить
+                </Button>
             </div>
         </div>
     );
