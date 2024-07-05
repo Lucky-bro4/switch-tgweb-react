@@ -294,7 +294,7 @@ const AdminPage = () => {
                     value={chatId}
                     onChange={onChangeChatId}
                 />
-                <div>
+                <span>
                     <input
                         className={'input'}
                         type="number"
@@ -323,7 +323,7 @@ const AdminPage = () => {
                         value={item4}
                         onChange={onChangeItem4}
                     />
-                </div>
+                </span>
                 <select value={statusOrder} onChange={onChangestatusOrder} className={'select'}>
                     <option value={'confirm'}>Принят</option>
                     <option value={'canceled'}>Отказ</option>
