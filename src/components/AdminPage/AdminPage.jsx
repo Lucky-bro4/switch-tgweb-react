@@ -236,20 +236,15 @@ const AdminPage = () => {
                     value={photo}
                     onChange={onChangePhoto}
                 />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Status'}
-                    value={status}
-                    onChange={onChangeStatus}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Available'}
-                    value={available}
-                    onChange={onChangeAvailable}
-                />
+                <select value={status} onChange={onChangeStatus} className={'select'}>
+                    <option value={'available'}>Доступен</option>
+                    <option value={'reserved'}>Зарезервирован</option>
+                    <option value={'in order'}>В заказе</option>
+                </select>
+                <select value={available} onChange={onChangeAvailable} className={'select'}>
+                    <option value={0}>Не доступен</option>
+                    <option value={1}>Доступен</option>
+                </select>
                 <div>
                     <Button className='btn-add-clothes' onClick={sendData}>
                         Добавить
