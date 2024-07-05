@@ -3,12 +3,15 @@ import './AdminPage.css';
 import Button from '../Button/Button';
 
 const AdminPage = () => {
+    const [id, setId] = useState(0)
     const [category, setCategory] = useState('');
     const [name, setName] = useState('');
     const [condition, setCondition] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
     const [photo, setPhoto] = useState('Images/Одежда/');
+    const [status, setStatus] = useState('');
+    const [available, setAvailable] = useState(0);
 
     const [products, setProducts] = useState([])
 
@@ -22,6 +25,10 @@ const AdminPage = () => {
     const [productStatus, changeStatus] = useState('');
     const [productAvailable, changeAvailable] = useState(0);
     const [productUserId, changeUserId] = useState(0);
+
+    const onChangeId = (e) => {
+        setId(e.target.value);
+    };
 
     const onChangeCategory = (e) => {
         setCategory(e.target.value);
@@ -45,6 +52,13 @@ const AdminPage = () => {
 
     const onChangePhoto = (e) => {
         setPhoto(e.target.value);
+    };
+
+    const onChangeStatus = (e) => {
+        setStatus(e.target.value);
+    };
+    const onChangeAvailable = (e) => {
+        setAvailable(e.target.value);
     };
 
 
@@ -143,15 +157,15 @@ const AdminPage = () => {
         e.preventDefault();
 
         const changeProduct = {
-            id: productId,
-            category: productCategory,
-            name: productName,
-            condition: productCondition,
-            description: productDescription,
-            price: Number(productPrice),
-            photo: productPhoto,
-            status: productStatus,
-            available: Boolean(productAvailable),
+            id: id,
+            category: category,
+            name: name,
+            condition: condition,
+            description: description,
+            price: Number(price),
+            photo: photo,
+            status: status,
+            available: Boolean(available),
             userId: Number(productUserId),
         };
 
@@ -171,8 +185,15 @@ const AdminPage = () => {
 
     return (
         <div>
-            <form className={"form"} onSubmit={sendData}>
+            <form className={"form"}>
                 <h3>Добавление товара</h3>
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Id'}
+                    value={id}
+                    onChange={onChangeId}
+                />onChangeCategory
                 <input
                     className={'input'}
                     type="text"
@@ -215,9 +236,28 @@ const AdminPage = () => {
                     value={photo}
                     onChange={onChangePhoto}
                 />
-                <Button className='btn-add-clothes'>
-                    Добавить
-                </Button>
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Status'}
+                    value={status}
+                    onChange={onChangeStatus}
+                />
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Available'}
+                    value={available}
+                    onChange={onChangeAvailable}
+                />
+                <div>
+                    <Button className='btn-add-clothes' onClick={sendData}>
+                        Добавить
+                    </Button>
+                    <Button className='btn-add-clothes' onClick={changeData}>
+                        Изменить
+                    </Button>
+                </div>
             </form>
             <div className='example'>
                 <img className={'example_img'} src={photo} alt={name} />
@@ -227,102 +267,6 @@ const AdminPage = () => {
                     <span>Стоимость: <b>{price}</b></span>
                 </div>
             </div>
-            <form className={"form"}>
-                <div>
-                    <h2>Список всех товаров</h2>
-                </div>
-                <div>
-                    {products.map(item => (
-                        <div key={item}>
-                            {`${item.id} `}
-                            {`${item.category} `}
-                            {`${item.name} `}
-                            {`${item.condition} `}
-                            {`${item.description} `}
-                            {`${item.price} `}
-                            {`${item.status} `}
-                            {`${String(item.available)}  `}
-                            {`Пользователь: ${item.userId} `}
-                        </div>
-                    ))}
-                </div>
-            </form>
-            <form className={"form"} onSubmit={changeData}>
-                <h2>Изменить данные товара товара</h2>
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Id'}
-                    value={productId}
-                    onChange={ifChangeId}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Category'}
-                    value={productCategory}
-                    onChange={ifChangeCategory}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Name'}
-                    value={productName}
-                    onChange={ifChangeName}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Condition'}
-                    value={productCondition}
-                    onChange={ifChangeCondition}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Description'}
-                    value={productDescription}
-                    onChange={ifChangeDescription}
-                />
-                <input
-                    className={'input'}
-                    type="number"
-                    placeholder={'Price'}
-                    value={productPrice}
-                    onChange={ifChangePrice}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Photo'}
-                    value={productPhoto}
-                    onChange={ifChangePhoto}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Status'}
-                    value={productStatus}
-                    onChange={ifChangeStatus}
-                />
-                <input
-                    className={'input'}
-                    type="number"
-                    placeholder={'Available'}
-                    value={productAvailable}
-                    onChange={ifChangeAvailable}
-                />
-                <input
-                    className={'input'}
-                    type="number"
-                    placeholder={'UserId'}
-                    value={productUserId}
-                    onChange={ifChangeUserId}
-                />
-                <Button className='btn-add-clothes'>
-                    Изменить
-                </Button>
-            </form>
         </div>
     );
 };
