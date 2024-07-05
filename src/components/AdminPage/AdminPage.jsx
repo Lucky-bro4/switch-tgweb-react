@@ -189,7 +189,7 @@ const AdminPage = () => {
                 <h3>Добавление товара</h3>
                 <input
                     className={'input'}
-                    type="text"
+                    type="number"
                     placeholder={'Id'}
                     value={id}
                     onChange={onChangeId}
