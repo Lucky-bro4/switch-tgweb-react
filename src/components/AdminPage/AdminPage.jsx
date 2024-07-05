@@ -285,7 +285,7 @@ const AdminPage = () => {
                     </div>
                 ))}
             </div>
-            <div>
+            <form>
             <h3>Подтверждение заказа</h3>
                 <input
                     className={'input'}
@@ -331,7 +331,7 @@ const AdminPage = () => {
                 <Button className='btn-confirm' onClick={confirmStatusOrder}>
                     Отправить
                 </Button>
-            </div>
+            </form>
         </div>
     );
 };
