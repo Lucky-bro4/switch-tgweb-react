@@ -174,7 +174,7 @@ const AdminPage = () => {
             statusOrder: statusOrder
         };
 
-        console.log(changeProduct);
+        console.log(order);
 
         try {
             const data = await postData('https://bottg-lucky-bro4.amvera.io/statusOrder', order);
