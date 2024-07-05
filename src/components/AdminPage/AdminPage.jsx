@@ -294,36 +294,36 @@ const AdminPage = () => {
                     value={chatId}
                     onChange={onChangeChatId}
                 />
-                <span>
+                <div>
                     <input
-                        className={'input'}
+                        className={'inputItem'}
                         type="number"
                         placeholder={'item1'}
                         value={item1}
                         onChange={onChangeItem1}
                     />
                     <input
-                        className={'input'}
+                        className={'inputItem'}
                         type="number"
                         placeholder={'item2'}
                         value={item2}
                         onChange={onChangeItem2}
                     />
                     <input
-                        className={'input'}
+                        className={'inputItem'}
                         type="number"
                         placeholder={'item3'}
                         value={item3}
                         onChange={onChangeItem3}
                     />
                     <input
-                        className={'input'}
+                        className={'inputItem'}
                         type="number"
                         placeholder={'item4'}
                         value={item4}
                         onChange={onChangeItem4}
                     />
-                </span>
+                </div>
                 <select value={statusOrder} onChange={onChangestatusOrder} className={'select'}>
                     <option value={'confirm'}>Принят</option>
                     <option value={'canceled'}>Отказ</option>
