@@ -10,20 +10,12 @@ const AdminPage = () => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
     const [photo, setPhoto] = useState('Images/Одежда/');
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(0);
 
     const [products, setProducts] = useState([])
 
-    const [productId, changeId] = useState('');
-    const [productCategory, changeCategory] = useState('');
-    const [productName, changeName] = useState('');
-    const [productCondition, changeCondition] = useState('');
-    const [productDescription, changeDescription] = useState('');
-    const [productPrice, changePrice] = useState(0);
-    const [productPhoto, changePhoto] = useState('Images/Одежда/');
-    const [productStatus, changeStatus] = useState('');
-    const [productAvailable, changeAvailable] = useState(0);
+
     const [productUserId, changeUserId] = useState(0);
 
     const onChangeId = (e) => {
@@ -59,44 +51,6 @@ const AdminPage = () => {
     };
     const onChangeAvailable = (e) => {
         setAvailable(e.target.value);
-    };
-
-
-
-    const ifChangeId = (e) => {
-        changeId(e.target.value);
-    };
-
-    const ifChangeCategory = (e) => {
-        changeCategory(e.target.value);
-    };
-
-    const ifChangeName = (e) => {
-        changeName(e.target.value);
-    };
-
-    const ifChangeCondition = (e) => {
-        changeCondition(e.target.value);
-    };
-
-    const ifChangeDescription = (e) => {
-        changeDescription(e.target.value);
-    };
-
-    const ifChangePrice = (e) => {
-        changePrice(e.target.value);
-    };
-
-    const ifChangePhoto = (e) => {
-        changePhoto(e.target.value);
-    };
-
-    const ifChangeStatus = (e) => {
-        changeStatus(e.target.value);
-    };
-
-    const ifChangeAvailable = (e) => {
-        changeAvailable(e.target.value);
     };
 
     const ifChangeUserId = (e) => {
