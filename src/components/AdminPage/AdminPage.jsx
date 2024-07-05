@@ -193,7 +193,7 @@ const AdminPage = () => {
                     placeholder={'Id'}
                     value={id}
                     onChange={onChangeId}
-                />
+                />onChangeCategory
                 <input
                     className={'input'}
                     type="text"
@@ -266,6 +266,24 @@ const AdminPage = () => {
                     <div className={'example_description'}>{description}</div>
                     <span>Стоимость: <b>{price}</b></span>
                 </div>
+            </div>
+            <div>
+                <h2>Список всех товаров</h2>
+            </div>
+            <div>
+                {products.map(item => (
+                    <div key={item}>
+                        {`${item.id} `}
+                        {`${item.category} `}
+                        {`${item.name} `}
+                        {`${item.condition} `}
+                        {`${item.description} `}
+                        {`${item.price} `}
+                        {`${item.status} `}
+                        {`${String(item.available)}  `}
+                        {`Пользователь: ${item.userId} `}
+                    </div>
+                ))}
             </div>
         </div>
     );
