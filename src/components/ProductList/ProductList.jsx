@@ -30,7 +30,7 @@ const ProductList = () => {
 
     useEffect(() => {
         getProducts();
-    }, [])
+    }, [products])
 
     const onSendData = useCallback(() => {
         console.log('addedItems' + addedItems)
