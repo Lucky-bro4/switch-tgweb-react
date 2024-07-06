@@ -10,7 +10,7 @@ const AdminPage = () => {
     const [condition, setCondition] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
-    const [photo, setPhoto] = useState('Images/Одежда/');
+    const [photo, setPhoto] = useState('/Images/Одежда/');
     const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
 
