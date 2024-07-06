@@ -262,12 +262,12 @@ const AdminPage = () => {
                     value={photo}
                     onChange={onChangePhoto}
                 />
-                <select value={status} onChange={onChangeStatus} className={'select'}>
+                <select value={status} onChange={onChangeStatus} className={'input'}>
                     <option value={'available'}>Доступен</option>
                     <option value={'reserved'}>Зарезервирован</option>
                     <option value={'in order'}>В заказе</option>
                 </select>
-                <select value={available} onChange={onChangeAvailable} className={'select'}>
+                <select value={available} onChange={onChangeAvailable} className={'input'}>
                     <option value={1}>Доступен</option>
                     <option value={0}>Не доступен</option>
                 </select>
@@ -322,7 +322,7 @@ const AdminPage = () => {
                         onChange={onChangeItem4}
                     />
                 </div>
-                <select value={statusOrder} onChange={onChangestatusOrder} className={'select'}>
+                <select value={statusOrder} onChange={onChangestatusOrder} className={'input'}>
                     <option value={'confirm'}>Принят</option>
                     <option value={'canceled'}>Отказ</option>
                 </select>
