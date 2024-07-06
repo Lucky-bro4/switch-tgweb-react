@@ -10,7 +10,7 @@ const AuthPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post('https://bottg-lucky-bro4.amvera.io:8000/login', { username, password }, { withCredentials: true });
-      setMessage(response.data.message);
+      setMessage(response.json());
     } catch (error) {
       setMessage(error.response.data.message);
     }
