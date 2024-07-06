@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AuthPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ const AuthPage = () => {
       const data = await response.json();
       if (response.ok) {
         setMessage(data.message);
-        history.push('/adminPage');
+        navigate('/adminPage');
       } else {
         setMessage(data.message);
       }
