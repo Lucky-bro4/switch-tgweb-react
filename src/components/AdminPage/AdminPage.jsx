@@ -15,6 +15,8 @@ const AdminPage = () => {
     const [available, setAvailable] = useState(1);
 
     const [products, setProducts] = useState([])
+    const [clents, setClients] = useState([])
+
     const [productUserId, changeUserId] = useState(0);
 
     const [chatId, changeChatId] = useState('');
@@ -125,15 +127,16 @@ const AdminPage = () => {
         }
     };
 
-    const getAllProducts = async (e) => {
+    const getAllData = async (e) => {
  
         try {
-            const response = await fetch('https://bottg-lucky-bro4.amvera.io/allProducts');
-            const products = await response.json();
-            setProducts(products)
+            const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
+            const data = await response.json();
+            setProducts(data.products)
+            setClients(data.clients)
 
         } catch (e) {
-            console.log('Ошибка при получении списка товаров:', e)
+            console.log('Ошибка при получении списка данных:', e)
         }
     }
 
@@ -203,7 +206,7 @@ const AdminPage = () => {
     };
 
     useEffect(() => {
-        getAllProducts();
+        getAllData();
     }, [])
 
     return (
@@ -280,32 +283,6 @@ const AdminPage = () => {
                     </Button>
                 </div>
             </form>
-            <div className='example'>
-                <img className={'example_img'} src={photo} alt={name} />
-                <div className={'example_name'}><b>{category + ' ' + name}</b></div>
-                <div className={'price'}>
-                    <div className={'example_description'}>{description}</div>
-                    <span>Стоимость: <b>{price}</b></span>
-                </div>
-            </div>
-            <div>
-                <h2>Список всех товаров</h2>
-            </div>
-            <div>
-                {products.map(item => (
-                    <div key={item}>
-                        {`${item.id} `}
-                        {`${item.category} `}
-                        {`${item.name} `}
-                        {`${item.condition} `}
-                        {`${item.description} `}
-                        {`${item.price} `}
-                        {`${item.status} `}
-                        {`${String(item.available)}  `}
-                        {`Пользователь: ${item.userId} `}
-                    </div>
-                ))}
-            </div>
             <form>
             <h3>Подтверждение заказа</h3>
                 <input
@@ -353,6 +330,43 @@ const AdminPage = () => {
                     Отправить
                 </Button>
             </form>
+            <div className='example'>
+                <img className={'example_img'} src={photo} alt={name} />
+                <div className={'example_name'}><b>{category + ' ' + name}</b></div>
+                <div className={'price'}>
+                    <div className={'example_description'}>{description}</div>
+                    <span>Стоимость: <b>{price}</b></span>
+                </div>
+            </div>
+            <div>
+                <h2>Список клиентов</h2>
+                {clents.map(client => (
+                    <div key={client}>
+                        {`${client.id} `}
+                        {`${client.chatId} `}
+                        {`${client.login} `}
+                        {`${client.phone_number} `}
+                        {`${client.location} `}
+                        {/* {`Товары: ${item.userId} `} */}
+                    </div>
+                ))}
+            </div>
+            <div>
+                <h2>Список товаров</h2>
+                {products.map(item => (
+                    <div key={item}>
+                        {`${item.id} `}
+                        {`${item.category} `}
+                        {`${item.name} `}
+                        {`${item.condition} `}
+                        {`${item.description} `}
+                        {`${item.price} `}
+                        {`${item.status} `}
+                        {`${String(item.available)}  `}
+                        {`Пользователь: ${item.userId} `}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
