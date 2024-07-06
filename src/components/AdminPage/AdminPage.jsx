@@ -174,7 +174,7 @@ const AdminPage = () => {
 
         try {
             const data = await postData('https://bottg-lucky-bro4.amvera.io/deleteProduct', deleteProduct);
-            console.log(data);
+            console.log(data.message);
         } catch (error) {
             console.error('Ошибка при отправке данных:', error);
         }
