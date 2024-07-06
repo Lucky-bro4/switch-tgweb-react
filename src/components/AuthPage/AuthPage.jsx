@@ -1,18 +1,32 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 const AuthPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://bottg-lucky-bro4.amvera.io:8000/login', { username, password }, { withCredentials: true });
-      setMessage(response.json());
+      const response = await fetch('https://bottg-lucky-bro4.amvera.io/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setMessage(data.message);
+        history.push('/adminPage');
+      } else {
+        setMessage(data.message);
+      }
     } catch (error) {
-      setMessage(error.response.data.message);
+      setMessage('An error occurred. Please try again.');
     }
   };
 
