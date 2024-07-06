@@ -23,7 +23,7 @@ function App() {
                 <Route index element={<ProductList />}/>
                 <Route path={'form'} element={<Form />}/>
                 <Route path={'adminPage'} element={<AdminPage />}/>
-                <Route path={'authPage'} element={<AuthPage />}/>
+                {/* <Route path={'authPage'} element={<AuthPage />}/> */}
                 {/* <Route path={'account'} element={<Account />}/> */}
                 
             </Routes>
