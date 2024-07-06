@@ -163,6 +163,23 @@ const AdminPage = () => {
         }
     };
 
+    const deleteData = async (e) => {
+        e.preventDefault();
+
+        const deleteProduct = {
+            id: Number(id),
+        };
+
+        console.log(deleteData);
+
+        try {
+            const data = await postData('https://bottg-lucky-bro4.amvera.io/deleteProduct', deleteProduct);
+            console.log(data);
+        } catch (error) {
+            console.error('Ошибка при отправке данных:', error);
+        }
+    };
+
     const confirmStatusOrder = async (e) => {
         e.preventDefault();
 
@@ -257,6 +274,9 @@ const AdminPage = () => {
                     </Button>
                     <Button className='btn-change-clothes' onClick={changeData}>
                         Изменить
+                    </Button>
+                    <Button className='btn-delete-clothes' onClick={deleteData}>
+                        Удалить
                     </Button>
                 </div>
             </form>
