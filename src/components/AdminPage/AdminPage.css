@@ -51,6 +51,7 @@
 
 .btn-confirm {
     font-size: large;
+    width: 30%;
     border: 2px black;
     background: rgb(96, 142, 28);
     margin-top: 10px;
@@ -82,3 +83,16 @@
 .description {
     font-size: 0.8em;
 } 
+
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}  

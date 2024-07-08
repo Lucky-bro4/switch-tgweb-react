@@ -22,11 +22,21 @@ const AdminPage = () => {
     const [productUserId, changeUserId] = useState(0);
 
     const [chatId, changeChatId] = useState('');
+
     const [item1, changeItem1] = useState(0);
+    const [checkboxItem1, setCheckboxItem1] = useState(false);
+
     const [item2, changeItem2] = useState(0);
+    const [checkboxItem2, setCheckboxItem2] = useState(false);
+
     const [item3, changeItem3] = useState(0);
+    const [checkboxItem3, setCheckboxItem3] = useState(false);
+
     const [item4, changeItem4] = useState(0);
+    const [checkboxItem4, setCheckboxItem4] = useState(false);
+
     const [statusOrder, changestatusOrder] = useState('confirm');
+
 
     const onChangeId = (e) => {
         setId(e.target.value);
@@ -82,17 +92,29 @@ const AdminPage = () => {
     const onChangeItem1 = (e) => {
         changeItem1(e.target.value);
     };
+    const onChangeCheckboxItem1 = () => {
+        setCheckboxItem1(!checkboxItem1);
+      };
 
     const onChangeItem2 = (e) => {
         changeItem2(e.target.value);
+    };
+    const onChangeCheckboxItem2 = () => {
+        setCheckboxItem2(!checkboxItem2);
     };
 
     const onChangeItem3 = (e) => {
         changeItem3(e.target.value);
     };
+    const onChangeCheckboxItem3 = () => {
+        setCheckboxItem3(!checkboxItem3);
+    };
 
     const onChangeItem4 = (e) => {
         changeItem4(e.target.value);
+    };
+    const onChangeCheckboxItem4 = () => {
+        setCheckboxItem4(!checkboxItem4);
     };
 
     const onChangestatusOrder = (e) => {
@@ -200,12 +222,20 @@ const AdminPage = () => {
     const confirmStatusOrder = async (e) => {
         e.preventDefault();
 
+        const items = {
+            item1: Number(item1),
+            checkboxItem1: checkboxItem1,
+            item2: Number(item2),
+            checkboxItem2: checkboxItem2,
+            item3: Number(item3),
+            checkboxItem3: checkboxItem3,
+            item4: Number(item4), 
+            checkboxItem4: checkboxItem4
+        };
+
         const order = {
             chatId: chatId,
-            item1: Number(item1),
-            item2: Number(item2),
-            item3: Number(item3),
-            item4: Number(item4),
+            items: items,
             statusOrder: statusOrder
         };
 
@@ -285,7 +315,7 @@ const AdminPage = () => {
                         placeholder={'RentPrice'}
                         value={rentPrice}
                         onChange={onChangeRentPrice}
-                    /> Rent Price
+                    /> Rent Price {price / 20 * 1.2 + 25}
                 </div>
                 <input
                     className={'input'}
@@ -315,8 +345,8 @@ const AdminPage = () => {
                     </Button>
                 </div>
             </form>
-            <form>
-            <h3>Подтверждение заказа</h3>
+            <form className='form'>
+                <h3>Подтверждение заказа</h3>
                 <input
                     className={'input'}
                     type="text"
@@ -325,34 +355,74 @@ const AdminPage = () => {
                     onChange={onChangeChatId}
                 />
                 <div>
-                    <input
-                        className={'inputItem'}
-                        type="number"
-                        placeholder={'item1'}
-                        value={item1}
-                        onChange={onChangeItem1}
-                    />
-                    <input
-                        className={'inputItem'}
-                        type="number"
-                        placeholder={'item2'}
-                        value={item2}
-                        onChange={onChangeItem2}
-                    />
-                    <input
-                        className={'inputItem'}
-                        type="number"
-                        placeholder={'item3'}
-                        value={item3}
-                        onChange={onChangeItem3}
-                    />
-                    <input
-                        className={'inputItem'}
-                        type="number"
-                        placeholder={'item4'}
-                        value={item4}
-                        onChange={onChangeItem4}
-                    />
+                    <div className="input-container">
+                        <input
+                            className={'inputItem'}
+                            type="number"
+                            placeholder={'item1'}
+                            value={item1}
+                            onChange={onChangeItem1}
+                        />
+                        <label>
+                            <input
+                            type="checkbox"
+                            checked={checkboxItem1}
+                            onChange={onChangeCheckboxItem1}
+                            />
+                            Товар 1
+                        </label>
+                    </div>
+                    <div className="input-container">
+                        <input
+                            className={'inputItem'}
+                            type="number"
+                            placeholder={'item2'}
+                            value={item2}
+                            onChange={onChangeItem2}
+                        />
+                        <label>
+                            <input
+                            type="checkbox"
+                            checked={checkboxItem2}
+                            onChange={onChangeCheckboxItem2}
+                            />
+                            Товар 2
+                        </label>
+                    </div>
+                    <div className="input-container">
+                        <input
+                            className={'inputItem'}
+                            type="number"
+                            placeholder={'item3'}
+                            value={item3}
+                            onChange={onChangeItem3}
+                        />
+                        <label>
+                            <input
+                            type="checkbox"
+                            checked={checkboxItem3}
+                            onChange={onChangeCheckboxItem3}
+                            />
+                            Товар 3
+                        </label>
+                    </div>
+                    <div className="input-container">
+                        <input
+                            className={'inputItem'}
+                            type="number"
+                            placeholder={'item4'}
+                            value={item4}
+                            onChange={onChangeItem4}
+                        />
+                        <label>
+                            <input
+                            type="checkbox"
+                            checked={checkboxItem4}
+                            onChange={onChangeCheckboxItem4}
+                            />
+                            Товар 4
+                        </label>
+                    </div>
                 </div>
                 <select value={statusOrder} onChange={onChangestatusOrder} className={'input'}>
                     <option value={'confirm'}>Принят</option>
