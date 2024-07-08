@@ -13,16 +13,18 @@ const getTotalPrice = (items = []) => {
 
 const ProductList = () => {
 
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
 
     const getProducts = async () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
-            const products = await response.json();
-            setProducts(products)
-            console.log(products)
+            const data = await response.json();
+            setProducts(data.products)
+            if (data.count === true) {
+                tg.showAlert('Добро пожаловать в Switch! На первый заказ у тебя будет скидка 10%');
+            }
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
         }
@@ -101,7 +103,7 @@ const ProductList = () => {
                 ))
             ) : (
                 <div className="no-products">
-                    <p>Нет доступных продуктов</p>
+                    <p>Сейчас нет доступных вещей</p>
                 </div>
             )}
         </div>
