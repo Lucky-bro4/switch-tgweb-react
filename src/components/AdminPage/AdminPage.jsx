@@ -139,18 +139,18 @@ const AdminPage = () => {
         }
     };
 
-    // const getAllData = async (e) => {
+    const getAllData = async (e) => {
  
-    //     try {
-    //         const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
-    //         const data = await response.json();
-    //         setProducts(data.products)
-    //         setClients(data.clients)
+        try {
+            const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
+            const data = await response.json();
+            setProducts(data.products)
+            setClients(data.clients)
 
-    //     } catch (e) {
-    //         console.log('Ошибка при получении списка данных:', e)
-    //     }
-    // }
+        } catch (e) {
+            console.log('Ошибка при получении списка данных:', e)
+        }
+    }
 
     const changeData = async (e) => {
         e.preventDefault();
@@ -219,9 +219,9 @@ const AdminPage = () => {
         }
     };
 
-    // useEffect(() => {
-    //     getAllData();
-    // }, [])
+    useEffect(() => {
+        getAllData();
+    }, [])
 
     return (
         <div>
@@ -366,7 +366,7 @@ const AdminPage = () => {
                 <img className={'example_img'} src={photo} alt={name} />
                 <div className={'example_name'}><b>{category + ' ' + name}</b></div>
                 <div className={'example_description'}>{description}</div>
-                <div className={'example_description'}>Размер {size}</div>
+                <div className={'example_description'}>Размер: {size}</div>
             </div>
             <div>
                 <h2>Список клиентов</h2>
@@ -382,7 +382,7 @@ const AdminPage = () => {
                 ))}
             </div>
             <div>
-                {/* <h2>Список товаров</h2>
+                <h2>Список товаров</h2>
                 {products.map(item => (
                     <div key={item}>
                         {`${item.id} `}
@@ -397,7 +397,7 @@ const AdminPage = () => {
                         {`${String(item.available)}  `}
                         {`Пользователь: ${item.userId} `}
                     </div>
-                ))} */}
+                ))}
             </div>
         </div>
     );

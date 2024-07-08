@@ -34,7 +34,7 @@ const ProductItem = ({product, className, onAdd}) => {
             <img className={'img'} src={product.image} alt={product.category + ' ' + product.name} />
             <div className={'title'}><b>{product.category + ' ' + product.name}</b></div>
             <div className={'description'}>{product.description}</div>
-            <div className={'description'}>{product.size}</div>
+            <div className={'description'}>Размер: {product.size}</div>
             <Button className={status} onClick={onAddHandler}>
                 {content} за {product.rentPrice} р/24ч
             </Button>
