@@ -18,6 +18,7 @@ const AdminPage = () => {
 
     const [products, setProducts] = useState([])
     const [clents, setClients] = useState([])
+    const [orders, setOrders] = useState([])
 
     const [productUserId, changeUserId] = useState(0);
 
@@ -173,6 +174,7 @@ const AdminPage = () => {
             const data = await response.json();
             setProducts(data.products)
             setClients(data.clients)
+            setOrders(data.orders)
 
         } catch (e) {
             console.log('Ошибка при получении списка данных:', e)
@@ -479,6 +481,16 @@ const AdminPage = () => {
                         {`${item.status} `}
                         {`${String(item.available)}  `}
                         {`Пользователь: ${item.userId} `}
+                    </div>
+                ))}
+            </div>
+            <div>
+                <h2>Список заказов</h2>
+                {orders.map(order => (
+                    <div key={order}>
+                        {`${order.id} `}
+                        {`${order.status} `}
+                        {`${order.comment} `}
                     </div>
                 ))}
             </div>
