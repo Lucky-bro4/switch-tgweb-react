@@ -9,6 +9,7 @@ const AdminPage = () => {
     const [name, setName] = useState('');
     const [condition, setCondition] = useState('');
     const [description, setDescription] = useState('');
+    const [size, setSize] = useState('');
     const [price, setPrice] = useState(0);
     const [photo, setPhoto] = useState('/Images/Одежда/');
     const [status, setStatus] = useState('available');
@@ -44,6 +45,10 @@ const AdminPage = () => {
 
     const onChangeDescription = (e) => {
         setDescription(e.target.value);
+    };
+
+    const onChangeSize = (e) => {
+        setSize(e.target.value);
     };
 
     const onChangePrice = (e) => {
@@ -113,6 +118,7 @@ const AdminPage = () => {
             name: name,
             condition: condition,
             description: description,
+            size: size,
             price: Number(price),
             photo: photo
         };
@@ -149,6 +155,7 @@ const AdminPage = () => {
             name: name,
             condition: condition,
             description: description,
+            size: size,
             price: Number(price),
             photo: photo,
             status: status,
@@ -250,6 +257,13 @@ const AdminPage = () => {
                 />
                 <input
                     className={'input'}
+                    type="text"
+                    placeholder={'Size'}
+                    value={size}
+                    onChange={onChangeSize}
+                />
+                <input
+                    className={'input'}
                     type="number"
                     placeholder={'Price'}
                     value={price}
@@ -335,7 +349,7 @@ const AdminPage = () => {
                 <div className={'example_name'}><b>{category + ' ' + name}</b></div>
                 <div className={'price'}>
                     <div className={'example_description'}>{description}</div>
-                    <span>Стоимость: <b>{price}</b></span>
+                    <div className={'example_description'}>Размер {size}</div>
                 </div>
             </div>
             <div>
@@ -360,6 +374,7 @@ const AdminPage = () => {
                         {`${item.name} `}
                         {`${item.condition} `}
                         {`${item.description} `}
+                        {`${item.size} `}
                         {`${item.price} `}
                         {`${item.status} `}
                         {`${String(item.available)}  `}
