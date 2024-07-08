@@ -35,6 +35,7 @@ const AdminPage = () => {
     const [item4, changeItem4] = useState(0);
     const [checkboxItem4, setCheckboxItem4] = useState(false);
 
+    const [comment, changeComment] = useState('');
     const [statusOrder, changestatusOrder] = useState('confirm');
 
 
@@ -119,6 +120,10 @@ const AdminPage = () => {
 
     const onChangestatusOrder = (e) => {
         changestatusOrder(e.target.value);
+    };
+
+    const onChangeComment = (e) => {
+        changeComment(e.target.value);
     };
 
     const postData = async (url, data) => {
@@ -236,7 +241,8 @@ const AdminPage = () => {
         const order = {
             chatId: chatId,
             items: items,
-            statusOrder: statusOrder
+            statusOrder: statusOrder,
+            comment: comment
         };
 
         console.log(order);
@@ -428,6 +434,13 @@ const AdminPage = () => {
                     <option value={'confirm'}>Принят</option>
                     <option value={'canceled'}>Отказ</option>
                 </select>
+                <input
+                    className={'input-comment'}
+                    type="text"
+                    placeholder={'Comment'}
+                    value={comment}
+                    onChange={onChangeComment}
+                />
                 <Button className='btn-confirm' onClick={confirmStatusOrder}>
                     Отправить
                 </Button>
