@@ -315,7 +315,7 @@ const AdminPage = () => {
                         placeholder={'RentPrice'}
                         value={rentPrice}
                         onChange={onChangeRentPrice}
-                    /> Rent Price {price / 20 * 1.2 + 25}
+                    /> Rent Price ( {price / 20 * 1.2 + 25} руб/день )
                 </div>
                 <input
                     className={'input'}
