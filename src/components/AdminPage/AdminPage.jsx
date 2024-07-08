@@ -139,18 +139,18 @@ const AdminPage = () => {
         }
     };
 
-    const getAllData = async (e) => {
+    // const getAllData = async (e) => {
  
-        try {
-            const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
-            const data = await response.json();
-            setProducts(data.products)
-            setClients(data.clients)
+    //     try {
+    //         const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
+    //         const data = await response.json();
+    //         setProducts(data.products)
+    //         setClients(data.clients)
 
-        } catch (e) {
-            console.log('Ошибка при получении списка данных:', e)
-        }
-    }
+    //     } catch (e) {
+    //         console.log('Ошибка при получении списка данных:', e)
+    //     }
+    // }
 
     const changeData = async (e) => {
         e.preventDefault();
@@ -219,9 +219,9 @@ const AdminPage = () => {
         }
     };
 
-    useEffect(() => {
-        getAllData();
-    }, [])
+    // useEffect(() => {
+    //     getAllData();
+    // }, [])
 
     return (
         <div>
@@ -269,20 +269,24 @@ const AdminPage = () => {
                     value={size}
                     onChange={onChangeSize}
                 />
-                <input
-                    className={'input'}
-                    type="number"
-                    placeholder={'Price'}
-                    value={price}
-                    onChange={onChangePrice}
-                />
-                <input
-                    className={'input'}
-                    type="number"
-                    placeholder={'RentPrice'}
-                    value={rentPrice}
-                    onChange={onChangeRentPrice}
-                />
+                <div>
+                    <input
+                        className={'input'}
+                        type="number"
+                        placeholder={'Price'}
+                        value={price}
+                        onChange={onChangePrice}
+                    /> Price
+                </div>
+                <div>
+                    <input
+                        className={'input'}
+                        type="number"
+                        placeholder={'RentPrice'}
+                        value={rentPrice}
+                        onChange={onChangeRentPrice}
+                    /> Rent Price
+                </div>
                 <input
                     className={'input'}
                     type="text"
@@ -378,7 +382,7 @@ const AdminPage = () => {
                 ))}
             </div>
             <div>
-                <h2>Список товаров</h2>
+                {/* <h2>Список товаров</h2>
                 {products.map(item => (
                     <div key={item}>
                         {`${item.id} `}
@@ -393,7 +397,7 @@ const AdminPage = () => {
                         {`${String(item.available)}  `}
                         {`Пользователь: ${item.userId} `}
                     </div>
-                ))}
+                ))} */}
             </div>
         </div>
     );
