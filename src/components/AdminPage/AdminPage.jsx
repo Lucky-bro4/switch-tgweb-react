@@ -11,6 +11,7 @@ const AdminPage = () => {
     const [description, setDescription] = useState('');
     const [size, setSize] = useState('');
     const [price, setPrice] = useState(0);
+    const [rentPrice, setRentPrice] = useState(0);
     const [photo, setPhoto] = useState('/Images/Одежда/');
     const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
@@ -53,6 +54,10 @@ const AdminPage = () => {
 
     const onChangePrice = (e) => {
         setPrice(e.target.value);
+    };
+
+    const onChangeRentPrice = (e) => {
+        setRentPrice(e.target.value);
     };
 
     const onChangePhoto = (e) => {
@@ -120,6 +125,7 @@ const AdminPage = () => {
             description: description,
             size: size,
             price: Number(price),
+            rentPricerice: Number(rentPrice),
             photo: photo
         };
 
@@ -157,6 +163,7 @@ const AdminPage = () => {
             description: description,
             size: size,
             price: Number(price),
+            rentPrice: Number(rentPrice),
             photo: photo,
             status: status,
             available: Boolean(available),
@@ -271,6 +278,13 @@ const AdminPage = () => {
                 />
                 <input
                     className={'input'}
+                    type="number"
+                    placeholder={'RentPrice'}
+                    value={rentPrice}
+                    onChange={onChangeRentPrice}
+                />
+                <input
+                    className={'input'}
                     type="text"
                     placeholder={'Photo'}
                     value={photo}
@@ -347,10 +361,8 @@ const AdminPage = () => {
             <div className='example'>
                 <img className={'example_img'} src={photo} alt={name} />
                 <div className={'example_name'}><b>{category + ' ' + name}</b></div>
-                <div className={'price'}>
-                    <div className={'example_description'}>{description}</div>
-                    <div className={'example_description'}>Размер {size}</div>
-                </div>
+                <div className={'example_description'}>{description}</div>
+                <div className={'example_description'}>Размер {size}</div>
             </div>
             <div>
                 <h2>Список клиентов</h2>
@@ -376,6 +388,7 @@ const AdminPage = () => {
                         {`${item.description} `}
                         {`${item.size} `}
                         {`${item.price} `}
+                        {`${item.rentPrice} `}
                         {`${item.status} `}
                         {`${String(item.available)}  `}
                         {`Пользователь: ${item.userId} `}

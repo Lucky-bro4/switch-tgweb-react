@@ -6,8 +6,8 @@ import {useTelegram} from "../../hooks/useTelegram";
 
 const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
-        return acc += item.price
-    }, 0)
+        return acc += item.rentPrice
+    }, 261)
 }
 
 
