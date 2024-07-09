@@ -153,7 +153,7 @@ const AdminPage = () => {
             description: description,
             size: size,
             price: Number(price),
-            rentPricerice: Number(rentPrice),
+            rentPrice: Number(rentPrice),
             photo: photo
         };
 
