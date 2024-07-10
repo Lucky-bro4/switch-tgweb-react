@@ -295,14 +295,14 @@ const AdminPage = () => {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/order', order);
             const data = await response.json();
             console.log(data)
-            if (data.products[0])
-                сhangeItem1(data.products[0].category)
-            if (data.products[1])
-                сhangeItem1(data.products[1].category)
-            if (data.products[2])
-                сhangeItem1(data.products[2].category)
-            if (data.products[3])
-                сhangeItem1(data.products[3].category)
+            // if (data.products[0])
+            //     onChangeItem1(data.products[0].category)
+            // if (data.products[1])
+            //     onChangeItem2(data.products[1].category)
+            // if (data.products[2])
+            //     onChangeItem3(data.products[2].category)
+            // if (data.products[3])
+            //     onChangeItem4(data.products[3].category)
             if (response.ok) {
                 setMessage('Данные по заказу получены');
                 
