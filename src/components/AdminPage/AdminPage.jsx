@@ -209,6 +209,26 @@ const AdminPage = () => {
         }
     };
 
+    const changeStatus = async (e) => {
+        e.preventDefault();
+
+        const changeProduct = {
+            id: Number(id),
+            status: status,
+            available: Boolean(available),
+            message: 'change_status'
+        };
+
+        console.log(changeProduct);
+
+        try {
+            const data = await postData('https://bottg-lucky-bro4.amvera.io/changeProduct', changeProduct);
+            console.log(data);
+        } catch (error) {
+            console.error('Ошибка при отправке данных:', error);
+        }
+    };
+
     const deleteData = async (e) => {
         e.preventDefault();
 
@@ -340,6 +360,9 @@ const AdminPage = () => {
                 <select value={available} onChange={onChangeAvailable} className={'input'}>
                     <option value={1}>Доступен</option>
                     <option value={0}>Не доступен</option>
+                    <Button className='btn-delete-clothes' onClick={changeStatus}>
+                        Удалить
+                    </Button>
                 </select>
                 <div>
                     <Button className='btn-add-clothes' onClick={sendData}>
