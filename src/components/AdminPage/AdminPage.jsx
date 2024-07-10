@@ -502,13 +502,15 @@ const AdminPage = () => {
                     value={comment}
                     onChange={onChangeComment}
                 />
-                <Button className='btn-change-clothes' onClick={downloadOrder}>
-                    Загрузить заказ
-                </Button>
-                {message && <p>{message}</p>}
-                <Button className='btn-confirm' onClick={confirmStatusOrder}>
-                    Отправить
-                </Button>
+                <div>
+                    <Button className='btn-change-clothes' onClick={downloadOrder}>
+                        Загрузить заказ
+                    </Button>
+                    {message && <p>{message}</p>}
+                    <Button className='btn-confirm' onClick={confirmStatusOrder}>
+                        Отправить
+                    </Button>
+                </div>           
             </form>
             <div className='example'>
                 <img className={'example_img'} src={photo} alt={name} />
