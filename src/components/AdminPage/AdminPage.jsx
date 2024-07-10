@@ -16,7 +16,9 @@ const AdminPage = () => {
     const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
 
-    const [products, setProducts] = useState([])
+    const [availableProducts, setAvailableProducts] = useState([])
+    const [orderProducts, setOrderProducts] = useState([])
+    const [laundryProducts, setLaundryProducts] = useState([])
     const [clents, setClients] = useState([])
     const [orders, setOrders] = useState([])
 
@@ -172,7 +174,10 @@ const AdminPage = () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
             const data = await response.json();
-            setProducts(data.products)
+            setAvailableProducts(data.products.availableProducts)
+            setOrderProducts(data.products.orderProducts)
+            setLaundryProducts(data.products.laundryProducts)
+
             setClients(data.clients)
             setOrders(data.orders)
 
@@ -478,22 +483,11 @@ const AdminPage = () => {
                 <div className={'example_description'}>Размер: {size}</div>
             </div>
             <div>
-                <h2>Список клиентов</h2>
-                {clents.map(client => (
-                    <div key={client}>
-                        {`${client.id} `}
-                        {`${client.chatId} `}
-                        {`${client.login} `}
-                        {`${client.phone_number} `}
-                        {`${client.location} `}
-                        {/* {`Товары: ${item.userId} `} */}
-                    </div>
-                ))}
-            </div>
-            <div>
                 <h2>Список товаров</h2>
-                {products.map(item => (
-                    <div key={item}>
+                <div>
+                    Доступные сейчас товары
+                    {availableProducts.map(item => (
+                    <div key={availableItem}>
                         {`${item.id} `}
                         {`${item.category} `}
                         {`${item.name} `}
@@ -505,6 +499,56 @@ const AdminPage = () => {
                         {`${item.status} `}
                         {`${String(item.available)}  `}
                         {`Пользователь: ${item.userId} `}
+                    </div>
+                    ))}
+                </div>
+                <div>
+                    Товары в заказе
+                    {orderProducts.map(item => (
+                    <div key={orderItem}>
+                        {`${item.id} `}
+                        {`${item.category} `}
+                        {`${item.name} `}
+                        {`${item.condition} `}
+                        {`${item.description} `}
+                        {`${item.size} `}
+                        {`${item.price} `}
+                        {`${item.rentPrice} `}
+                        {`${item.status} `}
+                        {`${String(item.available)}  `}
+                        {`Пользователь: ${item.userId} `}
+                    </div>
+                    ))}
+                </div>
+                <div>
+                    Товары в прачечной
+                    {laundryProducts.map(item => (
+                    <div key={laundryItem}>
+                        {`${item.id} `}
+                        {`${item.category} `}
+                        {`${item.name} `}
+                        {`${item.condition} `}
+                        {`${item.description} `}
+                        {`${item.size} `}
+                        {`${item.price} `}
+                        {`${item.rentPrice} `}
+                        {`${item.status} `}
+                        {`${String(item.available)}  `}
+                        {`Пользователь: ${item.userId} `}
+                    </div>
+                    ))}
+                </div>
+            </div>
+            <div>
+                <h2>Список клиентов</h2>
+                {clents.map(client => (
+                    <div key={client}>
+                        {`${client.id} `}
+                        {`${client.chatId} `}
+                        {`${client.login} `}
+                        {`${client.phone_number} `}
+                        {`${client.location} `}
+                        {/* {`Товары: ${item.userId} `} */}
                     </div>
                 ))}
             </div>
