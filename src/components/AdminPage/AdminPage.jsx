@@ -433,7 +433,7 @@ const AdminPage = () => {
                     </div>
                 </div>
                 <select value={statusOrder} onChange={onChangestatusOrder} className={'input'}>
-                    <option value={'confirm'}>Принят</option>
+                    <option value={'success'}>Принят</option>
                     <option value={'canceled'}>Отказ</option>
                     <option value={'closed'}>Завершен</option>
                 </select>
