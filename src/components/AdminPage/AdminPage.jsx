@@ -28,19 +28,19 @@ const AdminPage = () => {
     const [orderId, changeOrderId] = useState(0);
 
     const [orderItem1, changeOrderItem1] = useState('');
-    const [item1, changeItem1] = useState(orderItem1);
+    const [item1, changeItem1] = useState('');
     const [checkboxItem1, setCheckboxItem1] = useState(false);
 
     const [orderItem2, changeOrderItem2] = useState('');
-    const [item2, changeItem2] = useState(orderItem2);
+    const [item2, changeItem2] = useState('');
     const [checkboxItem2, setCheckboxItem2] = useState(false);
 
     const [orderItem3, changeOrderItem3] = useState('');
-    const [item3, changeItem3] = useState(orderItem3);
+    const [item3, changeItem3] = useState('');
     const [checkboxItem3, setCheckboxItem3] = useState(false);
 
     const [orderItem4, changeOrderItem4] = useState('');
-    const [item4, changeItem4] = useState(orderItem4);
+    const [item4, changeItem4] = useState('');
     const [checkboxItem4, setCheckboxItem4] = useState(false);
 
     const [comment, changeComment] = useState('');
@@ -307,6 +307,7 @@ const AdminPage = () => {
             const orderItems = data.products.map(item => {(`id: ${item.id}; Товар: ${item.category} ${item.name}`)})
             if (orderItems[0])
                 onChangeItem1(orderItems[0])
+                console.log(item1)
             if (orderItems[1])
                 onChangeItem2(orderItems[1])
             if (orderItems[2])
@@ -325,6 +326,7 @@ const AdminPage = () => {
 
     useEffect(() => {
         getAllData();
+        console.log(item1)
     }, [])
 
     return (
