@@ -288,9 +288,9 @@ const AdminPage = () => {
         e.preventDefault();
 
         const order = {
-            orderId: orderId
+            orderId: Number(orderId)
         };
-        console.log(orderId)
+        console.log(order)
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/order', order);
             const data = await response.json();
