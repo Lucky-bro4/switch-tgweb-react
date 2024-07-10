@@ -37,7 +37,7 @@ const AdminPage = () => {
     const [checkboxItem4, setCheckboxItem4] = useState(false);
 
     const [comment, changeComment] = useState('');
-    const [statusOrder, changestatusOrder] = useState('confirm');
+    const [statusOrder, changestatusOrder] = useState('success');
 
 
     const onChangeId = (e) => {
