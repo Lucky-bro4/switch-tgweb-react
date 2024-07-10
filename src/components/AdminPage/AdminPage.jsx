@@ -360,9 +360,6 @@ const AdminPage = () => {
                 <select value={available} onChange={onChangeAvailable} className={'input'}>
                     <option value={1}>Доступен</option>
                     <option value={0}>Не доступен</option>
-                    <Button className='btn-delete-clothes' onClick={changeStatus}>
-                        Удалить
-                    </Button>
                 </select>
                 <div>
                     <Button className='btn-add-clothes' onClick={sendData}>
@@ -373,6 +370,9 @@ const AdminPage = () => {
                     </Button>
                     <Button className='btn-delete-clothes' onClick={deleteData}>
                         Удалить
+                    </Button>
+                    <Button className='btn-change-clothes' onClick={changeStatus}>
+                        Изменить статус
                     </Button>
                 </div>
             </form>
