@@ -503,7 +503,7 @@ const AdminPage = () => {
                     ))}
                 </div>
                 <div className='list'>
-                    <b>Товары в заказе</b>
+                    <b>Товары в аренде</b>
                     {orderProducts.map(orderItem => (
                     <div key={orderItem}>
                         {`${orderItem.id} `}
