@@ -294,7 +294,7 @@ const AdminPage = () => {
         };
         console.log(order)
         try {
-            const response = await fetch('https://bottg-lucky-bro4.amvera.io/order', order);
+            const response = await postData('https://bottg-lucky-bro4.amvera.io/order', order);
             const data = await response.json();
             console.log(data)
             // if (data.products[0])
