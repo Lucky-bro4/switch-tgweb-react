@@ -595,16 +595,6 @@ const AdminPage = () => {
                     </div>
                 ))}
             </div>
-            <div>
-                <h2>Список ItemOrder</h2>
-                {orders.map(item_order => (
-                    <div key={item_order}>
-                        {`${item_order.id} `}
-                        {`${item_order.itemId} `}
-                        {`${item_order.orderId} `}
-                    </div>
-                ))}
-            </div>
         </div>
     );
 };
