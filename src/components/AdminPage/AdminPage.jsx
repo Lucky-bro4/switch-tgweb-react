@@ -294,6 +294,7 @@ const AdminPage = () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/order', orderId);
             const data = await response.json();
+            console.log(data)
             if (data.products[0])
                 сhangeItem1(data.products[0].category)
             if (data.products[1])
