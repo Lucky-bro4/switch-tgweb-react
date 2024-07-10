@@ -27,16 +27,20 @@ const AdminPage = () => {
 
     const [orderId, changeOrderId] = useState(0);
 
-    const [item1, changeItem1] = useState(0);
+    const [orderItem1, changeOrderItem1] = useState('');
+    const [item1, changeItem1] = useState(orderItem1);
     const [checkboxItem1, setCheckboxItem1] = useState(false);
 
-    const [item2, changeItem2] = useState(0);
+    const [orderItem2, changeOrderItem2] = useState('');
+    const [item2, changeItem2] = useState(orderItem2);
     const [checkboxItem2, setCheckboxItem2] = useState(false);
 
-    const [item3, changeItem3] = useState(0);
+    const [orderItem3, changeOrderItem3] = useState('');
+    const [item3, changeItem3] = useState(orderItem3);
     const [checkboxItem3, setCheckboxItem3] = useState(false);
 
-    const [item4, changeItem4] = useState(0);
+    const [orderItem4, changeOrderItem4] = useState('');
+    const [item4, changeItem4] = useState(orderItem4);
     const [checkboxItem4, setCheckboxItem4] = useState(false);
 
     const [comment, changeComment] = useState('');
@@ -439,7 +443,7 @@ const AdminPage = () => {
                     <div className="input-container">
                         <input
                             className={'inputItem'}
-                            type="number"
+                            type="text"
                             placeholder={'item1'}
                             value={item1}
                             onChange={onChangeItem1}
@@ -456,7 +460,7 @@ const AdminPage = () => {
                     <div className="input-container">
                         <input
                             className={'inputItem'}
-                            type="number"
+                            type="text"
                             placeholder={'item2'}
                             value={item2}
                             onChange={onChangeItem2}
@@ -473,7 +477,7 @@ const AdminPage = () => {
                     <div className="input-container">
                         <input
                             className={'inputItem'}
-                            type="number"
+                            type="text"
                             placeholder={'item3'}
                             value={item3}
                             onChange={onChangeItem3}
@@ -490,7 +494,7 @@ const AdminPage = () => {
                     <div className="input-container">
                         <input
                             className={'inputItem'}
-                            type="number"
+                            type="text"
                             placeholder={'item4'}
                             value={item4}
                             onChange={onChangeItem4}
