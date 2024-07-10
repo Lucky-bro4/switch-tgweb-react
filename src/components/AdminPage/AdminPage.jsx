@@ -24,7 +24,7 @@ const AdminPage = () => {
 
     const [productUserId, changeUserId] = useState(0);
 
-    const [orderId, changeOrderId] = useState('');
+    const [orderId, changeOrderId] = useState(0);
 
     const [item1, changeItem1] = useState(0);
     const [checkboxItem1, setCheckboxItem1] = useState(false);
