@@ -24,7 +24,7 @@ const AdminPage = () => {
 
     const [productUserId, changeUserId] = useState(0);
 
-    const [chatId, changeChatId] = useState('');
+    const [orderId, changeOrderId] = useState('');
 
     const [item1, changeItem1] = useState(0);
     const [checkboxItem1, setCheckboxItem1] = useState(false);
@@ -40,6 +40,8 @@ const AdminPage = () => {
 
     const [comment, changeComment] = useState('');
     const [statusOrder, changestatusOrder] = useState('success');
+
+    const [message, setMessage] = useState('');
 
 
     const onChangeId = (e) => {
@@ -89,8 +91,8 @@ const AdminPage = () => {
         changeUserId(e.target.value);
     };
 
-    const onChangeChatId = (e) => {
-        changeChatId(e.target.value);
+    const onChangeOrderId = (e) => {
+        changeOrderId(e.target.value);
     };
 
     const onChangeItem1 = (e) => {
@@ -266,7 +268,7 @@ const AdminPage = () => {
         };
 
         const order = {
-            chatId: chatId,
+            orderId: orderId,
             items: items,
             statusOrder: statusOrder,
             comment: comment
@@ -279,6 +281,34 @@ const AdminPage = () => {
             console.log(data);
         } catch (error) {
             console.error('Ошибка при отправке данных:', error);
+        }
+    };
+
+    const downloadOrder = async (e) => {
+        e.preventDefault();
+
+        const orderId = {
+            orderId: Number(orderId)
+        };
+
+        try {
+            const response = await fetch('https://bottg-lucky-bro4.amvera.io/order', orderId);
+            const data = await response.json();
+            if (response.ok) {
+                setMessage('Данные по заказу получены');
+                if (data.products[0])
+                    сhangeItem1(data.products[0])
+                if (data.products[1])
+                    сhangeItem1(data.products[1])
+                if (data.products[2])
+                    сhangeItem1(data.products[2])
+                if (data.products[3])
+                    сhangeItem1(data.products[3])
+            } else {
+                setMessage('Не удалось выгрузить данные по заказу');
+            }
+        } catch (e) {
+            console.log('Ошибка при получении списка товаров:', e)
         }
     };
 
@@ -386,9 +416,9 @@ const AdminPage = () => {
                 <input
                     className={'input'}
                     type="text"
-                    placeholder={'chatId'}
-                    value={chatId}
-                    onChange={onChangeChatId}
+                    placeholder={'orderId'}
+                    value={orderId}
+                    onChange={onChangeOrderId}
                 />
                 <div>
                     <div className="input-container">
@@ -472,6 +502,10 @@ const AdminPage = () => {
                     value={comment}
                     onChange={onChangeComment}
                 />
+                <Button className='btn-change-clothes' onClick={downloadOrder}>
+                    Загрузить заказ
+                </Button>
+                {message && <p>{message}</p>}
                 <Button className='btn-confirm' onClick={confirmStatusOrder}>
                     Отправить
                 </Button>

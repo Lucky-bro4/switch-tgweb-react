@@ -36,7 +36,7 @@ const Form = () => {
         } else {
             tg.MainButton.show();
         }
-    }, [favor, update])
+    }, [favor, update, grade])
 
     const onChangeFavor = (e) => {
         setFavor(e.target.value)
@@ -57,17 +57,17 @@ const Form = () => {
                 className={'input'}
                 type="text"
                 placeholder={'Что тебе не нравится / нравится в сервисе большего всего?'}
-                value={country}
+                value={favor}
                 onChange={onChangeFavor}
             />
             <input
                 className={'input'}
                 type="text"
                 placeholder={'Как ты думаешь, что стоило бы улучшить?'}
-                value={street}
+                value={update}
                 onChange={onChangeUpdate}
             />
-            <select value={subject} onChange={onChangeGrade} className={'select'}>
+            <select value={grade} onChange={onChangeGrade} className={'select'}>
                 <div>Оценка по 5-балльной шкале</div>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
