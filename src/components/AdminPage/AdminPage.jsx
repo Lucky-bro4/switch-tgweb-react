@@ -487,7 +487,7 @@ const AdminPage = () => {
                 <div>
                     Доступные сейчас товары
                     {availableProducts.map(item => (
-                    <div key={availableItem}>
+                    <div>
                         {`${item.id} `}
                         {`${item.category} `}
                         {`${item.name} `}
