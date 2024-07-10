@@ -305,8 +305,9 @@ const AdminPage = () => {
             const data = await postData('https://bottg-lucky-bro4.amvera.io/order', order);
             console.log(data)
             const orderItems = data.products.map(item => {(`id: ${item.id}; Товар: ${item.category} ${item.name}`)})
+            console.log('orderItems: ', orderItems)
             if (orderItems[0])
-                onChangeItem1(orderItems[0])
+                changeItem1(orderItems[0])
                 console.log(item1)
             if (orderItems[1])
                 onChangeItem2(orderItems[1])
