@@ -294,16 +294,17 @@ const AdminPage = () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/order', orderId);
             const data = await response.json();
+            if (data.products[0])
+                сhangeItem1(data.products[0].category)
+            if (data.products[1])
+                сhangeItem1(data.products[1].category)
+            if (data.products[2])
+                сhangeItem1(data.products[2].category)
+            if (data.products[3])
+                сhangeItem1(data.products[3].category)
             if (response.ok) {
                 setMessage('Данные по заказу получены');
-                if (data.products[0])
-                    сhangeItem1(data.products[0])
-                if (data.products[1])
-                    сhangeItem1(data.products[1])
-                if (data.products[2])
-                    сhangeItem1(data.products[2])
-                if (data.products[3])
-                    сhangeItem1(data.products[3])
+                
             } else {
                 setMessage('Не удалось выгрузить данные по заказу');
             }
@@ -521,7 +522,7 @@ const AdminPage = () => {
             <div>
                 <h2>Список товаров</h2>
                 <div className='list'>
-                    <b>Доступные сейчас товары</b>
+                    <h3>Доступные сейчас товары</h3>
                     {availableProducts.map(availableItem => (
                     <div key={availableItem}>
                         {`${availableItem.id} `}
@@ -539,7 +540,7 @@ const AdminPage = () => {
                     ))}
                 </div>
                 <div className='list'>
-                    <b>Товары в аренде</b>
+                    <h3>Товары в аренде</h3>
                     {orderProducts.map(orderItem => (
                     <div key={orderItem}>
                         {`${orderItem.id} `}
@@ -557,7 +558,7 @@ const AdminPage = () => {
                     ))}
                 </div>
                 <div className='list'>
-                    <b>Товары в прачечной</b>
+                    <h3>Товары в прачечной</h3>
                     {laundryProducts.map(laundryItem => (
                     <div key={laundryItem}>
                         {`${laundryItem.id} `}
