@@ -101,32 +101,32 @@ const AdminPage = () => {
     };
 
     
-    const onChangeItem1 = (e) => {
-        changeItem1(e.target.value);
+    const onChangeItem1 = (orderItem1) => {
+        changeItem1(orderItem1);
     };
     const onChangeCheckboxItem1 = () => {
         setCheckboxItem1(!checkboxItem1);
     };
 
     
-    const onChangeItem2 = (e) => {
-        changeItem2(e.target.value);
+    const onChangeItem2 = (orderItem2) => {
+        changeItem2(orderItem2);
     };
     const onChangeCheckboxItem2 = () => {
         setCheckboxItem2(!checkboxItem2);
     };
 
     
-    const onChangeItem3 = (e) => {
-        changeItem3(e.target.value);
+    const onChangeItem3 = (orderItem3) => {
+        changeItem3(orderItem3);
     };
     const onChangeCheckboxItem3 = () => {
         setCheckboxItem3(!checkboxItem3);
     };
 
     
-    const onChangeItem4 = (e) => {
-        changeItem4(e.target.value);
+    const onChangeItem4 = (orderItem4) => {
+        changeItem4(orderItem4);
     };
     const onChangeCheckboxItem4 = () => {
         setCheckboxItem4(!checkboxItem4);
