@@ -306,13 +306,13 @@ const AdminPage = () => {
             console.log(data)
             const orderItems = data.products.map(item => {(`id: ${item.id}; Товар: ${item.category} ${item.name}`)})
             if (orderItems[0])
-                changeOrderItem1(orderItems[0])
+                onChangeItem1(orderItems[0])
             if (orderItems[1])
-                changeOrderItem2(orderItems[1])
+                onChangeItem2(orderItems[1])
             if (orderItems[2])
-                changeOrderItem3(orderItems[2])
+                onChangeItem3(orderItems[2])
             if (orderItems[3])
-                changeOrderItem4(orderItems[3])
+                onChangeItem3(orderItems[3])
             if (orderItems) {
                 setMessage('Данные по заказу получены');
             } else {
