@@ -288,9 +288,9 @@ const AdminPage = () => {
         e.preventDefault();
 
         const orderId = {
-            orderId: Number(orderId)
+            orderId: orderId
         };
-
+        console.log(orderId)
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/order', orderId);
             const data = await response.json();
@@ -417,7 +417,7 @@ const AdminPage = () => {
                 <h3>Подтверждение заказа</h3>
                 <input
                     className={'input'}
-                    type="text"
+                    type="number"
                     placeholder={'orderId'}
                     value={orderId}
                     onChange={onChangeOrderId}
