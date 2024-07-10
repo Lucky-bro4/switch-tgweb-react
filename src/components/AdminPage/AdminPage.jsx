@@ -100,9 +100,7 @@ const AdminPage = () => {
         changeOrderId(e.target.value);
     };
 
-    const onChangeOrderItem1 = () => {
-        changeOrderItem1();
-    };
+    
     const onChangeItem1 = (e) => {
         changeItem1(e.target.value);
     };
@@ -110,9 +108,7 @@ const AdminPage = () => {
         setCheckboxItem1(!checkboxItem1);
     };
 
-    const onChangeOrderItem2 = () => {
-        changeOrderItem2();
-    };
+    
     const onChangeItem2 = (e) => {
         changeItem2(e.target.value);
     };
@@ -120,9 +116,7 @@ const AdminPage = () => {
         setCheckboxItem2(!checkboxItem2);
     };
 
-    const onChangeOrderItem3 = () => {
-        changeOrderItem3();
-    };
+    
     const onChangeItem3 = (e) => {
         changeItem3(e.target.value);
     };
@@ -130,9 +124,7 @@ const AdminPage = () => {
         setCheckboxItem3(!checkboxItem3);
     };
 
-    const onChangeOrderItem4 = () => {
-        changeOrderItem4();
-    };
+    
     const onChangeItem4 = (e) => {
         changeItem4(e.target.value);
     };
@@ -314,13 +306,13 @@ const AdminPage = () => {
             console.log(data)
             const orderItems = data.products.map(item => {(`id: ${item.id}; Товар: ${item.category} ${item.name}`)})
             if (orderItems[0])
-                onChangeOrderItem1(orderItems[0])
+                changeOrderItem1(orderItems[0])
             if (orderItems[1])
-                onChangeOrderItem2(orderItems[1])
+                changeOrderItem2(orderItems[1])
             if (orderItems[2])
-                onChangeOrderItem3(orderItems[2])
+                changeOrderItem3(orderItems[2])
             if (orderItems[3])
-                onChangeOrderItem4(orderItems[3])
+                changeOrderItem4(orderItems[3])
             if (orderItems) {
                 setMessage('Данные по заказу получены');
             } else {
