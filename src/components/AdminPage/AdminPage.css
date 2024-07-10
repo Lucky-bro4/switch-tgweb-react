@@ -108,9 +108,10 @@ label {
 
 .message {
     width: fit-content;
+    height: 5px;
     border: 5px;
-    border-radius: 50px;
+    border-radius: 10px;
     content: center;
-    margin: auto;
+    /* margin: auto; */
     background-color: red;
 }
