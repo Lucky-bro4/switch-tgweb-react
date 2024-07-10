@@ -294,8 +294,7 @@ const AdminPage = () => {
         };
         console.log(order)
         try {
-            const response = await postData('https://bottg-lucky-bro4.amvera.io/order', order);
-            const data = await response.json();
+            const data = await postData('https://bottg-lucky-bro4.amvera.io/order', order);
             console.log(data)
             // if (data.products[0])
             //     onChangeItem1(data.products[0].category)
