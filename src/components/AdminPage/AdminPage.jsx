@@ -405,7 +405,7 @@ const AdminPage = () => {
                             checked={checkboxItem1}
                             onChange={onChangeCheckboxItem1}
                             />
-                            Товар 1
+                            Товар 1 в заказе
                         </label>
                     </div>
                     <div className="input-container">
@@ -422,7 +422,7 @@ const AdminPage = () => {
                             checked={checkboxItem2}
                             onChange={onChangeCheckboxItem2}
                             />
-                            Товар 2
+                            Товар 2 в заказе
                         </label>
                     </div>
                     <div className="input-container">
@@ -439,7 +439,7 @@ const AdminPage = () => {
                             checked={checkboxItem3}
                             onChange={onChangeCheckboxItem3}
                             />
-                            Товар 3
+                            Товар 3 в заказе
                         </label>
                     </div>
                     <div className="input-container">
@@ -456,7 +456,7 @@ const AdminPage = () => {
                             checked={checkboxItem4}
                             onChange={onChangeCheckboxItem4}
                             />
-                            Товар 4
+                            Товар 4 в заказе
                         </label>
                     </div>
                 </div>
@@ -484,57 +484,57 @@ const AdminPage = () => {
             </div>
             <div>
                 <h2>Список товаров</h2>
-                <div>
-                    Доступные сейчас товары
-                    {availableProducts.map(item => (
-                    <div>
-                        {`${item.id} `}
-                        {`${item.category} `}
-                        {`${item.name} `}
-                        {`${item.condition} `}
-                        {`${item.description} `}
-                        {`${item.size} `}
-                        {`${item.price} `}
-                        {`${item.rentPrice} `}
-                        {`${item.status} `}
-                        {`${String(item.available)}  `}
-                        {`Пользователь: ${item.userId} `}
+                <div className='list'>
+                    <b>Доступные сейчас товары</b>
+                    {availableProducts.map(availableItem => (
+                    <div key={availableItem}>
+                        {`${availableItem.id} `}
+                        {`${availableItem.category} `}
+                        {`${availableItem.name} `}
+                        {`${availableItem.condition} `}
+                        {`${availableItem.description} `}
+                        {`${availableItem.size} `}
+                        {`${availableItem.price} `}
+                        {`${availableItem.rentPrice} `}
+                        {`${availableItem.status} `}
+                        {`${String(availableItem.available)}  `}
+                        {`Пользователь: ${availableItem.userId} `}
                     </div>
                     ))}
                 </div>
-                <div>
-                    Товары в заказе
-                    {orderProducts.map(item => (
+                <div className='list'>
+                    <b>Товары в заказе</b>
+                    {orderProducts.map(orderItem => (
                     <div key={orderItem}>
-                        {`${item.id} `}
-                        {`${item.category} `}
-                        {`${item.name} `}
-                        {`${item.condition} `}
-                        {`${item.description} `}
-                        {`${item.size} `}
-                        {`${item.price} `}
-                        {`${item.rentPrice} `}
-                        {`${item.status} `}
-                        {`${String(item.available)}  `}
-                        {`Пользователь: ${item.userId} `}
+                        {`${orderItem.id} `}
+                        {`${orderItem.category} `}
+                        {`${orderItem.name} `}
+                        {`${orderItem.condition} `}
+                        {`${orderItem.description} `}
+                        {`${orderItem.size} `}
+                        {`${orderItem.price} `}
+                        {`${orderItem.rentPrice} `}
+                        {`${orderItem.status} `}
+                        {`${String(orderItem.available)}  `}
+                        {`Пользователь: ${orderItem.userId} `}
                     </div>
                     ))}
                 </div>
-                <div>
-                    Товары в прачечной
-                    {laundryProducts.map(item => (
+                <div className='list'>
+                    <b>Товары в прачечной</b>
+                    {laundryProducts.map(laundryItem => (
                     <div key={laundryItem}>
-                        {`${item.id} `}
-                        {`${item.category} `}
-                        {`${item.name} `}
-                        {`${item.condition} `}
-                        {`${item.description} `}
-                        {`${item.size} `}
-                        {`${item.price} `}
-                        {`${item.rentPrice} `}
-                        {`${item.status} `}
-                        {`${String(item.available)}  `}
-                        {`Пользователь: ${item.userId} `}
+                        {`${laundryItem.id} `}
+                        {`${laundryItem.category} `}
+                        {`${laundryItem.name} `}
+                        {`${laundryItem.condition} `}
+                        {`${laundryItem.description} `}
+                        {`${laundryItem.size} `}
+                        {`${laundryItem.price} `}
+                        {`${laundryItem.rentPrice} `}
+                        {`${laundryItem.status} `}
+                        {`${String(laundryItem.available)}  `}
+                        {`Пользователь: ${laundryItem.userId} `}
                     </div>
                     ))}
                 </div>

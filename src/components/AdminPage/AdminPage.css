@@ -101,4 +101,8 @@ label {
     align-items: center;
     gap: 5px;
     cursor: pointer;
-}  
+}
+
+.list {
+    padding-top: 10px;
+}
