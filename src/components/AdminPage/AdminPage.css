@@ -105,3 +105,12 @@ label {
 .list {
     padding-top: 10px;
 }
+
+.message {
+    width: fit-content;
+    border: 5px;
+    border-radius: 50px;
+    content: center;
+    margin: auto;
+    background-color: red;
+}

@@ -101,33 +101,19 @@ const AdminPage = () => {
     };
 
     
-    const onChangeItem1 = (orderItem1) => {
-        changeItem1(orderItem1);
-    };
+
     const onChangeCheckboxItem1 = () => {
         setCheckboxItem1(!checkboxItem1);
     };
 
-    
-    const onChangeItem2 = (orderItem2) => {
-        changeItem2(orderItem2);
-    };
     const onChangeCheckboxItem2 = () => {
         setCheckboxItem2(!checkboxItem2);
     };
 
-    
-    const onChangeItem3 = (orderItem3) => {
-        changeItem3(orderItem3);
-    };
     const onChangeCheckboxItem3 = () => {
         setCheckboxItem3(!checkboxItem3);
     };
 
-    
-    const onChangeItem4 = (orderItem4) => {
-        changeItem4(orderItem4);
-    };
     const onChangeCheckboxItem4 = () => {
         setCheckboxItem4(!checkboxItem4);
     };
@@ -304,18 +290,16 @@ const AdminPage = () => {
         try {
             const data = await postData('https://bottg-lucky-bro4.amvera.io/order', order);
             console.log(data)
-            const orderItems = data.products.map(item => {(`id: ${item.id}; Товар: ${item.category} ${item.name}`)})
-            console.log('orderItems: ', orderItems)
+
             if (data.products[0])
-                changeItem1(data.products[0].id)
-                console.log(data.products[0].id)
-            if (orderItems[1])
-                onChangeItem2(orderItems[1])
-            if (orderItems[2])
-                onChangeItem3(orderItems[2])
-            if (orderItems[3])
-                onChangeItem3(orderItems[3])
-            if (orderItems) {
+                changeItem1(`ID продукта: ${data.products[0].id}; Название: ${data.products[0].category} ${data.products[0].name}`)
+            if (data.products[1])
+                changeItem2(`ID продукта: ${data.products[1].id}; Название: ${data.products[1].category} ${data.products[1].name}`)
+            if (data.products[2])
+                changeItem3((`ID продукта: ${data.products[2].id}; Название: ${data.products[2].category} ${data.products[2].name}`))
+            if (data.products[3])
+                changeItem4((`ID продукта: ${data.products[3].id}; Название: ${data.products[3].category} ${data.products[3].name}`))
+            if (data.products) {
                 setMessage('Данные по заказу получены');
             } else {
                 setMessage('Не удалось выгрузить данные по заказу');
@@ -523,7 +507,7 @@ const AdminPage = () => {
                         Отправить
                     </Button>
                 </div>
-                {message && <p>{message}</p>}           
+                {message && <p className='message'>{message}</p>}           
             </form>
             <div className='example'>
                 <img className={'example_img'} src={photo} alt={name} />
