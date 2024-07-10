@@ -515,7 +515,7 @@ const AdminPage = () => {
                         {`${order.id} `}
                         {`${order.status} `}
                         {`${order.comment} `}
-                        {`${order.userId} `}
+                        {`Пользователь: ${order.userId} `}
                     </div>
                 ))}
             </div>
