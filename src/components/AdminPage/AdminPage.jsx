@@ -287,9 +287,9 @@ const AdminPage = () => {
     const downloadOrder = async (e) => {
         e.preventDefault();
 
-        const orderId = {
-            orderId: orderId
-        };
+        // const orderId = {
+        //     orderId: orderId
+        // };
         console.log(orderId)
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/order', orderId);
