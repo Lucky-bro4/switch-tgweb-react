@@ -174,9 +174,9 @@ const AdminPage = () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
             const data = await response.json();
-            setAvailableProducts(data.products.availableProducts)
-            setOrderProducts(data.products.orderProducts)
-            setLaundryProducts(data.products.laundryProducts)
+            setAvailableProducts(data.availableProducts)
+            setOrderProducts(data.orderProducts)
+            setLaundryProducts(data.laundryProducts)
 
             setClients(data.clients)
             setOrders(data.orders)
