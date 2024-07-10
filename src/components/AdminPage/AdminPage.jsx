@@ -296,17 +296,17 @@ const AdminPage = () => {
         try {
             const data = await postData('https://bottg-lucky-bro4.amvera.io/order', order);
             console.log(data)
-            // if (data.products[0])
-            //     onChangeItem1(data.products[0].category)
-            // if (data.products[1])
-            //     onChangeItem2(data.products[1].category)
-            // if (data.products[2])
-            //     onChangeItem3(data.products[2].category)
-            // if (data.products[3])
-            //     onChangeItem4(data.products[3].category)
-            if (response.ok) {
+            const orderItems = data.products.map(item => {(`id: ${item.id}; Товар: ${item.category} ${item.name}`)})
+            if (orderItems[0])
+                onChangeItem1(orderItems[0])
+            if (orderItems[1])
+                onChangeItem2(orderItems[1])
+            if (orderItems[2])
+                onChangeItem3(orderItems[2])
+            if (orderItems[3])
+                onChangeItem4(orderItems[3])
+            if (orderItems) {
                 setMessage('Данные по заказу получены');
-                
             } else {
                 setMessage('Не удалось выгрузить данные по заказу');
             }
