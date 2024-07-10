@@ -424,7 +424,6 @@ const AdminPage = () => {
                             type="text"
                             placeholder={'item1'}
                             value={item1}
-                            onChange={onChangeItem1}
                         />
                         <label>
                             <input
@@ -441,7 +440,6 @@ const AdminPage = () => {
                             type="text"
                             placeholder={'item2'}
                             value={item2}
-                            onChange={onChangeItem2}
                         />
                         <label>
                             <input
@@ -458,7 +456,6 @@ const AdminPage = () => {
                             type="text"
                             placeholder={'item3'}
                             value={item3}
-                            onChange={onChangeItem3}
                         />
                         <label>
                             <input
@@ -475,7 +472,6 @@ const AdminPage = () => {
                             type="text"
                             placeholder={'item4'}
                             value={item4}
-                            onChange={onChangeItem4}
                         />
                         <label>
                             <input
