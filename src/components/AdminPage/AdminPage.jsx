@@ -306,8 +306,8 @@ const AdminPage = () => {
             console.log(data)
             const orderItems = data.products.map(item => {(`id: ${item.id}; Товар: ${item.category} ${item.name}`)})
             console.log('orderItems: ', orderItems)
-            if (orderItems[0])
-                changeItem1(orderItems[0])
+            if (data.products[0])
+                changeItem1(data.products[0].id)
                 console.log(item1)
             if (orderItems[1])
                 onChangeItem2(orderItems[1])
@@ -327,7 +327,6 @@ const AdminPage = () => {
 
     useEffect(() => {
         getAllData();
-        console.log(item1)
     }, [])
 
     return (
