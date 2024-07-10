@@ -308,7 +308,7 @@ const AdminPage = () => {
             console.log('orderItems: ', orderItems)
             if (data.products[0])
                 changeItem1(data.products[0].id)
-                console.log(item1)
+                console.log(data.products[0].id)
             if (orderItems[1])
                 onChangeItem2(orderItems[1])
             if (orderItems[2])
