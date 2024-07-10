@@ -3,19 +3,19 @@ import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
-    const [country, setCountry] = useState('');
-    const [street, setStreet] = useState('');
-    const [subject, setSubject] = useState('physical');
+    const [favor, setFavor] = useState('');
+    const [update, setUpdate] = useState('');
+    const [grade, setGrade] = useState(0);
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
-            country,
-            street,
-            subject
+            favor,
+            update,
+            grade
         }
         tg.sendData(JSON.stringify(data));
-    }, [country, street, subject])
+    }, [favor, update, grade])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -26,50 +26,54 @@ const Form = () => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить данные'
+            text: 'Отправить отзыв'
         })
     }, [])
 
     useEffect(() => {
-        if(!street || !country) {
+        if(!update) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, street])
+    }, [favor, update])
 
-    const onChangeCountry = (e) => {
-        setCountry(e.target.value)
+    const onChangeFavor = (e) => {
+        setFavor(e.target.value)
     }
 
-    const onChangeStreet = (e) => {
-        setStreet(e.target.value)
+    const onChangeUpdate = (e) => {
+        setUpdate(e.target.value)
     }
 
-    const onChangeSubject = (e) => {
-        setSubject(e.target.value)
+    const onChangeGrade = (e) => {
+        setGrade(e.target.value)
     }
 
     return (
         <div className={"form"}>
-            <h3>Введите ваши данные</h3>
+            <h3>Что вы думаете о Switch?</h3>
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Страна'}
+                placeholder={'Что тебе не нравится / нравится в сервисе большего всего?'}
                 value={country}
-                onChange={onChangeCountry}
+                onChange={onChangeFavor}
             />
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Улица'}
+                placeholder={'Как ты думаешь, что стоило бы улучшить?'}
                 value={street}
-                onChange={onChangeStreet}
+                onChange={onChangeUpdate}
             />
-            <select value={subject} onChange={onChangeSubject} className={'select'}>
-                <option value={'physical'}>Физ. лицо</option>
-                <option value={'legal'}>Юр. лицо</option>
+            <select value={subject} onChange={onChangeGrade} className={'select'}>
+                <div>Оценка по 5-балльной шкале</div>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
             </select>
         </div>
     );
