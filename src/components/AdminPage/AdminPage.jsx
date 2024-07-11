@@ -28,19 +28,19 @@ const AdminPage = () => {
     const [orderId, changeOrderId] = useState(0);
 
     const [orderItem1, changeOrderItem1] = useState('');
-    const [item1, changeItem1] = useState('');
+    const [item1, changeItem1] = useState(0);
     const [checkboxItem1, setCheckboxItem1] = useState(false);
 
     const [orderItem2, changeOrderItem2] = useState('');
-    const [item2, changeItem2] = useState('');
+    const [item2, changeItem2] = useState(0);
     const [checkboxItem2, setCheckboxItem2] = useState(false);
 
     const [orderItem3, changeOrderItem3] = useState('');
-    const [item3, changeItem3] = useState('');
+    const [item3, changeItem3] = useState(0);
     const [checkboxItem3, setCheckboxItem3] = useState(false);
 
     const [orderItem4, changeOrderItem4] = useState('');
-    const [item4, changeItem4] = useState('');
+    const [item4, changeItem4] = useState(0);
     const [checkboxItem4, setCheckboxItem4] = useState(false);
 
     const [comment, changeComment] = useState('');
