@@ -22,9 +22,9 @@ const ProductList = () => {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
             const data = await response.json();
             setProducts(data.products)
-            if (data.count === true) {
-                tg.showAlert('Добро пожаловать в Switch! На первый заказ у тебя будет скидка 10%');
-            }
+            // if (data.count === true) {
+            //     tg.showAlert('Добро пожаловать в Switch! На первый заказ у тебя будет скидка 10%');
+            // }
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
         }
