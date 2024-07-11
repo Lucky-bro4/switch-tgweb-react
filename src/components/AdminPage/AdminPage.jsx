@@ -293,16 +293,20 @@ const AdminPage = () => {
 
             if (data.products[0])
                 changeItem1(data.products[0].id)
-                changeOrderItem1(`ID продукта: ${item1}; Название: ${data.products[0].category} ${data.products[0].name}`)
+                changeOrderItem1(`ID продукта: ${data.products[0].id}; Название: ${data.products[0].category} ${data.products[0].name}`)
+                console.log(item1)
             if (data.products[1])
                 changeItem2(data.products[1].id)
-                changeOrderItem2(`ID продукта: ${item2}; Название: ${data.products[1].category} ${data.products[1].name}`)
+                changeOrderItem2(`ID продукта: ${data.products[1].id}; Название: ${data.products[1].category} ${data.products[1].name}`)
+                console.log(item2)
             if (data.products[2])
                 changeItem3(data.products[2].id)
-                changeOrderItem3((`ID продукта: ${item3}; Название: ${data.products[2].category} ${data.products[2].name}`))
+                changeOrderItem3((`ID продукта: ${data.products[2].id}; Название: ${data.products[2].category} ${data.products[2].name}`))
+                console.log(item3)
             if (data.products[3])
                 changeItem4(data.products[3].id)
-                changeOrderItem4((`ID продукта: ${item4}; Название: ${data.products[3].category} ${data.products[3].name}`))
+                changeOrderItem4((`ID продукта: ${data.products[3].id}; Название: ${data.products[3].category} ${data.products[3].name}`))
+                console.log(item4)
             if (data.products) {
                 setMessage('Данные по заказу получены');
             } else {
