@@ -27,20 +27,20 @@ const AdminPage = () => {
 
     const [orderId, changeOrderId] = useState(0);
 
-    const [orderItem1, changeOrderItem1] = useState('');
-    const [item1, changeItem1] = useState(0);
+    const [orderItem1, setOrderItem1] = useState('');
+    const [item1, setItem1] = useState(0);
     const [checkboxItem1, setCheckboxItem1] = useState(false);
 
-    const [orderItem2, changeOrderItem2] = useState('');
-    const [item2, changeItem2] = useState(0);
+    const [orderItem2, setOrderItem2] = useState('');
+    const [item2, setItem2] = useState(0);
     const [checkboxItem2, setCheckboxItem2] = useState(false);
 
-    const [orderItem3, changeOrderItem3] = useState('');
-    const [item3, changeItem3] = useState(0);
+    const [orderItem3, setOrderItem3] = useState('');
+    const [item3, setItem3] = useState(0);
     const [checkboxItem3, setCheckboxItem3] = useState(false);
 
-    const [orderItem4, changeOrderItem4] = useState('');
-    const [item4, changeItem4] = useState(0);
+    const [orderItem4, setOrderItem4] = useState('');
+    const [item4, setItem4] = useState(0);
     const [checkboxItem4, setCheckboxItem4] = useState(false);
 
     const [comment, changeComment] = useState('');
@@ -100,6 +100,15 @@ const AdminPage = () => {
         changeOrderId(e.target.value);
     };
 
+
+    const changeItem1 = (id) => setItem1(id);
+    const changeOrderItem1 = (text) => setOrderItem1(text);
+    const changeItem2 = (id) => setItem2(id);
+    const changeOrderItem2 = (text) => setOrderItem2(text);
+    const changeItem3 = (id) => setItem3(id);
+    const changeOrderItem3 = (text) => setOrderItem3(text);
+    const changeItem4 = (id) => setItem4(id);
+    const changeOrderItem4 = (text) => setOrderItem4(text);
     
 
     const onChangeCheckboxItem1 = () => {
@@ -324,6 +333,22 @@ const AdminPage = () => {
     useEffect(() => {
         getAllData();
     }, [])
+
+    useEffect(() => {
+        console.log("Item 1 updated:", item1);
+    }, [item1]);
+    
+    useEffect(() => {
+        console.log("Item 2 updated:", item2);
+    }, [item2]);
+    
+    useEffect(() => {
+        console.log("Item 3 updated:", item3);
+    }, [item3]);
+    
+    useEffect(() => {
+        console.log("Item 4 updated:", item4);
+    }, [item4]);
 
     return (
         <div>
