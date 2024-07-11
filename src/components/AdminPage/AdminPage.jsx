@@ -292,13 +292,17 @@ const AdminPage = () => {
             console.log(data)
 
             if (data.products[0])
-                changeItem1(`ID продукта: ${data.products[0].id}; Название: ${data.products[0].category} ${data.products[0].name}`)
+                changeItem1(data.products[0].id)
+                changeOrderItem1(`ID продукта: ${item1}; Название: ${data.products[0].category} ${data.products[0].name}`)
             if (data.products[1])
-                changeItem2(`ID продукта: ${data.products[1].id}; Название: ${data.products[1].category} ${data.products[1].name}`)
+                changeItem2(data.products[1].id)
+                changeOrderItem2(`ID продукта: ${item2}; Название: ${data.products[1].category} ${data.products[1].name}`)
             if (data.products[2])
-                changeItem3((`ID продукта: ${data.products[2].id}; Название: ${data.products[2].category} ${data.products[2].name}`))
+                changeItem3(data.products[2].id)
+                changeOrderItem3((`ID продукта: ${item3}; Название: ${data.products[2].category} ${data.products[2].name}`))
             if (data.products[3])
-                changeItem4((`ID продукта: ${data.products[3].id}; Название: ${data.products[3].category} ${data.products[3].name}`))
+                changeItem4(data.products[3].id)
+                changeOrderItem4((`ID продукта: ${item4}; Название: ${data.products[3].category} ${data.products[3].name}`))
             if (data.products) {
                 setMessage('Данные по заказу получены');
             } else {
@@ -423,7 +427,7 @@ const AdminPage = () => {
                             className={'inputItem'}
                             type="text"
                             placeholder={'item1'}
-                            value={item1}
+                            value={orderItem1}
                         />
                         <label>
                             <input
@@ -439,7 +443,7 @@ const AdminPage = () => {
                             className={'inputItem'}
                             type="text"
                             placeholder={'item2'}
-                            value={item2}
+                            value={orderItem2}
                         />
                         <label>
                             <input
@@ -455,7 +459,7 @@ const AdminPage = () => {
                             className={'inputItem'}
                             type="text"
                             placeholder={'item3'}
-                            value={item3}
+                            value={orderItem3}
                         />
                         <label>
                             <input
@@ -471,7 +475,7 @@ const AdminPage = () => {
                             className={'inputItem'}
                             type="text"
                             placeholder={'item4'}
-                            value={item4}
+                            value={orderItem4}
                         />
                         <label>
                             <input
