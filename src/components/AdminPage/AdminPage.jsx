@@ -26,6 +26,7 @@ const AdminPage = () => {
     const [productUserId, changeUserId] = useState(0);
 
     const [orderId, changeOrderId] = useState(0);
+    const [chatId, changeChatId] = useState('');
 
     const [orderItem1, setOrderItem1] = useState('');
     const [item1, setItem1] = useState(0);
@@ -98,6 +99,9 @@ const AdminPage = () => {
 
     const onChangeOrderId = (e) => {
         changeOrderId(e.target.value);
+    };
+    const onChangeChatId = (e) => {
+        changeChatId(e.target.value);
     };
 
 
@@ -274,6 +278,7 @@ const AdminPage = () => {
 
         const order = {
             orderId: orderId,
+            chatId: chatId,
             items: items,
             statusOrder: statusOrder,
             comment: comment
@@ -293,7 +298,8 @@ const AdminPage = () => {
         e.preventDefault();
 
         const order = {
-            orderId: Number(orderId)
+            orderId: Number(orderId),
+            chatId: chatId
         };
         console.log(order)
         try {
@@ -447,13 +453,22 @@ const AdminPage = () => {
             </form>
             <form className='form'>
                 <h3>Подтверждение заказа</h3>
-                <input
-                    className={'input'}
-                    type="number"
-                    placeholder={'orderId'}
-                    value={orderId}
-                    onChange={onChangeOrderId}
-                />
+                <div>
+                    <input
+                        className={'input'}
+                        type="number"
+                        placeholder={'orderId'}
+                        value={orderId}
+                        onChange={onChangeOrderId}
+                    />
+                    <input
+                        className={'input'}
+                        type="text"
+                        placeholder={'chatId'}
+                        value={chatId}
+                        onChange={onChangeChatId}
+                    />
+                </div>
                 <div>
                     <div className="input-container">
                         <input
