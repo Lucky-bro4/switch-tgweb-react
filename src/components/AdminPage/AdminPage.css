@@ -108,7 +108,7 @@ label {
 
 .message {
     width: fit-content;
-    height: 5px;
+    height: max-content;
     border: 5px;
     border-radius: 10px;
     content: center;
