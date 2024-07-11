@@ -336,26 +336,6 @@ const AdminPage = () => {
         }
     };
 
-    useEffect(() => {
-        getAllData();
-    }, [])
-
-    useEffect(() => {
-        console.log("Item 1 updated:", item1);
-    }, [item1]);
-    
-    useEffect(() => {
-        console.log("Item 2 updated:", item2);
-    }, [item2]);
-    
-    useEffect(() => {
-        console.log("Item 3 updated:", item3);
-    }, [item3]);
-    
-    useEffect(() => {
-        console.log("Item 4 updated:", item4);
-    }, [item4]);
-
     return (
         <div>
             <form className={"form"}>
