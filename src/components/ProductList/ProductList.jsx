@@ -4,27 +4,21 @@ import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 
 
-const getTotalPrice = (items = []) => {
-    return items.reduce((acc, item) => {
-        return acc += item.rentPrice
-    }, 260)
-}
-
-
 const ProductList = () => {
 
     const [products, setProducts] = useState([]);
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
+    const [costs, setCosts] = useState(260)
 
     const getProducts = async () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
             const data = await response.json();
             setProducts(data.products)
-            // if (data.count === true) {
-            //     tg.showAlert('Добро пожаловать в Switch! На первый заказ у тебя будет скидка 10%');
-            // }
+            if (data.count === true) {
+                setCosts(170)
+            }
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
         }
@@ -87,6 +81,12 @@ const ProductList = () => {
                 text: `Заказать за ${getTotalPrice(newItems)}`
             })
         }
+    }
+
+    const getTotalPrice = (items = []) => {
+        return items.reduce((acc, item) => {
+            return acc += item.rentPrice
+        }, costs)
     }
 
 
