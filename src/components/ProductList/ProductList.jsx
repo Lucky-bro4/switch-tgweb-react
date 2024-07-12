@@ -78,7 +78,7 @@ const ProductList = () => {
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Заказать за ${getTotalPrice(newItems)}`
+                text: `Заказать за ${getTotalPrice(newItems)} с доставкой`
             })
         }
     }
