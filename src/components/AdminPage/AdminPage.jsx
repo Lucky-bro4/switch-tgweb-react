@@ -587,13 +587,7 @@ const AdminPage = () => {
                         {`${laundryItem.id} `}
                         {`${laundryItem.category} `}
                         {`${laundryItem.name} `}
-                        {`${laundryItem.condition} `}
-                        {`${laundryItem.description} `}
                         {`${laundryItem.size} `}
-                        {`${laundryItem.price} `}
-                        {`${laundryItem.rentPrice} `}
-                        {`${laundryItem.status} `}
-                        {`${String(laundryItem.available)}  `}
                         {`Пользователь: ${laundryItem.userId} `}
                     </div>
                     ))}
