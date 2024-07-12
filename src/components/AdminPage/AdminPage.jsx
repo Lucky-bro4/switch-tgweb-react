@@ -517,8 +517,8 @@ const AdminPage = () => {
                 </div>
                 <select value={statusOrder} onChange={onChangestatusOrder} className={'input'}>
                     <option value={'success'}>Заказ принят полностью или частично</option>
-                    <option value={'canceled'}>Отказ от заказа</option>
-                    <option value={'closed'}>Завершить</option>
+                    <option value={'canceled'}>Отмена заказа</option>
+                    <option value={'closed'}>Завершить заказ</option>
                 </select>
                 <input
                     className={'input-comment'}
