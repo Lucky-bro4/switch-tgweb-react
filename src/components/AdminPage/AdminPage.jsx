@@ -21,7 +21,6 @@ const AdminPage = () => {
     const [laundryProducts, setLaundryProducts] = useState([])
     const [clents, setClients] = useState([])
     const [orders, setOrders] = useState([])
-    const [itemOrder, setItemOrders] = useState([])
 
     const [productUserId, changeUserId] = useState(0);
 
@@ -190,7 +189,6 @@ const AdminPage = () => {
 
             setClients(data.clients)
             setOrders(data.orders)
-            setItemOrders(data.itemOrder)
 
         } catch (e) {
             console.log('Ошибка при получении списка данных:', e)
