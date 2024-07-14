@@ -5,7 +5,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 const Form = () => {
     const [favor, setFavor] = useState('');
     const [update, setUpdate] = useState('');
-    const [grade, setGrade] = useState(0);
+    const [grade, setGrade] = useState(1);
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
@@ -56,18 +56,18 @@ const Form = () => {
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Что тебе не нравится / нравится в сервисе большего всего?'}
+                placeholder={'Какой стиль в одежде ты предпочитаешь?'}
                 value={favor}
                 onChange={onChangeFavor}
             />
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Как ты думаешь, что стоило бы улучшить?'}
+                placeholder={'Что стоило бы улучшить в сервисе?'}
                 value={update}
                 onChange={onChangeUpdate}
             />
-            <select value={grade} onChange={onChangeGrade} className={'select'}>
+            <select value={grade} onChange={onChangeGrade} className={'select'} placeholder='Общая оценка'>
                 <div>Оценка по 5-балльной шкале</div>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
