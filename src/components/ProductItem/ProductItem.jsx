@@ -4,7 +4,7 @@ import './ProductItem.css';
 
 let set = 0
 
-const ProductItem = ({product, className, onAdd}) => {
+const ProductItem = ({product, className, onAdd, chainOrder}) => {
 
     const onAddHandler = () => {
         if (set <= 4) {
@@ -35,7 +35,10 @@ const ProductItem = ({product, className, onAdd}) => {
             <div className={'title'}><b>{product.category + ' ' + product.name}</b></div>
             <div className={'description'}>{product.description}</div>
             <div className={'description'}>Размер: {product.size}</div>
-            <Button className={status} onClick={onAddHandler}>
+            <Button className={`${status} ${chainOrder ? 'disabled' : ''}`}
+                onClick={chainOrder ? null : onAddHandler}
+                disabled={chainOrder}
+            >
                 {content} за {product.rentPrice} Р
             </Button>
             <div id='remove'>

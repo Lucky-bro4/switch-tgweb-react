@@ -10,14 +10,18 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
     const [costs, setCosts] = useState(260)
+    const [chainOrder, setChainOrder] = useState(false)
 
     const getProducts = async () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
             const data = await response.json();
             setProducts(data.products)
-            if (data.count === true) {
-                setCosts(170)
+            if (data.count) {
+                setCosts(180)
+                if (data.chainOrder) {
+                    setChainOrder(true)
+                }
             }
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
@@ -52,35 +56,43 @@ const ProductList = () => {
     }, [onSendData])
 
     const onAdd = (product) => {
-        console.log(product)
-        const alreadyAdded = addedItems.find(item => item.id === product.id);
-        
-        let newItems = [];
-        
 
-        if(alreadyAdded) {
-            newItems = addedItems.filter(item => item.id !== product.id);
+        if (chainOrder) {
+
+            tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды.');
+
         } else {
-            newItems = [...addedItems, product];
-            console.log(newItems)
-        }
 
-        if (newItems.length > 4) {
-            tg.showAlert('Вы можете выбрать максимум 4 вещи');
-            acceptSuccess(newItems, success)
-            newItems.pop();
-        }
-  
-        setAddedItems(newItems)
+            const alreadyAdded = addedItems.find(item => item.id === product.id);
+        
+            let newItems = [];
+            
 
-        if(newItems.length === 0) {
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
-            tg.MainButton.setParams({
-                text: `Заказать за ${getTotalPrice(newItems)} с доставкой`
-            })
-        }
+            if(alreadyAdded) {
+                newItems = addedItems.filter(item => item.id !== product.id);
+            } else {
+                newItems = [...addedItems, product];
+                console.log(newItems)
+            }
+
+            if (newItems.length > 4) {
+                tg.showAlert('Вы можете выбрать максимум 4 вещи');
+                acceptSuccess(newItems, success)
+                newItems.pop();
+            }
+    
+            setAddedItems(newItems)
+
+            if(newItems.length === 0) {
+                tg.MainButton.hide();
+            } else {
+                tg.MainButton.show();
+                tg.MainButton.setParams({
+                    text: `Заказать за ${getTotalPrice(newItems)} с доставкой`
+                })
+            }
+
+        } 
     }
 
     const getTotalPrice = (items = []) => {
@@ -99,6 +111,7 @@ const ProductList = () => {
                         product={item}
                         onAdd={onAdd}
                         className={'item'}
+                        chainOrder={chainOrder}
                     />
                 ))
             ) : (
