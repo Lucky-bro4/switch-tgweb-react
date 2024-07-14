@@ -28,6 +28,15 @@
     margin: auto;
 }
 
+.disabled {
+    width: fit-content;
+    border: 5px;
+    border-radius: 50px;
+    content: center;
+    margin: auto;
+    background-color: rgb(169, 162, 162);
+}
+
 .already-add-btn {
     width: fit-content;
     border: 5px;
