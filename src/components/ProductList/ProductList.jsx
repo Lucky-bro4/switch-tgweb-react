@@ -10,7 +10,7 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
     const [costs, setCosts] = useState(260)
-    const [chainOrder, setChainOrder] = useState(false)
+    const [closedChainOrder, setClosedChainOrder] = useState(true)
 
     const getProducts = async () => {
         try {
@@ -19,8 +19,8 @@ const ProductList = () => {
             setProducts(data.products)
             if (data.count) {
                 setCosts(180)
-                if (data.chainOrder) {
-                    setChainOrder(true)
+                if (data.closedChainOrder) {
+                    setClosedChainOrder(false)
                 }
             }
         } catch (e) {
@@ -57,7 +57,7 @@ const ProductList = () => {
 
     const onAdd = (product) => {
 
-        if (chainOrder) {
+        if (closedChainOrder) {
 
             tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды.');
 
@@ -111,7 +111,7 @@ const ProductList = () => {
                         product={item}
                         onAdd={onAdd}
                         className={'item'}
-                        chainOrder={chainOrder}
+                        closedChainOrder={closedChainOrder}
                     />
                 ))
             ) : (
