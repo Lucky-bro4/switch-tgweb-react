@@ -20,7 +20,7 @@ const Form = () => {
             grade
         }
         tg.sendData(JSON.stringify(data));
-    }, [quest1, quest2, quest3, update, grade])
+    }, [quest1, quest2, grade])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
