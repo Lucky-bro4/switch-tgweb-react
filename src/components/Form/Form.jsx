@@ -78,21 +78,21 @@ return (
             className="input"
             type="text"
             placeholder="Что стоило бы улучшить в сервисе?"
-            value={favor}
+            value={quest1}
             onChange={onChangeQuest1}
         />
         <input
             className="input"
             type="text"
             placeholder="Есть ли что-то, что мы могли бы улучшить в дизайне или навигации?"
-            value={favor}
+            value={quest2}
             onChange={onChangeQuest2}
         />
         <input
             className="input"
             type="text"
             placeholder="Есть ли что-то еще, что вы бы хотели сообщить нам?"
-            value={favor}
+            value={quest3}
             onChange={onChangeQuest3}
         />
         <div className="label">Вопрос о ваших предпочтениях</div>
@@ -116,7 +116,7 @@ return (
             {renderStars()}
         </div>
     </div>
-);
+    );
 };
 
 export default Form;
