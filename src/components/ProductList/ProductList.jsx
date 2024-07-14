@@ -19,7 +19,7 @@ const ProductList = () => {
             setProducts(data.products)
             if (data.count) {
                 setCosts(180)
-                if (data.closedChainOrder) {
+                if (data.chainOrder) {
                     setClosedChainOrder(false)
                 }
             }
