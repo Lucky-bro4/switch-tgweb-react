@@ -10,7 +10,7 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg, queryId} = useTelegram();
     const [costs, setCosts] = useState(260)
-    const [closedChainOrder, setClosedChainOrder] = useState(true)
+    const [closedChainOrder, setClosedChainOrder] = useState(false)
 
     const getProducts = async () => {
         try {
@@ -20,7 +20,7 @@ const ProductList = () => {
             if (data.count) {
                 setCosts(180)
                 if (data.chainOrder) {
-                    setClosedChainOrder(false)
+                    setClosedChainOrder(true)
                 }
             }
         } catch (e) {
