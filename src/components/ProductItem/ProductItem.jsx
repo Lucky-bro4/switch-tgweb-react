@@ -36,7 +36,7 @@ const ProductItem = ({product, className, onAdd, closedChainOrder}) => {
             <div className={'description'}>{product.description}</div>
             <div className={'description'}>Размер: {product.size}</div>
             <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
-                onClick={closedChainOrder ? null : onAddHandler}
+                onClick={onAddHandler}
                 disabled={closedChainOrder}
             >
                 {content} за {product.rentPrice} Р
