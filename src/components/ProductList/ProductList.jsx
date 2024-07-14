@@ -6,9 +6,10 @@ import {useTelegram} from "../../hooks/useTelegram";
 
 const ProductList = () => {
 
+    const {tg, queryId, chatId} = useTelegram();
+
     const [products, setProducts] = useState([]);
     const [addedItems, setAddedItems] = useState([]);
-    const {tg, queryId} = useTelegram();
     const [costs, setCosts] = useState(260)
     const [closedChainOrder, setClosedChainOrder] = useState(false)
 
@@ -37,7 +38,8 @@ const ProductList = () => {
         const data = {
             items: addedItems,
             totalPrice: getTotalPrice(addedItems),
-            queryId, 
+            queryId,
+            chatId
         }
         fetch('https://bottg-lucky-bro4.amvera.io/web-data', {
             method: 'POST',
