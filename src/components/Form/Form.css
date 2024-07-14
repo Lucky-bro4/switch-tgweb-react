@@ -1,17 +1,74 @@
-.form {
+.form-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
 }
 
 .input {
     width: 100%;
     padding: 10px;
-    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-.select {
+.input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.slider {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.star {
+    font-size: 24px;
+    color: #ccc;
+    margin: 0 2px;
+}
+
+.star.filled {
+    color: #ffcc00;
+}
+
+.submit-button {
+    width: 100%;
     padding: 10px;
-    margin-top: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
 }

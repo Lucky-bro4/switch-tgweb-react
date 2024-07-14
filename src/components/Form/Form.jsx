@@ -3,19 +3,24 @@ import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
-    const [favor, setFavor] = useState('');
+    const [quest1, setQuest1] = useState('');
+    const [quest2, setQuest2] = useState('');
+    const [quest3, setQuest3] = useState('');
+
     const [update, setUpdate] = useState('');
-    const [grade, setGrade] = useState(1);
+    const [grade, setGrade] = useState(5);
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
-            favor,
+            quest1,
+            quest2,
+            quest3,
             update,
             grade
         }
         tg.sendData(JSON.stringify(data));
-    }, [favor, update, grade])
+    }, [quest1, quest2, quest3, update, grade])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -36,10 +41,16 @@ const Form = () => {
         } else {
             tg.MainButton.show();
         }
-    }, [favor, update, grade])
+    }, [quest1, quest2, grade])
 
-    const onChangeFavor = (e) => {
-        setFavor(e.target.value)
+    const onChangeQuest1 = (e) => {
+        setQuest1(e.target.value)
+    }
+    const onChangeQuest2 = (e) => {
+        setQuest2(e.target.value)
+    }
+    const onChangeQuest3 = (e) => {
+        setQuest3(e.target.value)
     }
 
     const onChangeUpdate = (e) => {
@@ -50,33 +61,62 @@ const Form = () => {
         setGrade(e.target.value)
     }
 
-    return (
-        <div className={"form"}>
-            <h3>Что вы думаете о Switch?</h3>
-            <input
-                className={'input'}
-                type="text"
-                placeholder={'Какой стиль в одежде ты предпочитаешь?'}
-                value={favor}
-                onChange={onChangeFavor}
+    const renderStars = () => {
+        const stars = [];
+        for (let i = 1; i <= 5; i++) {
+            stars.push(
+                <span key={i} className={`star ${i <= grade ? 'filled' : ''}`}>&#9733;</span>
+            );
+        }
+        return stars;
+    };
+
+return (
+    <div className="form-container">
+        <h3>Что вы думаете о Switch?</h3>
+        <input
+            className="input"
+            type="text"
+            placeholder="Что стоило бы улучшить в сервисе?"
+            value={favor}
+            onChange={onChangeQuest1}
+        />
+        <input
+            className="input"
+            type="text"
+            placeholder="Есть ли что-то, что мы могли бы улучшить в дизайне или навигации?"
+            value={favor}
+            onChange={onChangeQuest2}
+        />
+        <input
+            className="input"
+            type="text"
+            placeholder="Есть ли что-то еще, что вы бы хотели сообщить нам?"
+            value={favor}
+            onChange={onChangeQuest3}
+        />
+        <div className="label">Вопрос о ваших предпочтениях</div>
+        <input
+            className="input"
+            type="text"
+            placeholder="Какой стиль в одежде вы предпочитаете?"
+            value={update}
+            onChange={onChangeUpdate}
+        />
+        <div className="label">Общая оценка</div>
+        <input
+                type="range"
+                min="1"
+                max="5"
+                value={grade}
+                onChange={onChangeGrade}
+                className="slider"
             />
-            <input
-                className={'input'}
-                type="text"
-                placeholder={'Что стоило бы улучшить в сервисе?'}
-                value={update}
-                onChange={onChangeUpdate}
-            />
-            <select value={grade} onChange={onChangeGrade} className={'select'} placeholder='Общая оценка'>
-                <div>Оценка по 5-балльной шкале</div>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-            </select>
+        <div className="stars">
+            {renderStars()}
         </div>
-    );
+    </div>
+);
 };
 
 export default Form;
