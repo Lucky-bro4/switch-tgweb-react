@@ -1,49 +1,47 @@
 .product {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
     padding: 10px;
-    width: 100%;
-    max-width: 300px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    width: 170px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    color:  black;
 }
 
-.product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
 
 .img {
     width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 5px;
+    height: 150px;
+    margin: 0 auto;
+    background:white;
 }
 
-.title, .description {
-    margin: 10px 0;
-    text-align: center;
+.description {
+    font-size: 0.8em;
 }
 
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.add-btn {
+    width: fit-content;
+    border: 5px;
+    border-radius: 50px;
+    content: center;
+    margin: auto;
 }
 
-button:hover {
-    background-color: #0056b3;
+.disabled {
+    width: fit-content;
+    border: 5px;
+    border-radius: 50px;
+    content: center;
+    margin: auto;
+    background-color: '#ccc';
 }
 
-button.disabled {
-    background-color: #ccc;
-    cursor: pointer;
+.already-add-btn {
+    width: fit-content;
+    border: 5px;
+    border-radius: 50px;
+    content: center;
+    margin: auto;
+    background-color: red;
 }
