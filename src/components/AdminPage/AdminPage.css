@@ -1,4 +1,4 @@
-/* .admin-container {
+.admin-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -52,14 +52,14 @@
   font-weight: bold;
 }
 
-.form {
+/* .form {
   max-width: 600px;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #f9f9f9;
-}
+} */
 
 .input, .inputItem, .input-container, select, .input-comment {
   width: 100%;
@@ -154,4 +154,4 @@ th {
     margin-right: 0;
     margin-bottom: 10px;
   }
-} */
+}
