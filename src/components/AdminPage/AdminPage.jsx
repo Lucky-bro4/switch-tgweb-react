@@ -19,7 +19,7 @@ const AdminPage = () => {
     const [availableProducts, setAvailableProducts] = useState([])
     const [orderProducts, setOrderProducts] = useState([])
     const [laundryProducts, setLaundryProducts] = useState([])
-    const [clents, setClients] = useState([])
+    const [clients, setClients] = useState([])
     const [orders, setOrders] = useState([])
 
     const [productUserId, changeUserId] = useState(0);
@@ -336,284 +336,350 @@ const AdminPage = () => {
 
     return (
         <div>
-            <form className={"form"}>
+            <form className="form">
                 <h3>Добавление товара</h3>
                 <input
-                    className={'input'}
+                className="input"
+                type="number"
+                placeholder="Id"
+                value={id}
+                onChange={onChangeId}
+                />
+                <input
+                className="input"
+                type="text"
+                placeholder="Category"
+                value={category}
+                onChange={onChangeCategory}
+                />
+                <input
+                className="input"
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={onChangeName}
+                />
+                <input
+                className="input"
+                type="text"
+                placeholder="Condition"
+                value={condition}
+                onChange={onChangeCondition}
+                />
+                <input
+                className="input"
+                type="text"
+                placeholder="Description"
+                value={description}
+                onChange={onChangeDescription}
+                />
+                <input
+                className="input"
+                type="text"
+                placeholder="Size"
+                value={size}
+                onChange={onChangeSize}
+                />
+                <div>
+                <input
+                    className="input"
                     type="number"
-                    placeholder={'Id'}
-                    value={id}
-                    onChange={onChangeId}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Category'}
-                    value={category}
-                    onChange={onChangeCategory}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Name'}
-                    value={name}
-                    onChange={onChangeName}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Condition'}
-                    value={condition}
-                    onChange={onChangeCondition}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Description'}
-                    value={description}
-                    onChange={onChangeDescription}
-                />
-                <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Size'}
-                    value={size}
-                    onChange={onChangeSize}
-                />
-                <div>
-                    <input
-                        className={'input'}
-                        type="number"
-                        placeholder={'Price'}
-                        value={price}
-                        onChange={onChangePrice}
-                    /> Price
+                    placeholder="Price"
+                    value={price}
+                    onChange={onChangePrice}
+                /> Price
                 </div>
                 <div>
-                    <input
-                        className={'input'}
-                        type="number"
-                        placeholder={'RentPrice'}
-                        value={rentPrice}
-                        onChange={onChangeRentPrice}
-                    /> Rent Price ( {price / 20 * 1.2 + 25} руб/день )
+                <input
+                    className="input"
+                    type="number"
+                    placeholder="RentPrice"
+                    value={rentPrice}
+                    onChange={onChangeRentPrice}
+                /> Rent Price ( {price / 20 * 1.2 + 25} руб/день )
                 </div>
                 <input
-                    className={'input'}
-                    type="text"
-                    placeholder={'Photo'}
-                    value={photo}
-                    onChange={onChangePhoto}
+                className="input"
+                type="text"
+                placeholder="Photo"
+                value={photo}
+                onChange={onChangePhoto}
                 />
-                <select value={status} onChange={onChangeStatus} className={'input'}>
-                    <option value={'available'}>Доступен</option>
-                    <option value={'reserved'}>Зарезервирован</option>
-                    <option value={'in order'}>В заказе</option>
+                <select value={status} onChange={onChangeStatus} className="input">
+                <option value="available">Доступен</option>
+                <option value="reserved">Зарезервирован</option>
+                <option value="in order">В заказе</option>
                 </select>
-                <select value={available} onChange={onChangeAvailable} className={'input'}>
-                    <option value={1}>Доступен</option>
-                    <option value={0}>Не доступен</option>
+                <select value={available} onChange={onChangeAvailable} className="input">
+                <option value={1}>Доступен</option>
+                <option value={0}>Не доступен</option>
                 </select>
                 <div>
-                    <Button className='btn-add-clothes' onClick={sendData}>
-                        Добавить
-                    </Button>
-                    <Button className='btn-change-clothes' onClick={changeData}>
-                        Изменить
-                    </Button>
-                    <Button className='btn-delete-clothes' onClick={deleteData}>
-                        Удалить
-                    </Button>
-                    <Button className='btn-change-clothes' onClick={changeStatus}>
-                        Изменить статус
-                    </Button>
+                <Button className="btn-add-clothes" onClick={sendData}>
+                    Добавить
+                </Button>
+                <Button className="btn-change-clothes" onClick={changeData}>
+                    Изменить
+                </Button>
+                <Button className="btn-delete-clothes" onClick={deleteData}>
+                    Удалить
+                </Button>
+                <Button className="btn-change-clothes" onClick={changeStatus}>
+                    Изменить статус
+                </Button>
                 </div>
             </form>
-            <form className='form'>
+            <form className="form">
                 <h3>Подтверждение заказа</h3>
                 <div>
-                    <input
-                        className={'input'}
-                        type="number"
-                        placeholder={'orderId'}
-                        value={orderId}
-                        onChange={onChangeOrderId}
-                    />
-                    <input
-                        className={'input'}
-                        type="text"
-                        placeholder={'chatId'}
-                        value={chatId}
-                        onChange={onChangeChatId}
-                    />
+                <input
+                    className="input"
+                    type="number"
+                    placeholder="orderId"
+                    value={orderId}
+                    onChange={onChangeOrderId}
+                />
+                <input
+                    className="input"
+                    type="text"
+                    placeholder="chatId"
+                    value={chatId}
+                    onChange={onChangeChatId}
+                />
                 </div>
                 <div>
-                    <div className="input-container">
-                        <input
-                            className={'inputItem'}
-                            type="text"
-                            placeholder={'item1'}
-                            value={orderItem1}
-                        />
-                        <label>
-                            <input
-                            type="checkbox"
-                            checked={checkboxItem1}
-                            onChange={onChangeCheckboxItem1}
-                            />
-                            Товар 1 в заказе
-                        </label>
-                    </div>
-                    <div className="input-container">
-                        <input
-                            className={'inputItem'}
-                            type="text"
-                            placeholder={'item2'}
-                            value={orderItem2}
-                        />
-                        <label>
-                            <input
-                            type="checkbox"
-                            checked={checkboxItem2}
-                            onChange={onChangeCheckboxItem2}
-                            />
-                            Товар 2 в заказе
-                        </label>
-                    </div>
-                    <div className="input-container">
-                        <input
-                            className={'inputItem'}
-                            type="text"
-                            placeholder={'item3'}
-                            value={orderItem3}
-                        />
-                        <label>
-                            <input
-                            type="checkbox"
-                            checked={checkboxItem3}
-                            onChange={onChangeCheckboxItem3}
-                            />
-                            Товар 3 в заказе
-                        </label>
-                    </div>
-                    <div className="input-container">
-                        <input
-                            className={'inputItem'}
-                            type="text"
-                            placeholder={'item4'}
-                            value={orderItem4}
-                        />
-                        <label>
-                            <input
-                            type="checkbox"
-                            checked={checkboxItem4}
-                            onChange={onChangeCheckboxItem4}
-                            />
-                            Товар 4 в заказе
-                        </label>
-                    </div>
+                <div className="input-container">
+                    <input
+                    className="inputItem"
+                    type="text"
+                    placeholder="item1"
+                    value={orderItem1}
+                    />
+                    <label>
+                    <input
+                        type="checkbox"
+                        checked={checkboxItem1}
+                        onChange={onChangeCheckboxItem1}
+                    />
+                    Товар 1 в заказе
+                    </label>
                 </div>
-                <select value={statusOrder} onChange={onChangestatusOrder} className={'input'}>
-                    <option value={'success'}>Заказ принят полностью или частично</option>
-                    <option value={'canceled'}>Отмена заказа</option>
-                    <option value={'closed'}>Завершить заказ</option>
+                <div className="input-container">
+                    <input
+                    className="inputItem"
+                    type="text"
+                    placeholder="item2"
+                    value={orderItem2}
+                    />
+                    <label>
+                    <input
+                        type="checkbox"
+                        checked={checkboxItem2}
+                        onChange={onChangeCheckboxItem2}
+                    />
+                    Товар 2 в заказе
+                    </label>
+                </div>
+                <div className="input-container">
+                    <input
+                    className="inputItem"
+                    type="text"
+                    placeholder="item3"
+                    value={orderItem3}
+                    />
+                    <label>
+                    <input
+                        type="checkbox"
+                        checked={checkboxItem3}
+                        onChange={onChangeCheckboxItem3}
+                    />
+                    Товар 3 в заказе
+                    </label>
+                </div>
+                <div className="input-container">
+                    <input
+                    className="inputItem"
+                    type="text"
+                    placeholder="item4"
+                    value={orderItem4}
+                    />
+                    <label>
+                    <input
+                        type="checkbox"
+                        checked={checkboxItem4}
+                        onChange={onChangeCheckboxItem4}
+                    />
+                    Товар 4 в заказе
+                    </label>
+                </div>
+                </div>
+                <select value={statusOrder} onChange={onChangestatusOrder} className="input">
+                <option value="success">Заказ принят полностью или частично</option>
+                <option value="canceled">Отмена заказа</option>
+                <option value="closed">Завершить заказ</option>
                 </select>
                 <input
-                    className={'input-comment'}
-                    type="text"
-                    placeholder={'Comment'}
-                    value={comment}
-                    onChange={onChangeComment}
+                className="input-comment"
+                type="text"
+                placeholder="Comment"
+                value={comment}
+                onChange={onChangeComment}
                 />
                 <div>
-                    <Button className='btn-change-clothes' onClick={downloadOrder}>
-                        Загрузить заказ
-                    </Button>
-                    <Button className='btn-confirm' onClick={confirmStatusOrder}>
-                        Отправить
-                    </Button>
+                <Button className="btn-change-clothes" onClick={downloadOrder}>
+                    Загрузить заказ
+                </Button>
+                <Button className="btn-confirm" onClick={confirmStatusOrder}>
+                    Отправить
+                </Button>
                 </div>
-                {message && <p className='message'>{message}</p>}           
+                {message && <p className="message">{message}</p>}
             </form>
-            <div className='example'>
-                <img className={'example_img'} src={photo} alt={name} />
-                <div className={'example_name'}><b>{category + ' ' + name}</b></div>
-                <div className={'example_description'}>{description}</div>
-                <div className={'example_description'}>Размер: {size}</div>
+            <div className="example">
+                <img className="example_img" src={photo} alt={name} />
+                <div className="example_name"><b>{category + ' ' + name}</b></div>
+                <div className="example_description">{description}</div>
+                <div className="example_description">Размер: {size}</div>
             </div>
             <div>
                 <h2>Список товаров</h2>
-                <div className='list'>
-                    <h3>Доступные сейчас товары</h3>
+                <div className="list">
+                <h3>Доступные сейчас товары</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Категория</th>
+                        <th>Название</th>
+                        <th>Состояние</th>
+                        <th>Описание</th>
+                        <th>Размер</th>
+                        <th>Цена</th>
+                        <th>Арендная плата</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     {availableProducts.map(availableItem => (
-                    <div key={availableItem}>
-                        {`${availableItem.id} `}
-                        {`${availableItem.category} `}
-                        {`${availableItem.name} `}
-                        {`${availableItem.condition} `}
-                        {`${availableItem.description} `}
-                        {`${availableItem.size} `}
-                        {`${availableItem.price} `}
-                        {`${availableItem.rentPrice} `}
-                        {`${availableItem.status} `}
-                        {`${String(availableItem.available)}  `}
-                    </div>
+                        <tr key={availableItem.id}>
+                        <td>{availableItem.id}</td>
+                        <td>{availableItem.category}</td>
+                        <td>{availableItem.name}</td>
+                        <td>{availableItem.condition}</td>
+                        <td>{availableItem.description}</td>
+                        <td>{availableItem.size}</td>
+                        <td>{availableItem.price}</td>
+                        <td>{availableItem.rentPrice}</td>
+                        </tr>
                     ))}
+                    </tbody>
+                </table>
                 </div>
-                <div className='list'>
-                    <h3>Товары в аренде</h3>
+                <div className="list">
+                <h3>Товары в аренде</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Категория</th>
+                        <th>Название</th>
+                        <th>Состояние</th>
+                        <th>Описание</th>
+                        <th>Размер</th>
+                        <th>Цена</th>
+                        <th>Арендная плата</th>
+                        <th>Пользователь</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     {orderProducts.map(orderItem => (
-                    <div key={orderItem}>
-                        {`${orderItem.id} `}
-                        {`${orderItem.category} `}
-                        {`${orderItem.name} `}
-                        {`${orderItem.condition} `}
-                        {`${orderItem.description} `}
-                        {`${orderItem.size} `}
-                        {`${orderItem.price} `}
-                        {`${orderItem.rentPrice} `}
-                        {`${orderItem.status} `}
-                        {`${String(orderItem.available)}  `}
-                        {`Пользователь: ${orderItem.userId} `}
-                    </div>
+                        <tr key={orderItem.id}>
+                        <td>{orderItem.id}</td>
+                        <td>{orderItem.category}</td>
+                        <td>{orderItem.name}</td>
+                        <td>{orderItem.condition}</td>
+                        <td>{orderItem.description}</td>
+                        <td>{orderItem.size}</td>
+                        <td>{orderItem.price}</td>
+                        <td>{orderItem.rentPrice}</td>
+                        <td>{orderItem.userId}</td>
+                        </tr>
                     ))}
+                    </tbody>
+                </table>
                 </div>
-                <div className='list'>
-                    <h3>Товары в прачечной</h3>
+                <div className="list">
+                <h3>Товары в прачечной</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Категория</th>
+                        <th>Название</th>
+                        <th>Размер</th>
+                        <th>Пользователь</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     {laundryProducts.map(laundryItem => (
-                    <div key={laundryItem}>
-                        {`${laundryItem.id} `}
-                        {`${laundryItem.category} `}
-                        {`${laundryItem.name} `}
-                        {`${laundryItem.size} `}
-                        {`Пользователь: ${laundryItem.userId} `}
-                    </div>
+                        <tr key={laundryItem.id}>
+                        <td>{laundryItem.id}</td>
+                        <td>{laundryItem.category}</td>
+                        <td>{laundryItem.name}</td>
+                        <td>{laundryItem.size}</td>
+                        <td>{laundryItem.userId}</td>
+                        </tr>
                     ))}
+                    </tbody>
+                </table>
                 </div>
             </div>
             <div>
                 <h2>Список клиентов</h2>
-                {clents.map(client => (
-                    <div key={client}>
-                        {`${client.id} `}
-                        {`${client.chatId} `}
-                        {`${client.login} `}
-                        {`${client.phone_number} `}
-                        {`${client.location} `}
-                        {/* {`Товары: ${item.userId} `} */}
-                    </div>
-                ))}
+                <table>
+                <thead>
+                    <tr>
+                    <th>Id</th>
+                    <th>Chat ID</th>
+                    <th>Логин</th>
+                    <th>Телефон</th>
+                    <th>Локация</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {clients.map(client => (
+                    <tr key={client.id}>
+                        <td>{client.id}</td>
+                        <td>{client.chatId}</td>
+                        <td>{client.login}</td>
+                        <td>{client.phone_number}</td>
+                        <td>{client.location}</td>
+                    </tr>
+                    ))}
+                </tbody>
+                </table>
             </div>
             <div>
                 <h2>Список заказов</h2>
-                {orders.map(order => (
-                    <div key={order}>
-                        {`${order.id} `}
-                        {`${order.status} `}
-                        {`${order.comment} `}
-                        {`Пользователь: ${order.userId} `}
-                    </div>
-                ))}
+                <table>
+                <thead>
+                    <tr>
+                    <th>Id</th>
+                    <th>Статус</th>
+                    <th>Комментарий</th>
+                    <th>Пользователь</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {orders.map(order => (
+                    <tr key={order.id}>
+                        <td>{order.id}</td>
+                        <td>{order.status}</td>
+                        <td>{order.comment}</td>
+                        <td>{order.userId}</td>
+                    </tr>
+                    ))}
+                </tbody>
+                </table>
             </div>
         </div>
     );
