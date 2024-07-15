@@ -95,7 +95,7 @@ const ProductList = () => {
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: `${getTotalPrice(newItems)} Р с доставкой`,
-                color: '#a9a2a9'
+                color: '#ccc'
             })
             tg.onEvent('mainButtonClicked', onShowAlert)
         } else {

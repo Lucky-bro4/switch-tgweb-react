@@ -1,47 +1,49 @@
 .product {
-    display: flex;
-    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
     padding: 10px;
-    width: 170px;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    color:  black;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
 
 .img {
     width: 100%;
-    height: 150px;
-    margin: 0 auto;
-    background:white;
+    height: auto;
+    display: block;
+    border-radius: 5px;
 }
 
-.description {
-    font-size: 0.8em;
+.title, .description {
+    margin: 10px 0;
+    text-align: center;
 }
 
-.add-btn {
-    width: fit-content;
-    border: 5px;
-    border-radius: 50px;
-    content: center;
-    margin: auto;
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.disabled {
-    width: fit-content;
-    border: 5px;
-    border-radius: 50px;
-    content: center;
-    margin: auto;
-    background-color: rgb(169, 162, 162);
+button:hover {
+    background-color: #0056b3;
 }
 
-.already-add-btn {
-    width: fit-content;
-    border: 5px;
-    border-radius: 50px;
-    content: center;
-    margin: auto;
-    background-color: red;
+button.disabled {
+    background-color: #ccc;
+    cursor: pointer;
 }
