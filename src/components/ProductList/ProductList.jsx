@@ -16,7 +16,7 @@ const ProductList = () => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                console.log(chatId)
+                console.log('chatId: ', chatId)
                 const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?chatId=${chatId}`);
                 const data = await response.json();
                 console.log(data.products)
