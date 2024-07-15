@@ -547,12 +547,6 @@ const AdminPage = () => {
                 </div>
                 {message && <p className="message">{message}</p>}
             </form>
-            <div className="example">
-                <img className="example_img" src={photo} alt={name} />
-                <div className="example_name"><b>{category + ' ' + name}</b></div>
-                <div className="example_description">{description}</div>
-                <div className="example_description">Размер: {size}</div>
-            </div>
             <div>
                 <h2>Список товаров</h2>
                 <div className="adminList">
