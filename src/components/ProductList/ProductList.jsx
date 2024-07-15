@@ -56,10 +56,7 @@ const ProductList = () => {
 
     useEffect(() => {
         if (closedChainOrder) {
-            tg.onEvent('mainButtonClicked', onSendData)
-            return () => {
-                tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды.');
-            }
+            tg.onEvent('mainButtonClicked', tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды.'))
         } else {
             tg.onEvent('mainButtonClicked', onSendData)
             return () => {
