@@ -1,7 +1,7 @@
-.admin-container {
+/* .admin-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Два столбца: одно для формы, другое для просмотра */
-  gap: 20px; /* Отступ между элементами */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .admin-form {
@@ -154,4 +154,4 @@ th {
     margin-right: 0;
     margin-bottom: 10px;
   }
-}
+} */
