@@ -14,14 +14,16 @@ const ProductList = () => {
     const [closedChainOrder, setClosedChainOrder] = useState(false)
 
     const getProducts = async () => {
-        try {
 
+        try {
+            
+            const data = {queryId, user}
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(user)
+                body: JSON.stringify(data)
             })
 
             // const data = await response.json();
