@@ -18,7 +18,7 @@ const ProductList = () => {
         try {
             
             const data = {queryId, user}
-            const response = await fetch('https://bottg-lucky-bro4.amvera.io/products', {
+            const response = fetch('https://bottg-lucky-bro4.amvera.io/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
