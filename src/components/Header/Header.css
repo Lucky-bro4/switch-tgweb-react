@@ -11,19 +11,9 @@
     margin-left: auto;
 }
 
-/* .closeButton {
-    height: fit-content;
-    border-radius: 10%;
-    border-color: black;
-} */
-
 .mainLogo {
     height: fit-content;
     align-items: center;
 }
 
-/* .tagline {
-    font-size: x-small;
-    color: var(--tg-theme-hint-color);
-    margin: 0 40px;
-} */
+

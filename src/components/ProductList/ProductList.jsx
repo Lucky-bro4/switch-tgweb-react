@@ -54,15 +54,17 @@ const ProductList = () => {
         })
     }, [addedItems, queryId])
 
+    const onShowAlert = useCallback(() => {
+        tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды.');
+    }, [])
+
     useEffect(() => {
-        if (closedChainOrder) {
-            tg.onEvent('mainButtonClicked', tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды.'))
-        } else {
-            tg.onEvent('mainButtonClicked', onSendData)
-            return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-            }
+
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+        tg.offEvent('mainButtonClicked', onSendData)
         }
+        
     }, [onSendData])
 
     const onAdd = (product) => {
@@ -89,12 +91,18 @@ const ProductList = () => {
 
         if(newItems.length === 0) {
             tg.MainButton.hide();
+        } else if (closedChainOrder) {
+            tg.MainButton.show();
+            tg.MainButton.setParams({
+                text: `${getTotalPrice(newItems)} Р/24ч с доставкой`,
+                color: rgb(169, 162, 162)
+            })
+            tg.onEvent('mainButtonClicked', onShowAlert)
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Заказать за ${getTotalPrice(newItems)} с доставкой`
+                text: `Заказать за ${getTotalPrice(newItems)} Р/24ч с доставкой`
             })
-
         } 
     }
 
