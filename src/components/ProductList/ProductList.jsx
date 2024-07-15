@@ -14,27 +14,16 @@ const ProductList = () => {
     const [closedChainOrder, setClosedChainOrder] = useState(false)
 
     const getProducts = async () => {
-
         try {
-            
-            const data = {queryId, user}
-            const response = fetch('https://bottg-lucky-bro4.amvera.io/products', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-
-            // const data = await response.json();
-            console.log(response.products)
-            setProducts(response.products)
-            // if (response.successOrder) {
-            //     setCosts(180)
-            //     setClosedChainOrder(true)
-            //     if (response.chainOrder)
-            //         setClosedChainOrder(false)
-            // }
+            const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?${user}`);
+            const data = await response.json();
+            setProducts(data.products)
+            if (data.count) {
+                setCosts(180)
+                if (data.chainOrder) {
+                    setClosedChainOrder(true)
+                }
+            }
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
         }
