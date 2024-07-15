@@ -17,6 +17,7 @@ const ProductList = () => {
         try {
             const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?${user}`);
             const data = await response.json();
+            console.log(data.products)
             setProducts(data.products)
             if (data.successOrder) {
                 setCosts(180)
