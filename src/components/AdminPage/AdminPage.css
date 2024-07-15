@@ -1,103 +1,157 @@
-  .form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  .input, .inputItem, .input-container, select, .input-comment {
-    width: 100%;
+.admin-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Два столбца: одно для формы, другое для просмотра */
+  gap: 20px; /* Отступ между элементами */
+}
+
+.admin-form {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.admin-preview {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.example {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.adminList {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.adminList-inner {
+  margin-bottom: 20px;
+}
+
+.adminList table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.adminList table th,
+.adminList table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.adminList table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.input, .inputItem, .input-container, select, .input-comment {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.inputItem {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.btn-add-clothes, .btn-change-clothes, .btn-delete-clothes, .btn-confirm {
+  margin: 10px 5px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-add-clothes:hover, .btn-change-clothes:hover, .btn-delete-clothes:hover, .btn-confirm:hover {
+  background-color: #0056b3;
+}
+
+.example {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.example_img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.adminList {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+  .form, .example, .list {
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
   }
-  
-  .input-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .inputItem {
-    flex: 1;
-    margin-right: 10px;
-  }
-  
-  .btn-add-clothes, .btn-change-clothes, .btn-delete-clothes, .btn-confirm {
-    margin: 10px 5px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-add-clothes:hover, .btn-change-clothes:hover, .btn-delete-clothes:hover, .btn-confirm:hover {
-    background-color: #0056b3;
-  }
-  
-  .example {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    text-align: center;
-  }
-  
-  .example_img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  .adminList {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  table, th, td {
-    border: 1px solid #ddd;
-  }
-  
+
   th, td {
-    padding: 10px;
-    text-align: left;
+    font-size: 14px;
   }
-  
-  th {
-    background-color: #f2f2f2;
+
+  .input-container {
+    flex-direction: column;
   }
-  
-  @media (max-width: 768px) {
-    .form, .example, .list {
-      padding: 10px;
-    }
-  
-    th, td {
-      font-size: 14px;
-    }
-  
-    .input-container {
-      flex-direction: column;
-    }
-  
-    .inputItem {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
+
+  .inputItem {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
+}

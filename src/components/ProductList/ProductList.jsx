@@ -6,7 +6,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 
 const ProductList = () => {
 
-    const {tg, queryId, user, chatId} = useTelegram();
+    const {tg, queryId, user} = useTelegram();
 
     const [products, setProducts] = useState([]);
     const [addedItems, setAddedItems] = useState([]);

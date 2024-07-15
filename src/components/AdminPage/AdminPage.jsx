@@ -336,99 +336,111 @@ const AdminPage = () => {
 
     return (
         <div>
-            <form className="form">
-                <h3>Добавление товара</h3>
-                <input
-                className="input"
-                type="number"
-                placeholder="Id"
-                value={id}
-                onChange={onChangeId}
-                />
-                <input
-                className="input"
-                type="text"
-                placeholder="Category"
-                value={category}
-                onChange={onChangeCategory}
-                />
-                <input
-                className="input"
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={onChangeName}
-                />
-                <input
-                className="input"
-                type="text"
-                placeholder="Condition"
-                value={condition}
-                onChange={onChangeCondition}
-                />
-                <input
-                className="input"
-                type="text"
-                placeholder="Description"
-                value={description}
-                onChange={onChangeDescription}
-                />
-                <input
-                className="input"
-                type="text"
-                placeholder="Size"
-                value={size}
-                onChange={onChangeSize}
-                />
-                <div>
-                <input
-                    className="input"
-                    type="number"
-                    placeholder="Price"
-                    value={price}
-                    onChange={onChangePrice}
-                /> Price
+            <div class="admin-container">
+                <div class="admin-form">
+                    <form className="form">
+                        <h3>Добавление товара</h3>
+                        <input
+                        className="input"
+                        type="number"
+                        placeholder="Id"
+                        value={id}
+                        onChange={onChangeId}
+                        />
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Category"
+                        value={category}
+                        onChange={onChangeCategory}
+                        />
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Name"
+                        value={name}
+                        onChange={onChangeName}
+                        />
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Condition"
+                        value={condition}
+                        onChange={onChangeCondition}
+                        />
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Description"
+                        value={description}
+                        onChange={onChangeDescription}
+                        />
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Size"
+                        value={size}
+                        onChange={onChangeSize}
+                        />
+                        <div>
+                        <input
+                            className="input"
+                            type="number"
+                            placeholder="Price"
+                            value={price}
+                            onChange={onChangePrice}
+                        /> Price
+                        </div>
+                        <div>
+                        <input
+                            className="input"
+                            type="number"
+                            placeholder="RentPrice"
+                            value={rentPrice}
+                            onChange={onChangeRentPrice}
+                        /> Rent Price ( {price / 20 * 1.2 + 25} руб/день )
+                        </div>
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Photo"
+                        value={photo}
+                        onChange={onChangePhoto}
+                        />
+                        <select value={status} onChange={onChangeStatus} className="input">
+                        <option value="available">Доступен</option>
+                        <option value="reserved">Зарезервирован</option>
+                        <option value="in order">В заказе</option>
+                        </select>
+                        <select value={available} onChange={onChangeAvailable} className="input">
+                        <option value={1}>Доступен</option>
+                        <option value={0}>Не доступен</option>
+                        </select>
+                        <div>
+                        <Button className="btn-add-clothes" onClick={sendData}>
+                            Добавить
+                        </Button>
+                        <Button className="btn-change-clothes" onClick={changeData}>
+                            Изменить
+                        </Button>
+                        <Button className="btn-delete-clothes" onClick={deleteData}>
+                            Удалить
+                        </Button>
+                        <Button className="btn-change-clothes" onClick={changeStatus}>
+                            Изменить статус
+                        </Button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                <input
-                    className="input"
-                    type="number"
-                    placeholder="RentPrice"
-                    value={rentPrice}
-                    onChange={onChangeRentPrice}
-                /> Rent Price ( {price / 20 * 1.2 + 25} руб/день )
+                <div class="admin-preview">
+                    <div className="example">
+                        <img className="example_img" src={photo} alt={name} />
+                        <div className="example_name"><b>{category + ' ' + name}</b></div>
+                        <div className="example_description">{description}</div>
+                        <div className="example_description">Размер: {size}</div>
+                    </div>
                 </div>
-                <input
-                className="input"
-                type="text"
-                placeholder="Photo"
-                value={photo}
-                onChange={onChangePhoto}
-                />
-                <select value={status} onChange={onChangeStatus} className="input">
-                <option value="available">Доступен</option>
-                <option value="reserved">Зарезервирован</option>
-                <option value="in order">В заказе</option>
-                </select>
-                <select value={available} onChange={onChangeAvailable} className="input">
-                <option value={1}>Доступен</option>
-                <option value={0}>Не доступен</option>
-                </select>
-                <div>
-                <Button className="btn-add-clothes" onClick={sendData}>
-                    Добавить
-                </Button>
-                <Button className="btn-change-clothes" onClick={changeData}>
-                    Изменить
-                </Button>
-                <Button className="btn-delete-clothes" onClick={deleteData}>
-                    Удалить
-                </Button>
-                <Button className="btn-change-clothes" onClick={changeStatus}>
-                    Изменить статус
-                </Button>
-                </div>
-            </form>
+            </div>
             <form className="form">
                 <h3>Подтверждение заказа</h3>
                 <div>
