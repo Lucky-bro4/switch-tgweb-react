@@ -23,9 +23,9 @@ const ProductList = () => {
                 setProducts(data.products)
                 if (data.successOrder) {
                     setClosedChainOrder(true)
+                    setCosts(180)
                     if (data.chainOrder) {
                         setClosedChainOrder(false)
-                        setCosts(180)
                     }
                 }
             } catch (e) {
@@ -94,14 +94,14 @@ const ProductList = () => {
         } else if (closedChainOrder) {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `${getTotalPrice(newItems)} Р/24ч с доставкой`,
+                text: `${getTotalPrice(newItems)} Р с доставкой`,
                 color: '#a9a2a9'
             })
             tg.onEvent('mainButtonClicked', onShowAlert)
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Заказать за ${getTotalPrice(newItems)} Р/24ч с доставкой`
+                text: `Заказать за ${getTotalPrice(newItems)} Р с доставкой`
             })
         } 
     }
