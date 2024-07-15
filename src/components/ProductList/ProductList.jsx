@@ -94,14 +94,14 @@ const ProductList = () => {
         } else if (closedChainOrder) {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `${getTotalPrice(newItems)} Р с доставкой`,
+                text: `Аренда за ${getTotalPrice(newItems)} Р с доставкой`,
                 color: '#ccc'
             })
             tg.onEvent('mainButtonClicked', onShowAlert)
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Заказать за ${getTotalPrice(newItems)} Р с доставкой`
+                text: `Арендовать за ${getTotalPrice(newItems)} Р с доставкой`
             })
         } 
     }
