@@ -29,12 +29,12 @@ const ProductList = () => {
             // const data = await response.json();
             console.log(response.products)
             setProducts(response.products)
-            if (response.successOrder) {
-                setCosts(180)
-                setClosedChainOrder(true)
-                if (response.chainOrder)
-                    setClosedChainOrder(false)
-            }
+            // if (response.successOrder) {
+            //     setCosts(180)
+            //     setClosedChainOrder(true)
+            //     if (response.chainOrder)
+            //         setClosedChainOrder(false)
+            // }
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
         }
