@@ -6,7 +6,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 
 const ProductList = () => {
 
-    const {tg, queryId, user} = useTelegram();
+    const {tg, queryId, user, chatId} = useTelegram();
 
     const [products, setProducts] = useState([]);
     const [addedItems, setAddedItems] = useState([]);
@@ -15,27 +15,14 @@ const ProductList = () => {
 
     useEffect(() => {
         const getProducts = async () => {
-
-            const data = {
-                queryId,
-                user
-            }
-            
             try {
-
-                const response = fetch('https://bottg-lucky-bro4.amvera.io/products', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                })
-                console.log(response)
-
-                setProducts(response.products)
-                if (response.successOrder) {
+                const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?chatId=${chatId}`);
+                const data = await response.json();
+                console.log(data.products)
+                setProducts(data.products)
+                if (data.successOrder) {
                     setCosts(180)
-                    if (response.chainOrder) {
+                    if (data.chainOrder) {
                         setClosedChainOrder(true)
                     }
                 }
@@ -56,7 +43,6 @@ const ProductList = () => {
             queryId,
             user
         }
-
         fetch('https://bottg-lucky-bro4.amvera.io/web-data', {
             method: 'POST',
             headers: {
