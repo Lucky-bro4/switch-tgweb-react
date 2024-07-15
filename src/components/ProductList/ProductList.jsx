@@ -15,14 +15,22 @@ const ProductList = () => {
 
     const getProducts = async () => {
         try {
-            const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?${user}`);
-            const data = await response.json();
-            console.log(data.products)
-            setProducts(data.products)
-            if (data.successOrder) {
+
+            const response = await fetch('https://bottg-lucky-bro4.amvera.io/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user)
+            })
+
+            // const data = await response.json();
+            console.log(response.products)
+            setProducts(response.products)
+            if (response.successOrder) {
                 setCosts(180)
                 setClosedChainOrder(true)
-                if (data.chainOrder)
+                if (response.chainOrder)
                     setClosedChainOrder(false)
             }
         } catch (e) {
@@ -35,7 +43,7 @@ const ProductList = () => {
     }, [])
 
     const onSendData = useCallback(() => {
-        console.log('addedItems' + addedItems)
+        
         const data = {
             items: addedItems,
             totalPrice: getTotalPrice(addedItems),
