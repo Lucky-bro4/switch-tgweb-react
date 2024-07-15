@@ -19,12 +19,13 @@ const ProductList = () => {
                 console.log('chatId: ', user)
                 const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?chatId=${user.id}`);
                 const data = await response.json();
-                console.log(data.products)
+                
                 setProducts(data.products)
                 if (data.successOrder) {
-                    setCosts(180)
+                    setClosedChainOrder(true)
                     if (data.chainOrder) {
-                        setClosedChainOrder(true)
+                        setClosedChainOrder(false)
+                        setCosts(180)
                     }
                 }
             } catch (e) {
@@ -54,48 +55,48 @@ const ProductList = () => {
     }, [addedItems, queryId])
 
     useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
+        if (closedChainOrder) {
+            tg.onEvent('mainButtonClicked', onSendData)
+            return () => {
+                tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды.');
+            }
+        } else {
+            tg.onEvent('mainButtonClicked', onSendData)
+            return () => {
             tg.offEvent('mainButtonClicked', onSendData)
+            }
         }
     }, [onSendData])
 
     const onAdd = (product) => {
 
-        if (closedChainOrder) {
-
-            tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды.');
-
-        } else {
-
-            const alreadyAdded = addedItems.find(item => item.id === product.id);
-        
-            let newItems = [];
-            
-
-            if(alreadyAdded) {
-                newItems = addedItems.filter(item => item.id !== product.id);
-            } else {
-                newItems = [...addedItems, product];
-                console.log(newItems)
-            }
-
-            if (newItems.length > 4) {
-                tg.showAlert('Вы можете выбрать максимум 4 вещи');
-                acceptSuccess(newItems, success)
-                newItems.pop();
-            }
+        const alreadyAdded = addedItems.find(item => item.id === product.id);
     
-            setAddedItems(newItems)
+        let newItems = [];
+        
 
-            if(newItems.length === 0) {
-                tg.MainButton.hide();
-            } else {
-                tg.MainButton.show();
-                tg.MainButton.setParams({
-                    text: `Заказать за ${getTotalPrice(newItems)} с доставкой`
-                })
-            }
+        if(alreadyAdded) {
+            newItems = addedItems.filter(item => item.id !== product.id);
+        } else {
+            newItems = [...addedItems, product];
+            console.log(newItems)
+        }
+
+        if (newItems.length > 4) {
+            tg.showAlert('Вы можете выбрать максимум 4 вещи');
+            acceptSuccess(newItems, success)
+            newItems.pop();
+        }
+
+        setAddedItems(newItems)
+
+        if(newItems.length === 0) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+            tg.MainButton.setParams({
+                text: `Заказать за ${getTotalPrice(newItems)} с доставкой`
+            })
 
         } 
     }
