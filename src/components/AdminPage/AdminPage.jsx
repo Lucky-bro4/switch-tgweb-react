@@ -543,7 +543,7 @@ const AdminPage = () => {
             </div>
             <div>
                 <h2>Список товаров</h2>
-                <div className="list">
+                <div className="adminList">
                 <h3>Доступные сейчас товары</h3>
                 <table>
                     <thead>
@@ -574,7 +574,7 @@ const AdminPage = () => {
                     </tbody>
                 </table>
                 </div>
-                <div className="list">
+                <div className="adminList">
                 <h3>Товары в аренде</h3>
                 <table>
                     <thead>
@@ -607,7 +607,7 @@ const AdminPage = () => {
                     </tbody>
                 </table>
                 </div>
-                <div className="list">
+                <div className="adminList">
                 <h3>Товары в прачечной</h3>
                 <table>
                     <thead>

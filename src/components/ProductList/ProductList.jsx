@@ -6,7 +6,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 
 const ProductList = () => {
 
-    const {tg, queryId, user} = useTelegram();
+    const {tg, queryId, user, userId} = useTelegram();
 
     const [products, setProducts] = useState([]);
     const [addedItems, setAddedItems] = useState([]);
@@ -16,7 +16,7 @@ const ProductList = () => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?user=${user}`);
+                const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?userId=${userId}`);
                 const data = await response.json();
                 console.log(data.products)
                 setProducts(data.products)
