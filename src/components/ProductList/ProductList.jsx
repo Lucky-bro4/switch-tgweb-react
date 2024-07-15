@@ -59,12 +59,12 @@ const ProductList = () => {
     }, [])
 
     useEffect(() => {
-
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-        tg.offEvent('mainButtonClicked', onSendData)
+        if (!closedChainOrder) {
+            tg.onEvent('mainButtonClicked', onSendData)
+            return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+            }
         }
-        
     }, [onSendData])
 
     const onAdd = (product) => {
@@ -95,7 +95,7 @@ const ProductList = () => {
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: `${getTotalPrice(newItems)} Р/24ч с доставкой`,
-                color: rgb(169, 162, 162)
+                color: 'a9a2a9'
             })
             tg.onEvent('mainButtonClicked', onShowAlert)
         } else {
