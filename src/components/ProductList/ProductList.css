@@ -8,3 +8,30 @@
     margin-right: 10px;
     margin-bottom: 10px;
 }
+
+/* Адаптивные стили */
+@media (max-width: 600px) {
+    .item {
+        margin-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .item .product {
+        width: 90%;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .item {
+        margin-right: 10px;
+        width: 45%;
+    }
+}
+
+@media (min-width: 901px) {
+    .item {
+        width: 22%;
+    }
+}
