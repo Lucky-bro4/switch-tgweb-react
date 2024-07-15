@@ -15,14 +15,14 @@ const ProductList = () => {
 
     const getProducts = async () => {
         try {
-            const response = await fetch('https://bottg-lucky-bro4.amvera.io/products');
+            const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?${user}`);
             const data = await response.json();
             setProducts(data.products)
-            if (data.count) {
+            if (data.successOrder) {
                 setCosts(180)
-                if (data.chainOrder) {
-                    setClosedChainOrder(true)
-                }
+                setClosedChainOrder(true)
+                if (data.chainOrder)
+                    setClosedChainOrder(false)
             }
         } catch (e) {
             console.log('Ошибка при получении списка товаров:', e)
