@@ -676,6 +676,7 @@ const AdminPage = () => {
                     <th>Id</th>
                     <th>Статус</th>
                     <th>Комментарий</th>
+                    <th>Стоимость</th>
                     <th>Пользователь</th>
                     </tr>
                 </thead>
@@ -685,6 +686,7 @@ const AdminPage = () => {
                         <td>{order.id}</td>
                         <td>{order.status}</td>
                         <td>{order.comment}</td>
+                        <td>{order.price}</td>
                         <td>{order.userId}</td>
                     </tr>
                     ))}
