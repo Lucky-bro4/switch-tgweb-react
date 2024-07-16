@@ -55,11 +55,12 @@
     border-radius: 10px;
     color: black;
     transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .product:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .img {
@@ -68,32 +69,40 @@
     margin: 0 auto;
     background: white;
     border-radius: 10px;
+    object-fit: cover;
 }
 
 .description {
     font-size: 0.8em;
-    margin: 5px 0;
     text-align: center;
+    margin: 10px 0;
 }
 
 .add-btn, .disabled, .already-add-btn {
+    display: block;
     width: fit-content;
-    border: 5px;
+    padding: 10px 20px;
+    border: 0;
     border-radius: 50px;
-    margin: auto;
-    padding: 5px 15px;
     text-align: center;
-    font-size: 0.8em;
+    margin: auto;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-btn {
+    background-color: #007BFF;
+    color: white;
 }
 
 .add-btn:hover {
-    background-color: lightgreen;
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .disabled {
     background-color: rgb(169, 162, 162);
+    color: white;
     cursor: not-allowed;
 }
 
@@ -104,37 +113,5 @@
 
 .already-add-btn:hover {
     background-color: darkred;
-}
-
-/* Адаптивные стили */
-@media (max-width: 600px) {
-    .product {
-        width: 90%;
-    }
-
-    .img {
-        height: auto;
-    }
-
-    .description {
-        font-size: 1em;
-    }
-
-    .add-btn, .disabled, .already-add-btn {
-        font-size: 1em;
-    }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-    .product {
-        width: 100%;
-    }
-
-    .description {
-        font-size: 0.9em;
-    }
-
-    .add-btn, .disabled, .already-add-btn {
-        font-size: 0.9em;
-    }
+    transform: scale(1.05);
 }

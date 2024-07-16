@@ -1,3 +1,14 @@
+/* .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    margin-right: 10px;
+    margin-bottom: 10px;
+} */
+
 .list {
     display: flex;
     flex-wrap: wrap;
@@ -7,4 +18,23 @@
 .item {
     margin-right: 10px;
     margin-bottom: 10px;
+}
+
+/* Адаптивные стили для списка продуктов */
+@media (min-width: 600px) {
+    .item {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+@media (min-width: 900px) {
+    .item {
+        flex: 1 1 calc(33.33% - 10px);
+    }
+}
+
+@media (min-width: 1200px) {
+    .item {
+        flex: 1 1 calc(25% - 10px);
+    }
 }
