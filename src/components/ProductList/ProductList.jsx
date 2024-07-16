@@ -11,7 +11,7 @@ const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [addedItems, setAddedItems] = useState([]);
     const [costs, setCosts] = useState(260)
-    const [closedChainOrder, setClosedChainOrder] = useState('')
+    const [closedChainOrder, setClosedChainOrder] = useState(false)
 
     useEffect(() => {
         const getProducts = async () => {
@@ -21,17 +21,13 @@ const ProductList = () => {
                 const data = await response.json();
                 
                 setProducts(data.products)
-                if (data.successOrder.status === 'in delivery') {
-                    setClosedChainOrder('in delivery')
-                    setCosts(180)
-
-                } else if (data.successOrder.status === 'order_confirm') {
-                    setClosedChainOrder('order_confirm')
+                if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
+                    setClosedChainOrder(true)
                     setCosts(180)
                     if (data.chainOrder) {
-                        setClosedChainOrder('')
+                        setClosedChainOrder(false)
                     }
-                } 
+                }
 
             } catch (e) {
                 console.log('Ошибка при получении списка товаров:', e)
@@ -60,11 +56,7 @@ const ProductList = () => {
     }, [addedItems, queryId])
 
     const onShowAlert = useCallback(() => {
-        if (closedChainOrder === 'order_confirm') {
-            tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды.');
-        } else {
-            tg.showAlert('Заказ вещей сейчас недоступен, так как у вас есть оформленный заказ.');
-        }
+        tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 2 часа до конца текущей аренды. При заказе "по цепочке" доставка будет дешевле.');
     }, [])
 
     useEffect(() => {
