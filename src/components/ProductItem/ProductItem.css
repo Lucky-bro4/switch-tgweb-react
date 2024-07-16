@@ -1,4 +1,4 @@
-.product {
+/* .product {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -44,4 +44,97 @@
     content: center;
     margin: auto;
     background-color: red;
+} */
+
+.product {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 170px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    color: black;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.img {
+    width: 100%;
+    height: 150px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+}
+
+.description {
+    font-size: 0.8em;
+    margin: 5px 0;
+    text-align: center;
+}
+
+.add-btn, .disabled, .already-add-btn {
+    width: fit-content;
+    border: 5px;
+    border-radius: 50px;
+    margin: auto;
+    padding: 5px 15px;
+    text-align: center;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-btn:hover {
+    background-color: lightgreen;
+}
+
+.disabled {
+    background-color: rgb(169, 162, 162);
+    cursor: not-allowed;
+}
+
+.already-add-btn {
+    background-color: red;
+    color: white;
+}
+
+.already-add-btn:hover {
+    background-color: darkred;
+}
+
+/* Адаптивные стили */
+@media (max-width: 600px) {
+    .product {
+        width: 90%;
+    }
+
+    .img {
+        height: auto;
+    }
+
+    .description {
+        font-size: 1em;
+    }
+
+    .add-btn, .disabled, .already-add-btn {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .product {
+        width: 100%;
+    }
+
+    .description {
+        font-size: 0.9em;
+    }
+
+    .add-btn, .disabled, .already-add-btn {
+        font-size: 0.9em;
+    }
 }
