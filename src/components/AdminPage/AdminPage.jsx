@@ -627,6 +627,7 @@ const AdminPage = () => {
                         <th>Название</th>
                         <th>Размер</th>
                         <th>Пользователь</th>
+                        <th>Заказ</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -637,6 +638,7 @@ const AdminPage = () => {
                         <td>{laundryItem.name}</td>
                         <td>{laundryItem.size}</td>
                         <td>{laundryItem.userId}</td>
+                        <td>{laundryItem.orderId}</td>
                         </tr>
                     ))}
                     </tbody>
