@@ -21,13 +21,14 @@ const ProductList = () => {
                 const data = await response.json();
                 
                 setProducts(data.products)
-                if (data.successOrder) {
+                if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
                     setClosedChainOrder(true)
                     setCosts(180)
                     if (data.chainOrder) {
                         setClosedChainOrder(false)
                     }
                 }
+
             } catch (e) {
                 console.log('Ошибка при получении списка товаров:', e)
             }
