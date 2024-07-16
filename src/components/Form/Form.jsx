@@ -20,7 +20,7 @@ const Form = () => {
             grade
         }
         tg.sendData(JSON.stringify(data));
-    }, [quest1, quest2, grade])
+    }, [quest1, quest2, quest3, update, grade])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -36,12 +36,12 @@ const Form = () => {
     }, [])
 
     useEffect(() => {
-        if(!update) {
+        if(!quest1 && !quest2 && !quest3 && !update) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [quest1, quest2, grade])
+    }, [quest1, quest2, quest3, update])
 
     const onChangeQuest1 = (e) => {
         setQuest1(e.target.value)
@@ -84,7 +84,7 @@ return (
         <input
             className="input"
             type="text"
-            placeholder="Есть ли что-то, что мы могли бы улучшить в дизайне или навигации?"
+            placeholder="Что мы могли бы улучшить в дизайне или навигации?"
             value={quest2}
             onChange={onChangeQuest2}
         />
