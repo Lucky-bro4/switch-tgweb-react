@@ -596,7 +596,7 @@ const AdminPage = () => {
                         <th>Цена</th>
                         <th>Арендная плата</th>
                         <th>Пользователь</th>
-                        <th>Статус</th>
+                        <th>Заказ</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -611,7 +611,7 @@ const AdminPage = () => {
                         <td>{orderItem.price}</td>
                         <td>{orderItem.rentPrice}</td>
                         <td>{orderItem.userId}</td>
-                        <td>{orderItem.status}</td>
+                        <td>{orderItem.orderId}</td>
                         </tr>
                     ))}
                     </tbody>
