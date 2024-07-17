@@ -678,6 +678,7 @@ const AdminPage = () => {
                     <th>Комментарий</th>
                     <th>Стоимость</th>
                     <th>Пользователь</th>
+                    <th>Заказ "По цепочке"</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -688,6 +689,7 @@ const AdminPage = () => {
                         <td>{order.comment}</td>
                         <td>{order.price}</td>
                         <td>{order.userId}</td>
+                        <td>{order.chainOrder}</td>
                     </tr>
                     ))}
                 </tbody>
