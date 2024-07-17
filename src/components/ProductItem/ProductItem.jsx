@@ -31,7 +31,9 @@ const ProductItem = ({product, className, onAdd, closedChainOrder}) => {
 
     return (
         <div key={product.id} className={'product ' + className}>
-            <img className={'img'} src={product.image} alt={product.category + ' ' + product.name} />
+            <div className="img-container">
+                <img className="img" src={product.image} alt={`${product.category} ${product.name}`} />
+            </div>
             <div className={'title'}><b>{product.category + ' ' + product.name}</b></div>
             <div className={'description'}>{product.description}</div>
             <div className={'description'}>Размер: {product.size}</div>
