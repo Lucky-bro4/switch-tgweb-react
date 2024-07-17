@@ -21,7 +21,7 @@
 }
 
 /* Адаптивные стили для списка продуктов */
-/* @media (min-width: 600px) {
+@media (min-width: 400px) {
     .item {
         flex: 1 1 calc(50% - 10px);
     }
@@ -37,4 +37,4 @@
     .item {
         flex: 1 1 calc(25% - 10px);
     }
-} */
+}
