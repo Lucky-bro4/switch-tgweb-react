@@ -103,13 +103,13 @@
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.add-btn {
-    background-color: #007BFF;
+/* .add-btn {
+    background-color: ;
     color: white;
-}
+} */
 
 .add-btn:hover {
-    background-color: #0056b3;
+    background-color: #007BFF;
     transform: scale(1.05);
 }
 
