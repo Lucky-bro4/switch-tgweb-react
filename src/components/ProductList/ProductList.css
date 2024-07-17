@@ -20,7 +20,6 @@
     margin-bottom: 10px;
 }
 
-/* Адаптивные стили для списка продуктов */
 @media (min-width: 600px) {
     .item {
         flex: 1 1 calc(50% - 10px);
