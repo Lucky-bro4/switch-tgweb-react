@@ -49,6 +49,7 @@
 .product {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: 10px;
     width: 170px;
     background-color: whitesmoke;
@@ -63,12 +64,21 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.img {
+.img-container {
     width: 100%;
-    height: 100%;
+    height: 150px;
     margin: 0 auto;
     background: white;
     border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
