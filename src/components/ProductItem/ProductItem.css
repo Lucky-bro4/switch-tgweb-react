@@ -80,7 +80,7 @@
     width: 100%;
     height: auto;
     max-height: 160px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .title, .description {
