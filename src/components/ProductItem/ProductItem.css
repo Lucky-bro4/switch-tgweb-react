@@ -94,11 +94,11 @@
 
 .add-btn, .disabled, .already-add-btn {
     width: fit-content;
-    /* padding: 10px 20px; */
+    padding-bottom: 10px;
     border: 0;
     border-radius: 50px;
     text-align: center;
-    margin: 10px;
+    margin: 10px auto 0;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
