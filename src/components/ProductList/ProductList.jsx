@@ -128,7 +128,7 @@ const ProductList = () => {
                 ))
             ) : (
                 <div className="no-products">
-                    <p>Сейчас нет доступных вещей</p>
+                    <p>Загрузка каталога</p>
                 </div>
             )}
         </div>
