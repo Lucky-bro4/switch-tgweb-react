@@ -627,6 +627,8 @@ const AdminPage = () => {
                         <th>Id</th>
                         <th>Категория</th>
                         <th>Название</th>
+                        <th>Состояние</th>
+                        <th>Описание</th>
                         <th>Размер</th>
                         <th>Пользователь</th>
                         <th>Заказ</th>
@@ -638,6 +640,8 @@ const AdminPage = () => {
                         <td>{laundryItem.id}</td>
                         <td>{laundryItem.category}</td>
                         <td>{laundryItem.name}</td>
+                        <td>{availableItem.condition}</td>
+                        <td>{availableItem.description}</td>
                         <td>{laundryItem.size}</td>
                         <td>{laundryItem.userId}</td>
                         <td>{laundryItem.orderId}</td>
