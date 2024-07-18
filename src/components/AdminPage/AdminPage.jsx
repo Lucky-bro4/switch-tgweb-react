@@ -648,6 +648,7 @@ const AdminPage = () => {
                         </tr>
                     ))}
                     </tbody>
+                    <h3>Итого: {availableProducts.length + orderProducts.length + laundryProducts.length}</h3>
                 </table>
                 </div>
             </div>
