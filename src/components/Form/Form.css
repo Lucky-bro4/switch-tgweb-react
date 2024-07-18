@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     width: 97%;
-    /* max-width: 580px; */
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -58,7 +57,7 @@
     color: #ffcc00;
 }
 
-.submit-button {
+/* .submit-button {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -67,8 +66,8 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-}
+} */
 
-.submit-button:hover {
+/* .submit-button:hover {
     background-color: #0056b3;
-}
+} */
