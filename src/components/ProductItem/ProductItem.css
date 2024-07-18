@@ -116,7 +116,7 @@
 .disabled {
     background-color: rgb(169, 162, 162);
     color: white;
-    cursor: not-allowed;
+    /* cursor: not-allowed; */
 }
 
 .already-add-btn {
