@@ -73,7 +73,7 @@ const Form = () => {
 
 return (
     <div className="form-container">
-        <h3>Что вы думаете о Switch?</h3>
+        {/* <h3>Что вы думаете о Switch?</h3> */}
         <input
             className="input"
             type="text"
