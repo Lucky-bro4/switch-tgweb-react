@@ -640,8 +640,8 @@ const AdminPage = () => {
                         <td>{laundryItem.id}</td>
                         <td>{laundryItem.category}</td>
                         <td>{laundryItem.name}</td>
-                        <td>{availableItem.condition}</td>
-                        <td>{availableItem.description}</td>
+                        <td>{laundryItem.condition}</td>
+                        <td>{laundryItem.description}</td>
                         <td>{laundryItem.size}</td>
                         <td>{laundryItem.userId}</td>
                         <td>{laundryItem.orderId}</td>
