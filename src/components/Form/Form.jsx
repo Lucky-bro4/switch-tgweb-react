@@ -73,7 +73,6 @@ const Form = () => {
 
 return (
     <div className="form-container">
-        {/* <h3>Что вы думаете о Switch?</h3> */}
         <input
             className="input"
             type="text"
@@ -95,7 +94,6 @@ return (
             value={quest3}
             onChange={onChangeQuest3}
         />
-        <div className="label">Вопрос о ваших предпочтениях</div>
         <input
             className="input"
             type="text"
