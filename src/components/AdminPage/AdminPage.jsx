@@ -530,6 +530,7 @@ const AdminPage = () => {
                 <option value="success">Заказ принят полностью или частично</option>
                 <option value="canceled">Отмена заказа</option>
                 <option value="closed">Завершить заказ</option>
+                <option value="renew">Продлить заказ заказ</option>
                 </select>
                 <input
                 className="input-comment"
