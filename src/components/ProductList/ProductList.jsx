@@ -24,7 +24,7 @@ const ProductList = () => {
                 if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
                     setClosedChainOrder(true)
                     setCosts(180)
-                    if (data.chainOrder) {
+                    if (data.successOrder.comment === 'Аренда скоро закончится') {
                         setClosedChainOrder(false)
                     }
                 }
