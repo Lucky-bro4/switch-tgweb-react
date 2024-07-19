@@ -408,13 +408,14 @@ const AdminPage = () => {
                         onChange={onChangePhoto}
                         />
                         <select value={status} onChange={onChangeStatus} className="input">
-                        <option value="available">Доступен</option>
-                        <option value="reserved">Зарезервирован</option>
-                        <option value="in order">В заказе</option>
+                            <option value="available">Доступен</option>
+                            <option value="reserved">Зарезервирован</option>
+                            <option value="in order">В заказе</option>
+                            <option value="fake">Фэйк</option>
                         </select>
                         <select value={available} onChange={onChangeAvailable} className="input">
-                        <option value={1}>Доступен</option>
-                        <option value={0}>Не доступен</option>
+                            <option value={1}>Доступен</option>
+                            <option value={0}>Не доступен</option>
                         </select>
                         <div>
                         <Button className="btn-add-clothes" onClick={sendData}>
