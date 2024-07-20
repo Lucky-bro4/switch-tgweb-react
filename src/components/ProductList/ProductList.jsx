@@ -116,8 +116,8 @@ const ProductList = () => {
 
     return (
         <div className={'list'}>
-            {products.length > 0 ? (
-                products.map(item => (
+            {/* {products.length > 0 ? ( */}
+                {products.map(item => (
                     <ProductItem
                         key={item.id}
                         product={item}
@@ -125,12 +125,12 @@ const ProductList = () => {
                         className={'item'}
                         closedChainOrder={closedChainOrder}
                     />
-                ))
-            ) : (
+                ))}
+            {/* ) : (
                 <div className="no-products">
                     <p>Загрузка каталога</p>
                 </div>
-            )}
+            )} */}
         </div>
     );
 };
