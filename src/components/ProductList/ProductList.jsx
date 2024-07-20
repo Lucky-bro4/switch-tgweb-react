@@ -117,7 +117,7 @@ const ProductList = () => {
     return (
         <div className={'list'}>
             {/* {products.length > 0 ? ( */}
-                {products.map(item => (
+                {products.dataValues.map(item => (
                     <ProductItem
                         key={item.id}
                         product={item}
