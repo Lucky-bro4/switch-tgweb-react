@@ -439,7 +439,8 @@ const AdminPage = () => {
                 <div class="admin-preview">
                     <div className="example">
                         <img className="example_img" src={photo} alt={name} />
-                        <div className="example_name"><b>{category + ' ' + name}</b></div>
+                        <div className="example_name"><b>{name}</b></div>
+                        <div className="example_name">{category}</div>
                         <div className="example_description">{description}</div>
                         <div className="example_description">Размер: {size}</div>
                     </div>
