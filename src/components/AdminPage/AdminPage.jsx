@@ -16,6 +16,7 @@ const AdminPage = () => {
     const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
 
+    const [allProducts, setAllProducts] = useState([])
     const [availableProducts, setAvailableProducts] = useState([])
     const [orderProducts, setOrderProducts] = useState([])
     const [laundryProducts, setLaundryProducts] = useState([])
@@ -183,6 +184,7 @@ const AdminPage = () => {
         try {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
             const data = await response.json();
+            setAllProducts(data.allProducts)
             setAvailableProducts(data.availableProducts)
             setOrderProducts(data.orderProducts)
             setLaundryProducts(data.laundryProducts)
@@ -654,7 +656,7 @@ const AdminPage = () => {
                         </tr>
                     ))}
                     </tbody>
-                    <h3>Итого: {availableProducts.length + orderProducts.length + laundryProducts.length}</h3>
+                    <h3>Итого: {allProducts.length} на сумму {(allProducts.map(item => item.price).reduce((total, price) => total + price), 0)} Р</h3>
                 </table>
                 </div>
             </div>
