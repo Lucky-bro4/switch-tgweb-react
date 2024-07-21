@@ -286,9 +286,12 @@ const AdminPage = () => {
 
         try {
             const data = await postData('https://bottg-lucky-bro4.amvera.io/statusOrder', order);
-            console.log(data);
+            if (data.ok) {
+                setMessage('Данные по заказу получены')
+            }
         } catch (error) {
-            console.error('Ошибка при отправке данных:', error);
+            console.error();
+            setMessage(`Ошибка при отправке данных: ${error}`);
         }
     };
 
