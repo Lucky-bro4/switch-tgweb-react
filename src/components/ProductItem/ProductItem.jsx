@@ -34,7 +34,8 @@ const ProductItem = ({product, className, onAdd, closedChainOrder}) => {
             <div className="img-container">
                 <img className="img" src={product.image} alt={`${product.category} ${product.name}`} />
             </div>
-            <div className={'title'}><b>{product.category + ' ' + product.name}</b></div>
+            <div className={'title'}><b>{product.name}</b></div>
+            <div className={'title'}>{product.category}</div>
             <div className={'description'}>{product.description}</div>
             <div className={'description'}>Размер: {product.size}</div>
             <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
