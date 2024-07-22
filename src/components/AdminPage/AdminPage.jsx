@@ -656,6 +656,7 @@ const AdminPage = () => {
                         </tr>
                     ))}
                     </tbody>
+                    <h3>В видимости: {availableProducts.length + orderProducts.length + laundryProducts.length}</h3>
                     <h3>Итого: {allProducts.length} на сумму {allProducts.map(item => item.price).reduce((total, price) => total + price, 0)} Р</h3>
                 </table>
                 </div>
