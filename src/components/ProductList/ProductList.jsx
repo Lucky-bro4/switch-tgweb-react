@@ -13,6 +13,7 @@ const ProductList = () => {
     const [costs, setCosts] = useState(260)
     const [closedChainOrder, setClosedChainOrder] = useState(false)
     const [newUser, setNewUser] = useState(false)
+    const [alertShown, setAlertShown] = useState(false)
 
     useEffect(() => {
         const getProducts = async () => {
@@ -23,7 +24,7 @@ const ProductList = () => {
                 
                 setProducts(data.products)
 
-                if (!data.successOrder) {
+                if (!data.customer.location && !data.customer.phone_number) {
                     setNewUser(true)
                 }
 
@@ -88,14 +89,13 @@ const ProductList = () => {
             newItems = [...addedItems, product];
         }
 
-        let alertShown = false
         if (newItems.length > 4) {
             tg.showAlert('Вы можете выбрать максимум 4 вещи');
             acceptSuccess(newItems, success)
             newItems.pop();
         } else if (newItems.length === 1 && newUser && !alertShown) {
             tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена!')
-            alertShown = true
+            setAlertShown(true)
         }
 
         setAddedItems(newItems)
