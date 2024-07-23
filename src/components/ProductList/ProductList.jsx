@@ -23,7 +23,7 @@ const ProductList = () => {
                 
                 setProducts(data.products)
 
-                tg.showAlert(`OK ${data.customer}`)
+                tg.showAlert(`OK ${data.successOrder}`)
 
                 if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
                     setClosedChainOrder(true)
