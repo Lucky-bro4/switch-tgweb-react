@@ -24,10 +24,11 @@ const ProductList = () => {
                 setProducts(data.products)
 
                 if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
-                    setClosedChainOrder(true)
-                    setCosts(180)
+                    setCosts(180);
                     if (data.successOrder.comment === 'Аренда скоро закончится') {
-                        setClosedChainOrder(false)
+                        setClosedChainOrder(false);
+                    } else {
+                        setClosedChainOrder(true);
                     }
                 }
                 
@@ -92,7 +93,7 @@ const ProductList = () => {
             tg.showAlert('Вы можете выбрать максимум 4 вещи');
             acceptSuccess(newItems, success)
             newItems.pop();
-        } else if (newItems.length === 1 && !alertShown) {
+        } else if (newItems.length === 1 && newUser && !alertShown) {
             tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена!')
             alertShown = true
         }
