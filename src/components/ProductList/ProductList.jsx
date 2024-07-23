@@ -23,6 +23,8 @@ const ProductList = () => {
                 
                 setProducts(data.products)
 
+                tg.showAlert(`OK ${data.customer}`)
+
                 if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
                     setClosedChainOrder(true)
                     setCosts(180)
@@ -33,7 +35,7 @@ const ProductList = () => {
                 
                 if (data.customer.location === null && data.customer.phone_number === null) {
                     setNewUser(true)
-                    tg.showAlert(`OK`)
+                    
                 }
 
             } catch (e) {
