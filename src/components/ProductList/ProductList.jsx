@@ -29,9 +29,10 @@ const ProductList = () => {
                         setClosedChainOrder(false)
                     }
                 }
+                tg.showAlert(data.customer)
                 if (data.customer.location === '' && data.customer.phone_number === '') {
                     setNewUser(true)
-                    tg.showAlert(newUser)
+                    
                 }
 
             } catch (e) {
