@@ -12,6 +12,7 @@ const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const [costs, setCosts] = useState(260)
     const [closedChainOrder, setClosedChainOrder] = useState(false)
+    const [newUser, setNewUser] = useState(false)
 
     useEffect(() => {
         const getProducts = async () => {
@@ -27,6 +28,9 @@ const ProductList = () => {
                     if (data.successOrder.comment === 'Аренда скоро закончится') {
                         setClosedChainOrder(false)
                     }
+                }
+                if (!data.customer.location && !data.customer.phone_number) {
+                    setNewUser(true)
                 }
 
             } catch (e) {
@@ -79,7 +83,6 @@ const ProductList = () => {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
             newItems = [...addedItems, product];
-            console.log(newItems)
         }
 
         if (newItems.length > 4) {
@@ -93,17 +96,20 @@ const ProductList = () => {
         if(newItems.length === 0) {
             tg.MainButton.hide();
         } else if (closedChainOrder) {
-            tg.MainButton.show();
+            tg.MainButton.show()
             tg.MainButton.setParams({
-                text: `Аренда за ${getTotalPrice(newItems)} Р с доставкой`,
+                text: `Аренда за ${getTotalPrice(newItems)} Р`,
                 color: '#ccc'
             })
             tg.onEvent('mainButtonClicked', onShowAlert)
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Арендовать за ${getTotalPrice(newItems)} Р с доставкой`
+                text: `Арендовать за ${getTotalPrice(newItems)} Р`
             })
+            if (newUser) {
+                tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена.')
+            }
         } 
     }
 
