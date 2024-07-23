@@ -31,7 +31,7 @@ const ProductList = () => {
                     }
                 }
                 
-                if (!data.customer.location && !data.customer.phone_number) {
+                if (data.customer.location === null && data.customer.phone_number === null) {
                     setNewUser(true)
                     tg.showAlert(`${newUser} и ${newUser}`)
                 }
