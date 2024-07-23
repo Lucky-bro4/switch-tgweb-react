@@ -22,7 +22,7 @@ const ProductList = () => {
                 const data = await response.json();
                 
                 setProducts(data.products)
-                tg.showAlert(`${data.customer.location} и ${data.customer.phone_number}`)
+
                 if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
                     setClosedChainOrder(true)
                     setCosts(180)
@@ -31,9 +31,9 @@ const ProductList = () => {
                     }
                 }
                 
-                if (data.customer.location === '' && data.customer.phone_number === '') {
+                if (!data.customer.location && data.customer.phone_number) {
                     setNewUser(true)
-                    
+                    tg.showAlert(`${newUser} и ${newUser}`)
                 }
 
             } catch (e) {
