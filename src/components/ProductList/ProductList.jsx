@@ -23,6 +23,10 @@ const ProductList = () => {
                 
                 setProducts(data.products)
 
+                if (!data.successOrder) {
+                    setNewUser(true)
+                }
+
                 if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
                     setCosts(180);
                     if (data.successOrder.comment === 'Аренда скоро закончится') {
@@ -30,10 +34,6 @@ const ProductList = () => {
                     } else {
                         setClosedChainOrder(true);
                     }
-                }
-                
-                if (!data.successOrder) {
-                    setNewUser(true)
                 }
 
             } catch (e) {
