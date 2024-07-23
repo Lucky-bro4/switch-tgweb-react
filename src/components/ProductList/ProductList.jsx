@@ -23,8 +23,6 @@ const ProductList = () => {
                 
                 setProducts(data.products)
 
-                tg.showAlert(`OK ${data.successOrder}`)
-
                 if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
                     setClosedChainOrder(true)
                     setCosts(180)
@@ -33,9 +31,8 @@ const ProductList = () => {
                     }
                 }
                 
-                if (data.customer.location === null && data.customer.phone_number === null) {
+                if (!data.customer.location && !data.customer.phone_number) {
                     setNewUser(true)
-                    
                 }
 
             } catch (e) {
@@ -112,6 +109,7 @@ const ProductList = () => {
             tg.MainButton.setParams({
                 text: `Арендовать за ${getTotalPrice(newItems)} Р`
             })
+            tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена.')
             console.log(newUser)
             if (newUser) {
                 tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена.')
