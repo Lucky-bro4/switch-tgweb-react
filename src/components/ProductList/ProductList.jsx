@@ -29,7 +29,7 @@ const ProductList = () => {
                         setClosedChainOrder(false)
                     }
                 }
-                if (!data.customer.location && !data.customer.phone_number) {
+                if (data.customer.location === '' && data.customer.phone_number === '') {
                     setNewUser(true)
                 }
 
