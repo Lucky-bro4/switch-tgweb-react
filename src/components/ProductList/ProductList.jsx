@@ -87,12 +87,14 @@ const ProductList = () => {
             newItems = [...addedItems, product];
         }
 
+        let alertShown = false
         if (newItems.length > 4) {
             tg.showAlert('Вы можете выбрать максимум 4 вещи');
             acceptSuccess(newItems, success)
             newItems.pop();
-        } else if (newItems.length === 1 && newUser) {
+        } else if (newItems.length === 1 && !alertShown) {
             tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена!')
+            alertShown = true
         }
 
         setAddedItems(newItems)
