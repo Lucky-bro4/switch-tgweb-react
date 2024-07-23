@@ -91,6 +91,8 @@ const ProductList = () => {
             tg.showAlert('Вы можете выбрать максимум 4 вещи');
             acceptSuccess(newItems, success)
             newItems.pop();
+        } else if (newItems.length === 1 && newUser) {
+            tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена!')
         }
 
         setAddedItems(newItems)
@@ -109,11 +111,6 @@ const ProductList = () => {
             tg.MainButton.setParams({
                 text: `Арендовать за ${getTotalPrice(newItems)} Р`
             })
-            tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена.')
-            console.log(newUser)
-            if (newUser) {
-                tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена.')
-            }
         } 
     }
 
