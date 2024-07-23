@@ -31,6 +31,7 @@ const ProductList = () => {
                 }
                 if (data.customer.location === '' && data.customer.phone_number === '') {
                     setNewUser(true)
+                    tg.showAlert(newUser)
                 }
 
             } catch (e) {
