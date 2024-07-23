@@ -13,6 +13,7 @@ const ProductList = () => {
     const [costs, setCosts] = useState(260)
     const [closedChainOrder, setClosedChainOrder] = useState(false)
     const [newUser, setNewUser] = useState(false)
+    const [data, setData] = useState(null)
 
     useEffect(() => {
         const getProducts = async () => {
@@ -21,7 +22,35 @@ const ProductList = () => {
                 const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?chatId=${user.id}`);
                 const data = await response.json();
                 
-                setProducts(data.products)
+                // setProducts(data.products)
+
+                // if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
+                //     setCosts(180);
+                //     if (data.successOrder.comment === 'Аренда скоро закончится') {
+                //         setClosedChainOrder(false);
+                //     } else {
+                //         setClosedChainOrder(true);
+                //     }
+                // }
+                
+                // if (!data.customer.location && !data.customer.phone_number) {
+                //     setNewUser(true)
+                // }
+
+                setData(data)
+
+            } catch (e) {
+                console.log('Ошибка при получении списка товаров:', e)
+            }
+        }
+
+        getProducts();
+    }, [])
+
+    useEffect(() => {
+        if (data && data.customer) {
+            
+            setProducts(data.products)
 
                 if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
                     setCosts(180);
@@ -36,13 +65,8 @@ const ProductList = () => {
                     setNewUser(true)
                 }
 
-            } catch (e) {
-                console.log('Ошибка при получении списка товаров:', e)
-            }
         }
-
-        getProducts();
-    }, [])
+    }, [data]);
 
 
     const onSendData = useCallback(() => {
