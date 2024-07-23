@@ -107,6 +107,7 @@ const ProductList = () => {
             tg.MainButton.setParams({
                 text: `Арендовать за ${getTotalPrice(newItems)} Р`
             })
+            console.log(newUser)
             if (newUser) {
                 tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена.')
             }
