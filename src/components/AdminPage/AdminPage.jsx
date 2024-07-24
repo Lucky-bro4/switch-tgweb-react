@@ -430,14 +430,14 @@ const AdminPage = () => {
                         </select>
                         <input
                         className="input"
-                        type="number"
+                        type="text"
                         placeholder="UserId"
                         value={itemUserId}
                         onChange={onChangeItemUserId}
                         />
                         <input
                         className="input"
-                        type="number"
+                        type="text"
                         placeholder="OrderId"
                         value={itemOrderId}
                         onChange={onChangeItemOrderId}
