@@ -22,6 +22,8 @@ const AdminPage = () => {
     const [availableProducts, setAvailableProducts] = useState([])
     const [orderProducts, setOrderProducts] = useState([])
     const [laundryProducts, setLaundryProducts] = useState([])
+    const [otherProducts, setOtherProducts] = useState([])
+
     const [clients, setClients] = useState([])
     const [orders, setOrders] = useState([])
 
@@ -190,9 +192,31 @@ const AdminPage = () => {
             const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
             const data = await response.json();
             setAllProducts(data.allProducts)
-            setAvailableProducts(data.availableProducts)
-            setOrderProducts(data.orderProducts)
-            setLaundryProducts(data.laundryProducts)
+
+            let available = []
+            let order = []
+            let laundry = []
+            let other = []
+
+            for (let i = 0; i < allProducts.length; i++) {
+                if (allProducts[i].status === 'available' || allProducts[i].status === 'fake') {
+                    available = [...available, allProducts[i]]  
+
+                } else if (allProducts[i].status === 'in order') {
+                    order = [...order, allProducts[i]]
+
+                } else if (allProducts[i].status === 'in laundry') {
+                    laundry = [...laundry, allProducts[i]]
+
+                } else {
+                    other = [...other, allProducts[i]]
+                }
+            }
+
+            setAvailableProducts(available)
+            setOrderProducts(order)
+            setLaundryProducts(laundry)
+            setOtherProducts(other)
 
             setClients(data.clients)
             setOrders(data.orders)
@@ -678,6 +702,43 @@ const AdminPage = () => {
                         </tr>
                     ))}
                     </tbody>
+                    <div className="adminList">
+                <h3>Остальные товары</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Категория</th>
+                        <th>Название</th>
+                        <th>Состояние</th>
+                        <th>Описание</th>
+                        <th>Размер</th>
+                        <th>Цена</th>
+                        <th>Арендная плата</th>
+                        <th>Статус</th>
+                        <th>userId</th>
+                        <th>orderId</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {otherProducts.map(otherItem => (
+                        <tr key={otherItem.id}>
+                        <td>{otherItem.id}</td>
+                        <td>{otherItem.category}</td>
+                        <td>{otherItem.name}</td>
+                        <td>{otherItem.condition}</td>
+                        <td>{otherItem.description}</td>
+                        <td>{otherItem.size}</td>
+                        <td>{otherItem.price}</td>
+                        <td>{otherItem.rentPrice}</td>
+                        <td>{otherItem.status}</td>
+                        <td>{otherItem.userId}</td>
+                        <td>{otherItem.orderId}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+                </div>
                     <h3>В видимости: {availableProducts.length + orderProducts.length + laundryProducts.length}</h3>
                     <h3>Итого: {allProducts.length} на сумму {allProducts.map(item => item.price).reduce((total, price) => total + price, 0)} Р</h3>
                 </table>
