@@ -15,6 +15,8 @@ const AdminPage = () => {
     const [photo, setPhoto] = useState('/Images/Одежда/');
     const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
+    const [itemUserId, setItemUserId] = useState(0);
+    const [itemOrderId, setItemOrderId] = useState(0);
 
     const [allProducts, setAllProducts] = useState([])
     const [availableProducts, setAvailableProducts] = useState([])
@@ -22,8 +24,6 @@ const AdminPage = () => {
     const [laundryProducts, setLaundryProducts] = useState([])
     const [clients, setClients] = useState([])
     const [orders, setOrders] = useState([])
-
-    const [productUserId, changeUserId] = useState(0);
 
     const [orderId, changeOrderId] = useState(0);
     const [chatId, changeChatId] = useState('');
@@ -49,7 +49,7 @@ const AdminPage = () => {
 
     const [message, setMessage] = useState('');
 
-
+//Изменение товара
     const onChangeId = (e) => {
         setId(e.target.value);
     };
@@ -93,10 +93,15 @@ const AdminPage = () => {
         setAvailable(e.target.value);
     };
 
-    const ifChangeUserId = (e) => {
-        changeUserId(e.target.value);
+    const onChangeItemUserId = (e) => {
+        setItemUserId(e.target.value);
     };
 
+    const onChangeItemOrderId = (e) => {
+        setItemOrderId(e.target.value);
+    };
+
+//Подтверждение заказа
     const onChangeOrderId = (e) => {
         changeOrderId(e.target.value);
     };
@@ -212,7 +217,8 @@ const AdminPage = () => {
             photo: photo,
             status: status,
             available: Boolean(available),
-            userId: Number(productUserId),
+            userId: itemUserId,
+            orderId: itemOrderId
         };
 
         console.log(changeProduct);
@@ -422,6 +428,20 @@ const AdminPage = () => {
                             <option value={1}>Доступен</option>
                             <option value={0}>Не доступен</option>
                         </select>
+                        <input
+                        className="input"
+                        type="number"
+                        placeholder="UserId"
+                        value={itemUserId}
+                        onChange={onChangeItemUserId}
+                        />
+                        <input
+                        className="input"
+                        type="number"
+                        placeholder="OrderId"
+                        value={itemOrderId}
+                        onChange={onChangeItemOrderId}
+                        />
                         <div>
                         <Button className="btn-add-clothes" onClick={sendData}>
                             Добавить
