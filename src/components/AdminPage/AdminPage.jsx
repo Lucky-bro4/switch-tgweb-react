@@ -198,18 +198,18 @@ const AdminPage = () => {
             let laundry = []
             let other = []
 
-            for (let i = 0; i < allProducts.length; i++) {
-                if (allProducts[i].status === 'available' || allProducts[i].status === 'fake') {
-                    available = [...available, allProducts[i]]  
+            for (let i = 0; i < data.allProducts.length; i++) {
+                if (data.allProducts[i].status === 'available' || data.allProducts[i].status === 'fake') {
+                    available = [...available, data.allProducts[i]]  
 
-                } else if (allProducts[i].status === 'in order') {
-                    order = [...order, allProducts[i]]
+                } else if (data.allProducts[i].status === 'in order') {
+                    order = [...order, data.allProducts[i]]
 
-                } else if (allProducts[i].status === 'in laundry') {
-                    laundry = [...laundry, allProducts[i]]
+                } else if (data.allProducts[i].status === 'in laundry') {
+                    laundry = [...laundry, data.allProducts[i]]
 
                 } else {
-                    other = [...other, allProducts[i]]
+                    other = [...other, data.allProducts[i]]
                 }
             }
 
