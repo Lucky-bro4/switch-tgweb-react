@@ -13,7 +13,7 @@ const AdminPage = () => {
     const [price, setPrice] = useState(0);
     const [rentPrice, setRentPrice] = useState(0);
     const [photo, setPhoto] = useState('/Images/Одежда/');
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
     const [itemUserId, setItemUserId] = useState(0);
     const [itemOrderId, setItemOrderId] = useState(0);
@@ -173,7 +173,9 @@ const AdminPage = () => {
             size: size,
             price: Number(price),
             rentPrice: Number(rentPrice),
-            photo: photo
+            photo: photo, 
+            status: status,
+            available: available
         };
 
         console.log(newProduct);
