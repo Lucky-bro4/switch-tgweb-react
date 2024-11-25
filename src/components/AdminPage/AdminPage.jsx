@@ -191,7 +191,10 @@ const AdminPage = () => {
     const getAllData = async () => {
  
         try {
-            const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
+            const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData', {
+                method: 'GET',
+                mode: 'no-cors', // Устанавливаем режим no-cors
+              });
             const data = await response.json();
             setAllProducts(data.allProducts)
 
