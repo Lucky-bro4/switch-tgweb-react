@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AdminPage.css';
+import './AdminPreview.css';
 import Button from '../Button/Button';
 
 const AdminPage = () => {
@@ -553,13 +554,37 @@ const AdminPage = () => {
                         </div>
                     </form>
                 </div>
-                <div class="admin-preview">
+                {/* <div class="admin-preview">
                     <div className="example">
                         <img className="example_img" src={photo} alt={name} />
                         <div className="example_name"><b>{name}</b></div>
                         <div className="example_name">{category}</div>
                         <div className="example_description">{description}</div>
                         <div className="example_description">Размер: {size}</div>
+                    </div>
+                </div> */}
+                <div className="admin-preview">
+                    <div className="example">
+                        <div className={`example_photos ${photos.length > 1 ? 'multiple' : 'single'}`}>
+                            {photos.length === 1 ? (
+                                <img className="example_img" src={photos[0]} alt={name} />
+                            ) : (
+                                photos.map((photo, index) => (
+                                    <img
+                                        key={index}
+                                        className="example_img collage"
+                                        src={photo}
+                                        alt={`${name} ${index + 1}`}
+                                    />
+                                ))
+                            )}
+                        </div>
+                        <div className="example_name">
+                            <b>{name}</b>
+                        </div>
+                        <div className="example_category">{category}</div>
+                        <div className="example_description">{description}</div>
+                        <div className="example_size">Размер: {size}</div>
                     </div>
                 </div>
             </div>
