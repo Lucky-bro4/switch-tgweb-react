@@ -12,7 +12,7 @@ const AdminPage = () => {
     const [size, setSize] = useState('');
     const [price, setPrice] = useState(0);
     const [rentPrice, setRentPrice] = useState(0);
-    const [photo, setPhoto] = useState('/Images/Одежда/');
+    // const [photo, setPhoto] = useState('/Images/Одежда/');
     const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
     const [itemUserId, setItemUserId] = useState(0);
@@ -84,9 +84,9 @@ const AdminPage = () => {
         setRentPrice(e.target.value);
     };
 
-    const onChangePhoto = (e) => {
-        setPhoto(e.target.value);
-    };
+    // const onChangePhoto = (e) => {
+    //     setPhoto(e.target.value);
+    // };
 
     const onChangeStatus = (e) => {
         setStatus(e.target.value);
@@ -110,6 +110,32 @@ const AdminPage = () => {
     const onChangeChatId = (e) => {
         changeChatId(e.target.value);
     };
+
+    //Изменения
+
+    const [photos, setPhotos] = useState([]); // Массив выбранных фото
+
+    const handlePhotoChange = (index, event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const newPhotos = [...photos];
+            newPhotos[index] = URL.createObjectURL(file); // Генерируем временный URL для отображения
+            setPhotos(newPhotos);
+
+            // Если это последний элемент массива, добавляем новое поле
+            if (index === photos.length - 1) {
+                newPhotos.push(null); // Создаем новое пустое поле
+                setPhotos(newPhotos);
+            }
+        }
+    }
+
+    const handleRemovePhoto = (index) => {
+        const newPhotos = photos.filter((_, i) => i !== index); // Удаляем фото
+        setPhotos(newPhotos);
+    };
+
+    ///////////
 
 
     const changeItem1 = (id) => setItem1(id);
@@ -437,13 +463,56 @@ const AdminPage = () => {
                             onChange={onChangeRentPrice}
                         /> Rent Price ( {price / 20 * 1.2 + 25} руб/день )
                         </div>
-                        <input
+                        {/* <input
                         className="input"
                         type="text"
                         placeholder="Photo"
                         value={photo}
                         onChange={onChangePhoto}
-                        />
+                        /> */}
+                        <div>
+                            <h2>Загрузка фотографий товара</h2>
+                            {photos.map((photo, index) => (
+                                <div key={index} style={{ marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={(e) => handlePhotoChange(index, e)}
+                                        style={{ flex: 1 }}
+                                    />
+                                    {photo && (
+                                        <img
+                                            src={photo}
+                                            alt={`Фото ${index + 1}`}
+                                            style={{ width: '100px', height: '100px', objectFit: 'cover', marginLeft: '10px' }}
+                                        />
+                                    )}
+                                    {photos.length > 1 && (
+                                        <button
+                                            onClick={() => handleRemovePhoto(index)}
+                                            style={{
+                                                marginLeft: '10px',
+                                                backgroundColor: 'red',
+                                                color: 'white',
+                                                border: 'none',
+                                                cursor: 'pointer',
+                                                padding: '5px 10px',
+                                            }}
+                                        >
+                                            Удалить
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
+                            <div style={{ marginTop: '20px' }}>
+                                <h4>Список загруженных фото:</h4>
+                                <ul>
+                                    {photos.map((photo, i) => (
+                                        photo && <li key={i}>{photo}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
                         <select value={status} onChange={onChangeStatus} className="input">
                             <option value="available">Доступен</option>
                             <option value="reserved">Зарезервирован</option>
