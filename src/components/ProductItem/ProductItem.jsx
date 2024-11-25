@@ -4,7 +4,7 @@ import './ProductItem.css';
 
 let set = 0
 
-const ProductItem = ({product, className, onAdd, closedChainOrder}) => {
+const ProductItem = ({product, className, onClick, onAdd, closedChainOrder}) => {
 
     const onAddHandler = () => {
         if (set <= 4) {
@@ -30,7 +30,7 @@ const ProductItem = ({product, className, onAdd, closedChainOrder}) => {
 
 
     return (
-        <div key={product.id} className={'product ' + className}>
+        <div key={product.id} className={'product ' + className} onClick={onClick}>
             <div className="img-container">
                 <img className="img" src={product.image} alt={`${product.category} ${product.name}`} />
             </div>
