@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
+import ProductModal from "../ProductModal/ProductModal";
 
 
 const ProductList = () => {
@@ -14,6 +15,9 @@ const ProductList = () => {
     const [closedChainOrder, setClosedChainOrder] = useState(false)
     const [newUser, setNewUser] = useState(false)
     const [alertShown, setAlertShown] = useState(false)
+
+    const [selectedProduct, setSelectedProduct] = useState(null); // Выбранный товар
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const getProducts = async () => {
@@ -45,6 +49,15 @@ const ProductList = () => {
         getProducts();
     }, [])
 
+    const onProductClick = (product) => {
+        setSelectedProduct(product);
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setSelectedProduct(null);
+        setIsModalOpen(false);
+    }
 
     const onSendData = useCallback(() => {
         
@@ -132,6 +145,7 @@ const ProductList = () => {
                         key={item.id}
                         product={item}
                         onAdd={onAdd}
+                        onClick={() => onProductClick(item)}
                         className={'item'}
                         closedChainOrder={closedChainOrder}
                     />
@@ -140,6 +154,9 @@ const ProductList = () => {
                 <div className="no-products">
                     <p>Загрузка каталога</p>
                 </div>
+            )}
+            {isModalOpen && selectedProduct && ( // Если модальное окно открыто, отображаем его
+                <ProductModal product={selectedProduct} onClose={closeModal} />
             )}
         </div>
     );
