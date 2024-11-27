@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AdminPanel from './AdminPanel';
 import './AdminPage.css';
 import './AdminPreview.css';
 import Button from '../Button/Button';
@@ -401,6 +402,12 @@ const AdminPage = () => {
     return (
         <div>
             <div class="admin-container">
+                {/* Начало интеграции AdminPanel */}
+                <div>
+                    <h2>Панель администратора</h2>
+                    <AdminPanel /> {/* Добавленный компонент AdminPanel */}
+                </div>
+                {/* Конец интеграции AdminPanel */}
                 <div class="admin-form">
                     <form className="form">
                         <h3>Добавление товара</h3>
