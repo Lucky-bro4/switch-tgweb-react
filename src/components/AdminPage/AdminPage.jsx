@@ -223,6 +223,8 @@ const AdminPage = () => {
     const sendData = async (e) => {
         e.preventDefault();
 
+        console.log(photos)
+
         const newProduct = {
             category: category,
             name: name,
