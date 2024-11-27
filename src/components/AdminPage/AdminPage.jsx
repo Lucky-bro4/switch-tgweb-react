@@ -402,12 +402,6 @@ const AdminPage = () => {
     return (
         <div>
             <div class="admin-container">
-                {/* Начало интеграции AdminPanel */}
-                <div>
-                    <h2>Панель администратора</h2>
-                    <AdminPanel /> {/* Добавленный компонент AdminPanel */}
-                </div>
-                {/* Конец интеграции AdminPanel */}
                 <div class="admin-form">
                     <form className="form">
                         <h3>Добавление товара</h3>
@@ -479,47 +473,12 @@ const AdminPage = () => {
                         onChange={onChangePhoto}
                         /> */}
                         <div>
-                            <h2>Загрузка фотографий товара</h2>
-                            {photos.map((photo, index) => (
-                                <div key={index} style={{ marginBottom: '10px', display: 'flex', alignItems: 'center' }}>
-                                    <input
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={(e) => handlePhotoChange(index, e)}
-                                        style={{ flex: 1 }}
-                                    />
-                                    {photo && (
-                                        <img
-                                            src={photo}
-                                            alt={`Фото ${index + 1}`}
-                                            style={{ width: '100px', height: '100px', objectFit: 'cover', marginLeft: '10px' }}
-                                        />
-                                    )}
-                                    {photos.length > 1 && (
-                                        <button
-                                            onClick={() => handleRemovePhoto(index)}
-                                            style={{
-                                                marginLeft: '10px',
-                                                backgroundColor: 'red',
-                                                color: 'white',
-                                                border: 'none',
-                                                cursor: 'pointer',
-                                                padding: '5px 10px',
-                                            }}
-                                        >
-                                            Удалить
-                                        </button>
-                                    )}
-                                </div>
-                            ))}
-                            <div style={{ marginTop: '20px' }}>
-                                <h4>Список загруженных фото:</h4>
-                                <ul>
-                                    {photos.map((photo, i) => (
-                                        photo && <li key={i}>{photo}</li>
-                                    ))}
-                                </ul>
+                            {/* Начало интеграции AdminPanel */}
+                            <div>
+                                <h2>Панель администратора</h2>
+                                <AdminPanel /> {/* Добавленный компонент AdminPanel */}
                             </div>
+                            {/* Конец интеграции AdminPanel */}
                         </div>
                         <select value={status} onChange={onChangeStatus} className="input">
                             <option value="available">Доступен</option>
@@ -716,7 +675,7 @@ const AdminPage = () => {
                         <th>Описание</th>
                         <th>Размер</th>
                         <th>Цена</th>
-                        <th>Арендная плата</th>
+                        <th>Цена аренды</th>
                         <th>Статус</th>
                         <th>userId</th>
                         <th>orderId</th>
@@ -753,7 +712,7 @@ const AdminPage = () => {
                         <th>Описание</th>
                         <th>Размер</th>
                         <th>Цена</th>
-                        <th>Арендная плата</th>
+                        <th>Цена аренды</th>
                         <th>Пользователь</th>
                         <th>Заказ</th>
                     </tr>
@@ -819,7 +778,7 @@ const AdminPage = () => {
                         <th>Описание</th>
                         <th>Размер</th>
                         <th>Цена</th>
-                        <th>Арендная плата</th>
+                        <th>Цена аренды</th>
                         <th>Статус</th>
                         <th>userId</th>
                         <th>orderId</th>

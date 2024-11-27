@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import './AdminPanel.css'; // Для стилей
+import './AdminPanel.css';
 
 const AdminPanel = () => {
     const [photos, setPhotos] = useState([]);
-    const [form, setForm] = useState({
-        category: '',
-        name: '',
-        condition: '',
-        description: '',
-        size: '',
-        price: '',
-        rentPrice: '',
-    });
+    // const [form, setForm] = useState({
+    //     category: '',
+    //     name: '',
+    //     condition: '',
+    //     description: '',
+    //     size: '',
+    //     price: '',
+    //     rentPrice: '',
+    // });
 
     const handlePhotoChange = (event) => {
         const files = Array.from(event.target.files);
@@ -19,10 +19,10 @@ const AdminPanel = () => {
         setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
     };
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setForm({ ...form, [name]: value });
-    };
+    // const handleInputChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setForm({ ...form, [name]: value });
+    // };
 
     const handleRemovePhoto = (index) => {
         setPhotos(photos.filter((_, i) => i !== index));
@@ -30,7 +30,7 @@ const AdminPanel = () => {
 
     return (
         <div className="admin-panel">
-            <div className="form-section">
+            {/* <div className="form-section">
                 <h3>Добавление товара</h3>
                 <input name="category" placeholder="Category" onChange={handleInputChange} />
                 <input name="name" placeholder="Name" onChange={handleInputChange} />
@@ -39,7 +39,7 @@ const AdminPanel = () => {
                 <input name="size" placeholder="Size" onChange={handleInputChange} />
                 <input name="price" type="number" placeholder="Price" onChange={handleInputChange} />
                 <input name="rentPrice" type="number" placeholder="Rent Price" onChange={handleInputChange} />
-            </div>
+            </div> */}
 
             <div className="photo-upload-section">
                 <h3>Загрузка фотографий товара</h3>
