@@ -15,6 +15,36 @@ const AdminPage = () => {
     const [price, setPrice] = useState(0);
     const [rentPrice, setRentPrice] = useState(0);
     // const [photo, setPhoto] = useState('/Images/Одежда/');
+
+    const [photos, setPhotos] = useState([]);
+    // const [form, setForm] = useState({
+    //     category: '',
+    //     name: '',
+    //     condition: '',
+    //     description: '',
+    //     size: '',
+    //     price: '',
+    //     rentPrice: '',
+    // });
+
+    //Связать передачу фотографий с AdminPage
+
+    const handlePhotoChange = (event) => {
+        const files = Array.from(event.target.files);
+        const newPhotos = files.map((file) => URL.createObjectURL(file));
+        setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
+    };
+
+    // const handleInputChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setForm({ ...form, [name]: value });
+    // };
+
+    const handleRemovePhoto = (index) => {
+        setPhotos(photos.filter((_, i) => i !== index));
+    };
+
+
     const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
     const [itemUserId, setItemUserId] = useState(0);
@@ -115,27 +145,27 @@ const AdminPage = () => {
 
     //Изменения
 
-    const [photos, setPhotos] = useState([]); // Массив выбранных фото
+    // const [photos, setPhotos] = useState([]); // Массив выбранных фото
 
-    const handlePhotoChange = (index, event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const newPhotos = [...photos];
-            newPhotos[index] = URL.createObjectURL(file); // Генерируем временный URL для отображения
-            setPhotos(newPhotos);
+    // const handlePhotoChange = (index, event) => {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         const newPhotos = [...photos];
+    //         newPhotos[index] = URL.createObjectURL(file); // Генерируем временный URL для отображения
+    //         setPhotos(newPhotos);
 
-            // Если это последний элемент массива, добавляем новое поле
-            if (index === photos.length - 1) {
-                newPhotos.push(null); // Создаем новое пустое поле
-                setPhotos(newPhotos);
-            }
-        }
-    }
+    //         // Если это последний элемент массива, добавляем новое поле
+    //         if (index === photos.length - 1) {
+    //             newPhotos.push(null); // Создаем новое пустое поле
+    //             setPhotos(newPhotos);
+    //         }
+    //     }
+    // }
 
-    const handleRemovePhoto = (index) => {
-        const newPhotos = photos.filter((_, i) => i !== index); // Удаляем фото
-        setPhotos(newPhotos);
-    };
+    // const handleRemovePhoto = (index) => {
+    //     const newPhotos = photos.filter((_, i) => i !== index); // Удаляем фото
+    //     setPhotos(newPhotos);
+    // };
 
     ///////////
 
@@ -201,7 +231,7 @@ const AdminPage = () => {
             size: size,
             price: Number(price),
             rentPrice: Number(rentPrice),
-            photo: photo, 
+            photo: photos, 
             status: status,
             available: available
         };
@@ -268,7 +298,7 @@ const AdminPage = () => {
             size: size,
             price: Number(price),
             rentPrice: Number(rentPrice),
-            photo: photo,
+            photo: photos,
             status: status,
             available: Boolean(available),
             userId: itemUserId,
@@ -472,13 +502,29 @@ const AdminPage = () => {
                         value={photo}
                         onChange={onChangePhoto}
                         /> */}
-                        <div>
-                            {/* Начало интеграции AdminPanel */}
-                            <div>
-                                <h2>Панель администратора</h2>
-                                <AdminPanel /> {/* Добавленный компонент AdminPanel */}
+                        <div className="admin-panel">
+                            <div className="photo-upload-section">
+                                <h3>Загрузка фотографий товара</h3>
+                                <input type="file" multiple accept="image/*" onChange={handlePhotoChange} />
+                                <div className="photo-preview">
+                                    {photos.length > 0 && (
+                                        <>
+                                            {photos.length === 1 ? (
+                                                <img className="photo-preview-single" src={photos[0]} alt="Превью товара" />
+                                            ) : (
+                                                <div className="photo-preview-collage">
+                                                    {photos.map((photo, index) => (
+                                                        <div key={index} className="photo-collage-item">
+                                                            <img src={photo} alt={`Фото ${index + 1}`} />
+                                                            <button onClick={() => handleRemovePhoto(index)}>Удалить</button>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
                             </div>
-                            {/* Конец интеграции AdminPanel */}
                         </div>
                         <select value={status} onChange={onChangeStatus} className="input">
                             <option value="available">Доступен</option>
@@ -529,7 +575,7 @@ const AdminPage = () => {
                         <div className="example_description">Размер: {size}</div>
                     </div>
                 </div> */}
-                <div className="admin-preview">
+                {/* <div className="admin-preview">
                     <div className="example">
                         <div className={`example_photos ${photos.length > 1 ? 'multiple' : 'single'}`}>
                             {photos.length === 1 ? (
@@ -552,7 +598,7 @@ const AdminPage = () => {
                         <div className="example_description">{description}</div>
                         <div className="example_size">Размер: {size}</div>
                     </div>
-                </div>
+                </div> */}
             </div>
             <form className="form">
                 <h3>Подтверждение заказа</h3>

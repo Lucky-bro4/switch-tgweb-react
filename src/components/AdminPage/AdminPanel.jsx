@@ -13,6 +13,8 @@ const AdminPanel = () => {
     //     rentPrice: '',
     // });
 
+    //Связать передачу фотографий с AdminPage
+
     const handlePhotoChange = (event) => {
         const files = Array.from(event.target.files);
         const newPhotos = files.map((file) => URL.createObjectURL(file));
