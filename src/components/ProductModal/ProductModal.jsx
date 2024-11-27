@@ -1,8 +1,9 @@
 import React from 'react';
 import './ProductModal.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const ProductModal = ({ product, onClose }) => {
     return (
