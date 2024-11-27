@@ -33,6 +33,7 @@ const AdminPage = () => {
         const files = Array.from(event.target.files);
         const newPhotos = files.map((file) => URL.createObjectURL(file));
         setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
+        console.log(photos[-1])
     };
 
     // const handleInputChange = (event) => {
