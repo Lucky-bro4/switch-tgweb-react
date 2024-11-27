@@ -575,7 +575,7 @@ const AdminPage = () => {
                         <div className="example_description">Размер: {size}</div>
                     </div>
                 </div> */}
-                {/* <div className="admin-preview">
+                <div className="admin-preview">
                     <div className="example">
                         <div className={`example_photos ${photos.length > 1 ? 'multiple' : 'single'}`}>
                             {photos.length === 1 ? (
@@ -598,7 +598,7 @@ const AdminPage = () => {
                         <div className="example_description">{description}</div>
                         <div className="example_size">Размер: {size}</div>
                     </div>
-                </div> */}
+                </div>
             </div>
             <form className="form">
                 <h3>Подтверждение заказа</h3>
