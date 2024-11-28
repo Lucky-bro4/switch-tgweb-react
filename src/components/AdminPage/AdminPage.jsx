@@ -225,71 +225,49 @@ const AdminPage = () => {
         return response.json(); 
     };
 
-    const handleUpload = async (e) => {
+    const sendData = async (e) => {
         e.preventDefault();
 
         const formData = new FormData();
         photoPaths.forEach((file) => {
           formData.append('photos', file);
         });
-        console.log('Пути:', photoPaths)
-//
+
+        console.log('Пути:', formData)
+
+        try {
+            // Отправляем файлы на сервер
+            const response = await fetch('https://bottg-lucky-bro4.amvera.io/upload', {
+              method: 'POST',
+              body: formData,
+            });
+      
+            const data = await response.json();
+            console.log('Ответ от сервера по фото:', data);
+        } catch (error) {
+            console.error('Ошибка при отправке данных по фото:', error);
+        }
+
         const newProduct = {
-                category: category,
-                name: name,
-                condition: condition,
-                description: description,
-                size: size,
-                price: Number(price),
-                rentPrice: Number(rentPrice),
-                photo: formData, 
-                status: status,
-                available: available
+            category: category,
+            name: name,
+            condition: condition,
+            description: description,
+            size: size,
+            price: Number(price),
+            rentPrice: Number(rentPrice),
+            status: status,
+            available: available
         };
 
         console.log(newProduct);
 
-        // try {
-        //     // Отправляем файлы на сервер
-        //     const response = await fetch('https://bottg-lucky-bro4.amvera.io/upload', {
-        //       method: 'POST',
-        //       body: formData,
-        //     });
-
-        //     const data = await response.json();
-        //     console.log('Ответ от сервера по фото:', data);
-        // } catch (error) {
-        //     console.error('Ошибка при отправке данных по фото:', error);
-        // }
-
-    }
-
-    const sendData = async (e) => {
-        e.preventDefault();
-
-        console.log(photos)
-
-        // const newProduct = {
-        //     category: category,
-        //     name: name,
-        //     condition: condition,
-        //     description: description,
-        //     size: size,
-        //     price: Number(price),
-        //     rentPrice: Number(rentPrice),
-        //     // photo: photos, 
-        //     status: status,
-        //     available: available
-        // };
-
-        // console.log(newProduct);
-
-        // try {
-        //     const data = await postData('https://bottg-lucky-bro4.amvera.io/newProduct', newProduct);
-        //     console.log(data.message);
-        // } catch (error) {
-        //     console.error('Ошибка при отправке данных:', error);
-        // }
+        try {
+            const data = await postData('https://bottg-lucky-bro4.amvera.io/newProduct', newProduct);
+            console.log(data.message);
+        } catch (error) {
+            console.error('Ошибка при отправке данных:', error);
+        }
 
     };
 
@@ -598,7 +576,7 @@ const AdminPage = () => {
                         onChange={onChangeItemOrderId}
                         />
                         <div>
-                        <Button className="btn-add-clothes" onClick={handleUpload}>
+                        <Button className="btn-add-clothes" onClick={sendData}>
                             Добавить
                         </Button>
                         <Button className="btn-change-clothes" onClick={changeData}>
