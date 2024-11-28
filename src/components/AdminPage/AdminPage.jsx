@@ -47,8 +47,8 @@ const AdminPage = () => {
         const formData = new FormData();
         photoPaths.forEach((file) => {
           formData.append('photos', file);
-        console.log('Пути:', photoPaths)
         });
+        console.log('Пути:', photoPaths)
     }
 
     // const handleInputChange = (event) => {
