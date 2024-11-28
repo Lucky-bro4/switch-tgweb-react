@@ -17,6 +17,8 @@ const AdminPage = () => {
     // const [photo, setPhoto] = useState('/Images/Одежда/');
 
     const [photos, setPhotos] = useState([]);
+    const [photoPaths, setPhotoPaths] = useState([]);
+
     // const [form, setForm] = useState({
     //     category: '',
     //     name: '',
@@ -33,8 +35,19 @@ const AdminPage = () => {
         const files = Array.from(event.target.files);
         const newPhotos = files.map((file) => URL.createObjectURL(file));
         setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
-        console.log(photos[-1])
+
+        const newPhotoPaths = files.map((file) => file);
+        setPhotoPaths((prevPaths) => [...prevPaths, ...newPhotoPaths]);
     };
+
+    const handleUpload = async () => {
+
+        const formData = new FormData();
+        photoPaths.forEach((file) => {
+          formData.append('photos', file);
+        console.log('Пути:', photoPaths)
+        });
+    }
 
     // const handleInputChange = (event) => {
     //     const { name, value } = event.target;
@@ -226,27 +239,41 @@ const AdminPage = () => {
 
         console.log(photos)
 
-        const newProduct = {
-            category: category,
-            name: name,
-            condition: condition,
-            description: description,
-            size: size,
-            price: Number(price),
-            rentPrice: Number(rentPrice),
-            photo: photos, 
-            status: status,
-            available: available
-        };
+        // const newProduct = {
+        //     category: category,
+        //     name: name,
+        //     condition: condition,
+        //     description: description,
+        //     size: size,
+        //     price: Number(price),
+        //     rentPrice: Number(rentPrice),
+        //     // photo: photos, 
+        //     status: status,
+        //     available: available
+        // };
 
-        console.log(newProduct);
+        // console.log(newProduct);
 
-        try {
-            const data = await postData('https://bottg-lucky-bro4.amvera.io/newProduct', newProduct);
-            console.log(data.message);
-        } catch (error) {
-            console.error('Ошибка при отправке данных:', error);
-        }
+        // try {
+        //     const data = await postData('https://bottg-lucky-bro4.amvera.io/newProduct', newProduct);
+        //     console.log(data.message);
+        // } catch (error) {
+        //     console.error('Ошибка при отправке данных:', error);
+        // }
+
+        // try {
+        //     // Отправляем файлы на сервер
+        //     const response = await fetch('https://bottg-lucky-bro4.amvera.io/upload', {
+        //       method: 'POST',
+        //       body: formData,
+        //     });
+      
+        //     const data = await response.json();
+        //     console.log('Ответ от сервера по фото:', data);
+        // } catch (error) {
+        //     console.error('Ошибка при отправке данных по фото:', error);
+        // }
+
     };
 
     const getAllData = async () => {
@@ -554,7 +581,7 @@ const AdminPage = () => {
                         onChange={onChangeItemOrderId}
                         />
                         <div>
-                        <Button className="btn-add-clothes" onClick={sendData}>
+                        <Button className="btn-add-clothes" onClick={handleUpload}>
                             Добавить
                         </Button>
                         <Button className="btn-change-clothes" onClick={changeData}>
