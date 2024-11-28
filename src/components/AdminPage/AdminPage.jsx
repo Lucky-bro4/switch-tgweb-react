@@ -42,6 +42,8 @@ const AdminPage = () => {
 
     const handleUpload = async () => {
 
+        e.preventDefault();
+
         const formData = new FormData();
         photoPaths.forEach((file) => {
           formData.append('photos', file);
