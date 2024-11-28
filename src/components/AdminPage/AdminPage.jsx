@@ -40,11 +40,6 @@ const AdminPage = () => {
         setPhotoPaths((prevPaths) => [...prevPaths, ...newPhotoPaths]);
     };
 
-    // const handleInputChange = (event) => {
-    //     const { name, value } = event.target;
-    //     setForm({ ...form, [name]: value });
-    // };
-
     const handleRemovePhoto = (index) => {
         setPhotos(photos.filter((_, i) => i !== index));
     };
@@ -148,32 +143,6 @@ const AdminPage = () => {
         changeChatId(e.target.value);
     };
 
-    //Изменения
-
-    // const [photos, setPhotos] = useState([]); // Массив выбранных фото
-
-    // const handlePhotoChange = (index, event) => {
-    //     const file = event.target.files[0];
-    //     if (file) {
-    //         const newPhotos = [...photos];
-    //         newPhotos[index] = URL.createObjectURL(file); // Генерируем временный URL для отображения
-    //         setPhotos(newPhotos);
-
-    //         // Если это последний элемент массива, добавляем новое поле
-    //         if (index === photos.length - 1) {
-    //             newPhotos.push(null); // Создаем новое пустое поле
-    //             setPhotos(newPhotos);
-    //         }
-    //     }
-    // }
-
-    // const handleRemovePhoto = (index) => {
-    //     const newPhotos = photos.filter((_, i) => i !== index); // Удаляем фото
-    //     setPhotos(newPhotos);
-    // };
-
-    ///////////
-
 
     const changeItem1 = (id) => setItem1(id);
     const changeOrderItem1 = (text) => setOrderItem1(text);
@@ -228,26 +197,6 @@ const AdminPage = () => {
     const sendData = async (e) => {
         e.preventDefault();
 
-        const formData = new FormData();
-        photoPaths.forEach((file) => {
-          formData.append('photos', file);
-        });
-
-        console.log('Пути:', formData)
-
-        try {
-            // Отправляем файлы на сервер
-            const response = await fetch('https://bottg-lucky-bro4.amvera.io/upload', {
-              method: 'POST',
-              body: formData,
-            });
-      
-            const data = await response.json();
-            console.log('Ответ от сервера по фото:', data);
-        } catch (error) {
-            console.error('Ошибка при отправке данных по фото:', error);
-        }
-
         const newProduct = {
             category: category,
             name: name,
@@ -262,13 +211,35 @@ const AdminPage = () => {
 
         console.log(newProduct);
 
-        try {
-            const data = await postData('https://bottg-lucky-bro4.amvera.io/newProduct', newProduct);
-            console.log(data.message);
-        } catch (error) {
-            console.error('Ошибка при отправке данных:', error);
-        }
+        const productResponse = await fetch('/newProduct', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newProduct),
+        });
 
+        const { itemId } = await productResponse.json();
+
+        if (itemId && photos.length > 0){
+
+            const formData = new FormData();
+            photos.forEach((file) => formData.append('photos', file));
+            formData.append('itemId', itemId);
+
+            console.log('Пути:', formData)
+
+            try {
+                // Отправляем файлы на сервер
+                const response = await fetch('https://bottg-lucky-bro4.amvera.io/upload', {
+                    method: 'POST',
+                    body: formData,
+                });
+        
+                const data = await response.json();
+                console.log('Ответ от сервера по фото:', data);
+            } catch (error) {
+                console.error('Ошибка при отправке данных по фото:', error);
+            }
+        }
     };
 
     const getAllData = async () => {
