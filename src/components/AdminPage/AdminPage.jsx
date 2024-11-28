@@ -219,6 +219,8 @@ const AdminPage = () => {
 
         const { itemId } = await productResponse.json();
 
+        console.log('itemId:', itemId)
+
         if (itemId && photos.length > 0){
 
             const formData = new FormData();
@@ -294,7 +296,7 @@ const AdminPage = () => {
             size: size,
             price: Number(price),
             rentPrice: Number(rentPrice),
-            photo: photos,
+            // photo: photos,
             status: status,
             available: Boolean(available),
             userId: itemUserId,
