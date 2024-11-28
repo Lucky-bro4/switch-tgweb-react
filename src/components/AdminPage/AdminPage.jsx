@@ -30,9 +30,8 @@ const AdminPage = () => {
     };
 
     const handleRemovePhoto = (index) => {
-        setPhotos(photos.filter((i) => i !== index));
-
-        setPhotoPaths(photoPaths.filter((i) => i !== index));
+        setPhotos(photos.filter((_, i) => i !== index));
+        setPhotoPaths(photoPaths.filter((_, i) => i !== index));
     };
 
 
@@ -505,11 +504,12 @@ const AdminPage = () => {
                                                     {photos.map((photo, index) => (
                                                         <div key={index} className="photo-collage-item">
                                                             <img src={photo} alt={`Фото ${index + 1}`} />
-                                                            <button onClick={() => handleRemovePhoto(index)}>Удалить</button>
+                                                            {/* <button onClick={() => handleRemovePhoto(index)}>Удалить</button> */}
                                                         </div>
                                                     ))}
                                                 </div>
                                             )}
+                                            <button onClick={() => handleRemovePhoto(index)}>Удалить</button>
                                         </>
                                     )}
                                 </div>
