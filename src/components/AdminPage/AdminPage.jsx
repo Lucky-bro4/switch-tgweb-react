@@ -227,8 +227,10 @@ const AdminPage = () => {
             photoPaths.forEach((file) => formData.append('photos', file));
             formData.append('itemId', itemId);
 
-            console.log('Пути:', formData)
-
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+              }
+            
             try {
                 // Отправляем файлы на сервер
                 const response = await fetch('https://bottg-lucky-bro4.amvera.io/upload', {
