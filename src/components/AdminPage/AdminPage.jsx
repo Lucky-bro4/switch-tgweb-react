@@ -40,7 +40,7 @@ const AdminPage = () => {
         setPhotoPaths((prevPaths) => [...prevPaths, ...newPhotoPaths]);
     };
 
-    const handleUpload = async () => {
+    const handleUpload = async (e) => {
 
         e.preventDefault();
 
