@@ -211,7 +211,7 @@ const AdminPage = () => {
 
         console.log(newProduct);
 
-        const productResponse = await fetch('https://bottg-lucky-bro4.amvera.io//newProduct', {
+        const productResponse = await fetch('https://bottg-lucky-bro4.amvera.io/newProduct', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newProduct),
