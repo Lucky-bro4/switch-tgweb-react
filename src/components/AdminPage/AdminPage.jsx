@@ -233,7 +233,7 @@ const AdminPage = () => {
           formData.append('photos', file);
         });
         console.log('Пути:', photoPaths)
-
+//
         const newProduct = {
                 category: category,
                 name: name,
