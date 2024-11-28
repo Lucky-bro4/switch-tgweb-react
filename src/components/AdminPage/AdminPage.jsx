@@ -222,7 +222,7 @@ const AdminPage = () => {
         if (itemId && photos.length > 0){
 
             const formData = new FormData();
-            photos.forEach((file) => formData.append('photos', file));
+            photoPaths.forEach((file) => formData.append('photos', file));
             formData.append('itemId', itemId);
 
             console.log('Пути:', formData)
