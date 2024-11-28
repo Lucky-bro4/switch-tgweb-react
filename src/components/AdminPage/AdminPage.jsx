@@ -19,29 +19,22 @@ const AdminPage = () => {
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
 
-    // const [form, setForm] = useState({
-    //     category: '',
-    //     name: '',
-    //     condition: '',
-    //     description: '',
-    //     size: '',
-    //     price: '',
-    //     rentPrice: '',
-    // });
 
-    //Связать передачу фотографий с AdminPage
+    //Сомнительный скрипт
+    const newPhotoPaths = files.map((file) => file);
 
     const handlePhotoChange = (event) => {
         const files = Array.from(event.target.files);
         const newPhotos = files.map((file) => URL.createObjectURL(file));
         setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
 
-        const newPhotoPaths = files.map((file) => file);
         setPhotoPaths((prevPaths) => [...prevPaths, ...newPhotoPaths]);
     };
 
     const handleRemovePhoto = (index) => {
-        setPhotos(photos.filter((_, i) => i !== index));
+        setPhotos(photos.filter((i) => i !== index));
+
+        setPhotoPaths(newPhotoPaths.filter((i) => i !== index));
     };
 
 
@@ -219,13 +212,11 @@ const AdminPage = () => {
 
         const { itemId } = await productResponse.json();
 
-        console.log('itemId:', itemId)
-
         if (itemId && photos.length > 0){
 
             const formData = new FormData();
             photoPaths.forEach((file) => formData.append('photos', file));
-            formData.append('itemId', itemId);
+            formData.append('itemId', String(itemId));
 
             for (let [key, value] of formData.entries()) {
                 console.log(key, value);
