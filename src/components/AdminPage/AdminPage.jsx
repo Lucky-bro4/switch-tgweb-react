@@ -20,14 +20,12 @@ const AdminPage = () => {
     const [photoPaths, setPhotoPaths] = useState([]);
 
 
-    //Сомнительный скрипт
-    const newPhotoPaths = files.map((file) => file);
-
     const handlePhotoChange = (event) => {
         const files = Array.from(event.target.files);
         const newPhotos = files.map((file) => URL.createObjectURL(file));
         setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
 
+        const newPhotoPaths = files.map((file) => file);
         setPhotoPaths((prevPaths) => [...prevPaths, ...newPhotoPaths]);
     };
 
