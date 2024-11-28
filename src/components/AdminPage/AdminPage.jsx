@@ -40,17 +40,6 @@ const AdminPage = () => {
         setPhotoPaths((prevPaths) => [...prevPaths, ...newPhotoPaths]);
     };
 
-    const handleUpload = async (e) => {
-
-        e.preventDefault();
-
-        const formData = new FormData();
-        photoPaths.forEach((file) => {
-          formData.append('photos', file);
-        });
-        console.log('Пути:', photoPaths)
-    }
-
     // const handleInputChange = (event) => {
     //     const { name, value } = event.target;
     //     setForm({ ...form, [name]: value });
@@ -236,6 +225,45 @@ const AdminPage = () => {
         return response.json(); 
     };
 
+    const handleUpload = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        photoPaths.forEach((file) => {
+          formData.append('photos', file);
+        });
+        console.log('Пути:', photoPaths)
+
+        const newProduct = {
+                category: category,
+                name: name,
+                condition: condition,
+                description: description,
+                size: size,
+                price: Number(price),
+                rentPrice: Number(rentPrice),
+                photo: formData, 
+                status: status,
+                available: available
+        };
+
+        console.log(newProduct);
+
+        // try {
+        //     // Отправляем файлы на сервер
+        //     const response = await fetch('https://bottg-lucky-bro4.amvera.io/upload', {
+        //       method: 'POST',
+        //       body: formData,
+        //     });
+
+        //     const data = await response.json();
+        //     console.log('Ответ от сервера по фото:', data);
+        // } catch (error) {
+        //     console.error('Ошибка при отправке данных по фото:', error);
+        // }
+
+    }
+
     const sendData = async (e) => {
         e.preventDefault();
 
@@ -261,19 +289,6 @@ const AdminPage = () => {
         //     console.log(data.message);
         // } catch (error) {
         //     console.error('Ошибка при отправке данных:', error);
-        // }
-
-        // try {
-        //     // Отправляем файлы на сервер
-        //     const response = await fetch('https://bottg-lucky-bro4.amvera.io/upload', {
-        //       method: 'POST',
-        //       body: formData,
-        //     });
-      
-        //     const data = await response.json();
-        //     console.log('Ответ от сервера по фото:', data);
-        // } catch (error) {
-        //     console.error('Ошибка при отправке данных по фото:', error);
         // }
 
     };
