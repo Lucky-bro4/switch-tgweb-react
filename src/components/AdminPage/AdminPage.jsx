@@ -32,7 +32,7 @@ const AdminPage = () => {
     const handleRemovePhoto = (index) => {
         setPhotos(photos.filter((i) => i !== index));
 
-        setPhotoPaths(newPhotoPaths.filter((i) => i !== index));
+        setPhotoPaths(photoPaths.filter((i) => i !== index));
     };
 
 
