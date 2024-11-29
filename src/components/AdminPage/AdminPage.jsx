@@ -729,6 +729,7 @@ const AdminPage = () => {
                         <td>{availableItem.size}</td>
                         <td>{availableItem.price}</td>
                         <td>{availableItem.rentPrice}</td>
+                        <td>{availableItem.image}</td>
                         <td>{availableItem.status}</td>
                         <td>{availableItem.userId}</td>
                         <td>{availableItem.orderId}</td>
