@@ -504,12 +504,11 @@ const AdminPage = () => {
                                                     {photos.map((photo, index) => (
                                                         <div key={index} className="photo-collage-item">
                                                             <img src={photo} alt={`Фото ${index + 1}`} />
-                                                            {/* <button onClick={() => handleRemovePhoto(index)}>Удалить</button> */}
+                                                            <button onClick={() => handleRemovePhoto(index)}>Удалить</button>
                                                         </div>
                                                     ))}
                                                 </div>
                                             )}
-                                            <button onClick={() => handleRemovePhoto(index)}>Удалить</button>
                                         </>
                                     )}
                                 </div>
