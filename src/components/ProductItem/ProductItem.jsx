@@ -43,6 +43,12 @@ const ProductItem = ({product, className, onClick, onAdd, closedChainOrder}) => 
             >
                 {content} за {product.rentPrice} Р
             </Button>
+            <Button 
+                // className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
+                // onClick={onAddHandler}
+            >
+                Купить за {product.price} Р
+            </Button>
             <div id='remove'>
                 {changeButton}
             </div>        
