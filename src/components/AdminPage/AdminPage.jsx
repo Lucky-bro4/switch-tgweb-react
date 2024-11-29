@@ -498,7 +498,10 @@ const AdminPage = () => {
                                     {photos.length > 0 && (
                                         <>
                                             {photos.length === 1 ? (
-                                                <img className="photo-preview-single" src={photos[0]} alt="Превью товара" />
+                                                <div>
+                                                    <img className="photo-preview-single" src={photos[0]} alt="Превью товара" />
+                                                    <button onClick={() => handleRemovePhoto(index)}>Удалить</button>
+                                                </div>
                                             ) : (
                                                 <div className="photo-preview-collage">
                                                     {photos.map((photo, index) => (
