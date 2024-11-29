@@ -32,7 +32,7 @@ const ProductItem = ({product, className, onClick, onAdd, closedChainOrder}) => 
     return (
         <div key={product.id} className={'product ' + className} onClick={onClick}>
             <div className="img-container">
-                <img className="img" src="https://switchthings.netlify.app/Images/Одежда/1/image1.jpg" alt={`${product.category} ${product.name}`} />
+                <img className="img" src="https:/switchthings.netlify.app/Images/Одежда/1/image1.jpg" alt={`${product.category} ${product.name}`} />
             </div>
             <div className={'title'}><b>{product.name}</b></div>
             <div className={'title'}>{product.category}</div>
