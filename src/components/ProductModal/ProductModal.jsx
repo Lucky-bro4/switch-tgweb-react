@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Navigation, Pagination } from 'swiper';
 
 const ProductModal = ({ product, onClose }) => {
     return (
@@ -16,7 +15,6 @@ const ProductModal = ({ product, onClose }) => {
                 {/* Добавляем карусель для фотографий */}
                 {product.image.length > 1 ? (
                     <Swiper
-                        modules={[Navigation, Pagination]}
                         spaceBetween={10}
                         slidesPerView={1}
                         navigation
