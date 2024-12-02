@@ -10,7 +10,7 @@ const AuthPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://bottg-lucky-bro4.amvera.io/login', {
+      const response = await fetch('https://bottry-lucky-bro4.amvera.io/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

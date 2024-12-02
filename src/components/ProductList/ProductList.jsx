@@ -23,7 +23,7 @@ const ProductList = () => {
         const getProducts = async () => {
             try {
                 console.log('chatId: ', user)
-                const response = await fetch(`https://bottg-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
                 const data = await response.json();
                 
                 setProducts(data.products)
@@ -67,7 +67,7 @@ const ProductList = () => {
             queryId,
             user
         }
-        fetch('https://bottg-lucky-bro4.amvera.io/web-data', {
+        fetch('https://bottry-lucky-bro4.amvera.io/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

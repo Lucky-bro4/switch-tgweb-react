@@ -201,7 +201,7 @@ const AdminPage = () => {
 
         console.log(newProduct);
 
-        const productResponse = await fetch('https://bottg-lucky-bro4.amvera.io/newProduct', {
+        const productResponse = await fetch('https://bottry-lucky-bro4.amvera.io/newProduct', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newProduct),
@@ -221,7 +221,7 @@ const AdminPage = () => {
             
             try {
                 // Отправляем файлы на сервер
-                const response = await fetch('https://bottg-lucky-bro4.amvera.io/upload', {
+                const response = await fetch('https://bottry-lucky-bro4.amvera.io/upload', {
                     method: 'POST',
                     body: formData,
                 });
@@ -237,7 +237,7 @@ const AdminPage = () => {
     const getAllData = async () => {
  
         try {
-            const response = await fetch('https://bottg-lucky-bro4.amvera.io/allData');
+            const response = await fetch('https://bottry-lucky-bro4.amvera.io/allData');
             const data = await response.json();
             setAllProducts(data.allProducts)
 
@@ -296,7 +296,7 @@ const AdminPage = () => {
         console.log(changeProduct);
 
         try {
-            const data = await postData('https://bottg-lucky-bro4.amvera.io/changeProduct', changeProduct);
+            const data = await postData('https://bottry-lucky-bro4.amvera.io/changeProduct', changeProduct);
             console.log(data);
         } catch (error) {
             console.error('Ошибка при отправке данных:', error);
@@ -316,7 +316,7 @@ const AdminPage = () => {
         console.log(changeProduct);
 
         try {
-            const data = await postData('https://bottg-lucky-bro4.amvera.io/changeProduct', changeProduct);
+            const data = await postData('https://bottry-lucky-bro4.amvera.io/changeProduct', changeProduct);
             console.log(data);
         } catch (error) {
             console.error('Ошибка при отправке данных:', error);
@@ -333,7 +333,7 @@ const AdminPage = () => {
         console.log(deleteData);
 
         try {
-            const data = await postData('https://bottg-lucky-bro4.amvera.io/deleteProduct', deleteProduct);
+            const data = await postData('https://bottry-lucky-bro4.amvera.io/deleteProduct', deleteProduct);
             console.log(data.message);
         } catch (error) {
             console.error('Ошибка при отправке данных:', error);
@@ -365,7 +365,7 @@ const AdminPage = () => {
         console.log(order);
 
         try {
-            const data = await postData('https://bottg-lucky-bro4.amvera.io/statusOrder', order);
+            const data = await postData('https://bottry-lucky-bro4.amvera.io/statusOrder', order);
             if (data.ok) {
                 setMessage('Данные по заказу получены')
             }
@@ -384,7 +384,7 @@ const AdminPage = () => {
         };
         console.log(order)
         try {
-            const data = await postData('https://bottg-lucky-bro4.amvera.io/order', order);
+            const data = await postData('https://bottry-lucky-bro4.amvera.io/order', order);
             console.log(data)
 
             if (data.products[0]) {
