@@ -14,7 +14,7 @@ const ProductModal = ({ product, onClose }) => {
                 <h2>{product.name}</h2>
 
                 {/* Добавляем карусель для фотографий */}
-                {product.images.length > 1 ? (
+                {product.image.length > 1 ? (
                     <Swiper
                         modules={[Navigation, Pagination]}
                         spaceBetween={10}
@@ -23,14 +23,14 @@ const ProductModal = ({ product, onClose }) => {
                         pagination={{ clickable: true }}
                         style={{ width: "100%", height: "auto" }}
                     >
-                        {product.images.map((image, index) => (
+                        {product.image.map((image, index) => (
                             <SwiperSlide key={index}>
                                 <img src={image} alt={`${product.name} - ${index + 1}`} className="product-image" />
                             </SwiperSlide>
                         ))}
                     </Swiper>
                 ) : (
-                    <img src={product.images[0]} alt={product.name} className="product-image" />
+                    <img src={product.image[0]} alt={product.name} className="product-image" />
                 )}
 
                 <p><strong>Описание:</strong> {product.description}</p>
