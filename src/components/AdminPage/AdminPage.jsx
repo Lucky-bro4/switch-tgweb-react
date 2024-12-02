@@ -714,6 +714,7 @@ const AdminPage = () => {
                         <th>Цена</th>
                         <th>Цена аренды</th>
                         <th>Статус</th>
+                        <th>Первое фото</th>
                         <th>userId</th>
                         <th>orderId</th>
                     </tr>
@@ -729,8 +730,8 @@ const AdminPage = () => {
                         <td>{availableItem.size}</td>
                         <td>{availableItem.price}</td>
                         <td>{availableItem.rentPrice}</td>
-                        <td>{availableItem.image[0]}</td>
                         <td>{availableItem.status}</td>
+                        <td>{availableItem.image[0]}</td>
                         <td>{availableItem.userId}</td>
                         <td>{availableItem.orderId}</td>
                         </tr>
