@@ -6,19 +6,32 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 const ProductModal = ({ product, onClose }) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const handleSlideChange = (swiper) => {
+        setActiveIndex(swiper.activeIndex);
+    };
+
     return (
         <div className="modal-overlay">
             <div className="modal-content">
                 <button className="modal-close" onClick={onClose}>×</button>
                 <h2>{product.name}</h2>
 
-                {/* Добавляем карусель для фотографий */}
-                {product.image.length > 1 ? (
+                {/* Добавляем прогресс-бар и карусель */}
+                <div className="slider-container">
+                    <div className="progress-bar">
+                        {product.image.map((_, index) => (
+                            <div
+                                key={index}
+                                className={`progress-bar-segment ${activeIndex === index ? 'active' : ''}`}
+                            ></div>
+                        ))}
+                    </div>
                     <Swiper
                         spaceBetween={10}
                         slidesPerView={1}
-                        navigation
-                        pagination={{ clickable: true }}
+                        onSlideChange={handleSlideChange}
                         style={{ width: "100%", height: "auto" }}
                     >
                         {product.image.map((image, index) => (
@@ -27,9 +40,7 @@ const ProductModal = ({ product, onClose }) => {
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                ) : (
-                    <img src={product.image[0]} alt={product.name} className="product-image" />
-                )}
+                </div>
 
                 <p><strong>Описание:</strong> {product.description}</p>
                 <p><strong>Цена аренды:</strong> {product.rentPrice} Р</p>
