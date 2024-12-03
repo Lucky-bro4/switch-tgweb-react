@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductModal.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
