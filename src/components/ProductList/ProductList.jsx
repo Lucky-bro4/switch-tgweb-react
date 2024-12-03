@@ -16,7 +16,7 @@ const ProductList = () => {
     const [newUser, setNewUser] = useState(false)
     const [alertShown, setAlertShown] = useState(false)
 
-    const [selectedProduct, setSelectedProduct] = useState(null); // Выбранный товар
+    const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
