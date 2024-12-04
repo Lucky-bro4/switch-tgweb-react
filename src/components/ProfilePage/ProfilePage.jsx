@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "./ProfilePage.css";
+
 
 const ProfilePage = ({ addedItems }) => {
     const totalPrice = addedItems.reduce((acc, item) => acc + item.rentPrice, 0);
@@ -27,6 +29,11 @@ const ProfilePage = ({ addedItems }) => {
                     <h2>Общая сумма: {totalPrice} Р</h2>
                 </div>
             )}
+            <div className="return-button">
+                <Link to="/" className="button">
+                    Вернуться в каталог
+                </Link>
+            </div>
         </div>
     );
 };

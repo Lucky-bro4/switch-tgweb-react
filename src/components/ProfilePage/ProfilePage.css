@@ -24,3 +24,21 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+.return-button .button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.return-button .button:hover {
+    background-color: #0056b3;
+}
+

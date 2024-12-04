@@ -10,7 +10,7 @@ import AdminPage from './components/AdminPage/AdminPage';
 import AuthPage from './components/AuthPage/AuthPage';
 
 function App() {
-    const {onToggleButton, tg} = useTelegram();
+    const {tg} = useTelegram();
 
     useEffect(() => {
         tg.ready();
