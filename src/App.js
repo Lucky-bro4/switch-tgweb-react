@@ -5,7 +5,7 @@ import Header from "./components/Header/Header";
 import { Route, Routes } from 'react-router-dom'
 import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
-import ProductList from "./components/ProductList/ProductList";
+import ProfilePage from './components/ProfilePage/ProfilePage';
 import AdminPage from './components/AdminPage/AdminPage';
 import AuthPage from './components/AuthPage/AuthPage';
 
