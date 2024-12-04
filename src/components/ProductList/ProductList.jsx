@@ -158,9 +158,9 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                     <p>Загрузка каталога</p>
                 </div>
             )}
-            {isModalOpen && selectedProduct && ( // Если модальное окно открыто, отображаем его
+            {/* {isModalOpen && selectedProduct && ( // Если модальное окно открыто, отображаем его
                 <ProductModal product={selectedProduct} onClose={closeModal} />
-            )}
+            )} */}
 
             {/* Кнопка корзины */}
             <div className="cart-icon" onClick={() => navigate("/profile")}>
