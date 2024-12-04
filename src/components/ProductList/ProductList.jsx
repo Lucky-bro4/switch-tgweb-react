@@ -3,9 +3,10 @@ import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
+import { useNavigate } from "react-router-dom";
 
 
-const ProductList = () => {
+const ProductList = ({ addedItems, setAddedItems }) => {
 
     const {tg, queryId, user} = useTelegram();
 
@@ -18,6 +19,8 @@ const ProductList = () => {
 
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getProducts = async () => {
@@ -158,6 +161,16 @@ const ProductList = () => {
             {isModalOpen && selectedProduct && ( // Если модальное окно открыто, отображаем его
                 <ProductModal product={selectedProduct} onClose={closeModal} />
             )}
+
+            {/* Кнопка корзины */}
+            <div className="cart-icon" onClick={() => navigate("/profile")}>
+                <div className="icon">
+                    🛒
+                    {addedItems.length > 0 && (
+                        <div className="badge">{addedItems.length}</div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };

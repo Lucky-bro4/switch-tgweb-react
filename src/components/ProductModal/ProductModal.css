@@ -50,7 +50,7 @@
 }
 
 .progress-bar-segment.active {
-    background: #6278e9; /* Яркий цвет активного сегмента */
+    background: #007bff; /* Яркий цвет активного сегмента */
 }
 
 .product-image {
