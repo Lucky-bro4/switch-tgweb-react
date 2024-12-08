@@ -165,7 +165,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
             {/* Кнопка корзины */}
             <div className="cart-icon" onClick={() => navigate("/profile")}>
                 <div className="icon">
-                    <img src="/Images/shopping_basket.png" alt="shopping_basket" />
+                    <img src="/Images/shopping_basket.png" width={20} alt="shopping_basket" />
                     {addedItems.length > 0 && (
                         <div className="badge">{addedItems.length}</div>
                     )}
