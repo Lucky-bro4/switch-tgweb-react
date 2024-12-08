@@ -158,14 +158,14 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                     <p>Загрузка каталога</p>
                 </div>
             )}
-            {/* {isModalOpen && selectedProduct && ( // Если модальное окно открыто, отображаем его
+            {isModalOpen && selectedProduct && ( // Если модальное окно открыто, отображаем его
                 <ProductModal product={selectedProduct} onClose={closeModal} />
-            )} */}
+            )}
 
             {/* Кнопка корзины */}
             <div className="cart-icon" onClick={() => navigate("/profile")}>
                 <div className="icon">
-                    🛒
+                    <img src="/Images/shopping_basket.png" alt="shopping_basket" />
                     {addedItems.length > 0 && (
                         <div className="badge">{addedItems.length}</div>
                     )}

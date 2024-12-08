@@ -34,21 +34,21 @@ const ProductItem = ({product, className, onClick, onAdd, closedChainOrder}) => 
             <div className="img-container">
                 <img className="img" src={product.image[0]} alt={`${product.category} ${product.name}`} />
             </div>
-            <div className={'title'}><b>{product.name}</b></div>
-            <div className={'title'}>{product.category}</div>
+            <div className={'title'}><b>{product.name + product.category}</b></div>
+            {/* <div className={'title'}>{product.category}</div> */}
             <div className={'description'}>{product.description}</div>
-            <div className={'description'}>Размер: {product.size}</div>
-            <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
+            <div className={'size'}>Размер: {product.size}</div>
+            {/* <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
                 onClick={onAddHandler}
             >
                 {content} за {product.rentPrice} Р
-            </Button>
-            <Button 
+            </Button> */}
+            {/* <Button 
                 className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
-                // onClick={onAddHandler}
+                onClick={onAddHandler}
             >
                 Купить за {product.price} Р
-            </Button>
+            </Button> */}
             <div id='remove'>
                 {changeButton}
             </div>        

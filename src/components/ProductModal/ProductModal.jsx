@@ -41,9 +41,14 @@ const ProductModal = ({ product, onClose }) => {
                         ))}
                     </Swiper>
                 </div>
-
-                <p><strong>Описание:</strong> {product.description}</p>
-                <p><strong>Цена аренды:</strong> {product.rentPrice} Р</p>
+                <p><strong>{product.category + product.name}</strong></p>
+                <p><strong>Размер:</strong> {product.size} </p>
+                <p><strong>Описание:</strong> {product.description} </p>
+                {/* <p><strong>Цена аренды:</strong> {product.rentPrice} Р</p> */}
+                <p><strong>Цена:</strong> {product.price} Р</p>
+                <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
+                    onClick={onAddHandler}
+                >Добавить в корзину</Button>
             </div>
         </div>
     );
