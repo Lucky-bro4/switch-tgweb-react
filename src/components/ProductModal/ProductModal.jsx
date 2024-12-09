@@ -28,17 +28,15 @@ const ProductModal = ({ product, onClose, onAdd }) => {
     }
     
     const [status, setStatus] = useState('add-btn')
-    const [content, setContent] = useState('Добавить в корзину ща')
+    const [content, setContent] = useState('Добавить в корзину')
     
     const changeButton = () => {
         if (status === 'add-btn' && set < 4) {
             setStatus('already-add-btn')
-            setContent('Удалить')
-            set += 1
+            setContent('Удалить из корзины')
         } else if (set <= 4) {
             setStatus('add-btn')
-            setContent('Добавить')
-            set -= 1
+            setContent('Добавить в корзину')
         }
     }
 
