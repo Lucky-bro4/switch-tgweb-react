@@ -1,4 +1,4 @@
-.modal-overlay {
+/* .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -50,7 +50,7 @@
 }
 
 .progress-bar-segment.active {
-    background: #007bff; /* Яркий цвет активного сегмента */
+    background: #007bff;
 }
 
 .product-image {
@@ -66,4 +66,161 @@ h2 {
 p {
     margin: 10px 0;
     font-size: 1.1em;
+} */
+
+/* Фон модального окна */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px); /* Размытие для "геймифицированного" эффекта */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden; /* Предотвращает прокрутку при открытии модального окна */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Содержимое модального окна */
+.modal-content {
+    background: linear-gradient(145deg, #282c34, #3a3f51);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    position: relative;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 255, 0.6);
+    animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Анимация плавного появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Анимация появления с легким подъемом */
+@keyframes slideIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Заголовок */
+.modal-content h2 {
+    font-family: 'Press Start 2P', cursive; /* Шрифт с "геймерским" стилем */
+    font-size: 1.8rem;
+    color: #ff9d00;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff9d00;
+}
+
+/* Кнопка закрытия */
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #ff4c4c;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+    transform: scale(1.2);
+    color: #ff9d9d;
+}
+
+/* Картинка товара */
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Описание товара */
+.modal-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 10px 0;
+    font-family: 'Roboto', sans-serif;
+    color: #d1d1e0;
+}
+
+/* Кнопка добавления в корзину */
+.add-button {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    background: linear-gradient(90deg, #32de84, #28a745);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.add-button:hover {
+    background: linear-gradient(90deg, #28a745, #32de84);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 255, 127, 0.5);
+}
+
+/* Прогресс-бар */
+.progress-bar {
+    display: flex;
+    gap: 5px;
+    margin: 20px 0;
+}
+
+.progress-bar-segment {
+    flex: 1;
+    height: 8px;
+    background: #444;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.progress-bar-segment.active {
+    background: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 16px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .add-button {
+        font-size: 1.2rem;
+    }
 }
