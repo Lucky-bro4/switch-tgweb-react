@@ -1,20 +1,49 @@
 import React, { useState } from 'react';
 import './ProductModal.css';
-import Button from './components/Button';
+import Button from "../Button/Button";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const ProductModal = ({ product, onClose }) => {
+const ProductModal = ({ product, onClose, onAdd }) => {
+
+    const handleOverlayClick = (e) => {
+        if (e.target.classList.contains("modal-overlay")) {
+            onClose();
+        }
+    }
+
     const [activeIndex, setActiveIndex] = useState(0);
 
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
     };
 
+    const onAddHandler = () => {
+        if (set <= 4) {
+            onAdd(product)
+            changeButton()
+        }
+    }
+    
+    const [status, setStatus] = useState('add-btn')
+    const [content, setContent] = useState('Добавить в корзину ща')
+    
+    const changeButton = () => {
+        if (status === 'add-btn' && set < 4) {
+            setStatus('already-add-btn')
+            setContent('Удалить')
+            set += 1
+        } else if (set <= 4) {
+            setStatus('add-btn')
+            setContent('Добавить')
+            set -= 1
+        }
+    }
+
     return (
-        <div className="modal-overlay">
+        <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="modal-content">
                 <button className="modal-close" onClick={onClose}>×</button>
                 <h2>{product.name}</h2>
@@ -49,7 +78,9 @@ const ProductModal = ({ product, onClose }) => {
                 <p><strong>Цена:</strong> {product.price} Р</p>
                 <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
                     onClick={onAddHandler}
-                >Добавить в корзину</Button>
+                >
+                    {content}
+                </Button>
             </div>
         </div>
     );

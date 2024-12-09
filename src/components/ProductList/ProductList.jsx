@@ -13,6 +13,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
     const [products, setProducts] = useState([]);
     // const [addedItems, setAddedItems] = useState([]);
     const [costs, setCosts] = useState(260)
+    const [order, setOrder] = useState(0)
     const [closedChainOrder, setClosedChainOrder] = useState(false)
     const [newUser, setNewUser] = useState(false)
     const [alertShown, setAlertShown] = useState(false)
@@ -103,6 +104,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
             newItems = [...addedItems, product];
+            setOrder(newItems.length)
         }
 
         if (newItems.length > 4) {
@@ -148,6 +150,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                         key={item.id}
                         product={item}
                         onAdd={onAdd}
+                        set={order}
                         onClick={() => onProductClick(item)}
                         className={'item'}
                         closedChainOrder={closedChainOrder}
@@ -159,7 +162,11 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                 </div>
             )}
             {isModalOpen && selectedProduct && (
-                <ProductModal product={selectedProduct} onClose={closeModal} />
+                <ProductModal 
+                    product={selectedProduct} 
+                    onClose={closeModal} 
+                    onAdd={onAdd}
+                />
             )}
 
             {/* Кнопка корзины */}

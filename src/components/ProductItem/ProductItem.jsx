@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import Button from "../Button/Button";
 import './ProductItem.css';
 
-let set = 0
 
-const ProductItem = ({product, className, onClick, onAdd, closedChainOrder}) => {
+const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, set }) => {
 
     const onAddHandler = () => {
         if (set <= 4) {
@@ -50,7 +49,7 @@ const ProductItem = ({product, className, onClick, onAdd, closedChainOrder}) => 
                     onAddHandler
                 }}
             >
-                Купить за {product.price} Р
+                {content} за {product.price} Р
             </Button>
             <div id='remove'>
                 {changeButton}
