@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ProductModal.css';
+import Button from './components/Button';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -41,7 +42,7 @@ const ProductModal = ({ product, onClose }) => {
                         ))}
                     </Swiper>
                 </div>
-                <p><strong>{product.category + product.name}</strong></p>
+                <p><strong>{`${product.category} ${product.name}`}</strong></p>
                 <p><strong>Размер:</strong> {product.size} </p>
                 <p><strong>Описание:</strong> {product.description} </p>
                 {/* <p><strong>Цена аренды:</strong> {product.rentPrice} Р</p> */}

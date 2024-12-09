@@ -13,7 +13,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #007bff;
+    background-color: var(--tg-theme-bg-color);;
     color: #fff;
     border-radius: 50%;
     width: 40px;

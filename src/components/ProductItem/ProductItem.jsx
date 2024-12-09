@@ -34,21 +34,24 @@ const ProductItem = ({product, className, onClick, onAdd, closedChainOrder}) => 
             <div className="img-container">
                 <img className="img" src={product.image[0]} alt={`${product.category} ${product.name}`} />
             </div>
-            <div className={'title'}><b>{product.name + product.category}</b></div>
+            <div className={'title'}><h3>{`${product.category} ${product.name}`}</h3></div>
+            <div className={'title'}><p>{product.price}</p></div>
             {/* <div className={'title'}>{product.category}</div> */}
-            <div className={'description'}>{product.description}</div>
-            <div className={'size'}>Размер: {product.size}</div>
+            <div className={'size'}><p>Размер: {product.size}</p></div>
             {/* <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
                 onClick={onAddHandler}
             >
                 {content} за {product.rentPrice} Р
             </Button> */}
-            {/* <Button 
+            <Button 
                 className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
-                onClick={onAddHandler}
+                onClick={(e) => {
+                    e.stopPropagination();
+                    onAddHandler
+                }}
             >
                 Купить за {product.price} Р
-            </Button> */}
+            </Button>
             <div id='remove'>
                 {changeButton}
             </div>        
