@@ -104,8 +104,9 @@ const ProductList = ({ addedItems, setAddedItems }) => {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
             newItems = [...addedItems, product];
-            setOrder(newItems.length)
         }
+
+        setOrder(newItems.length)
 
         if (newItems.length > 4) {
             tg.showAlert('Вы можете выбрать максимум 4 вещи');

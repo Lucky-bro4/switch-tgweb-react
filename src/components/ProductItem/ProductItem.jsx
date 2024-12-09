@@ -19,11 +19,9 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, set
         if (status === 'add-btn' && set < 4) {
             setStatus('already-add-btn')
             setContent('Удалить')
-            set += 1
         } else if (set <= 4) {
             setStatus('add-btn')
             setContent('Добавить')
-            set -= 1
         }
     }
 
