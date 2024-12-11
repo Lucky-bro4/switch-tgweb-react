@@ -6,39 +6,39 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const ProductModal = ({ product, onClose, onAdd }) => {
+const ProductModal = ({ product, onClose, onAdd, selectedCount }) => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [status, setStatus] = useState('add-btn');
+    const [content, setContent] = useState('Добавить в корзину');
 
     const handleOverlayClick = (e) => {
         if (e.target.classList.contains("modal-overlay")) {
             onClose();
         }
-    }
-
-    const [activeIndex, setActiveIndex] = useState(0);
+    };
 
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
     };
 
     const onAddHandler = () => {
-        if (set <= 4) {
-            onAdd(product)
-            changeButton()
+        if (status === 'add-btn') {
+            onAdd(product);
+            changeButton();
+        } else {
+            changeButton();
         }
-    }
-    
-    const [status, setStatus] = useState('add-btn')
-    const [content, setContent] = useState('Добавить в корзину')
-    
+    };
+
     const changeButton = () => {
-        if (status === 'add-btn' && set < 4) {
+        if (status === 'add-btn' && selectedCount < 4) {
             setStatus('already-add-btn')
             setContent('Удалить из корзины')
-        } else if (set <= 4) {
+        } else if (selectedCount <= 4) {
             setStatus('add-btn')
             setContent('Добавить в корзину')
         }
-    }
+    };
 
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
@@ -46,7 +46,6 @@ const ProductModal = ({ product, onClose, onAdd }) => {
                 <button className="modal-close" onClick={onClose}>×</button>
                 <h2>{product.name}</h2>
 
-                {/* Добавляем прогресс-бар и карусель */}
                 <div className="slider-container">
                     <div className="progress-bar">
                         {product.image.map((_, index) => (
@@ -69,12 +68,13 @@ const ProductModal = ({ product, onClose, onAdd }) => {
                         ))}
                     </Swiper>
                 </div>
+
                 <p><strong>{`${product.category} ${product.name}`}</strong></p>
                 <p><strong>Размер:</strong> {product.size} </p>
                 <p><strong>Описание:</strong> {product.description} </p>
-                {/* <p><strong>Цена аренды:</strong> {product.rentPrice} Р</p> */}
                 <p><strong>Цена:</strong> {product.price} Р</p>
-                <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
+                <Button
+                    className={`${status}`}
                     onClick={onAddHandler}
                 >
                     {content}

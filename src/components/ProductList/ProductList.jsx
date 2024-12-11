@@ -106,7 +106,6 @@ const ProductList = ({ addedItems, setAddedItems }) => {
             newItems = [...addedItems, product];
         }
 
-        setOrder(newItems.length)
 
         if (newItems.length > 4) {
             tg.showAlert('Вы можете выбрать максимум 4 вещи');
@@ -117,6 +116,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
             setAlertShown(true)
         }
 
+        setOrder(newItems.length)
         setAddedItems(newItems)
 
         if(newItems.length === 0) {
@@ -151,7 +151,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                         key={item.id}
                         product={item}
                         onAdd={onAdd}
-                        set={order}
+                        selectedCount={order}
                         onClick={() => onProductClick(item)}
                         className={'item'}
                         closedChainOrder={closedChainOrder}
@@ -167,6 +167,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                     product={selectedProduct} 
                     onClose={closeModal} 
                     onAdd={onAdd}
+                    selectedCount={order}
                 />
             )}
 

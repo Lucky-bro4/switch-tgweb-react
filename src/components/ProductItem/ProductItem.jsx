@@ -3,10 +3,10 @@ import Button from "../Button/Button";
 import './ProductItem.css';
 
 
-const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, set }) => {
+const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount }) => {
 
     const onAddHandler = () => {
-        if (set <= 4) {
+        if (selectedCount <= 4) {
             onAdd(product)
             changeButton()
         }
@@ -16,10 +16,10 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, set
     const [content, setContent] = useState('Добавить')
     
     const changeButton = () => {
-        if (status === 'add-btn' && set < 4) {
+        if (status === 'add-btn' && selectedCount < 4) {
             setStatus('already-add-btn')
             setContent('Удалить')
-        } else if (set <= 4) {
+        } else if (selectedCount <= 4) {
             setStatus('add-btn')
             setContent('Добавить')
         }
