@@ -5,6 +5,15 @@ import './ProductItem.css';
 
 const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount }) => {
 
+    const handleAdd = (e) => {
+        e.stopPropagation(); // Предотвращает распространение клика на родительский элемент
+        if (selectedCount >= 4) {
+            alert('Вы не можете выбрать больше 4 товаров.');
+            return;
+        }
+        onAdd(product);
+    };
+
     const onAddHandler = () => {
         if (selectedCount <= 4) {
             onAdd(product)
@@ -42,10 +51,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
             </Button> */}
             <Button 
                 className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
-                onClick={(e) => {
-                    e.stopPropagination();
-                    onAddHandler
-                }}
+                onClick={handleAdd}
             >
                 {content} за {product.price} Р
             </Button>
