@@ -52,7 +52,7 @@
 }
 
 .progress-bar-segment.active {
-    background: #007bff;
+    background: var(--tg-theme-button-color);
 }
 
 .product-image {

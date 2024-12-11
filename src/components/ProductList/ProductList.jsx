@@ -176,7 +176,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                 <div className="icon">
                     <img 
                         src="/Images/shopping_basket.png" 
-                        width={25} 
+                        width={30} 
                         alt="shopping_basket" />
                     {addedItems.length > 0 && (
                         <div className="badge">{addedItems.length}</div>
