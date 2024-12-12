@@ -8,12 +8,14 @@ const AdminPage = () => {
     
     const [id, setId] = useState(0)
     const [category, setCategory] = useState('');
-    const [name, setName] = useState('');
-    const [condition, setCondition] = useState('');
-    const [description, setDescription] = useState('');
-    const [size, setSize] = useState('');
+    const [brand, setBrand] = useState('');
     const [price, setPrice] = useState(0);
     const [rentPrice, setRentPrice] = useState(0);
+    const [condition, setCondition] = useState('');
+    const [measurements, setMeasurements] = useState('');
+    const [brandSize, setBrandSize] = useState('');
+    const [color, setColor] = useState('');
+    const [description, setDescription] = useState('');
     // const [photo, setPhoto] = useState('/Images/Одежда/');
 
     const [photos, setPhotos] = useState([]);
@@ -83,19 +85,7 @@ const AdminPage = () => {
     };
 
     const onChangeName = (e) => {
-        setName(e.target.value);
-    };
-
-    const onChangeCondition = (e) => {
-        setCondition(e.target.value);
-    };
-
-    const onChangeDescription = (e) => {
-        setDescription(e.target.value);
-    };
-
-    const onChangeSize = (e) => {
-        setSize(e.target.value);
+        setBrand(e.target.value);
     };
 
     const onChangePrice = (e) => {
@@ -105,6 +95,28 @@ const AdminPage = () => {
     const onChangeRentPrice = (e) => {
         setRentPrice(e.target.value);
     };
+    
+    const onChangeCondition = (e) => {
+        setCondition(e.target.value);
+    };
+    
+    const onChangeMeasurements = (e) => {
+        setMeasurements(e.target.value);
+    };
+
+    const onChangeBrandSize = (e) => {
+        setBrandSize(e.target.value);
+    };
+
+    const onChangeColor = (e) => {
+        setColor(e.target.value);
+    };
+
+    const onChangeDescription = (e) => {
+        setDescription(e.target.value);
+    };
+
+
 
     // const onChangePhoto = (e) => {
     //     setPhoto(e.target.value);
@@ -189,12 +201,14 @@ const AdminPage = () => {
 
         const newProduct = {
             category: category,
-            name: name,
-            condition: condition,
-            description: description,
-            size: size,
+            brand: brand,
             price: Number(price),
             rentPrice: Number(rentPrice),
+            condition: condition,
+            measurements: measurements,
+            brandSize: brandSize,
+            color: color,
+            description: description,
             status: status,
             available: available
         };
@@ -280,12 +294,14 @@ const AdminPage = () => {
         const changeProduct = {
             id: Number(id),
             category: category,
-            name: name,
-            condition: condition,
-            description: description,
-            size: size,
+            brand: brand,
             price: Number(price),
             rentPrice: Number(rentPrice),
+            condition: condition,
+            measurements: measurements,
+            brandSize: brandSize,
+            color: color,
+            description: description,
             // photo: photos,
             status: status,
             available: Boolean(available),
@@ -389,19 +405,19 @@ const AdminPage = () => {
 
             if (data.products[0]) {
                 changeItem1(data.products[0].id)
-                changeOrderItem1(`ID продукта: ${data.products[0].id}; Название: ${data.products[0].category} ${data.products[0].name}`)
+                changeOrderItem1(`ID продукта: ${data.products[0].id}; Название: ${data.products[0].category} ${data.products[0].brand}`)
             }
             if (data.products[1]) {
                 changeItem2(data.products[1].id)
-                changeOrderItem2(`ID продукта: ${data.products[1].id}; Название: ${data.products[1].category} ${data.products[1].name}`)
+                changeOrderItem2(`ID продукта: ${data.products[1].id}; Название: ${data.products[1].category} ${data.products[1].brand}`)
             }
             if (data.products[2]) {
                 changeItem3(data.products[2].id)
-                changeOrderItem3((`ID продукта: ${data.products[2].id}; Название: ${data.products[2].category} ${data.products[2].name}`))
+                changeOrderItem3((`ID продукта: ${data.products[2].id}; Название: ${data.products[2].category} ${data.products[2].brand}`))
             }
             if (data.products[3]) {
                 changeItem4(data.products[3].id)
-                changeOrderItem4((`ID продукта: ${data.products[3].id}; Название: ${data.products[3].category} ${data.products[3].name}`))
+                changeOrderItem4((`ID продукта: ${data.products[3].id}; Название: ${data.products[3].category} ${data.products[3].brand}`))
             }
             if (data.products) {
                 setMessage('Данные по заказу получены');
@@ -441,7 +457,7 @@ const AdminPage = () => {
                         className="input"
                         type="text"
                         placeholder="Name"
-                        value={name}
+                        value={brand}
                         onChange={onChangeName}
                         />
                         <input
@@ -454,16 +470,30 @@ const AdminPage = () => {
                         <input
                         className="input"
                         type="text"
-                        placeholder="Description"
-                        value={description}
-                        onChange={onChangeDescription}
+                        placeholder="Measurements"
+                        value={measurements}
+                        onChange={onChangeMeasurements}
                         />
                         <input
                         className="input"
                         type="text"
                         placeholder="Size"
-                        value={size}
-                        onChange={onChangeSize}
+                        value={brandSize}
+                        onChange={onChangeBrandSize}
+                        />
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Color"
+                        value={color}
+                        onChange={onChangeColor}
+                        />
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Description"
+                        value={description}
+                        onChange={onChangeDescription}
                         />
                         <div>
                         <input
@@ -559,35 +589,35 @@ const AdminPage = () => {
                 </div>
                 {/* <div class="admin-preview">
                     <div className="example">
-                        <img className="example_img" src={photo} alt={name} />
-                        <div className="example_name"><b>{name}</b></div>
+                        <img className="example_img" src={photo} alt={brand} />
+                        <div className="example_name"><b>{brand}</b></div>
                         <div className="example_name">{category}</div>
                         <div className="example_description">{description}</div>
-                        <div className="example_description">Размер: {size}</div>
+                        <div className="example_description">Размер: {brandSize}</div>
                     </div>
                 </div> */}
                 <div className="admin-preview">
                     <div className="example">
                         <div className={`example_photos ${photos.length > 1 ? 'multiple' : 'single'}`}>
                             {photos.length === 1 ? (
-                                <img className="example_img" src={photos[0]} alt={name} />
+                                <img className="example_img" src={photos[0]} alt={brand} />
                             ) : (
                                 photos.map((photo, index) => (
                                     <img
                                         key={index}
                                         className="example_img collage"
                                         src={photo}
-                                        alt={`${name} ${index + 1}`}
+                                        alt={`${brand} ${index + 1}`}
                                     />
                                 ))
                             )}
                         </div>
                         <div className="example_name">
-                            <b>{name}</b>
+                            <b>{brand}</b>
                         </div>
                         <div className="example_category">{category}</div>
                         <div className="example_description">{description}</div>
-                        <div className="example_size">Размер: {size}</div>
+                        <div className="example_size">Размер: {brandSize}</div>
                     </div>
                 </div>
             </div>
@@ -724,12 +754,14 @@ const AdminPage = () => {
                         <tr key={availableItem.id}>
                         <td>{availableItem.id}</td>
                         <td>{availableItem.category}</td>
-                        <td>{availableItem.name}</td>
-                        <td>{availableItem.condition}</td>
-                        <td>{availableItem.description}</td>
-                        <td>{availableItem.size}</td>
+                        <td>{availableItem.brand}</td>
                         <td>{availableItem.price}</td>
                         <td>{availableItem.rentPrice}</td>
+                        <td>{availableItem.condition}</td>
+                        <td>{availableItem.measurements}</td>
+                        <td>{availableItem.brandSize}</td>
+                        <td>{availableItem.color}</td>
+                        <td>{availableItem.description}</td>
                         <td>{availableItem.status}</td>
                         <td>{availableItem.image[0]}</td>
                         <td>{availableItem.userId}</td>
@@ -761,10 +793,10 @@ const AdminPage = () => {
                         <tr key={orderItem.id}>
                         <td>{orderItem.id}</td>
                         <td>{orderItem.category}</td>
-                        <td>{orderItem.name}</td>
+                        <td>{orderItem.brand}</td>
                         <td>{orderItem.condition}</td>
                         <td>{orderItem.description}</td>
-                        <td>{orderItem.size}</td>
+                        <td>{orderItem.brandSize}</td>
                         <td>{orderItem.price}</td>
                         <td>{orderItem.rentPrice}</td>
                         <td>{orderItem.userId}</td>
@@ -794,10 +826,10 @@ const AdminPage = () => {
                         <tr key={laundryItem.id}>
                         <td>{laundryItem.id}</td>
                         <td>{laundryItem.category}</td>
-                        <td>{laundryItem.name}</td>
+                        <td>{laundryItem.brand}</td>
                         <td>{laundryItem.condition}</td>
                         <td>{laundryItem.description}</td>
-                        <td>{laundryItem.size}</td>
+                        <td>{laundryItem.brandSize}</td>
                         <td>{laundryItem.userId}</td>
                         <td>{laundryItem.orderId}</td>
                         </tr>
@@ -828,10 +860,10 @@ const AdminPage = () => {
                         <tr key={otherItem.id}>
                         <td>{otherItem.id}</td>
                         <td>{otherItem.category}</td>
-                        <td>{otherItem.name}</td>
+                        <td>{otherItem.brand}</td>
                         <td>{otherItem.condition}</td>
                         <td>{otherItem.description}</td>
-                        <td>{otherItem.size}</td>
+                        <td>{otherItem.brandSize}</td>
                         <td>{otherItem.price}</td>
                         <td>{otherItem.rentPrice}</td>
                         <td>{otherItem.status}</td>
