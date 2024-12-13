@@ -470,7 +470,7 @@ const AdminPage = () => {
                         <input
                         className="input"
                         type="text"
-                        placeholder="Name"
+                        placeholder="Brand"
                         value={brand}
                         onChange={onChangeName}
                         />
