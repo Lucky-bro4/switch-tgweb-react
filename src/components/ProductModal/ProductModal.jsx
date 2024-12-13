@@ -44,7 +44,7 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount }) => {
         <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="modal-content">
                 <button className="modal-close" onClick={onClose}>×</button>
-                <h2>{product.name}</h2>
+                <h2>{product.brand}</h2>
 
                 <div className="slider-container">
                     <div className="progress-bar">
@@ -63,15 +63,19 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount }) => {
                     >
                         {product.image.map((image, index) => (
                             <SwiperSlide key={index}>
-                                <img src={image} alt={`${product.name} - ${index + 1}`} className="product-image" />
+                                <img src={image} alt={`${product.brand} - ${index + 1}`} className="product-image" />
                             </SwiperSlide>
                         ))}
                     </Swiper>
                 </div>
 
-                <p><strong>{`${product.category} ${product.name}`}</strong></p>
+                <p><strong>{`${product.category} ${product.brand}`}</strong></p>
                 <p><strong>Размер:</strong> {product.size} </p>
                 <p><strong>Описание:</strong> {product.description} </p>
+                <p><strong>Цена:</strong> {product.price} Р</p>
+                <p><strong>Цена:</strong> {product.price} Р</p>
+                <p><strong>Цена:</strong> {product.price} Р</p>
+                <p><strong>Цена:</strong> {product.price} Р</p>
                 <p><strong>Цена:</strong> {product.price} Р</p>
                 <Button
                     className={`${status}`}

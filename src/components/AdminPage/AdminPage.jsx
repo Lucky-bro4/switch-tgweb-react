@@ -7,6 +7,7 @@ import Button from '../Button/Button';
 const AdminPage = () => {
     
     const [id, setId] = useState(0)
+    const [gender, setGender] = useState('');
     const [category, setCategory] = useState('');
     const [brand, setBrand] = useState('');
     const [price, setPrice] = useState(0);
@@ -78,6 +79,10 @@ const AdminPage = () => {
 //Изменение товара
     const onChangeId = (e) => {
         setId(e.target.value);
+    };
+
+    const onChangeGender = (e) => {
+        setGender(e.target.value);
     };
 
     const onChangeCategory = (e) => {
@@ -200,6 +205,7 @@ const AdminPage = () => {
         e.preventDefault();
 
         const newProduct = {
+            gender: gender,
             category: category,
             brand: brand,
             price: Number(price),
@@ -293,6 +299,7 @@ const AdminPage = () => {
 
         const changeProduct = {
             id: Number(id),
+            gender: gender,
             category: category,
             brand: brand,
             price: Number(price),
@@ -445,6 +452,13 @@ const AdminPage = () => {
                         placeholder="Id"
                         value={id}
                         onChange={onChangeId}
+                        />
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Category"
+                        value={gender}
+                        onChange={onChangeGender}
                         />
                         <input
                         className="input"
@@ -615,8 +629,9 @@ const AdminPage = () => {
                         <div className="example_name">
                             <b>{brand}</b>
                         </div>
+                        <div className="example_description">{price}</div>
+                        <div className="example_description">{brand}</div>
                         <div className="example_category">{category}</div>
-                        <div className="example_description">{description}</div>
                         <div className="example_size">Размер: {brandSize}</div>
                     </div>
                 </div>
@@ -753,6 +768,7 @@ const AdminPage = () => {
                     {availableProducts.map(availableItem => (
                         <tr key={availableItem.id}>
                         <td>{availableItem.id}</td>
+                        <td>{availableItem.gender}</td>
                         <td>{availableItem.category}</td>
                         <td>{availableItem.brand}</td>
                         <td>{availableItem.price}</td>

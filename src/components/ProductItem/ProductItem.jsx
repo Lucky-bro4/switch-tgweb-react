@@ -40,10 +40,10 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
             <div className="img-container">
                 <img className="img" src={product.image[0]} alt={`${product.category} ${product.name}`} />
             </div>
-            <div className={'title'}><h3>{`${product.category} ${product.name}`}</h3></div>
             <div className={'title'}><p>{product.price}</p></div>
-            {/* <div className={'title'}>{product.category}</div> */}
-            <div className={'size'}><p>Размер: {product.size}</p></div>
+            <div className={'title'}><p>{product.brand}</p></div>
+            <div className={'title'}><p>{product.category}</p></div>
+            <div className={'size'}><p>Размер: {product.brandSize}</p></div>
             {/* <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
                 onClick={onAddHandler}
             >
