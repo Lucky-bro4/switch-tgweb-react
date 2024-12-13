@@ -456,7 +456,7 @@ const AdminPage = () => {
                         <input
                         className="input"
                         type="text"
-                        placeholder="Category"
+                        placeholder="Gender"
                         value={gender}
                         onChange={onChangeGender}
                         />
