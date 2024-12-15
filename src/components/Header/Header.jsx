@@ -28,8 +28,8 @@ const Header = () => {
     return (
         <div className={`header ${isVisible ? 'visible' : 'hidden'}`} style={{ transition: 'top 0.3s', backgroundColor }}>
             <div className='mainLogo' style={{ opacity: 0.8, position: 'absolute', top: 0, left: 0, right: 0 }}>
-                <img src="/Images/mainLogo_withoutRental&Back.png" style={{ width: '100%', height: 'auto' }} alt="Switch" />
-                <h1 style={{ fontSize: '2.5rem', margin: 0, color: '#fff', textAlign: 'center', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>Switch</h1>
+                <img src="/Images/mainLogo_withoutRental&Back_1.png" style={{ width: '100%', height: 'auto' }} alt="Switch" />
+                <h1 style={{ fontSize: '4rem', margin: 0, color: '#fff', textAlign: 'center', position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)' }}>Switch</h1>
             </div>
             <div className='search-filter'>
                 {/* Optional: Add the search and filter components here */}
