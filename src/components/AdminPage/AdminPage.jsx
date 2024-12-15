@@ -481,13 +481,14 @@ const AdminPage = () => {
                         value={condition}
                         onChange={onChangeCondition}
                         />
-                        <input
-                        className="input"
-                        type="text"
-                        placeholder="Measurements"
-                        value={measurements}
-                        onChange={onChangeMeasurements}
-                        />
+                        <textarea
+                            className="input"
+                            placeholder="Measurements"
+                            value={measurements}
+                            onChange={onChangeMeasurements}
+                            rows="10"
+                            cols="50"
+                        ></textarea>
                         <input
                         className="input"
                         type="text"
