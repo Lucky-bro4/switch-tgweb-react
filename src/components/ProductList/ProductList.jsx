@@ -119,21 +119,31 @@ const ProductList = ({ addedItems, setAddedItems }) => {
         setOrder(newItems.length)
         setAddedItems(newItems)
 
+        // if(newItems.length === 0) {
+        //     tg.MainButton.hide();
+        // } else if (closedChainOrder) {
+        //     tg.MainButton.show()
+        //     tg.MainButton.setParams({
+        //         text: `Аренда за ${getTotalPrice(newItems)} Р`,
+        //         color: '#ccc'
+        //     })
+        //     tg.onEvent('mainButtonClicked', onShowAlert)
+        // } else {
+        //     tg.MainButton.show();
+        //     tg.MainButton.setParams({
+        //         text: `Арендовать за ${getTotalPrice(newItems)} Р`
+        //     })
+        // } 
+
         if(newItems.length === 0) {
             tg.MainButton.hide();
-        } else if (closedChainOrder) {
-            tg.MainButton.show()
-            tg.MainButton.setParams({
-                text: `Аренда за ${getTotalPrice(newItems)} Р`,
-                color: '#ccc'
-            })
-            tg.onEvent('mainButtonClicked', onShowAlert)
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Арендовать за ${getTotalPrice(newItems)} Р`
+                text: `Оформить заказ`
             })
         } 
+
     }
 
     const getTotalPrice = (items = []) => {
