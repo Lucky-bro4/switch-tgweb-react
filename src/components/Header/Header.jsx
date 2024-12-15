@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
 
 
-import React, { useState, useEffect } from 'react';
 
 const Header = () => {
     const [isVisible, setIsVisible] = useState(true);
