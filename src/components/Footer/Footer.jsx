@@ -14,8 +14,10 @@ const Footer = () => {
   };
 
   const handleCartClick = () => {
-    navigate('/cart');
+    navigate('/profile');
   };
+
+
 
   return (
     <footer className="footer">
@@ -28,9 +30,27 @@ const Footer = () => {
           <i className="icon-favorites"></i>
           <p>Избранное</p>
         </div>
+        {/* <div className="cart-icon" onClick={() => navigate("/profile")}>
+            <div className="icon">
+            <img 
+                src="/Images/shopping_basket.png" 
+                width={30} 
+                alt="shopping_basket" />
+            {addedItems.length > 0 && (
+                <div className="badge">{addedItems.length}</div>
+            )}
+          </div>
+        </div> */}
         <div className="footer-section" onClick={handleCartClick}>
-          <i className="icon-cart"></i>
-          <p>Корзина</p>
+          <i className="icon-cart">
+            <img 
+                src="/Images/shopping_basket.png" 
+                width={30} 
+                alt="shopping_basket" />
+            {/* {addedItems.length > 0 && (
+                <div className="badge">{addedItems.length}</div>
+            )} */}
+          </i>
         </div>
       </div>
     </footer>
