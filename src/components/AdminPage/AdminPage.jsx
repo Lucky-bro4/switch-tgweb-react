@@ -492,7 +492,7 @@ const AdminPage = () => {
                         <input
                         className="input"
                         type="text"
-                        placeholder="Size"
+                        placeholder="Brand size"
                         value={brandSize}
                         onChange={onChangeBrandSize}
                         />
