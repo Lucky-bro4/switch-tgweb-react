@@ -169,7 +169,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                 ))
             ) : (
                 <div className="no-products">
-                    <p>Загрузка каталога</p>
+                    {/* <p>Загрузка каталога</p> */}
                 </div>
             )}
             {isModalOpen && selectedProduct && (
