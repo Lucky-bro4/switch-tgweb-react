@@ -183,7 +183,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                     )}
                 </div>
             </div>
-            <div className="footer-panel">
+            {/* <div className="footer-panel">
                 <button className="footer-button" onClick={() => navigate('/profile')}>
                     Профиль
                 </button>
@@ -193,7 +193,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                 <button className="footer-button" onClick={() => navigate('/cart')}>
                     Корзина
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 };
