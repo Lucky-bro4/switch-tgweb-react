@@ -75,19 +75,19 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .search-row {
-    flex-direction: column; /* Элементы идут друг под другом на маленьких экранах */
+    flex-direction: column;
     gap: 5px;
   }
 
   .search-input {
-    width: 100%;  /* Поле ввода будет растягиваться на всю ширину */
-    min-width: 0; /* Убираем минимальную ширину */
+    width: 100%;  
+    min-width: 0; 
   }
 
   .category-button, .filter-button, .search-input {
-    width: 100%;  /* Устанавливаем все элементы на полную ширину */
+    width: 100%;  
     padding: 12px;
   }
 
@@ -96,16 +96,16 @@
     height: 50px;
     font-size: 20px;
   }
-}
+} */
 
 /* Для экранов с очень маленьким разрешением (например, телефоны в портретной ориентации) */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .search-input {
-    font-size: 14px; /* Уменьшаем размер шрифта для маленьких экранов */
+    font-size: 14px;
   }
 
   .category-button, .filter-button {
-    font-size: 14px;  /* Уменьшаем размер шрифта кнопок */
+    font-size: 14px;
   }
 
   .filter-button {
@@ -116,6 +116,6 @@
   .filter-select {
     font-size: 14px;
   }
-}
+} */
 
   
