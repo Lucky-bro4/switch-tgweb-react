@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from "../Button/Button";
 import './ProductItem.css';
 
 
-const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount }) => {
+const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount, favoriteItems, userId }) => {
+
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [status, setStatus] = useState('add-btn')
+    const [content, setContent] = useState('Добавить')
+
+
+    useEffect(() => {
+        setIsFavorite(favoriteItems.includes(product.id));
+    }, [favoriteItems, product.id]);
 
     const handleAdd = (e) => {
         e.stopPropagation(); // Предотвращает распространение клика на родительский элемент
@@ -20,25 +29,49 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
     //         changeButton()
     //     }
     // }
+
+    const handleFavoriteClick = async (e) => {
+        e.stopPropagation();
+        const newFavoriteState = !isFavorite;
+        setIsFavorite(newFavoriteState);
+
+        // Обновить глобальный или серверный список избранного
+        try {
+            const response = await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
+                method: newFavoriteState ? 'POST' : 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId }),
+            });
     
-    const [status, setStatus] = useState('add-btn')
-    const [content, setContent] = useState('Добавить')
+            if (!response.ok) {
+                throw new Error('Failed to update favorite status');
+            }
     
-    const changeButton = () => {
-        if (status === 'add-btn' && selectedCount < 4) {
-            setStatus('already-add-btn')
-            setContent('Удалить')
-        } else if (selectedCount <= 4) {
-            setStatus('add-btn')
-            setContent('Добавить')
+            const data = await response.json();
+            console.log('Favorite status updated successfully:', data);
+        } catch (error) {
+            console.error('Error updating favorite status:', error);
+            // Revert state change in case of error
+            setIsFavorite(!newFavoriteState);
         }
-    }
+    };
 
 
     return (
         <div key={product.id} className={'product ' + className} onClick={onClick}>
             <div className="img-container">
                 <img className="img" src={product.image[0]} alt={`${product.category} ${product.name}`} />
+                <div 
+                    className="favorite-icon" 
+                    onClick={handleFavoriteClick}
+                >
+                    <img 
+                        src={isFavorite ? '../../../public/Images/icons/icon-already-add.png' : '../../../public/Images/icons/icon-not-add.png'} 
+                        alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
+                    />
+                </div>
             </div>
             <div className={'title'}><p>{product.price}</p></div>
             <div className={'title'}><p>{product.brand}</p></div>
@@ -56,7 +89,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
                 {content}
             </Button>
             <div id='remove'>
-                {changeButton}
+                {status === 'add-btn' ? 'Добавить' : 'Удалить'}
             </div>        
         </div>
     );

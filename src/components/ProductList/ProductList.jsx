@@ -22,6 +22,8 @@ const ProductList = ({ addedItems, setAddedItems }) => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const [favoriteItems, setFavoriteItems] = useState([]);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -32,6 +34,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                 const data = await response.json();
                 
                 setProducts(data.products)
+                setFavoriteItems(data.favorite_items)
 
                 if (!data.customer.location && !data.customer.phone_number) {
                     setNewUser(true)
@@ -167,6 +170,8 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                         onClick={() => onProductClick(item)}
                         className={'item'}
                         closedChainOrder={closedChainOrder}
+                        favoriteItems={favoriteItems}
+                        userId={user.id}
                     />
                 ))
             ) : (
@@ -180,6 +185,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                     onClose={closeModal} 
                     onAdd={onAdd}
                     selectedCount={order}
+                    favoriteItems={favoriteItems}
                 />
             )}
 
