@@ -8,6 +8,7 @@ const SearchComponent = () => {
     priceRange: '',
   });
   const [results, setResults] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
@@ -21,14 +22,32 @@ const SearchComponent = () => {
   };
 
   const searchProducts = async () => {
-    // Здесь нужно будет выполнить запрос на сервер
     console.log({ query, filters });
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <div className="search-container">
       <h2 className="search-title">Поиск товаров</h2>
-      <div className="search-input-container">
+
+      <div className="search-row">
+        {/* Кнопки для мужского и женского */}
+        <button className="category-button">Мужское</button>
+        <button className="category-button">Женское</button>
+
+        {/* Кнопка с иконкой фильтра для открытия модального окна */}
+        <button onClick={openModal} className="filter-button">
+          <i className="filter-icon">🔧</i>
+        </button>
+
+        {/* Поисковая строка */}
         <input
           type="text"
           value={query}
@@ -38,34 +57,43 @@ const SearchComponent = () => {
         />
       </div>
 
-      <div className="filters">
-        <select
-          name="category"
-          value={filters.category}
-          onChange={handleFilterChange}
-          className="filter-select"
-        >
-          <option value="">Все категории</option>
-          <option value="electronics">Электроника</option>
-          <option value="fashion">Мода</option>
-        </select>
+      {/* Модальное окно с фильтрами */}
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <button onClick={closeModal} className="close-modal">✖</button>
 
-        <select
-          name="priceRange"
-          value={filters.priceRange}
-          onChange={handleFilterChange}
-          className="filter-select"
-        >
-          <option value="">Все цены</option>
-          <option value="low">До 1000</option>
-          <option value="medium">1000-5000</option>
-          <option value="high">Больше 5000</option>
-        </select>
-      </div>
+            <div className="filters">
+              <select
+                name="category"
+                value={filters.category}
+                onChange={handleFilterChange}
+                className="filter-select"
+              >
+                <option value="">Все категории</option>
+                <option value="electronics">Электроника</option>
+                <option value="fashion">Мода</option>
+              </select>
 
-      <button onClick={searchProducts} className="search-button">
-        Искать
-      </button>
+              <select
+                name="priceRange"
+                value={filters.priceRange}
+                onChange={handleFilterChange}
+                className="filter-select"
+              >
+                <option value="">Все цены</option>
+                <option value="low">До 1000</option>
+                <option value="medium">1000-5000</option>
+                <option value="high">Больше 5000</option>
+              </select>
+            </div>
+
+            <button onClick={searchProducts} className="search-button">
+              Искать
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="results">
         {results.map((product) => (
