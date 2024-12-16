@@ -159,7 +159,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
 
     return (
         <div className={'list'}>
-            <SearchComponent />
+            {/* <SearchComponent /> */}
             {products.length > 0 ? (
                 products.map(item => (
                     <ProductItem
