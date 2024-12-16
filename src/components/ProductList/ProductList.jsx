@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import SearchComponent from './components/SearchComponent/SearchComponent';
+import SearchComponent from '../SearchComponent/SearchComponent';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
