@@ -26,7 +26,7 @@
 
 .search-input {
   flex-grow: 1;
-  min-width: 100px; /* Минимальная ширина для сжатого состояния */
+  min-width: 100%; /* Минимальная ширина для сжатого состояния */
   transition: width 0.3s ease;  /* Плавное расширение */
   padding: 8px;
   border-radius: 8px;
