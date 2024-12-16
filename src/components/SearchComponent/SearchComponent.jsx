@@ -35,7 +35,6 @@ const SearchComponent = () => {
 
   return (
     <div className="search-container">
-      <h2 className="search-title">Поиск товаров</h2>
 
       <div className="search-row">
         {/* Кнопки для мужского и женского */}
