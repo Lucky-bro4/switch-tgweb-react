@@ -35,23 +35,33 @@
     object-fit: contain;
 }
 
-.title, .description {
+/* Основной акцент на цене и бренде */
+.title {
     text-align: center;
+    margin: 5px 0;
 }
 
-.description {
-    font-size: 0.8em;
-    margin: 10px 0;
+.title p {
+    font-size: 1.2em; /* Увеличенный шрифт для цены и бренда */
+    font-weight: bold;
 }
 
 .size {
+    text-align: center;
+    font-size: 0.9em; /* Чуть меньше шрифт для размера */
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+/* Описание товара, с уменьшенными отступами */
+.description {
     font-size: 0.8em;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .add-btn, .disabled, .already-add-btn {
     width: fit-content;
-    padding-bottom: 10px;
+    padding: 8px 16px;
     border: 0;
     border-radius: 50px;
     text-align: center;
@@ -60,20 +70,14 @@
     transition: background-color 0.3s, transform 0.3s;
 }
 
-/* .add-btn {
-    background-color: ;
-    color: white;
-} */
-
 .add-btn:hover {
-    background-color: #007BFF;
+    background-color: var(--tg-theme-button-color);
     transform: scale(1.05);
 }
 
 .disabled {
     background-color: rgb(169, 162, 162);
     color: white;
-    /* cursor: not-allowed; */
 }
 
 .already-add-btn {
