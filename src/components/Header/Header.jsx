@@ -1,16 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 const Header = () => {
-    const [isVisible, setIsVisible] = useState(true);
-
-    const handleScroll = () => {
-        console.log('Scroll position:', window.scrollY);
-        if (window.scrollY > 50) {
-            setIsVisible(false);
-        } else {
-            setIsVisible(true);
-        }
-    };
 
     useEffect(() => {
         console.log('Component mounted, adding scroll event listener.');
@@ -21,18 +11,10 @@ const Header = () => {
         };
     }, []);
 
-    const backgroundColor = isVisible ? '#fff' : '#000';
-
-    console.log('Header visibility:', isVisible);
-
     return (
-        <div className={`header ${isVisible ? 'visible' : 'hidden'}`} style={{ transition: 'top 0.3s', backgroundColor }}>
+        <div className={`header`}>
             <div className='mainLogo' style={{ position: 'absolute', top: 0, left: 0, right: 0 }}>
-                <img src="/Images/mainLogo_withoutRental&Back_2.png" style={{ opacity: 0.5, width: '100%', height: 'auto' }} alt="Switch" />
-                <h1 style={{ fontSize: '6rem', margin: 0, color: '#fff', textAlign: 'center', position: 'absolute', top: '20%', left: '50%', transform: 'translate(-50%, -50%)' }}>Switch</h1>
-            </div>
-            <div className='search-filter'>
-                {/* Optional: Add the search and filter components here */}
+                <img src="/Images/mainLogo_withoutRental&Back.png" width={200} alt="Swich" />
             </div>
         </div>
     );
