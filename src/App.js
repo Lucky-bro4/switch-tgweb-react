@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import {useTelegram} from "./hooks/useTelegram";
-import Header from "./components/Header/Header";
+// import Header from "./components/Header/Header";
 import Footer from './components/Footer/Footer';
 import { Route, Routes } from 'react-router-dom'
 import ProductList from "./components/ProductList/ProductList";
@@ -22,7 +22,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
+            {/* <Header /> */}
             <Routes>
                 <Route path="/" element={<ProductList addedItems={addedItems} setAddedItems={setAddedItems} />} />
                 <Route path="/form" element={<Form />} />

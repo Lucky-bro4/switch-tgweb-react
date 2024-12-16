@@ -5,6 +5,7 @@ import ProductItem from "../ProductItem/ProductItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
 import { useNavigate } from "react-router-dom";
+import Header from '../Header/Header';
 
 
 const ProductList = ({ addedItems, setAddedItems }) => {
@@ -159,6 +160,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
 
     return (
         <div className={'list'}>
+            <Header />
             {/* <SearchComponent /> */}
             {products.length > 0 ? (
                 products.map(item => (
