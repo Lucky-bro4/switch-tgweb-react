@@ -35,7 +35,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                 const data = await response.json();
                 
                 setProducts(data.products)
-                setFavoriteItems(data.favorite_items)
+                setFavoriteItems(data.customer.favorite_items)
 
                 if (!data.customer.location && !data.customer.phone_number) {
                     setNewUser(true)
