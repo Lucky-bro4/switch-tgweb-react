@@ -14,12 +14,12 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
         onAdd(product);
     };
 
-    const onAddHandler = () => {
-        if (selectedCount <= 4) {
-            onAdd(product)
-            changeButton()
-        }
-    }
+    // const onAddHandler = () => {
+    //     if (selectedCount <= 4) {
+    //         onAdd(product)
+    //         changeButton()
+    //     }
+    // }
     
     const [status, setStatus] = useState('add-btn')
     const [content, setContent] = useState('Добавить')

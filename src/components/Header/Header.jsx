@@ -22,8 +22,8 @@ const Header = () => {
 
     return (
         <div className={`header ${isVisible ? 'visible' : 'hidden'}`} style={{ transition: 'top 0.3s' }}>
-            <div className='mainLogo' style={{ position: 'absolute', top: 0, left: 0, right: 0 }}>
-                <img src="/Images/mainLogo_withoutRental&Back.png" width={200} alt="Swich" />
+            <div className='mainLogo'>
+                <img src="/Images/mainLogo_withoutRental&Back.png" width={150} alt="Swich" />
             </div>
         </div>
     );
