@@ -1,14 +1,12 @@
 .search-container {
   display: flex;
   flex-direction: column;
-  padding: 10px;
 }
 
 .search-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;  /* Элементы переходят на новую строку, если не помещаются */
 }
 
 .category-button, .filter-button, .search-input {
@@ -17,13 +15,12 @@
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 8px;  /* Округление углов */
-  flex-shrink: 0;  /* Запрещает сжать кнопки */
+  border-radius: 8px;
 }
 
 .search-input {
-  width: 200px; /* Ширина поля ввода */
-  min-width: 150px; /* Минимальная ширина */
+  width: 200px;
+  min-width: 150px;
 }
 
 .filter-button {
@@ -47,10 +44,37 @@
 
 .filter-select {
   padding: 10px;
-  border-radius: 8px;  /* Округление углов для селектов */
+  border-radius: 8px;
 }
 
-/* Мобильная версия */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .search-row {
     flex-direction: column; /* Элементы идут друг под другом на маленьких экранах */

@@ -51,7 +51,7 @@ const SearchComponent = () => {
           type="text"
           value={query}
           onChange={handleQueryChange}
-          placeholder="Поиск по заголовкам товара"
+          placeholder="Поиск"
           className="search-input"
         />
       </div>
