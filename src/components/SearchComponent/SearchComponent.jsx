@@ -3,15 +3,25 @@ import './SearchComponent.css';
 
 const SearchComponent = () => {
   const [query, setQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
   const [filters, setFilters] = useState({
     category: '',
     priceRange: '',
   });
+
   const [results, setResults] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
   };
 
   const handleFilterChange = (e) => {
@@ -43,7 +53,7 @@ const SearchComponent = () => {
 
         {/* Кнопка с иконкой фильтра для открытия модального окна */}
         <button onClick={openModal} className="filter-button">
-          <i className="filter-icon">🔧</i>
+          <span className="filter-icon">🔧</span>
         </button>
 
         {/* Поисковая строка */}
@@ -51,8 +61,10 @@ const SearchComponent = () => {
           type="text"
           value={query}
           onChange={handleQueryChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           placeholder="Поиск"
-          className="search-input"
+          className={`search-input ${isFocused ? 'expanded' : ''}`}
         />
       </div>
 
