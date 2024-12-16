@@ -4,7 +4,6 @@
   align-items: center;
   gap: 10px;
   padding: 10px;
-  position: relative;
   width: 100%;
 }
 
@@ -12,7 +11,6 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  position: relative;
   width: 100%;
 }
 
@@ -27,19 +25,14 @@
 }
 
 .search-input {
-  position: absolute;
-  left: 0;
-  top: 0;
   flex-grow: 1;
   min-width: 100px; /* Минимальная ширина для сжатого состояния */
-  transition: width 0.3s ease, left 0.3s ease;  /* Плавное расширение */
+  transition: width 0.3s ease;  /* Плавное расширение */
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
   outline: none;
-  opacity: 1;
-  z-index: 1;
 }
 
 .search-input:focus {
@@ -58,17 +51,6 @@
 
 .filter-icon {
   font-size: 18px;
-}
-
-.search-row .category-button,
-.search-row .filter-button {
-  opacity: 0; /* Кнопки исчезают, когда строка поиска в фокусе */
-  pointer-events: none; /* Отключаем взаимодействие с кнопками */
-}
-
-.search-input:focus ~ .search-row .category-button,
-.search-input:focus ~ .search-row .filter-button {
-  opacity: 0; /* Кнопки становятся невидимыми, когда строка поиска в фокусе */
 }
 
 /* Адаптация для мобильных устройств */
