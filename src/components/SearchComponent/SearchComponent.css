@@ -79,8 +79,9 @@
     width: 95%;
   }
 
-  .search-input:focus {
-    width: 110%; /* Меньшее расширение на планшетах */
+  .search-row:focus-within .search-input {
+    transform: translateX(-30%);
+    width: 100%;
   }
 }
 
@@ -94,17 +95,10 @@
     font-size: 14px;
   }
 
-  .search-input:focus {
-    width: 105%; /* Меньшее расширение на мобильных устройствах */
+  .search-row:focus-within .search-input {
+    transform: translateX(-20%);
+    width: 100%;
   }
-}
-
-
-
-.filters {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .filter-select {
