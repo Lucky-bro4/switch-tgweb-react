@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import "./ProfilePage.css";
+import "./Cart.css";
 
 
 const ProfilePage = ({ addedItems }) => {
     const totalPrice = addedItems.reduce((acc, item) => acc + item.rentPrice, 0);
 
     return (
-        <div className="profile-page">
+        <div className="cart">
             <h1>Ваш заказ</h1>
             <div className="order-list">
                 {addedItems.length > 0 ? (
