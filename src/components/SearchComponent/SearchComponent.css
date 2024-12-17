@@ -30,7 +30,7 @@
 
 .search-input {
   flex-grow: 1;
-  width: 1200px;
+  width: 100%;
   transition: width 0.3s ease; /* Плавное изменение размеров только для ширины */
   padding: 8px;
   border-radius: 8px;
@@ -43,7 +43,8 @@
 
 /* Фокус: поле ввода расширяется влево, скрывая кнопки */
 .search-input:focus {
-  width: 120%; /* Плавное расширение поля ввода */
+  width: 1200px; /* Плавное расширение поля ввода */
+  border-color: black;
 }
 
 .search-row:focus-within .category-button,
