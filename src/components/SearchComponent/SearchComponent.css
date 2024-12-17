@@ -44,7 +44,7 @@
 
 /* Фокус: поле ввода расширяется влево, скрывая кнопки */
 .search-row:focus-within .search-input:focus {
-  transform: calc(100vw - 10px);
+  /* transform: calc(100vw - 10px); */
   position: absolute;
   left: 0;
   width: 100%;
