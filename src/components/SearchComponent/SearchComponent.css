@@ -45,7 +45,7 @@
 /* Фокус: поле ввода расширяется влево, скрывая кнопки */
 .search-row:focus-within .search-input:focus {
   /* transform: translateX(-155%); */
-  width: max-content;
+  width: 150%;
   border-color: black;
 }
 
@@ -96,7 +96,7 @@
   }
 
   .search-row:focus-within .search-input {
-    transform: translateX(-110%);
+    transform: translateX(-105%);
     width: 2000%;
   }
 }
