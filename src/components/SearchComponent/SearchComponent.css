@@ -31,21 +31,21 @@
 
 .search-input {
   flex-grow: 1;
-  width: 100%;
+  width: 50px;
   transition: all 0.5s ease; /* Плавное изменение размеров только для ширины */
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
   outline: none;
-  z-index: 2; /* Поднимаем строку ввода поверх кнопок */
   position: relative;
+  z-index: 2; /* Поднимаем строку ввода поверх кнопок */
 }
 
 /* Фокус: поле ввода расширяется влево, скрывая кнопки */
 .search-row:focus-within .search-input:focus {
   transform: translateX(-150%);
-  width: 100%;
+  width: 350px;
   border-color: black;
 }
 
