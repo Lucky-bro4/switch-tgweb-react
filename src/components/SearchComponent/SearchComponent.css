@@ -1,9 +1,9 @@
 .search-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
-  padding-top: 10px;
+  padding: 10px;
   width: 100%;
 }
 
@@ -12,7 +12,7 @@
   align-items: center;
   gap: 10px;
   width: 100%;
-  max-width: calc(100vw - 20px); /* Ограничиваем максимальную ширину */
+  max-width: calc(100vw - 20px); /* Зависим от ширины экрана с небольшим отступом */
   margin: 0 auto; /* Центрирование строки */
   position: relative; /* Для управления дочерними элементами */
   overflow: hidden; /* Скрытие элементов при смещении */
@@ -31,8 +31,7 @@
 
 .search-input {
   flex-grow: 1;
-  width: 100%;
-  transition: all 0.5s ease; /* Плавное изменение размеров только для ширины */
+  transition: all 0.5s ease; /* Плавное изменение размеров и положения */
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -42,12 +41,13 @@
   z-index: 2; /* Поднимаем строку ввода поверх кнопок */
 }
 
-/* Фокус: поле ввода расширяется влево, скрывая кнопки */
-.search-row:focus-within .search-input:focus {
-  transform: calc(100vw - 10px);
+/* Фокус: поле ввода расширяется влево и занимает всю ширину родителя */
+.search-row:focus-within .search-input {
+  transform: calc(-50px);
   position: absolute;
-  width: 100%;
-  border-color: black;
+  left: 0;
+  width: 100%; /* Поле ввода занимает всю ширину родителя */
+  transition: all 0.5s ease; /* Плавный переход */
 }
 
 .search-row:focus-within .category-button,
@@ -57,9 +57,8 @@
 }
 
 .search-row:not(:focus-within) .search-input {
-  transform: translateX(0);
   width: 100%; /* Возвращение к исходному состоянию */
-  transition: all 0.5s ease;
+  transition: all 0.5s ease; /* Плавный возврат */
 }
 
 .filter-button {
@@ -79,11 +78,14 @@
 @media (max-width: 768px) {
   .search-row {
     width: 95%;
+    max-width: calc(100vw - 10px);
   }
 
   .search-row:focus-within .search-input {
-    transform: translateX(-80%);
-    width: 300%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    transition: all 0.5s ease;
   }
 }
 
@@ -91,6 +93,7 @@
 @media (max-width: 480px) {
   .search-row {
     width: 90%;
+    max-width: calc(100vw - 10px);
   }
 
   .search-input {
@@ -98,10 +101,13 @@
   }
 
   .search-row:focus-within .search-input {
-    transform: translateX(-105%);
-    width: 2000%;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    transition: all 0.5s ease;
   }
 }
+
 
 .filter-select {
   padding: 10px;
