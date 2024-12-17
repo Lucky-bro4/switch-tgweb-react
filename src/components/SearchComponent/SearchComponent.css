@@ -97,7 +97,8 @@
 
   .search-row:focus-within .search-input {
     transform: translateX(-105%);
-    width: 700%;
+    /* width: 7000%; */
+    max-width: none;
   }
 }
 
