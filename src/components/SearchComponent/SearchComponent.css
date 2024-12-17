@@ -99,7 +99,7 @@
   }
 
   .search-row:focus-within .search-input {
-    transform: translateX(-105%);
+    transform: translateX(-20%);
     width: 100%;
   }
 }
