@@ -1,38 +1,94 @@
-.footer {
-    background-color: #f8f9fa;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px; /* Ограничиваем максимальную ширину */
+  margin: 0 auto; /* Центрирование строки */
+  position: relative; /* Для управления дочерними элементами */
+}
+
+.category-button, .filter-button {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease; /* Плавное исчезновение кнопок */
+}
+
+.search-input {
+  flex-grow: 1;
+  width: 100%;
+  transition: all 0.3s ease; /* Плавное изменение размеров */
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  z-index: 2; /* Поднимаем строку ввода поверх кнопок */
+}
+
+/* Фокус: строка поиска расширяется влево, скрывая кнопки */
+.search-row:focus-within .search-input {
+  transform: translateX(-50px); /* Смещение влево */
+  width: calc(100% + 50px); /* Расширяем поле ввода */
+}
+
+.search-row:focus-within .category-button,
+.search-row:focus-within .filter-button {
+  opacity: 0; /* Скрываем кнопки при фокусе */
+  pointer-events: none; /* Отключаем взаимодействие */
+}
+
+.filter-button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-icon {
+  font-size: 18px;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 768px) {
+  .search-row {
+    width: 95%;
   }
-  
-  .footer-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+
+  .search-row:focus-within .search-input {
+    transform: translateX(-30px);
+    width: calc(100% + 30px);
   }
-  
-  .footer-section {
-    text-align: center;
-    flex: 1;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+  .search-row {
+    width: 90%;
   }
-  
-  .footer-section i {
-    font-size: 24px;
-    color: #555;
-  }
-  
-  .footer-section p {
-    margin: 5px 0 0;
+
+  .search-input {
     font-size: 14px;
-    color: #555;
-    font-weight: bold;
   }
-  
-  .footer-section:hover {
-    color: #007bff;
-    cursor: pointer;
+
+  .search-row:focus-within .search-input {
+    transform: translateX(-20px);
+    width: calc(100% + 20px);
   }
+}
