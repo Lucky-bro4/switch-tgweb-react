@@ -47,8 +47,8 @@
   border-color: black;
 }
 
-.search-row:focus-within .category-button,
-.search-row:focus-within .filter-button {
+.search-input:focus-within .category-button,
+.search-input:focus-within .filter-button {
   opacity: 0; /* Скрываем кнопки при фокусе */
   pointer-events: none; /* Отключаем взаимодействие */
 }
