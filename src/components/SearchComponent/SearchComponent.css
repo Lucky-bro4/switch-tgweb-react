@@ -30,7 +30,7 @@
 
 .search-input {
   flex-grow: 1;
-  width: 100%;
+  width: 1200px;
   transition: width 0.3s ease; /* Плавное изменение размеров только для ширины */
   padding: 8px;
   border-radius: 8px;
