@@ -15,6 +15,7 @@
   max-width: 1200px; /* Ограничиваем максимальную ширину */
   margin: 0 auto; /* Центрирование строки */
   position: relative; /* Для управления дочерними элементами */
+  overflow: hidden; /* Скрытие элементов при смещении */
 }
 
 .category-button, .filter-button {
@@ -31,7 +32,7 @@
 .search-input {
   flex-grow: 1;
   width: 100%;
-  transition: width 0.3s ease; /* Плавное изменение размеров только для ширины */
+  transition: all 0.5s ease; /* Плавное изменение размеров только для ширины */
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -42,8 +43,9 @@
 }
 
 /* Фокус: поле ввода расширяется влево, скрывая кнопки */
-.search-input:focus {
-  width: 300%; /* Плавное расширение поля ввода */
+.search-row:focus-within .search-input:focus {
+  transform: translateX(-50%);
+  width: 100%;
   border-color: black;
 }
 
@@ -51,6 +53,11 @@
 .search-input:focus-within .filter-button {
   opacity: 0; /* Скрываем кнопки при фокусе */
   pointer-events: none; /* Отключаем взаимодействие */
+}
+
+.search-row:not(:focus-within) .search-input {
+  transform: translateX(0);
+  width: 100%; /* Возвращение к исходному состоянию */
 }
 
 .filter-button {
