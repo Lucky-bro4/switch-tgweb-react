@@ -48,6 +48,7 @@
   left: 0;
   width: 100%; /* Поле ввода занимает всю ширину родителя */
   border-color: black;
+  transition: all 0.5s ease;
 }
 
 .search-row:focus-within .category-button,
@@ -59,6 +60,7 @@
 .search-row:not(:focus-within) .search-input {
   transform: translateX(0);
   width: 100%; /* Возвращение к исходному состоянию */
+  transition: all 0.5s ease;
 }
 
 .filter-button {
@@ -75,7 +77,6 @@
 }
 
 /* Адаптация для планшетов */
-/* Адаптация для планшетов */
 @media (max-width: 768px) {
   .search-row {
     width: 95%;
@@ -86,6 +87,7 @@
     position: absolute;
     left: 0;
     width: 100%;
+    transition: all 0.5s ease;
   }
 }
 
@@ -104,8 +106,11 @@
     position: absolute;
     left: 0;
     width: 100%;
+    transition: all 0.5s ease;
   }
 }
+
+/* transform: translateX(-105%); */
 
 .filter-select {
   padding: 10px;
