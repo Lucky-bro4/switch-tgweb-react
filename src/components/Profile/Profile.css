@@ -12,6 +12,7 @@
 
 .catalog-icon {
     position: absolute;
+    left: 0;
     margin-left: 10px;
     border-color: black;
 }
