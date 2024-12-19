@@ -12,7 +12,7 @@
   align-items: center;
   gap: 10px;
   width: 100%;
-  max-width: calc(100vw - 20px); /* Ограничиваем максимальную ширину */
+  max-width: 1200px; /* Ограничиваем максимальную ширину */
   margin: 0 auto; /* Центрирование строки */
   position: relative; /* Для управления дочерними элементами */
   overflow: hidden; /* Скрытие элементов при смещении */
@@ -33,31 +33,29 @@
   flex-grow: 1;
   width: 100%;
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 9px;
   border: 1px solid #ccc;
   font-size: 16px;
   outline: none;
   position: relative;
   z-index: 2; /* Поднимаем строку ввода поверх кнопок */
-  transition:
-    width 0.5s ease,
-    transform 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 /* Фокус: поле ввода расширяется влево, скрывая кнопки */
-.search-input:focus {
+.search-row:focus-within .search-input {
   transform: translateX(-100%);
   width: 100%;
   border-color: black;
 }
 
-.search-input:focus-within .category-button,
-.search-input:focus-within .filter-button {
+.search-row:focus-within .category-button,
+.search-row:focus-within .filter-button {
   opacity: 0; /* Кнопки исчезают */
   pointer-events: none; /* Отключаем взаимодействие */
 }
 
-.search-input:not(:focus) {
+.search-row:not(:focus-within) .search-input {
   transform: translateX(0);
   width: 100%; /* Возвращение к исходному состоянию */
   transition: all 0.5s ease;
@@ -99,8 +97,9 @@
   }
 
   .search-input:focus {
-    transform: translateX(-200%);
-    width: 300%;
+    transform: translateX(-100%);
+    width: 100%;
+    transition: all 0.5s ease;
   }
 }
 
