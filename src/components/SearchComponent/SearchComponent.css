@@ -4,14 +4,15 @@
   align-items: center;
   gap: 10px;
   padding-top: 10px;
-  /* width: 100%; */
+  width: 100%;
 }
 
 .search-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 400px; /* Ограничиваем максимальную ширину */
+  width: 100%;
+  max-width: 1200px; /* Ограничиваем максимальную ширину */
   margin: 0 auto; /* Центрирование строки */
   position: relative; /* Для управления дочерними элементами */
   overflow: hidden; /* Скрытие элементов при смещении */
@@ -23,14 +24,14 @@
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 9px;
+  border-radius: 8px;
   flex-shrink: 0;
   transition: opacity 0.3s ease; /* Плавное исчезновение кнопок */
 }
 
 .search-input {
   flex-grow: 1;
-  width: 100px;
+  width: 100%;
   padding: 8px;
   border-radius: 9px;
   border: 1px solid #ccc;
@@ -43,8 +44,8 @@
 
 /* Фокус: поле ввода расширяется влево, скрывая кнопки */
 .search-row:focus-within .search-input {
-  /* transform: translateX(-100%); */
-  /* width: 100%; */
+  transform: translateX(-100%);
+  width: 100%;
   border-color: black;
 }
 
@@ -95,10 +96,10 @@
     font-size: 14px;
   }
 
-  .search-row:focus-within .search-input {
-    transform: translateX(-40%);
-    width: 300px;
-    transition: all 0.3s ease;
+  .search-input:focus {
+    transform: translateX(-100%);
+    width: 100%;
+    transition: all 0.5s ease;
   }
 }
 
