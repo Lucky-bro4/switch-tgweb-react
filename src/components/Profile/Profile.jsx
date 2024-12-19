@@ -52,7 +52,17 @@ const Profile = () => {
 
     return (
         <div className="profile-section">
-            <h1>Профиль</h1>
+            <h1>
+                <span className="catalog-icon" onClick={() => window.location.href = '/'}>
+                    <img 
+                        src="/Images/mainLogo_withoutRental&Back.png" 
+                        width={30} 
+                        alt="Go to catalog" 
+                        title="Go to Catalog"
+                    />
+                </span>
+                Профиль
+            </h1>
             <div className="measurements">
                 <label>
                     Shoulders (cm):
