@@ -68,6 +68,9 @@ const Profile = () => {
                 </span>
                 Профиль
             </h1>
+            <div className='user-info'>
+                ${user.nickname}
+            </div>
             <div className="measurements">
                 <label>
                     Shoulders (cm):
