@@ -8,7 +8,17 @@ const Cart = ({ addedItems }) => {
 
     return (
         <div className="cart-section">
-            <h1>Корзина</h1>
+            <h1>
+                <span className="catalog-icon" onClick={() => window.location.href = '/'}>
+                    <img 
+                        src="/Images/mainLogo_withoutRental&Back.png" 
+                        width={40} 
+                        alt="Go to catalog" 
+                        title="Go to Catalog"
+                    />
+                </span>
+                Корзина
+            </h1>
             <div className="order-list">
                 {addedItems.length > 0 ? (
                     addedItems.map((item) => (
@@ -29,11 +39,6 @@ const Cart = ({ addedItems }) => {
                     <h2>Общая сумма: {totalPrice} Р</h2>
                 </div>
             )}
-            <div className="return-button">
-                <Link to="/" className="button">
-                    Вернуться в каталог
-                </Link>
-            </div>
         </div>
     );
 };
