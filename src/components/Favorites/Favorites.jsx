@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import "./Cart.css";
+import "./Favorites.css";
 
 
-const Cart = ({ addedItems }) => {
+const Favorites = ({ addedItems }) => {
+
+    //Пример из корзины (Cart)
+
     const totalPrice = addedItems.reduce((acc, item) => acc + item.rentPrice, 0);
 
     return (
@@ -38,4 +41,4 @@ const Cart = ({ addedItems }) => {
     );
 };
 
-export default Cart;
+export default Favorites;
