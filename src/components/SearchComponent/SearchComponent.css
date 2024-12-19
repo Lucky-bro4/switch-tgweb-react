@@ -32,7 +32,6 @@
 .search-input {
   flex-grow: 1;
   width: 100%;
-  transition: all 0.5s ease; /* Плавное изменение размеров только для ширины */
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -40,24 +39,25 @@
   outline: none;
   position: relative;
   z-index: 2; /* Поднимаем строку ввода поверх кнопок */
+  transition:
+    width 0.5s ease,
+    transform 0.5s ease;
 }
 
 /* Фокус: поле ввода расширяется влево, скрывая кнопки */
-.search-row:focus-within .search-input:focus {
-  /* transform: calc(100vw - 10px);
-  position: absolute;
-  left: 0; */
+.search-input:focus {
+  transform: translateX(-100%);
   width: 100%;
   border-color: black;
 }
 
-.search-row:focus-within .category-button,
-.search-row:focus-within .filter-button {
+.search-input:focus-within .category-button,
+.search-input:focus-within .filter-button {
   opacity: 0; /* Кнопки исчезают */
   pointer-events: none; /* Отключаем взаимодействие */
 }
 
-.search-row:not(:focus-within) .search-input {
+.search-input:not(:focus) {
   transform: translateX(0);
   width: 100%; /* Возвращение к исходному состоянию */
   transition: all 0.5s ease;
@@ -99,7 +99,7 @@
   }
 
   .search-row:focus-within .search-input {
-    transform: translateX(-105%);
+    transform: translateX(-100%);
     width: 100%;
   }
 }

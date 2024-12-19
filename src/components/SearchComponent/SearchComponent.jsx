@@ -64,7 +64,7 @@ const SearchComponent = () => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder="Поиск"
-          className={`search-input ${isFocused ? 'expanded' : ''}`}
+          className={`search-input`}
         />
       </div>
 
