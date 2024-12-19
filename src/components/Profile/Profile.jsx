@@ -61,7 +61,7 @@ const Profile = () => {
                 <span className="catalog-icon" onClick={() => window.location.href = '/'}>
                     <img 
                         src="/Images/mainLogo_withoutRental&Back.png" 
-                        width={30} 
+                        width={40} 
                         alt="Go to catalog" 
                         title="Go to Catalog"
                     />
