@@ -1,13 +1,13 @@
 .cart-section {
     padding: 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'B612', sans-serif;
     color: var(--tg-theme-text-color, black);
     background: var(--tg-theme-bg-color);
     padding: 20px;
     border-radius: 10px;
     max-width: 500px;
     margin: auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     padding-bottom: 60px;
 }
 
@@ -44,22 +44,5 @@ h1 {
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
-}
-
-.return-button .button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: var(--tg-theme-button-color);
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.return-button .button:hover {
-    background-color: #007bff;
 }
 
