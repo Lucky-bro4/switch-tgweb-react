@@ -97,8 +97,8 @@
   }
 
   .search-input:focus {
-    transform: translateX(-200px);
-    width: 200%;
+    transform: translateX(-300px);
+    width: 300px;
     transition: all 0.5s ease;
   }
 }
