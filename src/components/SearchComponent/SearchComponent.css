@@ -98,9 +98,9 @@
     font-size: 14px;
   }
 
-  .search-row:focus-within .search-input {
-    transform: translateX(-100%);
-    width: 100%;
+  .search-input:focus {
+    transform: translateX(-200%);
+    width: 300%;
   }
 }
 
