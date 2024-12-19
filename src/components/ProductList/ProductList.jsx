@@ -10,7 +10,7 @@ import Header from '../Header/Header';
 
 const ProductList = ({ addedItems, setAddedItems }) => {
 
-    const {tg, queryId, user} = useTelegram();
+    const { tg, queryId, user } = useTelegram();
 
     const [products, setProducts] = useState([]);
     // const [addedItems, setAddedItems] = useState([]);

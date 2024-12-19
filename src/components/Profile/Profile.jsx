@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
+import { useTelegram } from '../../hooks/useTelegram';
 
 const Profile = () => {
+
+    const { tg, user } = useTelegram();
+
     const [measurements, setMeasurements] = useState({
         shoulders: '',
         sleeveLength: '',
@@ -11,10 +15,11 @@ const Profile = () => {
         innerLegLength: '',
         waistWidth: '',
     });
+    
     const [email, setEmail] = useState('');
 
     useEffect(() => {
-        alert('Telegram notification: Profile page opened');
+        tg.showAlert('Заполните параметры/замеры, чтобы видеть персонализированный каталог')
     }, []);
 
     const handleChange = (e) => {
