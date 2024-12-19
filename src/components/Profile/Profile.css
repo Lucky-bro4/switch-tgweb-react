@@ -1,0 +1,46 @@
+.profile-section {
+    font-family: Arial, sans-serif;
+    color: var(--tg-theme-text-color, black);
+    background: linear-gradient(135deg, pink, lightgreen);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.measurements label, .email-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="number"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--tg-theme-hint-color, grey);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.save-button, .home-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    background: var(--tg-theme-button-color, #0088cc);
+}
+
+.save-button:hover, .home-button:hover {
+    background: var(--tg-theme-button-color-hover, #006699);
+}

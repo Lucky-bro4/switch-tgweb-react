@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import { Route, Routes } from 'react-router-dom'
 import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
+import Profile from './components/Profile/Profile';
 import Cart from './components/Cart/Cart';
 import AdminPage from './components/AdminPage/AdminPage';
 
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/" element={<ProductList addedItems={addedItems} setAddedItems={setAddedItems} />} />
                 <Route path="/form" element={<Form />} />
                 <Route path="/adminPage" element={<AdminPage />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/cart" element={<Cart addedItems={addedItems} />} />
                 {/* <Route path={'account'} element={<Account />}/> */}
                 
