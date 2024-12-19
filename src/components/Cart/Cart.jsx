@@ -7,7 +7,7 @@ const ProfilePage = ({ addedItems }) => {
     const totalPrice = addedItems.reduce((acc, item) => acc + item.rentPrice, 0);
 
     return (
-        <div className="cart">
+        <div className="cart-section">
             <h1>Корзина</h1>
             <div className="order-list">
                 {addedItems.length > 0 ? (
