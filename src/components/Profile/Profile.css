@@ -1,7 +1,7 @@
 .profile-section {
     font-family: Arial, sans-serif;
     color: var(--tg-theme-text-color, black);
-    background: linear-gradient(135deg, pink, lightgreen);
+    background: linear-gradient(135deg, black, pink, lightgreen);
     padding: 20px;
     border-radius: 10px;
     max-width: 500px;

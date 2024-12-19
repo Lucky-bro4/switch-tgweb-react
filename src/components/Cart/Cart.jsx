@@ -8,7 +8,7 @@ const ProfilePage = ({ addedItems }) => {
 
     return (
         <div className="cart">
-            <h1>Ваш заказ</h1>
+            <h1>Корзина</h1>
             <div className="order-list">
                 {addedItems.length > 0 ? (
                     addedItems.map((item) => (

@@ -52,7 +52,7 @@ const Profile = () => {
 
     return (
         <div className="profile-section">
-            <h1>Profile Measurements</h1>
+            <h1>Профиль</h1>
             <div className="measurements">
                 <label>
                     Shoulders (cm):
