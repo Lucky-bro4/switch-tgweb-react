@@ -198,8 +198,8 @@ const ProductList = ({ addedItems, setAddedItems }) => {
         <div className={'list'}>
             <Header />
             <SearchComponent onFilterChange={applyFilters} />
-            {filteredProducts.length > 0 ? (
-                filteredProducts.map(item => (
+            {products.length > 0 ? (
+                products.map(item => (
                     <ProductItem
                         key={item.id}
                         product={item}
