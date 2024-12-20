@@ -13,7 +13,9 @@ const ProductList = ({ addedItems, setAddedItems }) => {
     const { tg, queryId, user } = useTelegram();
 
     const [products, setProducts] = useState([]);
+
     // const [addedItems, setAddedItems] = useState([]);
+    
     const [costs, setCosts] = useState(260)
     const [order, setOrder] = useState(0)
     const [closedChainOrder, setClosedChainOrder] = useState(false)

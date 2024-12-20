@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Button from "../Button/Button";
 import './ProductItem.css';
 import { useTelegram } from "../../hooks/useTelegram";
-import { use } from 'react';
 
 
 const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount, favoriteItems }) => {
@@ -72,7 +71,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
                     onClick={handleFavoriteClick}
                 >
                     <img 
-                        src={isFavorite ? '../../../public/Images/icons/icon-already-add.png' : '../../../public/Images/icons/icon-not-add.png'} 
+                        src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
                         alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
                     />
                 </div>
