@@ -32,7 +32,7 @@ function App() {
                 {/* <Route path={'account'} element={<Account />}/> */}
                 
             </Routes>
-            <Footer />
+            <Footer addedItems={addedItems}/>
         </div>
     );
 }

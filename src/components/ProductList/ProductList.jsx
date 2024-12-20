@@ -229,7 +229,6 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                     favoriteItems={favoriteItems}
                 />
             )}
-            <Footer addedItems={addedItems} setAddedItems={setAddedItems} />
         </div>
     );
 };
