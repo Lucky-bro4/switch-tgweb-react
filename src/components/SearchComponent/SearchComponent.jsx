@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchComponent.css';
 
-const SearchComponent = () => {
+const SearchComponent = ({ onFilterChange }) => {
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [filters, setFilters] = useState({
@@ -9,11 +9,29 @@ const SearchComponent = () => {
     priceRange: '',
   });
 
-  const [results, setResults] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCategoryClick = (category) => {
+    const updatedFilters = {
+      ...filters,
+      category,
+    };
+    setFilters(updatedFilters);
+    onFilterChange({ query, filters: updatedFilters });
+  };
+
+  const handleFilterChange = (e) => {
+    const updatedFilters = {
+      ...filters,
+      [e.target.name]: e.target.value,
+    };
+    setFilters(updatedFilters);
+    onFilterChange({ query, filters: updatedFilters });
+  };
 
   const handleQueryChange = (e) => {
-    setQuery(e.target.value);
+    const newQuery = e.target.value;
+    setQuery(newQuery);
+    onFilterChange({ query: newQuery, filters });
   };
 
   const handleFocus = () => {
@@ -22,17 +40,6 @@ const SearchComponent = () => {
 
   const handleBlur = () => {
     setIsFocused(false);
-  };
-
-  const handleFilterChange = (e) => {
-    setFilters({
-      ...filters,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const searchProducts = async () => {
-    console.log({ query, filters });
   };
 
   const openModal = () => {
@@ -48,8 +55,8 @@ const SearchComponent = () => {
 
       <div className="search-row">
         {/* Кнопки для мужского и женского */}
-        <button className="category-button">Мужское</button>
-        <button className="category-button">Женское</button>
+        <button className="category-button" onClick={() => handleCategoryClick('male')}>Мужское</button>
+        <button className="category-button" onClick={() => handleCategoryClick('female')}>Женское</button>
 
         {/* Кнопка с иконкой фильтра для открытия модального окна */}
         <button onClick={openModal} className="filter-button">
@@ -100,22 +107,9 @@ const SearchComponent = () => {
               </select>
             </div>
 
-            <button onClick={searchProducts} className="search-button">
-              Искать
-            </button>
           </div>
         </div>
       )}
-
-      <div className="results">
-        {results.map((product) => (
-          <div key={product.id} className="result-item">
-            <h3 className="result-title">{product.title}</h3>
-            <p>{product.description}</p>
-            <p>Цена: {product.price}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

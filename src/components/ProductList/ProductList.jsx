@@ -20,6 +20,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
     const [newUser, setNewUser] = useState(false)
     const [alertShown, setAlertShown] = useState(false)
 
+    const [filteredProducts, setFilteredProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -31,24 +32,26 @@ const ProductList = ({ addedItems, setAddedItems }) => {
         const getProducts = async () => {
             try {
                 console.log('chatId: ', user)
-                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+                // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
                 const data = await response.json();
                 
                 setProducts(data.products)
-                setFavoriteItems(data.customer.favorite_items)
+                setFilteredProducts(data.products)
+                // setFavoriteItems(data.customer.favorite_items)
 
-                if (!data.customer.location && !data.customer.phone_number) {
-                    setNewUser(true)
-                }
+                // if (!data.customer.location && !data.customer.phone_number) {
+                //     setNewUser(true)
+                // }
 
-                if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
-                    setCosts(180);
-                    if (data.successOrder.comment === 'Аренда скоро закончится') {
-                        setClosedChainOrder(false);
-                    } else {
-                        setClosedChainOrder(true);
-                    }
-                }
+                // if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
+                //     setCosts(180);
+                //     if (data.successOrder.comment === 'Аренда скоро закончится') {
+                //         setClosedChainOrder(false);
+                //     } else {
+                //         setClosedChainOrder(true);
+                //     }
+                // }
 
             } catch (e) {
                 console.log('Ошибка при получении списка товаров:', e)
@@ -57,6 +60,39 @@ const ProductList = ({ addedItems, setAddedItems }) => {
 
         getProducts();
     }, [])
+
+    const applyFilters = ({ query, filters }) => {
+        let updatedProducts = products;
+    
+        if (filters.category) {
+          updatedProducts = updatedProducts.filter(product => product.category === filters.category);
+        }
+    
+        if (filters.priceRange) {
+          updatedProducts = updatedProducts.filter(product => {
+            switch (filters.priceRange) {
+              case 'low':
+                return product.price < 1000;
+              case 'medium':
+                return product.price >= 1000 && product.price <= 3000;
+              case 'medium-high':
+                return product.price > 3000 && product.price <= 5000;
+              case 'high':
+                return product.price > 5000;
+              default:
+                return true;
+            }
+          });
+        }
+    
+        if (query) {
+          updatedProducts = updatedProducts.filter(product =>
+            product.title.toLowerCase().includes(query.toLowerCase())
+          );
+        }
+    
+        setFilteredProducts(updatedProducts);
+      };
 
     const onProductClick = (product) => {
         setSelectedProduct(product);
@@ -161,9 +197,9 @@ const ProductList = ({ addedItems, setAddedItems }) => {
     return (
         <div className={'list'}>
             <Header />
-            <SearchComponent />
-            {products.length > 0 ? (
-                products.map(item => (
+            <SearchComponent onFilterChange={applyFilters} />
+            {filteredProducts.length > 0 ? (
+                filteredProducts.map(item => (
                     <ProductItem
                         key={item.id}
                         product={item}

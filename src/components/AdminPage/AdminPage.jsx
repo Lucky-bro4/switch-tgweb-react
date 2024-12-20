@@ -460,8 +460,8 @@ const AdminPage = () => {
                             onChange={onChangeGender}
                             className="input"
                         >
-                            <option value="Man">Мужское</option>
-                            <option value="Woman">Женское</option>
+                            <option value="Male">Мужское</option>
+                            <option value="Female">Женское</option>
                         </select>
                         <input
                         className="input"
