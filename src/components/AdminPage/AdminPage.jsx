@@ -453,13 +453,16 @@ const AdminPage = () => {
                         value={id}
                         onChange={onChangeId}
                         />
-                        <input
-                        className="input"
-                        type="text"
-                        placeholder="Gender"
-                        value={gender}
-                        onChange={onChangeGender}
-                        />
+                        <select
+                            name="Gender"
+                            placeholder="Gender"
+                            value={gender}
+                            onChange={onChangeGender}
+                            className="input"
+                        >
+                            <option value="Man">Мужское</option>
+                            <option value="Woman">Женское</option>
+                        </select>
                         <input
                         className="input"
                         type="text"

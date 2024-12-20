@@ -94,7 +94,8 @@ const SearchComponent = () => {
               >
                 <option value="">Все цены</option>
                 <option value="low">До 1000</option>
-                <option value="medium">1000-5000</option>
+                <option value="medium">1000-3000</option>
+                <option value="medium-high">3000-5000</option>
                 <option value="high">Больше 5000</option>
               </select>
             </div>
