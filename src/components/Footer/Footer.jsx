@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ addedItems }) => {
   const navigate = useNavigate();
 
   const handleProfileClick = () => {
@@ -55,9 +55,9 @@ const Footer = () => {
                 src="/Images/icons/icon-cart.png" 
                 width={30} 
                 alt="icon-cart" />
-            {/* {addedItems.length > 0 && (
+            {addedItems.length > 0 && (
                 <div className="badge">{addedItems.length}</div>
-            )} */}
+            )}
           </i>
         </div>
       </div>

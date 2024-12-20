@@ -181,7 +181,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
         } else {
             tg.MainButton.show();
             tg.MainButton.setParams({
-                text: `Оформить заказ`
+                text: `Посмотреть заказ`
             })
         } 
 
@@ -226,6 +226,9 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                     favoriteItems={favoriteItems}
                 />
             )}
+            <Footer
+                addedItems={addedItems}
+            />
 
             {/* <div className="footer-panel">
                 <button className="footer-button" onClick={() => navigate('/profile')}>
