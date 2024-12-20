@@ -64,9 +64,9 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
 
 
     return (
-        <div key={product.id} className={'product ' + className} onClick={onClick}>
+        <div key={product.id} className={'product ' + className}>
             <div className="img-container">
-                <img className="img" src={product.image[0]} alt={`${product.category} ${product.name}`} />
+                <img className="img" src={product.image[0]} alt={`${product.category} ${product.brand}`} />
                 <div 
                     className="favorite-icon" 
                     onClick={handleFavoriteClick}
