@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './SearchComponent.css';
 
 const SearchComponent = ({ onFilterChange }) => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [filters, setFilters] = useState({
