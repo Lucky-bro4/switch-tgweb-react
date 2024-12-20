@@ -228,21 +228,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                     favoriteItems={favoriteItems}
                 />
             )}
-            <Footer
-                addedItems={addedItems}
-            />
-
-            {/* <div className="footer-panel">
-                <button className="footer-button" onClick={() => navigate('/profile')}>
-                    Профиль
-                </button>
-                <button className="footer-button" onClick={() => navigate('/favorites')}>
-                    Избранное
-                </button>
-                <button className="footer-button" onClick={() => navigate('/cart')}>
-                    Корзина
-                </button>
-            </div> */}
+            <Footer addedItems={addedItems} setAddedItems={setAddedItems} />
         </div>
     );
 };
