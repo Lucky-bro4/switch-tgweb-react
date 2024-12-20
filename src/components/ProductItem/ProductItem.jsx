@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Button from "../Button/Button";
 import './ProductItem.css';
+import { useTelegram } from "../../hooks/useTelegram";
+import { use } from 'react';
 
 
-const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount, favoriteItems, userId }) => {
+const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount, favoriteItems }) => {
+
+    const { user } = useTelegram();
 
     const [isFavorite, setIsFavorite] = useState(false);
     const [status, setStatus] = useState('add-btn')
@@ -42,7 +46,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ userId }),
+                body: JSON.stringify({chatId: user.id}),
             });
     
             if (!response.ok) {

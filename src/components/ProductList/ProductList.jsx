@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import SearchComponent from '../SearchComponent/SearchComponent';
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
-import {useTelegram} from "../../hooks/useTelegram";
+import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
 import { useNavigate } from "react-router-dom";
 import Header from '../Header/Header';
