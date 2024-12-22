@@ -7,7 +7,7 @@ const Profile = () => {
     const { tg, user } = useTelegram();
 
     const [measurements, setMeasurements] = useState({
-        shoulders: '',
+        Плечи: '',
         sleeveLength: '',
         underarms: '',
         backLength: '',

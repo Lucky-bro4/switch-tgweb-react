@@ -484,7 +484,7 @@ const AdminPage = () => {
                         value={condition}
                         onChange={onChangeCondition}
                         />
-                        <div className="measurements-input">
+                        {/* <div className="measurements-input">
                             {(["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
                                 <>
                                     <input
@@ -545,15 +545,15 @@ const AdminPage = () => {
                                     cols="50"
                                 ></textarea>
                             )}
-                        </div>
-                        {/* <textarea
+                        </div> */}
+                        <textarea
                             className="input"
                             placeholder="Measurements"
                             value={measurements}
                             onChange={onChangeMeasurements}
                             rows="10"
                             cols="50"
-                        ></textarea> */}
+                        ></textarea>
                         <input
                         className="input"
                         type="text"
