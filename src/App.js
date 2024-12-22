@@ -27,7 +27,7 @@ function App() {
                 <Route path="/form" element={<Form />} />
                 <Route path="/adminPage" element={<AdminPage />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/favorites" element={<Favorites addedItems={addedItems} />} />
                 <Route path="/cart" element={<Cart addedItems={addedItems} />} />
                 {/* <Route path={'account'} element={<Account />}/> */}
                 
