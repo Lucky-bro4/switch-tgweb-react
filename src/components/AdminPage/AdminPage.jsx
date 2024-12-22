@@ -484,14 +484,76 @@ const AdminPage = () => {
                         value={condition}
                         onChange={onChangeCondition}
                         />
-                        <textarea
+                        <div className="measurements-input">
+                            {(["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
+                                <>
+                                    <input
+                                        type="text"
+                                        placeholder="Shoulders"
+                                        value={measurements.shoulders || ''}
+                                        onChange={(e) => onChangeMeasurements({ ...measurements, shoulders: e.target.value })}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Sleeve Length"
+                                        value={measurements.sleeveLength || ''}
+                                        onChange={(e) => onChangeMeasurements({ ...measurements, sleeveLength: e.target.value })}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Underarms"
+                                        value={measurements.underarms || ''}
+                                        onChange={(e) => onChangeMeasurements({ ...measurements, underarms: e.target.value })}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Back Length"
+                                        value={measurements.backLength || ''}
+                                        onChange={(e) => onChangeMeasurements({ ...measurements, backLength: e.target.value })}
+                                    />
+                                </>
+                            )}
+                            {(["Штаны", "Джинсы", "Джоггеры"].includes(category)) && (
+                                <>
+                                    <input
+                                        type="text"
+                                        placeholder="Outer Leg Length"
+                                        value={measurements.outerLegLength || ''}
+                                        onChange={(e) => onChangeMeasurements({ ...measurements, outerLegLength: e.target.value })}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Inner Leg Length"
+                                        value={measurements.innerLegLength || ''}
+                                        onChange={(e) => onChangeMeasurements({ ...measurements, innerLegLength: e.target.value })}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Waist Width"
+                                        value={measurements.waistWidth || ''}
+                                        onChange={(e) => onChangeMeasurements({ ...measurements, waistWidth: e.target.value })}
+                                    />
+                                </>
+                            )}
+                            {(!["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив", "Штаны", "Джинсы", "Джоггеры"].includes(category)) && (
+                                <textarea
+                                    className="input"
+                                    placeholder="Measurements"
+                                    value={measurements.other || ''}
+                                    onChange={(e) => onChangeMeasurements({ ...measurements, other: e.target.value })}
+                                    rows="10"
+                                    cols="50"
+                                ></textarea>
+                            )}
+                        </div>
+                        {/* <textarea
                             className="input"
                             placeholder="Measurements"
                             value={measurements}
                             onChange={onChangeMeasurements}
                             rows="10"
                             cols="50"
-                        ></textarea>
+                        ></textarea> */}
                         <input
                         className="input"
                         type="text"
