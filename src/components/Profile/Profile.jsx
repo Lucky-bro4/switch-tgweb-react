@@ -36,7 +36,7 @@ const Profile = () => {
                 ...measurements,
                 email,
             };
-            const response = await fetch('/api/save-measurements', {
+            const response = await fetch(`https://bottry-lucky-bro4.amvera.io/measurements/${user.id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,11 +47,11 @@ const Profile = () => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-
-            alert('Measurements saved successfully!');
+            tg.showAlert('Данные успешно сохранены')
+            
         } catch (error) {
             console.error('Error saving measurements:', error);
-            alert('Failed to save measurements.');
+            tg.showAlert('Не удалось сохранить данные, возникла ошибка. Попробуйте позже')
         }
     };
 
