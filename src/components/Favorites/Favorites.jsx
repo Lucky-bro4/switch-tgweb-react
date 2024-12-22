@@ -11,7 +11,17 @@ const Favorites = ({ addedItems }) => {
 
     return (
         <div className="cart-section">
-            <h1>Корзина</h1>
+            <h1>
+                <span className="catalog-icon" onClick={() => window.location.href = '/'}>
+                    <img 
+                        src="/Images/mainLogo_withoutRental&Back.png" 
+                        width={40} 
+                        alt="Go to catalog" 
+                        title="Go to Catalog"
+                    />
+                </span>
+                Избранное
+            </h1>
             <div className="order-list">
                 {addedItems.length > 0 ? (
                     addedItems.map((item) => (
@@ -24,7 +34,7 @@ const Favorites = ({ addedItems }) => {
                         </div>
                     ))
                 ) : (
-                    <p>Корзина пуста</p>
+                    <p>В избранном ничего нет 😞</p>
                 )}
             </div>
             {addedItems.length > 0 && (
