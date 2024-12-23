@@ -4,6 +4,7 @@
     align-items: center;      /* Центрируем по вертикали */
     height: 100vh;            /* Занимает всю высоту экрана */
     width: 100%;
+    padding-top: 5px;
 }
 
 .mainLogo {
