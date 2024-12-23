@@ -1,8 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Footer.css';
 
-const Footer = ({ addedItems }) => {
+const Footer = ({ handleCartClick, addedItems }) => {
+
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleProfileClick = () => {
@@ -17,7 +19,7 @@ const Footer = ({ addedItems }) => {
     navigate('/cart');
   };
 
-
+  const isCartActive = location.pathname === "/cart";
 
   return (
     <footer className="footer">
@@ -50,15 +52,15 @@ const Footer = ({ addedItems }) => {
           </div>
         </div> */}
         <div className="footer-section" onClick={handleCartClick}>
-          <i className="icon-cart">
-            <img 
-                src="/Images/icons/icon-cart.png" 
-                width={30} 
-                alt="icon-cart" />
-            {addedItems.length > 0 && (
-                <div className="badge">{addedItems.length}</div>
-            )}
-          </i>
+            <i className="icon-cart">
+                <img 
+                    src={isCartActive ? "/Images/icons/icon-cart-active.png" : "/Images/icons/icon-cart-not-active.png"} 
+                    width={30} 
+                    alt="icon-cart" />
+                {addedItems.length > 0 && (
+                    <div className="badge">{addedItems.length}</div>
+                )}
+            </i>
         </div>
       </div>
     </footer>
