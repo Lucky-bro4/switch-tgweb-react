@@ -63,7 +63,7 @@ const SearchComponent = ({ onFilterChange }) => {
 
         {/* Кнопка с иконкой фильтра для открытия модального окна */}
         <button onClick={openModal} className="filter-button">
-          <span className="filter-icon"><img src="/Images/icons/filter-icon.png" alt="filter-icon" /></span>
+          <span className="filter-icon">⚙️</span>
         </button>
 
         {/* Поисковая строка */}
