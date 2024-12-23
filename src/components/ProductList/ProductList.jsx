@@ -136,6 +136,19 @@ const ProductList = ({ addedItems, setAddedItems }) => {
         }
     }, [onSendData])
 
+    useEffect(() => {
+        if (!closedChainOrder) {
+            tg.onEvent('mainButtonClicked', goToCart)
+            return () => {
+            tg.offEvent('mainButtonClicked', goToCart)
+            }
+        }
+    }, [goToCart])
+
+    const goToCart = () => {
+        
+    }
+
     const onAdd = (product) => {
 
         const alreadyAdded = addedItems.find(item => item.id === product.id);
@@ -185,6 +198,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
             tg.MainButton.setParams({
                 text: `Посмотреть заказ`
             })
+            tg.onEvent('mainButtonClicked', onShowAlert)
         } 
 
     }
