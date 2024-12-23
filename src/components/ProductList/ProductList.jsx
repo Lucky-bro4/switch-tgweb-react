@@ -197,37 +197,39 @@ const ProductList = ({ addedItems, setAddedItems }) => {
 
 
     return (
-        <div className={'list'}>
+        <div>
             <Header />
             <SearchComponent onFilterChange={applyFilters} />
-            {filteredProducts.length > 0 ? (
-                filteredProducts.map(item => (
-                    <ProductItem
-                        key={item.id}
-                        product={item}
+            <div className={'list'}>
+                {filteredProducts.length > 0 ? (
+                    filteredProducts.map(item => (
+                        <ProductItem
+                            key={item.id}
+                            product={item}
+                            onAdd={onAdd}
+                            selectedCount={order}
+                            onClick={() => onProductClick(item)}
+                            className={'item'}
+                            closedChainOrder={closedChainOrder}
+                            favoriteItems={favoriteItems}
+                            // userId={user.id}
+                        />
+                    ))
+                ) : (
+                    <div className="no-products">
+                        Не нашли товары по заданному условию 😞
+                    </div>
+                )}
+                {isModalOpen && selectedProduct && (
+                    <ProductModal 
+                        product={selectedProduct} 
+                        onClose={closeModal} 
                         onAdd={onAdd}
                         selectedCount={order}
-                        onClick={() => onProductClick(item)}
-                        className={'item'}
-                        closedChainOrder={closedChainOrder}
                         favoriteItems={favoriteItems}
-                        // userId={user.id}
                     />
-                ))
-            ) : (
-                <div className="no-products">
-                    Не нашли товары по заданному условию 😞
-                </div>
-            )}
-            {isModalOpen && selectedProduct && (
-                <ProductModal 
-                    product={selectedProduct} 
-                    onClose={closeModal} 
-                    onAdd={onAdd}
-                    selectedCount={order}
-                    favoriteItems={favoriteItems}
-                />
-            )}
+                )}
+            </div>
         </div>
     );
 };
