@@ -57,8 +57,8 @@ const SearchComponent = ({ onFilterChange }) => {
 
       <div className="search-row">
         {/* Кнопки для мужского и женского */}
-        <button className="category-button" onClick={() => handleCategoryClick('male')}>Мужское</button>
-        <button className="category-button" onClick={() => handleCategoryClick('female')}>Женское</button>
+        <button className="category-button" onClick={() => handleCategoryClick('Male')}>Мужское</button>
+        <button className="category-button" onClick={() => handleCategoryClick('Female')}>Женское</button>
 
         {/* Кнопка с иконкой фильтра для открытия модального окна */}
         <button onClick={openModal} className="filter-button">

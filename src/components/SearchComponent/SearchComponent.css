@@ -43,14 +43,14 @@
 }
 
 /* Фокус: поле ввода расширяется влево, скрывая кнопки */
-.search-row:focus-within .search-input {
+.search-input {
   /* transform: translateX(-100%);
   width: 100%; */
   border-color: black;
 }
 
-.search-row:focus-within .category-button,
-.search-row:focus-within .filter-button {
+.search-input:focus .category-button,
+.search-input:focus .filter-button {
   opacity: 0; /* Кнопки исчезают */
   pointer-events: none; /* Отключаем взаимодействие */
 }
@@ -80,7 +80,7 @@
     width: 95%;
   }
 
-  .search-row:focus-within .search-input {
+  .search-input {
     transform: translateX(-80%);
     width: 300%;
   }

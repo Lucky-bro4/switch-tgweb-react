@@ -22,7 +22,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
     const [newUser, setNewUser] = useState(false)
     const [alertShown, setAlertShown] = useState(false)
 
-    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState(products || []);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -38,8 +38,8 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                 const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
                 const data = await response.json();
                 
-                setProducts(data.products)
-                setFilteredProducts(data.products)
+                // setProducts(data.products)
+                setFilteredProducts(data.products || []);
                 // setFavoriteItems(data.customer.favorite_items)
 
                 // if (!data.customer.location && !data.customer.phone_number) {
@@ -61,36 +61,36 @@ const ProductList = ({ addedItems, setAddedItems }) => {
         }
 
         getProducts();
-    }, [])
+    }, [products])
 
     const applyFilters = ({ query, filters }) => {
-        let updatedProducts = products;
+        let updatedProducts = products || [];
     
-        if (filters.category) {
-          updatedProducts = updatedProducts.filter(product => product.category === filters.category);
+        if (filters?.category) {
+            updatedProducts = updatedProducts.filter(product => product.category === filters.category);
         }
     
-        if (filters.priceRange) {
-          updatedProducts = updatedProducts.filter(product => {
+        if (filters?.priceRange) {
+        updatedProducts = updatedProducts.filter(product => {
             switch (filters.priceRange) {
-              case 'low':
+            case 'low':
                 return product.price < 1000;
-              case 'medium':
+            case 'medium':
                 return product.price >= 1000 && product.price <= 3000;
-              case 'medium-high':
+            case 'medium-high':
                 return product.price > 3000 && product.price <= 5000;
-              case 'high':
+            case 'high':
                 return product.price > 5000;
-              default:
+            default:
                 return true;
             }
-          });
+        });
         }
     
         if (query) {
-          updatedProducts = updatedProducts.filter(product =>
+        updatedProducts = updatedProducts.filter(product =>
             product.title.toLowerCase().includes(query.toLowerCase())
-          );
+        );
         }
     
         setFilteredProducts(updatedProducts);
@@ -200,8 +200,8 @@ const ProductList = ({ addedItems, setAddedItems }) => {
         <div className={'list'}>
             <Header />
             <SearchComponent onFilterChange={applyFilters} />
-            {products.length > 0 ? (
-                products.map(item => (
+            {filteredProducts.length > 0 ? (
+                filteredProducts.map(item => (
                     <ProductItem
                         key={item.id}
                         product={item}
@@ -216,7 +216,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                 ))
             ) : (
                 <div className="no-products">
-                    {/* <p>Загрузка каталога</p> */}
+                    Не нашли товары по заданному условию 😞
                 </div>
             )}
             {isModalOpen && selectedProduct && (
