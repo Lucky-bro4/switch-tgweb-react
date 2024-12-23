@@ -67,10 +67,10 @@ const Profile = () => {
                     />
                 </span>
                 Профиль
+                <h3 className='user-info'>
+                    {user.username}
+                </h3>
             </h1>
-            <div className='user-info'>
-                ${user.username}
-            </div>
             <div className="measurements">
                 <label>
                     Shoulders (cm):
