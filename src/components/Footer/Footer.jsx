@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Footer.css';
 
-const Footer = ({ handleCartClick, addedItems }) => {
+const Footer = ({ addedItems }) => {
 
   const location = useLocation();
   const navigate = useNavigate();
