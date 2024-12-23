@@ -55,11 +55,11 @@
   pointer-events: none; /* Отключаем взаимодействие */
 }
 
-.search-row:not(:focus-within) .search-input {
+/* .search-row:not(:focus-within) .search-input {
   transform: translateX(0);
-  width: 100%; /* Возвращение к исходному состоянию */
+  width: 100%;
   transition: all 0.5s ease;
-}
+} */
 
 .filter-button {
   border-radius: 50%;
@@ -97,7 +97,7 @@
   }
 
   .search-input:focus {
-    transform: translateX(-300px);
+    transform: translateX(-100%);
     width: 300px;
     transition: all 0.5s ease;
   }

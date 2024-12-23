@@ -52,6 +52,8 @@ const SearchComponent = ({ onFilterChange }) => {
     setIsModalOpen(false);
   };
 
+  changeClassName
+
   return (
     <div className="search-container">
 
@@ -73,6 +75,7 @@ const SearchComponent = ({ onFilterChange }) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder="Поиск"
+          onClick={changeClassName}
           className={`search-input`}
         />
       </div>
