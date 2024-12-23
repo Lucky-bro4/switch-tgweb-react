@@ -11,6 +11,14 @@
     padding-bottom: 60px;
 }   
 
+.catalog-icon {
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+    border-color: black;
+    cursor: pointer;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
