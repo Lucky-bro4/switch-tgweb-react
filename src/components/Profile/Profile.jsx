@@ -69,7 +69,7 @@ const Profile = () => {
                 Профиль
             </h1>
             <div className='user-info'>
-                ${user.nickname}
+                ${user.username}
             </div>
             <div className="measurements">
                 <label>
