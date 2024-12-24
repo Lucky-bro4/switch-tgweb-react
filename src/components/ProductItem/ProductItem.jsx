@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Button from "../Button/Button";
 import './ProductItem.css';
 import { useTelegram } from "../../hooks/useTelegram";
 
@@ -63,12 +62,15 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
 
 
     return (
-        <div key={product.id} className={'product ' + className}>
+        <div key={product.id} className={'product ' + className} onClick={() => onClick(product)}>
             <div className="img-container">
                 <img className="img" src={product.image[0]} alt={`${product.category} ${product.brand}`} />
                 <div 
                     className="favorite-icon" 
-                    onClick={handleFavoriteClick}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleFavoriteClick(e);
+                    }}
                 >
                     <img 
                         src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 

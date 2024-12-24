@@ -225,7 +225,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                     </div>
                 )}
                 {isModalOpen && selectedProduct && (
-                    <ProductModal 
+                    <ProductModal
                         product={selectedProduct} 
                         onClose={closeModal} 
                         onAdd={onAdd}
