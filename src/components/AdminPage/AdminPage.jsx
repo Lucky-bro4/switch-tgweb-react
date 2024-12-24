@@ -17,6 +17,7 @@ const AdminPage = () => {
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
     const [description, setDescription] = useState('');
+    const [avitoUrl, setAvitoUrl] = useState('');
     // const [photo, setPhoto] = useState('/Images/Одежда/');
 
     const [photos, setPhotos] = useState([]);
@@ -119,6 +120,10 @@ const AdminPage = () => {
 
     const onChangeDescription = (e) => {
         setDescription(e.target.value);
+    };
+
+    const onChangeAvitoUrl = (e) => {
+        setAvitoUrl(e.target.value);
     };
 
 
@@ -574,6 +579,13 @@ const AdminPage = () => {
                         placeholder="Description"
                         value={description}
                         onChange={onChangeDescription}
+                        />
+                        <input
+                        className="input"
+                        type="text"
+                        placeholder="Avito Url"
+                        value={avitoUrl}
+                        onChange={onChangeAvitoUrl}
                         />
                         <div>
                         <input
