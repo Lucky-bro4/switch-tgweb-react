@@ -19,6 +19,8 @@ const Footer = ({ addedItems }) => {
     navigate('/cart');
   };
 
+  const isProfileActive = location.pathname === "/profile";
+  const isFavoritesActive = location.pathname === "/favorites";
   const isCartActive = location.pathname === "/cart";
 
   return (
@@ -27,7 +29,7 @@ const Footer = ({ addedItems }) => {
         <div className="footer-section" onClick={handleProfileClick}>
           <i className="icon-user">
           <img 
-                src="/Images/icons/icon-profile.png" 
+                src={isProfileActive ? "/Images/icons/icon-profile-active.png" : "/Images/icons/icon-profile-not-active.png"}
                 width={30} 
                 alt="icon-profile" />
           </i>
@@ -35,7 +37,7 @@ const Footer = ({ addedItems }) => {
         <div className="footer-section" onClick={handleFavoritesClick}>
           <i className="icon-favorites">
           <img 
-                src="/Images/icons/icon-love.png" 
+                src={isFavoritesActive ? "/Images/icons/icon-love-active.png" : "/Images/icons/icon-love-not-active.png"}  
                 width={30} 
                 alt="icon-love" />
           </i>
