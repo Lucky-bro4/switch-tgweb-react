@@ -26,7 +26,7 @@ const Footer = ({ addedItems }) => {
   const isProfileActive = location.pathname === "/profile";
   const isFavoritesActive = location.pathname === "/favorites";
   const isCartActive = location.pathname === "/cart";
-  const isHomeActive = location.pathname === "/home";
+  const isHomeActive = location.pathname === "/";
 
   return (
     <footer className="footer">
