@@ -220,6 +220,7 @@ const AdminPage = () => {
             brandSize: brandSize,
             color: color,
             description: description,
+            avitoUrl: avitoUrl,
             status: status,
             available: available
         };
@@ -314,6 +315,7 @@ const AdminPage = () => {
             brandSize: brandSize,
             color: color,
             description: description,
+            avitoUrl: avitoUrl,
             // photo: photos,
             status: status,
             available: Boolean(available),

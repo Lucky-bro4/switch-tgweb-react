@@ -19,13 +19,26 @@ const Footer = ({ addedItems }) => {
     navigate('/cart');
   };
 
+  const handleHomeClick = () => {
+    navigate('/');
+  };
+
   const isProfileActive = location.pathname === "/profile";
   const isFavoritesActive = location.pathname === "/favorites";
   const isCartActive = location.pathname === "/cart";
+  const isHomeActive = location.pathname === "/home";
 
   return (
     <footer className="footer">
       <div className="footer-container">
+        <div className="footer-section" onClick={handleHomeClick}>
+          <i className="icon-home">
+          <img 
+                src={isHomeActive ? "/Images/icons/mainLogo_withoutRental&Back-active.png" : "/Images/icons/mainLogo_withoutRental&Back-not-active.png"}
+                width={30} 
+                alt="icon-home" />
+          </i>
+        </div>
         <div className="footer-section" onClick={handleProfileClick}>
           <i className="icon-user">
           <img 
