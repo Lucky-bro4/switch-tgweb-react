@@ -1,10 +1,45 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { useTelegram } from "../../hooks/useTelegram";
 import "./Cart.css";
 
 
 const Cart = ({ addedItems }) => {
-    const totalPrice = addedItems.reduce((acc, item) => acc + item.rentPrice, 0);
+
+    const { tg, queryId, user } = useTelegram();
+    const totalPrice = addedItems.reduce((acc, item) => acc + item.price, 0);
+
+    const onSendData = useCallback(() => {
+            
+            const data = {
+                items: addedItems,
+                totalPrice: getTotalPrice(addedItems),
+                queryId,
+                user
+            }
+            fetch('https://bottry-lucky-bro4.amvera.io/web-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+        }, [addedItems, queryId])
+
+    useEffect(() => {
+        if (addedItems > 0) {
+
+            tg.BottomButton.show();
+            tg.BottomButton.setParams({
+                text: 'Оформить заказ',
+            })
+
+            tg.onEvent('mainButtonClicked', onSendData)
+            return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+            }
+        }
+        
+    }, [onSendData])
 
     return (
         <div className="cart-section">
