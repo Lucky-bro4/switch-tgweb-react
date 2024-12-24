@@ -85,7 +85,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
             >
                 {content} за {product.rentPrice} Р
             </Button> */}
-            <Button 
+            {/* <Button 
                 className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
                 onClick={handleAdd}
             >
@@ -93,7 +93,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
             </Button>
             <div id='remove'>
                 {status === 'add-btn' ? 'Добавить' : 'Удалить'}
-            </div>        
+            </div>         */}
         </div>
     );
 };

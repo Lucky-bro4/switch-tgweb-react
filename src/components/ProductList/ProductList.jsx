@@ -26,6 +26,8 @@ const ProductList = ({ addedItems, setAddedItems }) => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const [productsInCart, setProductsInCart] = useState([]);
+
     const [favoriteItems, setFavoriteItems] = useState([]);
 
     const navigate = useNavigate();
@@ -127,27 +129,15 @@ const ProductList = ({ addedItems, setAddedItems }) => {
         tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 3 часа до конца текущей аренды.');
     }, [])
 
-    useEffect(() => {
-        if (!closedChainOrder) {
-            tg.onEvent('mainButtonClicked', onSendData)
-            return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-            }
-        }
-    }, [onSendData])
+    // useEffect(() => {
+    //     if (!closedChainOrder) {
+    //         tg.onEvent('mainButtonClicked', onSendData)
+    //         return () => {
+    //         tg.offEvent('mainButtonClicked', onSendData)
+    //         }
+    //     }
+    // }, [onSendData])
 
-    useEffect(() => {
-        if (!closedChainOrder) {
-            tg.onEvent('mainButtonClicked', goToCart)
-            return () => {
-            tg.offEvent('mainButtonClicked', goToCart)
-            }
-        }
-    }, [goToCart])
-
-    const goToCart = () => {
-        
-    }
 
     const onAdd = (product) => {
 
@@ -239,6 +229,8 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                         product={selectedProduct} 
                         onClose={closeModal} 
                         onAdd={onAdd}
+                        addedItems={addedItems}
+                        setAddedItems={setAddedItems}
                         selectedCount={order}
                         favoriteItems={favoriteItems}
                     />

@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import './ProductModal.css';
 import Button from "../Button/Button";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useTelegram } from '../../hooks/useTelegram';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const ProductModal = ({ product, onClose, onAdd, selectedCount }) => {
+const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setAddedItems }) => {
+
+    const { tg } = useTelegram();
+
     const [activeIndex, setActiveIndex] = useState(0);
     const [status, setStatus] = useState('add-btn');
     const [content, setContent] = useState('Добавить в корзину');
@@ -21,24 +25,52 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount }) => {
         setActiveIndex(swiper.activeIndex);
     };
 
-    const onAddHandler = () => {
-        if (status === 'add-btn') {
-            onAdd(product);
-            changeButton();
-        } else {
-            changeButton();
-        }
-    };
+    const onAddHandler = () => {    
+        setAddedItems([...addedItems, product]);
+        // tg.BottomButton [{
+        //     type: 'main',
+        // }]
+        tg.BottomButton.setParams({
+            type: 'main',
+            text: 'Перейти в корзину',
+            color: rgba(150, 228, 66)
+        })
+        tg.BottomButton.setParams({
+            type: 'secondary',
+            text: 'Удалить из корзины',
+            position: 'right',
+            color: '10, 15, 27'
+        })
 
-    const changeButton = () => {
-        if (status === 'add-btn' && selectedCount < 4) {
-            setStatus('already-add-btn')
-            setContent('Удалить из корзины')
-        } else if (selectedCount <= 4) {
-            setStatus('add-btn')
-            setContent('Добавить в корзину')
+        changeButtonToCart();
+  
+    };          
+
+    // const changeButtonT = () => {
+    //     if (status === 'add-btn' && selectedCount < 4) {
+    //         setStatus('already-add-btn')
+    //         setContent('')
+    //     } else if (selectedCount <= 4) {
+    //         setStatus('add-btn')
+    //         setContent('Добавить в корзину')
+    //     }
+    // };
+
+    useEffect(() => {
+        tg.BottomButton.show();
+        tg.BottomButton.setParams({
+            type: 'main',
+            text: 'Добавить в корзину',
+            color: rgba(226, 45, 96)
+        })
+        if (!closedChainOrder) {
+            tg.onEvent('mainButtonClicked', onAddHandler)
+            return () => {
+            tg.offEvent('mainButtonClicked', onAddHandler)
+            }
         }
-    };
+    }, [onAddHandler])
+
 
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
@@ -77,12 +109,15 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount }) => {
                 <p><strong>Размер бренда:</strong> {product.brandSize} Р</p>
                 <p><strong>Цвет:</strong> {product.color} Р</p>
                 <p><strong>О товаре:</strong> {product.description} Р</p>
-                <Button
-                    className={`${status}`}
-                    onClick={onAddHandler}
-                >
-                    {content}
-                </Button>
+                <div className="buttons-container" style={{ display: tg.MainButton.isVisible() ? 'flex' : 'none' }}>
+                    <button className="minus-button" onClick={() => setAddedItems(addedItems.filter(item => item !== product))}>
+                        -
+                    </button>
+                    <button className="cart-button" onClick={onAddHandler}>
+                        <span className="cart-icon"></span>
+                        <span className="checkmark">✔</span>
+                    </button>
+                </div>
             </div>
         </div>
     );
