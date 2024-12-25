@@ -30,12 +30,12 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
         // tg.BottomButton [{
         //     type: 'main',
         // }]
-        tg.MainButton.setParams({
+        tg.BottomButton.setParams({
             type: 'main',
             text: 'Перейти в корзину',
-            color: '150, 228, 66'
+            color: '#96E442'
         })
-        tg.MainButton.setParams({
+        tg.BottomButton.setParams({
             type: 'secondary',
             text: 'Удалить из корзины',
             position: 'right',
