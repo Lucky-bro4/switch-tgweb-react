@@ -102,15 +102,15 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
                 </div>
 
                 <p><strong>{`${product.gender} ${product.category} ${product.brand}`}</strong></p>
-                <p><strong>Бренд:</strong> {product.brand} Р</p>
-                <p><strong>Цена:</strong> {product.price} Р</p>
-                <p><strong>Состояние:</strong> {product.condition} </p>
-                <p><strong>Замеры:</strong> {product.measurements} </p>
-                <p><strong>Размер бренда:</strong> {product.brandSize} Р</p>
-                <p><strong>Цвет:</strong> {product.color} Р</p>
-                <p><strong>О товаре:</strong> {product.description} Р</p>
+                <p><strong>Бренд:</strong> {product.brand}</p>
+                <p><strong>Цена:</strong> {product.price} р.</p>
+                <p><strong>Состояние:</strong> {product.condition}</p>
+                <p><strong>Замеры:</strong> {product.measurements}</p>
+                <p><strong>Размер бренда:</strong> {product.brandSize}</p>
+                <p><strong>Цвет:</strong> {product.color}</p>
+                <p><strong>О товаре:</strong> {product.description}</p>
                 <div className="buttons-container" >
-                {/* style={{ display: tg.MainButton.isVisible() ? 'flex' : 'none' }} */}
+                {/* style={{ display: tg.MainButton.isVisible ? 'flex' : 'none' }} */}
                     <button className="minus-button" onClick={() => setAddedItems(addedItems.filter(item => item !== product))}>
                         -
                     </button>
