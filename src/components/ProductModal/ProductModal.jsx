@@ -30,12 +30,12 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
         // tg.BottomButton [{
         //     type: 'main',
         // }]
-        tg.BottomButton.setParams({
+        tg.MainButton.setParams({
             type: 'main',
             text: 'Перейти в корзину',
             color: rgba(150, 228, 66)
         })
-        tg.BottomButton.setParams({
+        tg.MainButton.setParams({
             type: 'secondary',
             text: 'Удалить из корзины',
             position: 'right',
@@ -57,8 +57,8 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
     // };
 
     useEffect(() => {
-        tg.BottomButton.show();
-        tg.BottomButton.setParams({
+        tg.MainButton.show();
+        tg.MainButton.setParams({
             type: 'main',
             text: 'Добавить в корзину',
             color: rgba(226, 45, 96)
