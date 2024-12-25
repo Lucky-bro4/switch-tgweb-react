@@ -28,7 +28,7 @@ const Favorites = ({ addedItems }) => {
                             <img src={item.image[0]} alt={item.name} className="order-image" />
                             <div>
                                 <h2>{item.name}</h2>
-                                <p>Цена аренды: {item.rentPrice} Р</p>
+                                <p>Цена: {item.rentPrice} ₽</p>
                             </div>
                         </div>
                     ))

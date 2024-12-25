@@ -42,7 +42,7 @@
     right: 10px;
     width: 30px;
     height: 30px;
-    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -52,74 +52,40 @@
     transition: transform 0.2s ease-in-out;
 }
 
-/* .favorite-icon:active {
-    transform: scale(0.9);
-    background-color: rgba(226, 45, 96);
-} */
-
-/* Состояние наведения */
 .favorite-icon:hover {
     transform: scale(1.1);
-    background-color: rgba(255, 255, 255, 1); /* Более яркий фон при наведении */
+    background-color: rgba(255, 255, 255, 1);
 }
 
-/* Основная иконка */
 .favorite-icon img {
     width: 18px;
     height: 18px;
 }
 
-/* Основной акцент на цене и бренде */
+/* Основной текст и стили под фото */
 .title {
     text-align: left;
-    margin: 2px 0;
+    margin: 2px 0; /* Уменьшенные отступы */
 }
 
-.title p {
-    font-size: 1.2em; /* Увеличенный шрифт для цены и бренда */
-    font-weight: bold;
+.title .price {
+    font-size: 1.2em;
+    font-weight: bold; /* Жирный шрифт для цены */
+}
+
+.title .brand {
+    font-size: 1em;
+    font-weight: normal; /* Обычный шрифт для бренда */
 }
 
 .size {
     text-align: center;
-    font-size: 0.9em; /* Чуть меньше шрифт для размера */
-    font-weight: 600;
-    margin: 1px 0;
+    font-size: 0.9em;
+    font-weight: normal; /* Обычный шрифт для размера */
+    margin: 1px 0; /* Уменьшенные отступы */
 }
 
-/* Описание товара, с уменьшенными отступами */
 .description {
     font-size: 0.8em;
-    margin: 1px 0;
-}
-
-.add-btn, .disabled, .already-add-btn {
-    width: fit-content;
-    padding: 8px 16px;
-    border: 0;
-    border-radius: 50px;
-    text-align: center;
-    margin: 10px auto 0;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.add-btn:hover {
-    background-color: var(--tg-theme-button-color);
-    transform: scale(1.05);
-}
-
-.disabled {
-    background-color: rgb(169, 162, 162);
-    color: white;
-}
-
-.already-add-btn {
-    background-color: red;
-    color: white;
-}
-
-.already-add-btn:hover {
-    background-color: darkred;
-    transform: scale(1.05);
+    margin: 1px 0; /* Уменьшенные отступы */
 }
