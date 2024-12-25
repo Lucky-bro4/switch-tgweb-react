@@ -73,7 +73,7 @@ const Profile = () => {
             </h1>
             <div className="measurements">
                 <label>
-                    Shoulders (cm):
+                    <span>Плечи (см):</span>
                     <input
                         type="number"
                         name="shoulders"
@@ -82,7 +82,7 @@ const Profile = () => {
                     />
                 </label>
                 <label>
-                    Sleeve Length (cm):
+                    <span>Длина рукава (см):</span>
                     <input
                         type="number"
                         name="sleeveLength"
@@ -91,7 +91,7 @@ const Profile = () => {
                     />
                 </label>
                 <label>
-                    Underarms (cm):
+                    <span>Подмышки (см):</span>
                     <input
                         type="number"
                         name="underarms"
@@ -100,7 +100,7 @@ const Profile = () => {
                     />
                 </label>
                 <label>
-                    Back Length (cm):
+                    <span>Длина по спине (см):</span>
                     <input
                         type="number"
                         name="backLength"
@@ -109,7 +109,7 @@ const Profile = () => {
                     />
                 </label>
                 <label>
-                    Outer Leg Length (cm):
+                    <span>Длина ноги внешняя (см):</span>
                     <input
                         type="number"
                         name="outerLegLength"
@@ -118,7 +118,7 @@ const Profile = () => {
                     />
                 </label>
                 <label>
-                    Inner Leg Length (cm):
+                    <span>Длина ноги внутренняя (см):</span>
                     <input
                         type="number"
                         name="innerLegLength"
@@ -127,7 +127,7 @@ const Profile = () => {
                     />
                 </label>
                 <label>
-                    Waist Width (cm):
+                    <span>Ширина талии (см):</span>
                     <input
                         type="number"
                         name="waistWidth"
@@ -138,9 +138,10 @@ const Profile = () => {
             </div>
             <div className="email-section">
                 <label>
-                    Email:
+                    Почта:
                     <input
                         type="email"
+                        placeholder='email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
