@@ -5,13 +5,16 @@
     height: 100vh;            /* Занимает всю высоту экрана */
     width: 100%;
     padding-top: 5px;
+    box-sizing: border-box;   /* Учитываем padding в размере */
 }
 
 .mainLogo {
-    height: fit-content;
-    justify-content: center;
-    align-items: center;
-    /* width: 150px; */
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 150px;
+    height: auto;
 }
+
 
 
