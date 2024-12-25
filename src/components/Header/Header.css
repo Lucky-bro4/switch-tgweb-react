@@ -1,8 +1,7 @@
 .header {
     display: flex;
     justify-content: center;  /* Центрируем по горизонтали */
-    align-items: center;      /* Центрируем по вертикали */
-    height: 100vh;            /* Занимает всю высоту экрана */
+    align-items: center;      
     width: 100%;
     padding-top: 5px;
     box-sizing: border-box;   /* Учитываем padding в размере */
@@ -12,7 +11,7 @@
     margin: 0;
     padding: 0;
     display: block;
-    /* width: 50; */
+    width: 50;
     height: auto;
 }
 
