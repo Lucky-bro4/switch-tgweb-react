@@ -38,7 +38,7 @@ input[type="number"], input[type="email"] {
     box-sizing: border-box;
 }
 
-.save-button, .home-button {
+.save-button {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -50,6 +50,6 @@ input[type="number"], input[type="email"] {
     background: var(--tg-theme-button-color, #0088cc);
 }
 
-.save-button:hover, .home-button:hover {
+.save-button:hover {
     background: var(--tg-theme-button-color-hover, #006699);
 }
