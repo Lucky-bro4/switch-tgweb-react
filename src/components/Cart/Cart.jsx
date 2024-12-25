@@ -41,6 +41,12 @@ const Cart = ({ addedItems }) => {
         
     }, [onSendData])
 
+    const getTotalPrice = (items = []) => {
+        return items.reduce((acc, item) => {
+            return acc += item.price
+        }, 0)
+    }
+
     return (
         <div className="cart-section">
             <h1>

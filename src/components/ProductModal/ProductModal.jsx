@@ -30,31 +30,22 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
         // tg.BottomButton [{
         //     type: 'main',
         // }]
-        tg.BottomButton.setParams({
-            type: 'main',
-            text: 'Перейти в корзину',
-            color: '#96E442'
-        })
-        tg.BottomButton.setParams({
-            type: 'secondary',
-            text: 'Удалить из корзины',
-            position: 'right',
-            color: '10, 15, 27'
-        })
 
-        changeButtonToCart();
+        tg.BottomButton.hide()
+
+        // tg.BottomButton.setParams({
+        //     type: 'main',
+        //     text: 'Перейти в корзину',
+        //     color: '#96E442'
+        // })
+        // tg.BottomButton.setParams({
+        //     type: 'secondary',
+        //     text: 'Удалить из корзины',
+        //     position: 'right',
+        //     color: '10, 15, 27'
+        // })
   
-    };          
-
-    // const changeButtonT = () => {
-    //     if (status === 'add-btn' && selectedCount < 4) {
-    //         setStatus('already-add-btn')
-    //         setContent('')
-    //     } else if (selectedCount <= 4) {
-    //         setStatus('add-btn')
-    //         setContent('Добавить в корзину')
-    //     }
-    // };
+    };
 
     useEffect(() => {
         tg.MainButton.show();
