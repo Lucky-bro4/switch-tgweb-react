@@ -19,7 +19,7 @@
     padding: 16px;
     width: 85%;
     max-width: 500px;
-    max-height: calc(100vh - 60px); /* Учитываем программный блок сверху */
+    max-height: 100vh; /* Учитываем программный блок сверху */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow-y: auto;
