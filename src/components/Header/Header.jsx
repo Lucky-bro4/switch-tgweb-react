@@ -22,9 +22,12 @@ const Header = () => {
 
     return (
         <div className='header'>
-            <div className='mainLogo'>
-                <img src="/Images/mainLogo_withoutRental&Back.png" width={150} alt="Swich" />
-            </div>
+            <img
+                src="/Images/mainLogo_withoutRental&Back.png"
+                width={150}
+                alt="Swich"
+                className="mainLogo"
+            />
         </div>
     );
 };
