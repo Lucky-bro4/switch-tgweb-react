@@ -33,7 +33,7 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
         tg.MainButton.setParams({
             type: 'main',
             text: 'Перейти в корзину',
-            color: rgba(150, 228, 66)
+            color: '150, 228, 66'
         })
         tg.MainButton.setParams({
             type: 'secondary',
@@ -61,7 +61,7 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
         tg.MainButton.setParams({
             type: 'main',
             text: 'Добавить в корзину',
-            color: rgba(226, 45, 96)
+            color: '226, 45, 96'
         })
         if (!closedChainOrder) {
             tg.onEvent('mainButtonClicked', onAddHandler)
