@@ -23,7 +23,7 @@ const Header = () => {
     return (
         <div className='header'>
             <div className='mainLogo'>
-                <img src="/Images/mainLogo_withoutRental&Back.png" width={150} alt="Swich" />
+                <img src="/Images/mainLogo_withoutRental&Back.png" alt="Swich" />
             </div>
         </div>
     );
