@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 const AdminPage = () => {
     
     const [id, setId] = useState(0)
-    const [gender, setGender] = useState('');
+    const [gender, setGender] = useState('Для кого?');
     const [category, setCategory] = useState('');
     const [brand, setBrand] = useState('');
     const [price, setPrice] = useState(0);
