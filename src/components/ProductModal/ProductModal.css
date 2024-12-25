@@ -66,7 +66,7 @@ p {
 
 .product-image {
     width: 100%;
-    max-height: 150px;
+    max-height: 250px;
     border-radius: 8px;
     object-fit: cover;
 }
