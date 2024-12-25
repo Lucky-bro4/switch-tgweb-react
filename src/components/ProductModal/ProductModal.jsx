@@ -109,7 +109,8 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
                 <p><strong>Размер бренда:</strong> {product.brandSize} Р</p>
                 <p><strong>Цвет:</strong> {product.color} Р</p>
                 <p><strong>О товаре:</strong> {product.description} Р</p>
-                <div className="buttons-container" style={{ display: tg.MainButton.isVisible() ? 'flex' : 'none' }}>
+                <div className="buttons-container" >
+                {/* style={{ display: tg.MainButton.isVisible() ? 'flex' : 'none' }} */}
                     <button className="minus-button" onClick={() => setAddedItems(addedItems.filter(item => item !== product))}>
                         -
                     </button>
