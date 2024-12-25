@@ -24,7 +24,7 @@ const Header = () => {
         <div className='header'>
             <img
                 src="/Images/mainLogo_withoutRental&Back.png"
-                // width={150}
+                width={150}
                 alt="Swich"
                 className="mainLogo"
             />
