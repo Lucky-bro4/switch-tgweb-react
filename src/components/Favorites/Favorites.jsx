@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import "./Favorites.css";
 
 
@@ -42,11 +41,6 @@ const Favorites = ({ addedItems }) => {
                     <h2>Общая сумма: {totalPrice} Р</h2>
                 </div>
             )}
-            <div className="return-button">
-                <Link to="/" className="button">
-                    Вернуться в каталог
-                </Link>
-            </div>
         </div>
     );
 };
