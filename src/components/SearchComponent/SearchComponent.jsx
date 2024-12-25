@@ -67,7 +67,7 @@ const SearchComponent = ({ onFilterChange }) => {
         </button>
 
         {/* Поисковая строка */}
-        <input
+        {/* <input
           type="text"
           value={query}
           onChange={handleQueryChange}
@@ -75,7 +75,7 @@ const SearchComponent = ({ onFilterChange }) => {
           onBlur={handleBlur}
           placeholder="Поиск"
           className={`search-input`}
-        />
+        /> */}
       </div>
 
       {/* Модальное окно с фильтрами */}
