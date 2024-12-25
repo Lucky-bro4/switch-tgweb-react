@@ -147,7 +147,6 @@ const Profile = () => {
                 </label>
             </div>
             <button className="save-button" onClick={handleSave}>Save</button>
-            <button className="home-button" onClick={() => window.location.href = '/'}>Home</button>
         </div>
     );
 };
