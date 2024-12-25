@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 const AdminPage = () => {
     
     const [id, setId] = useState(0)
-    const [gender, setGender] = useState('Для кого?');
+    const [gender, setGender] = useState('');
     const [category, setCategory] = useState('');
     const [brand, setBrand] = useState('');
     const [price, setPrice] = useState(0);
@@ -467,6 +467,7 @@ const AdminPage = () => {
                             onChange={onChangeGender}
                             className="input"
                         >
+                            <option value="">Для кого?</option>
                             <option value="Male">Мужское</option>
                             <option value="Female">Женское</option>
                         </select>
