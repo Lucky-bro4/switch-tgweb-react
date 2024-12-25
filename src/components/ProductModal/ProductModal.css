@@ -55,7 +55,20 @@
     border-radius: 8px;
 }
 
-.product-details {
+.product-info {
+    display: flex;
+    gap: 20px;
+}
+
+.product-info .column {
+    flex: 1; /* Колонки будут одинаковой ширины */
+}
+
+.product-info p {
+    margin: 10px 0;
+}
+
+/* .product-details {
     width: 100%;
     margin-top: 20px;
     font-size: 0.9rem;
@@ -63,7 +76,7 @@
 
 .product-details p {
     margin: 5px 0;
-}
+} */
 
 h2 {
     font-size: 1.5em;

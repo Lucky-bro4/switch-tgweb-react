@@ -100,15 +100,15 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
                         ))}
                     </Swiper>
                 </div>
-                <div style="display: flex; gap: 20px;">
-                    <div>
+                <div class="product-info">
+                    <div class="column">
                         <p><strong>{`${product.gender} ${product.category} ${product.brand}`}</strong></p>
                         <p><strong>Бренд:</strong> {product.brand}</p>
                         <p><strong>Цена:</strong> {product.price} р.</p>
                         <p><strong>Состояние:</strong> {product.condition}</p>
                     </div>
             
-                    <div>
+                    <div class="column">
                         <p><strong>Замеры:</strong> {product.measurements}</p>
                         <p><strong>Размер бренда:</strong> {product.brandSize}</p>
                         <p><strong>Цвет:</strong> {product.color}</p>
