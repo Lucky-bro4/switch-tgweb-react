@@ -2,8 +2,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 80%;
-    height: auto;
+    width: 90%;
+    height: 90vh;
+    /* height: 100%; */
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
     display: flex;
