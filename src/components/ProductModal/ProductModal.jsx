@@ -63,12 +63,12 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
             text: 'Добавить в корзину',
             color: '#E22D60'
         })
-        if (!closedChainOrder) {
-            tg.onEvent('mainButtonClicked', onAddHandler)
-            return () => {
-            tg.offEvent('mainButtonClicked', onAddHandler)
-            }
+        
+        tg.onEvent('mainButtonClicked', onAddHandler)
+        return () => {
+        tg.offEvent('mainButtonClicked', onAddHandler)
         }
+        
     }, [onAddHandler])
 
 
