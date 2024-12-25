@@ -1,8 +1,9 @@
 .modal-overlay {
-    position: absolute;
-    width: 90%;
-    height: 90vh;
-    /* height: 100%; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
     display: flex;
@@ -12,22 +13,37 @@
 }
 
 .modal-content {
-    background: white;
+    color: var(--tg-theme-text-color, black);
+    background: var(--tg-theme-bg-color);
     border-radius: 10px;
-    padding: 20px;
-    width: 90%;
-    max-width: 600px;
+    padding: 16px;
+    width: 85%;
+    max-width: 500px;
+    max-height: calc(100vh - 60px); /* Учитываем программный блок сверху */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
-    animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease-out;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    margin: 8px 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
 .slider-container {
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .progress-bar {
@@ -38,8 +54,8 @@
 }
 
 .progress-bar-segment {
-    width: 20px;
-    height: 4px;
+    width: 15px;
+    height: 3px;
     background: #ccc;
     transition: background 0.3s ease;
 }
@@ -50,42 +66,20 @@
 
 .product-image {
     width: 100%;
+    max-height: 150px;
     border-radius: 8px;
+    object-fit: cover;
 }
 
 .product-info {
     display: flex;
-    gap: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .product-info .column {
-    flex: 1; /* Колонки будут одинаковой ширины */
-}
-
-.product-info p {
-    margin: 10px 0;
-}
-
-/* .product-details {
-    width: 100%;
-    margin-top: 20px;
-    font-size: 0.9rem;
-}
-
-.product-details p {
-    margin: 5px 0;
-} */
-
-h2 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-p {
-    margin: 10px 0;
-    font-size: 1.1em;
-    text-align: center;
+    flex: 1;
 }
 
 .modal-close {
@@ -94,7 +88,7 @@ p {
     right: 10px;
     background: transparent;
     border: none;
-    font-size: 24px;
+    font-size: 20px;
     color: #ff4c4c;
     cursor: pointer;
     transition: transform 0.2s ease, color 0.2s ease;
@@ -103,18 +97,18 @@ p {
 .action-button {
     display: block;
     width: 100%;
-    padding: 12px 0;
+    padding: 10px 0;
     background: linear-gradient(90deg, #32de84, #28a745);
     border: none;
     border-radius: 8px;
     color: #fff;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 15px;
     transition: background 0.3s ease, transform 0.2s ease;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 @keyframes fadeIn {
@@ -128,34 +122,11 @@ p {
 
 @media (max-width: 768px) {
     .modal-content {
-        width: 95%;
-        padding: 16px;
+        width: 90%;
+        padding: 14px;
     }
 
-    .modal-content h2 {
-        font-size: 1.5rem;
-    }
-
-    .product-details {
-        font-size: 0.8rem;
-    }
-
-    .action-button {
-        font-size: 1.2rem;
-    }
-
-    .progress-bar-segment {
-        width: 15px;
-        height: 3px;
-    }
-}
-
-@media (max-width: 480px) {
-    .modal-content {
-        padding: 12px;
-    }
-
-    .modal-content h2 {
+    h2 {
         font-size: 1.3rem;
     }
 
@@ -163,7 +134,23 @@ p {
         font-size: 1rem;
     }
 
-    .product-details {
-        font-size: 0.75rem;
+    .progress-bar-segment {
+        width: 12px;
+        height: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        padding: 12px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .action-button {
+        font-size: 0.9rem;
     }
 }
