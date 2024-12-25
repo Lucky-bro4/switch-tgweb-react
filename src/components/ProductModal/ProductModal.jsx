@@ -76,7 +76,7 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
         <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="modal-content">
                 <button className="modal-close" onClick={onClose}>×</button>
-                <h2>{product.brand}</h2>
+                <h2>{product.gender + product.category + product.brand}</h2>
 
                 <div className="slider-container">
                     <div className="progress-bar">
@@ -102,7 +102,7 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
                 </div>
                 <div class="product-info">
                     <div class="column">
-                        <p><strong>{`${product.gender} ${product.category} ${product.brand}`}</strong></p>
+                        {/* <p><strong>{`${product.gender} ${product.category} ${product.brand}`}</strong></p> */}
                         <p><strong>Бренд:</strong> {product.brand}</p>
                         <p><strong>Цена:</strong> {product.price} р.</p>
                         <p><strong>Состояние:</strong> {product.condition}</p>
@@ -114,16 +114,6 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
                         <p><strong>Цвет:</strong> {product.color}</p>
                         <p><strong>О товаре:</strong> {product.description}</p>
                     </div>
-                </div>
-                <div className="buttons-container" >
-                {/* style={{ display: tg.MainButton.isVisible ? 'flex' : 'none' }} */}
-                    <button className="minus-button" onClick={() => setAddedItems(addedItems.filter(item => item !== product))}>
-                        -
-                    </button>
-                    <button className="cart-button" onClick={onAddHandler}>
-                        <span className="cart-icon"></span>
-                        <span className="checkmark">✔</span>
-                    </button>
                 </div>
             </div>
         </div>
