@@ -78,10 +78,12 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
                     />
                 </div>
             </div>
-            <div className={'title'}><p>{product.price} ₽</p></div>
-            <div className={'title'}><p>{product.brand}</p></div>
-            <div className={'title'}><p>{product.category}</p></div>
-            <div className={'size'}><p>Размер: {product.brandSize}</p></div>
+            <div className='product-info'>
+                <div className={'title'}><p>{product.price} ₽</p></div>
+                <div className={'title'}><p>{product.brand}</p></div>
+                <div className={'title'}><p>{product.category}</p></div>
+                <div className={'size'}><p>Размер: {product.brandSize}</p></div>
+            </div>
             {/* <Button className={`${status} ${closedChainOrder ? 'disabled' : ''}`}
                 onClick={onAddHandler}
             >

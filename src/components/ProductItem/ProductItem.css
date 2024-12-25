@@ -62,6 +62,10 @@
     height: 18px;
 }
 
+.product-info {
+    justify-content: left;
+}
+
 /* Основной текст и стили под фото */
 .title {
     text-align: left;

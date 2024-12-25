@@ -69,8 +69,9 @@ p {
 }
 
 .product-image {
+    background-color: #fff;
     width: 100%;
-    height: auto;
+    height: 400px;
     border-radius: 8px;
     object-fit: contain;
 }
