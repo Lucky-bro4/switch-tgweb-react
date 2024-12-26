@@ -58,8 +58,13 @@
 }
 
 .favorite-icon img {
+    transition: filter 0.3s ease, transform 0.3s ease;
     width: 18px;
     height: 18px;
+}
+
+.favorite-icon img.active {
+    filter: brightness(1.5);
 }
 
 .product-info {

@@ -6,7 +6,7 @@ const Favorites = ({ addedItems }) => {
 
     //Пример из корзины (Cart)
 
-    const totalPrice = addedItems.reduce((acc, item) => acc + item.rentPrice, 0);
+    const totalPrice = addedItems.reduce((acc, item) => acc + item.price, 0);
 
     return (
         <div className="cart-section">

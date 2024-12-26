@@ -34,30 +34,37 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
 
     const handleFavoriteClick = async (e) => {
         e.stopPropagation();
+
         const newFavoriteState = !isFavorite;
         setIsFavorite(newFavoriteState);
         setFavoriteItems([...favoriteItems, product]);
 
         // Обновить глобальный или серверный список избранного
+        if (newFavoriteState) {
+            setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
+        } else {
+            setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
+        }
+
         try {
-            const response = await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
+            // Запрос для обновления на сервере
+            await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
                 method: newFavoriteState ? 'POST' : 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({chatId: user.id}),
+                body: JSON.stringify({ chatId: user.id }),
             });
-    
-            if (!response.ok) {
-                throw new Error('Failed to update favorite status');
-            }
-    
-            const data = await response.json();
-            console.log('Favorite status updated successfully:', data);
         } catch (error) {
             console.error('Error updating favorite status:', error);
-            // Revert state change in case of error
+
+            // Откат состояния при ошибке
             setIsFavorite(!newFavoriteState);
+            if (!newFavoriteState) {
+                setFavoriteItems([...favoriteItems, product.id]);
+            } else {
+                setFavoriteItems(favoriteItems.filter(id => id !== product.id));
+            }
         }
     };
 
@@ -68,14 +75,12 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
                 <img className="img" src={product.image[0]} alt={`${product.category} ${product.brand}`} />
                 <div 
                     className="favorite-icon" 
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        handleFavoriteClick(e);
-                    }}
+                    onClick={handleFavoriteClick}
                 >
                     <img 
                         src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
-                        alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
+                        alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+                        className={isFavorite ? 'active' : ''}
                     />
                 </div>
             </div>

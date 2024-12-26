@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './ProductModal.css';
-import Button from "../Button/Button";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTelegram } from '../../hooks/useTelegram';
 import 'swiper/css';
@@ -48,7 +47,7 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
         tg.offEvent('mainButtonClicked', onAddHandler)
         }
         
-    }, [onAddHandler])
+    }, [product, addedItems])
 
     useEffect(() => {
         setIsFavorite(favoriteItems.includes(product.id));
