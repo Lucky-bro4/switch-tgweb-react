@@ -36,7 +36,7 @@
     object-fit: contain;
 }
 
-.favorite-icon {
+.favorite-icon-catalog {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -52,18 +52,18 @@
     transition: transform 0.2s ease-in-out;
 }
 
-.favorite-icon:hover {
+.favorite-icon-catalog:hover {
     transform: scale(1.1);
     background-color: rgba(255, 255, 255, 1);
 }
 
-.favorite-icon img {
+.favorite-icon-catalog img {
     transition: filter 0.3s ease, transform 0.3s ease;
     width: 18px;
     height: 18px;
 }
 
-.favorite-icon img.active {
+.favorite-icon-catalog img.active {
     filter: brightness(1.5);
 }
 

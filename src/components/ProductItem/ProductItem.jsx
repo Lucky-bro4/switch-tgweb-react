@@ -74,7 +74,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
             <div className="img-container">
                 <img className="img" src={product.image[0]} alt={`${product.category} ${product.brand}`} />
                 <div 
-                    className="favorite-icon" 
+                    className="favorite-icon-catalog" 
                     onClick={handleFavoriteClick}
                 >
                     <img 
