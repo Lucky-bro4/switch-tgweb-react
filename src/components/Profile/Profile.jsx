@@ -147,7 +147,7 @@ const Profile = () => {
                     />
                 </label>
             </div>
-            <button className="save-button" onClick={handleSave}>Save</button>
+            <button className="save-button" onClick={handleSave}>Сохранить</button>
         </div>
     );
 };
