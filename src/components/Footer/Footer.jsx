@@ -52,9 +52,9 @@ const Footer = ({ addedItems, favoriteItems }) => {
           <img 
                 src={isFavoritesActive ? "/Images/icons/icon-love-active.png" : "/Images/icons/icon-love-not-active.png"}  
                 width={30} 
-                alt="icon-love" />
+                alt="icon-favorites" />
                 {favoriteItems.length > 0 && (
-                    <div className="badge">{favoriteItems.length}</div>
+                    <div className="badge-favorites">{favoriteItems.length}</div>
                 )}
           </i>
         </div>
@@ -76,7 +76,7 @@ const Footer = ({ addedItems, favoriteItems }) => {
                     width={30} 
                     alt="icon-cart" />
                 {addedItems.length > 0 && (
-                    <div className="badge">{addedItems.length}</div>
+                    <div className="badge-cart">{addedItems.length}</div>
                 )}
             </i>
         </div>

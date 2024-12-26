@@ -38,7 +38,7 @@
   cursor: pointer;
 }
 
-.icon-love {
+.icon-favorites {
   position: relative;
 }
 
@@ -46,7 +46,23 @@
   position: relative;
 }
 
-.badge {
+.badge-cart {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background-color: rgba(226, 45, 96);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge-favorites {
   position: absolute;
   top: -3px;
   right: -3px;
