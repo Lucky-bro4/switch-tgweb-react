@@ -46,7 +46,7 @@
   position: relative;
 }
 
-.badge-cart {
+.badge-favorites {
   position: absolute;
   top: -3px;
   right: -3px;
@@ -62,7 +62,7 @@
   font-weight: bold;
 }
 
-.badge-favorites {
+.badge-cart {
   position: absolute;
   top: -3px;
   right: -3px;
