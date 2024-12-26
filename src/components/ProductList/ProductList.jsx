@@ -42,7 +42,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                 
                 // setProducts(data.products)
                 setFilteredProducts(data.products || []);
-                // setFavoriteItems(data.customer.favorite_items)
+                setFavoriteItems(data.customer.favorite_items)
 
                 // if (!data.customer.location && !data.customer.phone_number) {
                 //     setNewUser(true)
@@ -233,6 +233,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                         setAddedItems={setAddedItems}
                         selectedCount={order}
                         favoriteItems={favoriteItems}
+                        setFavoriteItems={setFavoriteItems}
                     />
                 )}
             </div>

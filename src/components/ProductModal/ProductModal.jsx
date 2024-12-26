@@ -7,13 +7,11 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setAddedItems }) => {
+const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteItems, setFavoriteItems }) => {
 
     const { tg } = useTelegram();
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const [status, setStatus] = useState('add-btn');
-    const [content, setContent] = useState('Добавить в корзину');
 
     const handleOverlayClick = (e) => {
         if (e.target.classList.contains("modal-overlay")) {
@@ -31,7 +29,7 @@ const ProductModal = ({ product, onClose, onAdd, selectedCount, addedItems, setA
         //     type: 'main',
         // }]
 
-        tg.BottomButton.hide()
+        tg.MainButton.hide();
 
         // tg.BottomButton.setParams({
         //     type: 'main',
