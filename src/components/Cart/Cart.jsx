@@ -64,7 +64,7 @@ const Cart = ({ addedItems }) => {
                 {addedItems.length > 0 ? (
                     addedItems.map((item) => (
                         <div key={item.id} className="order-item">
-                            <img src={item.image[0]} alt={item.brand} className="order-image" />
+                            <img src={item.image[0]} alt={item.category + item.brand} className="order-image" />
                             <div>
                                 <h2>{item.brand}</h2>
                                 <p>Цена: {item.price} ₽</p>
