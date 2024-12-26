@@ -66,7 +66,7 @@ const Cart = ({ addedItems }) => {
                         <div key={item.id} className="order-item">
                             <img src={item.image[0]} alt={item.category + item.brand} className="order-image" />
                             <div>
-                                <h2>{item.brand}</h2>
+                                <h2>{item.category + item.brand}</h2>
                                 <p>Цена: {item.price} ₽</p>
                             </div>
                         </div>
