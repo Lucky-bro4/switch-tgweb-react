@@ -18,6 +18,10 @@
   overflow: hidden; /* Скрытие элементов при смещении */
 }
 
+.category-button {
+  font-size: 16px;
+}
+
 .category-button, .filter-button {
   padding: 10px;
   background-color: black;
