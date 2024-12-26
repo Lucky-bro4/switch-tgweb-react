@@ -92,8 +92,10 @@ const SearchComponent = ({ onFilterChange }) => {
                 className="filter-select"
               >
                 <option value="">Все категории</option>
-                <option value="electronics">Электроника</option>
-                <option value="fashion">Мода</option>
+                <option value="Худи">Худи</option>
+                <option value="Футболка">Футболки</option>
+                <option value="Штаны">Штаны</option>
+                <option value="Джинсы">Джинсы</option>
               </select>
 
               <select
