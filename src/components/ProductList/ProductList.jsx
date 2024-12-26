@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Header from '../Header/Header';
 
 
-const ProductList = ({ addedItems, setAddedItems }) => {
+const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems }) => {
 
     const { tg, queryId, user } = useTelegram();
 
@@ -27,8 +27,6 @@ const ProductList = ({ addedItems, setAddedItems }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [productsInCart, setProductsInCart] = useState([]);
-
-    const [favoriteItems, setFavoriteItems] = useState([]);
 
     const navigate = useNavigate();
 

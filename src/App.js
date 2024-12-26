@@ -2,7 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import Footer from './components/Footer/Footer';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import ProductList from "./components/ProductList/ProductList";
 import Form from "./components/Form/Form";
 import Profile from './components/Profile/Profile';
@@ -19,20 +19,21 @@ function App() {
     }, [])
 
     const [addedItems, setAddedItems] = useState([]);
+    const [favoriteItems, setFavoriteItems] = useState([]);
 
     return (
         <div className="App">
             <Routes>
-                <Route path="/" element={<ProductList addedItems={addedItems} setAddedItems={setAddedItems} />} />
+                <Route path="/" element={<ProductList addedItems={addedItems} setAddedItems={setAddedItems} favoriteItems={favoriteItems} setFavoriteItems={setFavoriteItems} />} />
                 <Route path="/form" element={<Form />} />
                 <Route path="/adminPage" element={<AdminPage />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/favorites" element={<Favorites addedItems={addedItems} />} />
+                <Route path="/favorites" element={<Favorites favoriteItems={favoriteItems} />} />
                 <Route path="/cart" element={<Cart addedItems={addedItems} />} />
                 {/* <Route path={'account'} element={<Account />}/> */}
                 
             </Routes>
-            <Footer addedItems={addedItems}/>
+            <Footer addedItems={addedItems} favoriteItems={favoriteItems} />
         </div>
     );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Footer.css';
 
-const Footer = ({ addedItems }) => {
+const Footer = ({ addedItems, favoriteItems }) => {
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -53,6 +53,9 @@ const Footer = ({ addedItems }) => {
                 src={isFavoritesActive ? "/Images/icons/icon-love-active.png" : "/Images/icons/icon-love-not-active.png"}  
                 width={30} 
                 alt="icon-love" />
+                {favoriteItems.length > 0 && (
+                    <div className="badge">{favoriteItems.length}</div>
+                )}
           </i>
         </div>
         {/* <div className="cart-icon" onClick={() => navigate("/profile")}>
