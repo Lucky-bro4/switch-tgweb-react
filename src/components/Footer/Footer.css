@@ -38,6 +38,10 @@
   cursor: pointer;
 }
 
+.icon-love {
+  position: relative;
+}
+
 .icon-cart {
   position: relative;
 }
