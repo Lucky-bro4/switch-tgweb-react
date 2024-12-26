@@ -7,11 +7,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+
 const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteItems, setFavoriteItems }) => {
 
-    const { tg } = useTelegram();
+    const { tg, user } = useTelegram();
 
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const handleOverlayClick = (e) => {
         if (e.target.classList.contains("modal-overlay")) {
@@ -30,18 +32,6 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
         // }]
 
         tg.MainButton.hide();
-
-        // tg.BottomButton.setParams({
-        //     type: 'main',
-        //     text: 'Перейти в корзину',
-        //     color: '#96E442'
-        // })
-        // tg.BottomButton.setParams({
-        //     type: 'secondary',
-        //     text: 'Удалить из корзины',
-        //     position: 'right',
-        //     color: '10, 15, 27'
-        // })
   
     };
 
@@ -59,6 +49,41 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
         }
         
     }, [onAddHandler])
+
+    useEffect(() => {
+        setIsFavorite(favoriteItems.includes(product.id));
+    }, [favoriteItems, product.id]);
+
+
+    const handleFavoriteClick = async (e) => {
+        e.stopPropagation();
+        const newFavoriteState = !isFavorite;
+        setIsFavorite(newFavoriteState);
+        setFavoriteItems([...favoriteItems, product]);
+
+        // Обновить глобальный или серверный список избранного
+        try {
+            const response = await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
+                method: newFavoriteState ? 'POST' : 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({chatId: user.id}),
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to update favorite status');
+            }
+    
+            const data = await response.json();
+            console.log('Favorite status updated successfully:', data);
+        } catch (error) {
+            console.error('Error updating favorite status:', error);
+            // Revert state change in case of error
+            setIsFavorite(!newFavoriteState);
+        }
+
+    };
 
 
     return (
@@ -88,6 +113,18 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                             </SwiperSlide>
                         ))}
                     </Swiper>
+                    <div 
+                        className="favorite-icon" 
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            handleFavoriteClick(e);
+                        }}
+                    >
+                        <img 
+                            src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
+                            alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
+                        />
+                    </div>
                 </div>
                 <div class="product-info">
                     <div class="column">

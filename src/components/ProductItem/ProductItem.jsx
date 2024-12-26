@@ -3,27 +3,27 @@ import './ProductItem.css';
 import { useTelegram } from "../../hooks/useTelegram";
 
 
-const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount, favoriteItems }) => {
+const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount, favoriteItems, setFavoriteItems }) => {
 
-    const { user } = useTelegram();
+    const { tg, user } = useTelegram();
 
     const [isFavorite, setIsFavorite] = useState(false);
-    const [status, setStatus] = useState('add-btn')
-    const [content, setContent] = useState('Добавить')
+    // const [status, setStatus] = useState('add-btn')
+    // const [content, setContent] = useState('Добавить')
 
 
     useEffect(() => {
         setIsFavorite(favoriteItems.includes(product.id));
     }, [favoriteItems, product.id]);
 
-    const handleAdd = (e) => {
-        e.stopPropagation(); // Предотвращает распространение клика на родительский элемент
-        if (selectedCount >= 4) {
-            alert('Вы не можете выбрать больше 4 товаров.');
-            return;
-        }
-        onAdd(product);
-    };
+    // const handleAdd = (e) => {
+    //     e.stopPropagation(); // Предотвращает распространение клика на родительский элемент
+    //     if (selectedCount >= 4) {
+    //         tg.alert('Вы не можете выбрать больше 4 товаров.');
+    //         return;
+    //     }
+    //     onAdd(product);
+    // };
 
     // const onAddHandler = () => {
     //     if (selectedCount <= 4) {
@@ -36,6 +36,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
         e.stopPropagation();
         const newFavoriteState = !isFavorite;
         setIsFavorite(newFavoriteState);
+        setFavoriteItems([...favoriteItems, product]);
 
         // Обновить глобальный или серверный список избранного
         try {

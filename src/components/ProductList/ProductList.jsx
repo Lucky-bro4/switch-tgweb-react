@@ -216,6 +216,7 @@ const ProductList = ({ addedItems, setAddedItems }) => {
                             className={'item'}
                             closedChainOrder={closedChainOrder}
                             favoriteItems={favoriteItems}
+                            setFavoriteItems={setFavoriteItems}
                             // userId={user.id}
                         />
                     ))
