@@ -48,7 +48,7 @@
 
 .badge-favorites {
   position: absolute;
-  top: -3px;
+  top: -1px;
   right: -3px;
   background-color: rgba(226, 45, 96);
   color: white;
