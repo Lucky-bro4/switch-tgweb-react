@@ -110,47 +110,8 @@ const SearchComponent = ({ onFilterChange }) => {
           <span className="filter-icon">⚙️</span>
         </button>
 
+
         
-        <div className="active-filters">
-          {query && (
-            <span className="filter-chip">
-              Поиск: {query}
-              <button className="remove-chip" onClick={() => setQuery('')}>
-                ✖
-              </button>
-            </span>
-          )}
-          {filters.gender && (
-            <span className="filter-chip">
-              {filters.gender === 'Male' ? 'Мужское' : 'Женское'}
-              <button className="remove-chip" onClick={() => removeFilter('gender')}>
-                ✖
-              </button>
-            </span>
-          )}
-          {filters.category && (
-            <span className="filter-chip">
-              {filters.category}
-              <button className="remove-chip" onClick={() => removeFilter('category')}>
-                ✖
-              </button>
-            </span>
-          )}
-          {filters.priceRange && (
-            <span className="filter-chip">
-              Цена: {filters.priceRange}
-              <button className="remove-chip" onClick={() => removeFilter('priceRange')}>
-                ✖
-              </button>
-            </span>
-          )}
-          {/* Кнопка сброса всех фильтров */}
-          {activeFilterCount > 1 && (
-            <button className="reset-button" onClick={resetFilters}>
-              Сбросить все
-            </button>
-          )}
-        </div>
 
         {/* Поисковая строка */}
         {/* <input
@@ -201,6 +162,46 @@ const SearchComponent = ({ onFilterChange }) => {
           </div>
         </div>
       )}
+      <div className="active-filters">
+        {query && (
+          <span className="filter-chip">
+            Поиск: {query}
+            <button className="remove-chip" onClick={() => setQuery('')}>
+              ✖
+            </button>
+          </span>
+        )}
+        {filters.gender && (
+          <span className="filter-chip">
+            {filters.gender === 'Male' ? 'Мужское' : 'Женское'}
+            <button className="remove-chip" onClick={() => removeFilter('gender')}>
+              ✖
+            </button>
+          </span>
+        )}
+        {filters.category && (
+          <span className="filter-chip">
+            {filters.category}
+            <button className="remove-chip" onClick={() => removeFilter('category')}>
+              ✖
+            </button>
+          </span>
+        )}
+        {filters.priceRange && (
+          <span className="filter-chip">
+            Цена: {filters.priceRange}
+            <button className="remove-chip" onClick={() => removeFilter('priceRange')}>
+              ✖
+            </button>
+          </span>
+        )}
+        {/* Кнопка сброса всех фильтров */}
+        {activeFilterCount > 1 && (
+          <button className="reset-button" onClick={resetFilters}>
+            Сбросить все
+          </button>
+        )}
+      </div>
     </div>
   );
 };
