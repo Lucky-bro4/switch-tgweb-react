@@ -123,11 +123,13 @@ const Cart = ({ addedItems, favoriteItems, setFavoriteItems }) => {
                             className="order-item"
                             onClick={() => onProductClick(item)}
                         >
-                            <img 
-                                src={item.image[0]} 
-                                alt={item.category + item.brand} 
-                                className="order-image" 
-                            />
+                            <div className="order-image-wrapper">
+                                <img 
+                                    src={item.image[0]} 
+                                    alt={item.category + ' ' + item.brand} 
+                                    className="order-image" 
+                                />
+                            </div>
                             <div 
                                 className="favorite-icon-catalog" 
                                 onClick={(e) => handleFavoriteClick(e, item)}

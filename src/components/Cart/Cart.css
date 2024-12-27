@@ -1,44 +1,67 @@
-.cart-section {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    color: var(--tg-theme-text-color, black);
-    background: var(--tg-theme-bg-color);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
-    margin: auto;
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    padding-bottom: 60px;
+.order-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 200px; /* Укажите фиксированную высоту, чтобы изображение не вылезало */
 }
 
-.catalog-icon {
+.order-image {
+    object-fit: cover; /* Сохранение пропорций изображения без обрезки */
+    width: 100%;
+    height: 100%;
+}
+
+.order-details .order-price .price-highlight {
+    color: red; /* Выделение цены красным */
+}
+
+.favorite-icon {
     position: absolute;
-    left: 0;
-    margin-left: 20px;
-    border-color: black;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
     cursor: pointer;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.order-list {
-    margin-top: 20px;
+.favorite-active {
+    color: red; /* Цвет иконки, когда товар в избранном */
 }
 
 .order-item {
     display: flex;
     align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
     margin-bottom: 15px;
+    position: relative;
 }
 
-.order-image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    margin-right: 15px;
+.order-details h2 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.order-details p {
+    font-size: 14px;
+    color: #555;
+}
+
+.cart-section h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.cart-section .order-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-section .order-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
 .total-price {
@@ -46,4 +69,5 @@ h1 {
     font-size: 18px;
     font-weight: bold;
 }
+
 

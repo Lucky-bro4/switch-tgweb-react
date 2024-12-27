@@ -7,7 +7,53 @@ const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems 
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const totalPrice = favoriteItems.reduce((acc, item) => acc + item.price, 0);
+    const calculateTotalPrice = (items = []) => {
+        return items.reduce((acc, item) => acc + item.price, 0);
+    };
+
+    const totalPrice = calculateTotalPrice(addedItems);
+
+    const handleFavoriteClick = async (e, product) => {
+        e.stopPropagation();
+
+        const isCurrentlyFavorite = favoriteItems.includes(product.id);
+        const newFavoriteState = !isCurrentlyFavorite;
+
+        // Обновить глобальный или серверный список избранного
+        if (newFavoriteState) {
+            setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
+        } else {
+            setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
+        }
+
+        try {
+            // Запрос для обновления на сервере
+            await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
+                method: newFavoriteState ? 'POST' : 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ chatId: user.id }),
+            });
+
+            setFavoriteItems((prevFavorites) =>
+                newFavoriteState
+                    ? [...prevFavorites, product.id]
+                    : prevFavorites.filter((id) => id !== product.id)
+            );
+
+        } catch (error) {
+            console.error('Error updating favorite status:', error);
+
+            // Откат состояния при ошибке
+            setIsFavorite(!newFavoriteState);
+            if (!newFavoriteState) {
+                setFavoriteItems([...favoriteItems, product.id]);
+            } else {
+                setFavoriteItems(favoriteItems.filter(id => id !== product.id));
+            }
+        }
+    };
 
     const onProductClick = (product) => {
         setSelectedProduct(product);
@@ -32,37 +78,47 @@ const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems 
                 </span>
                 Избранное
             </h1>
-            <div className="favorotes-list">
+            <div className="favorites-list">
                 {favoriteItems.length > 0 ? (
                     favoriteItems.map((item) => (
                         <div 
                             key={item.id} 
-                            className="favorotes-item"
+                            className="favorites-item"
                             onClick={() => onProductClick(item)}
                         >
-                            <div className="favorotes-image-wrapper">
+                            <div className="favorites-image-wrapper">
                                 <img 
                                     src={item.image[0]} 
-                                    alt={item.brand} 
-                                    className="favorotes-image"
+                                    alt={item.category + ' ' + item.brand} 
+                                    className="favorites-image"
                                 />
                             </div>
-                            <div className="favorotes-details">
+                            <div 
+                                className="favorite-icon-catalog" 
+                                onClick={(e) => handleFavoriteClick(e, item)}
+                            >
+                                <img 
+                                    src={
+                                        favoriteItems.includes(item.id)
+                                            ? "/Images/icons/icon-already-add.png"
+                                            : "/Images/icons/icon-not-add.png"
+                                    } 
+                                    alt={
+                                        favoriteItems.includes(item.id)
+                                            ? "Remove from Favorites"
+                                            : "Add to Favorites"
+                                    }
+                                    className={
+                                        favoriteItems.includes(item.id) ? "active" : ""
+                                    }
+                                />
+                            </div>
+                            <div className="favorites-details">
                                 <h2>{item.category + ' ' + item.brand}</h2>
-                                <p className="favorotes-price">Цена: {item.price} ₽</p>
+                                <p className="favorites-price">Цена: {item.price} ₽</p>
                                 <p>Размер бренда: {item.brandSize}</p>
                                 <p>Состояние: {item.condition}</p>
                             </div>
-                            <button 
-                                className={`favorite-icon ${item.isFavorite ? 'favorite-active' : ''}`} 
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    toggleFavorite(item.id);
-                                }}
-                                title={item.isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
-                            >
-                                {item.isFavorite ? '❤️' : '🤍'}
-                            </button>
                         </div>
                     ))
                 ) : (
