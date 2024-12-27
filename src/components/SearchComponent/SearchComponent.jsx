@@ -46,6 +46,15 @@ const SearchComponent = ({ onFilterChange }) => {
     onFilterChange({ query: newQuery, filters });
   };
 
+  const removeFilter = (filterKey) => {
+    const updatedFilters = {
+      ...filters,
+      [filterKey]: '',
+    };
+    setFilters(updatedFilters);
+    onFilterChange({ query, filters: updatedFilters });
+  };
+
   const resetFilters = () => {
     const resetValues = { gender: '', category: '', priceRange: '' };
     setFilters(resetValues);
@@ -68,6 +77,14 @@ const SearchComponent = ({ onFilterChange }) => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+
+  const activeFilterCount = [
+    query,
+    filters.gender,
+    filters.category,
+    filters.priceRange,
+  ].filter(Boolean).length;
 
 
   return (
@@ -127,7 +144,7 @@ const SearchComponent = ({ onFilterChange }) => {
             </span>
           )}
           {/* Кнопка сброса всех фильтров */}
-          {(query || filters.gender || filters.category || filters.priceRange) && (
+          {activeFilterCount > 1 && (
             <button className="reset-button" onClick={resetFilters}>
               Сбросить все
             </button>
