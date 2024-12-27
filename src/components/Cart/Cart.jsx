@@ -115,19 +115,19 @@ const Cart = ({ addedItems, favoriteItems, setFavoriteItems }) => {
                 </span>
                 Корзина
             </h1>
-            <div className="order-list">
+            <div className="cart-list">
                 {addedItems.length > 0 ? (
                     addedItems.map((item) => (
                         <div 
                             key={item.id} 
-                            className="order-item"
+                            className="cart-item"
                             onClick={() => onProductClick(item)}
                         >
-                            <div className="order-image-wrapper">
+                            <div className="cart-image-wrapper">
                                 <img 
                                     src={item.image[0]} 
                                     alt={item.category + ' ' + item.brand} 
-                                    className="order-image" 
+                                    className="cart-image" 
                                 />
                             </div>
                             <div 
@@ -150,9 +150,9 @@ const Cart = ({ addedItems, favoriteItems, setFavoriteItems }) => {
                                     }
                                 />
                             </div>
-                            <div className="order-details">
+                            <div className="cart-details">
                                 <h2>{item.category + ' ' + item.brand}</h2>
-                                <p className="order-price">Цена: {item.price} ₽</p>
+                                <p className="cart-price">Цена: {item.price} ₽</p>
                                 <p>Размер бренда: {item.brandSize}</p>
                                 <p>Состояние: {item.condition}</p>
                             </div>

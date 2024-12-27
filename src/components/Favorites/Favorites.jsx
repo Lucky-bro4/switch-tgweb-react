@@ -66,7 +66,7 @@ const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems 
     }
 
     return (
-        <div className="cart-section">
+        <div className="favorites-section">
             <h1>
                 <span className="catalog-icon" onClick={() => window.location.href = '/'}>
                     <img 
