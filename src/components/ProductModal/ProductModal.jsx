@@ -89,7 +89,7 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
         <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="modal-content">
                 <button className="modal-close" onClick={onClose}>×</button>
-                <h2>{product.gender + product.category + product.brand}</h2>
+                <h2>{product.gender + ' ' + product.category + ' ' + product.brand}</h2>
 
                 <div className="slider-container">
                     <div className="progress-bar">

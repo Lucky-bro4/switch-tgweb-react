@@ -35,8 +35,8 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
         const getProducts = async () => {
             try {
                 console.log('chatId: ', user)
-                // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
-                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
+                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+                // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
                 const data = await response.json();
                 
                 // setProducts(data.products)
@@ -224,19 +224,19 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                         Не нашли товары по заданному условию 😞
                     </div>
                 )}
-                {isModalOpen && selectedProduct && (
-                    <ProductModal
-                        product={selectedProduct} 
-                        onClose={closeModal} 
-                        onAdd={onAdd}
-                        addedItems={addedItems}
-                        setAddedItems={setAddedItems}
-                        selectedCount={order}
-                        favoriteItems={favoriteItems}
-                        setFavoriteItems={setFavoriteItems}
-                    />
-                )}
             </div>
+            {isModalOpen && selectedProduct && (
+                <ProductModal
+                    product={selectedProduct} 
+                    onClose={closeModal} 
+                    onAdd={onAdd}
+                    addedItems={addedItems}
+                    setAddedItems={setAddedItems}
+                    selectedCount={order}
+                    favoriteItems={favoriteItems}
+                    setFavoriteItems={setFavoriteItems}
+                />
+            )}
         </div>
     );
 };
