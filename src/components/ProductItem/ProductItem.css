@@ -68,34 +68,24 @@
     filter: brightness(1.5);
 }
 
-.product-info {
+/* .product-info {
     justify-content: left;
+} */
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: calc(1em + 1px); /* Увеличиваем текст на 1px */
 }
 
-/* Основной текст и стили под фото */
-.title {
-    text-align: left;
-    margin: 2px 0; /* Уменьшенные отступы */
+.product-info .price p {
+    font-weight: bold; /* Цена выделена жирным */
+    margin: 0;
 }
 
-.title .price {
-    font-size: 1.2em;
-    font-weight: bold; /* Жирный шрифт для цены */
-}
-
-.title .brand {
-    font-size: 1em;
-    font-weight: normal; /* Обычный шрифт для бренда */
-}
-
-.size {
-    text-align: center;
-    font-size: 0.9em;
-    font-weight: normal; /* Обычный шрифт для размера */
-    margin: 1px 0; /* Уменьшенные отступы */
-}
-
-.description {
-    font-size: 0.8em;
-    margin: 1px 0; /* Уменьшенные отступы */
+.product-info .brand p,
+.product-info .category p,
+.product-info .brandSize p {
+    margin: 0;
 }
