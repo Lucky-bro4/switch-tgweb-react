@@ -32,24 +32,24 @@ const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems 
                 </span>
                 Избранное
             </h1>
-            <div className="order-list">
+            <div className="favorotes-list">
                 {favoriteItems.length > 0 ? (
                     favoriteItems.map((item) => (
                         <div 
                             key={item.id} 
-                            className="order-item"
+                            className="favorotes-item"
                             onClick={() => onProductClick(item)}
                         >
-                            <div className="order-image-wrapper">
+                            <div className="favorotes-image-wrapper">
                                 <img 
                                     src={item.image[0]} 
                                     alt={item.brand} 
-                                    className="order-image"
+                                    className="favorotes-image"
                                 />
                             </div>
-                            <div className="order-details">
+                            <div className="favorotes-details">
                                 <h2>{item.category + ' ' + item.brand}</h2>
-                                <p className="order-price">Цена: {item.price} ₽</p>
+                                <p className="favorotes-price">Цена: {item.price} ₽</p>
                                 <p>Размер бренда: {item.brandSize}</p>
                                 <p>Состояние: {item.condition}</p>
                             </div>

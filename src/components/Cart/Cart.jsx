@@ -3,16 +3,25 @@ import { useTelegram } from "../../hooks/useTelegram";
 import "./Cart.css";
 
 
-const Cart = ({ addedItems }) => {
+const Cart = ({ addedItems, favoriteItems, setFavoriteItems }) => {
+
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isFavoriteMap, setIsFavoriteMap] = useState({});
 
     const { tg, queryId, user } = useTelegram();
-    const totalPrice = addedItems.reduce((acc, item) => acc + item.price, 0);
+
+    const calculateTotalPrice = (items = []) => {
+        return items.reduce((acc, item) => acc + item.price, 0);
+    };
+
+    const totalPrice = calculateTotalPrice(addedItems);
 
     const onSendData = useCallback(() => {
             
             const data = {
                 items: addedItems,
-                totalPrice: getTotalPrice(addedItems),
+                totalPrice,
                 queryId,
                 user
             }
@@ -23,10 +32,10 @@ const Cart = ({ addedItems }) => {
                 },
                 body: JSON.stringify(data)
             })
-        }, [addedItems, queryId])
+        }, [addedItems, totalPrice, queryId, user])
 
     useEffect(() => {
-        if (addedItems > 0) {
+        if (addedItems.length > 0) {
 
             tg.BottomButton.show();
             tg.BottomButton.setParams({
@@ -35,16 +44,62 @@ const Cart = ({ addedItems }) => {
 
             tg.onEvent('mainButtonClicked', onSendData)
             return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
+                tg.offEvent('mainButtonClicked', onSendData)
             }
         }
         
-    }, [onSendData])
+    }, [addedItems, onSendData, tg])
 
-    const getTotalPrice = (items = []) => {
-        return items.reduce((acc, item) => {
-            return acc += item.price
-        }, 0)
+    const handleFavoriteClick = async (e, product) => {
+        e.stopPropagation();
+
+        const isCurrentlyFavorite = favoriteItems.includes(product.id);
+        const newFavoriteState = !isCurrentlyFavorite;
+
+        // Обновить глобальный или серверный список избранного
+        if (newFavoriteState) {
+            setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
+        } else {
+            setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
+        }
+
+        try {
+            // Запрос для обновления на сервере
+            await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
+                method: newFavoriteState ? 'POST' : 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ chatId: user.id }),
+            });
+
+            setFavoriteItems((prevFavorites) =>
+                newFavoriteState
+                    ? [...prevFavorites, product.id]
+                    : prevFavorites.filter((id) => id !== product.id)
+            );
+
+        } catch (error) {
+            console.error('Error updating favorite status:', error);
+
+            // Откат состояния при ошибке
+            setIsFavorite(!newFavoriteState);
+            if (!newFavoriteState) {
+                setFavoriteItems([...favoriteItems, product.id]);
+            } else {
+                setFavoriteItems(favoriteItems.filter(id => id !== product.id));
+            }
+        }
+    };
+
+    const onProductClick = (product) => {
+        setSelectedProduct(product);
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setSelectedProduct(null);
+        setIsModalOpen(false);
     }
 
     return (
@@ -63,16 +118,55 @@ const Cart = ({ addedItems }) => {
             <div className="order-list">
                 {addedItems.length > 0 ? (
                     addedItems.map((item) => (
-                        <div key={item.id} className="order-item">
-                            <img src={item.image[0]} alt={item.category + item.brand} className="order-image" />
-                            <div>
-                                <h2>{item.category + item.brand}</h2>
-                                <p>Цена: {item.price} ₽</p>
+                        <div 
+                            key={item.id} 
+                            className="order-item"
+                            onClick={() => onProductClick(item)}
+                        >
+                            <img 
+                                src={item.image[0]} 
+                                alt={item.category + item.brand} 
+                                className="order-image" 
+                            />
+                            <div 
+                                className="favorite-icon-catalog" 
+                                onClick={(e) => handleFavoriteClick(e, item)}
+                            >
+                                <img 
+                                    src={
+                                        favoriteItems.includes(item.id)
+                                            ? "/Images/icons/icon-already-add.png"
+                                            : "/Images/icons/icon-not-add.png"
+                                    } 
+                                    alt={
+                                        favoriteItems.includes(item.id)
+                                            ? "Remove from Favorites"
+                                            : "Add to Favorites"
+                                    }
+                                    className={
+                                        favoriteItems.includes(item.id) ? "active" : ""
+                                    }
+                                />
+                            </div>
+                            <div className="order-details">
+                                <h2>{item.category + ' ' + item.brand}</h2>
+                                <p className="order-price">Цена: {item.price} ₽</p>
+                                <p>Размер бренда: {item.brandSize}</p>
+                                <p>Состояние: {item.condition}</p>
                             </div>
                         </div>
                     ))
                 ) : (
                     <p>Корзина пуста</p>
+                )}
+                {isModalOpen && selectedProduct && (
+                    <ProductModal
+                        product={selectedProduct} 
+                        onClose={closeModal}
+                        addedItems={addedItems}
+                        favoriteItems={favoriteItems}
+                        setFavoriteItems={setFavoriteItems}
+                    />
                 )}
             </div>
             {addedItems.length > 0 && (
