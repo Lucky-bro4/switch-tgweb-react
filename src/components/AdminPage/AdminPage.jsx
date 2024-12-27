@@ -253,6 +253,11 @@ const AdminPage = () => {
                 });
         
                 const data = await response.json();
+
+                if (response.ok) {
+                    alert('Товар успешно добавлен')
+                }
+
                 console.log('Ответ от сервера по фото:', data);
             } catch (error) {
                 console.error('Ошибка при отправке данных по фото:', error);
