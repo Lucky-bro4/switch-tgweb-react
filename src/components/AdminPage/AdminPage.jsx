@@ -468,8 +468,8 @@ const AdminPage = () => {
                             className="input"
                         >
                             <option value="">Для кого?</option>
-                            <option value="Male">Мужское</option>
-                            <option value="Female">Женское</option>
+                            <option value="Мужское">Мужское</option>
+                            <option value="Женское">Женское</option>
                         </select>
                         <input
                         className="input"

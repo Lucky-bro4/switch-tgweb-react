@@ -7,19 +7,29 @@ const SearchComponent = ({ onFilterChange }) => {
   const [query, setQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [filters, setFilters] = useState({
+    gender: '',
     category: '',
-    priceRange: '',
+    priceRange: ''
   });
 
 
-  const handleCategoryClick = (category) => {
+  const handleGenderClick = (gender) => {
     const updatedFilters = {
       ...filters,
-      category,
+      gender,
     };
     setFilters(updatedFilters);
     onFilterChange({ query, filters: updatedFilters });
   };
+
+  // const handleCategoryClick = (category) => {
+  //   const updatedFilters = {
+  //     ...filters,
+  //     category,
+  //   };
+  //   setFilters(updatedFilters);
+  //   onFilterChange({ query, filters: updatedFilters });
+  // };
 
   const handleFilterChange = (e) => {
     const updatedFilters = {
@@ -34,6 +44,13 @@ const SearchComponent = ({ onFilterChange }) => {
     const newQuery = e.target.value;
     setQuery(newQuery);
     onFilterChange({ query: newQuery, filters });
+  };
+
+  const resetFilters = () => {
+    const resetValues = { gender: '', category: '', priceRange: '' };
+    setFilters(resetValues);
+    setQuery('');
+    onFilterChange({ query: '', filters: resetValues });
   };
 
   const handleFocus = () => {
@@ -58,13 +75,40 @@ const SearchComponent = ({ onFilterChange }) => {
 
       <div className="search-row">
         {/* Кнопки для мужского и женского */}
-        <button className="category-button" onClick={() => handleCategoryClick('Male')}>Мужское</button>
-        <button className="category-button" onClick={() => handleCategoryClick('Female')}>Женское</button>
+        <button 
+          className={`category-button ${filters.gender === 'Female' ? 'active' : ''}`}
+          onClick={() => handleGenderClick('Мужское')}
+          >
+            Мужское
+        </button>
+        <button 
+          className={`category-button ${filters.gender === 'Female' ? 'active' : ''}`}
+          onClick={() => handleGenderClick('Женское')}
+        >
+          Женское
+        </button>
 
         {/* Кнопка с иконкой фильтра для открытия модального окна */}
         <button onClick={openModal} className="filter-button">
           <span className="filter-icon">⚙️</span>
         </button>
+
+        <div className="active-filters">
+          {query && <span className="filter-chip">Поиск: {query}</span>}
+          {filters.gender && (
+            <span className="filter-chip">
+              Пол: {filters.gender === 'Male' ? 'Мужское' : 'Женское'}
+            </span>
+          )}
+          {filters.category && <span className="filter-chip">Категория: {filters.category}</span>}
+          {filters.priceRange && <span className="filter-chip">Ценовой диапазон: {filters.priceRange}</span>}
+
+          {(query || filters.gender || filters.category || filters.priceRange) && (
+            <button className="reset-button" onClick={resetFilters}>
+              Сбросить фильтры
+            </button>
+          )}
+        </div>
 
         {/* Поисковая строка */}
         {/* <input

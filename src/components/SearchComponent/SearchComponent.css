@@ -22,6 +22,11 @@
   font-size: 16px;
 }
 
+.category-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
 .category-button, .filter-button {
   padding: 10px;
   background-color: black;
@@ -118,6 +123,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
@@ -134,4 +140,33 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
+}
+
+.active-filters {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.reset-button {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.reset-button:hover {
+  background-color: #d63030;
 }
