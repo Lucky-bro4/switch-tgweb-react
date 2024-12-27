@@ -150,16 +150,27 @@
 }
 
 .filter-chip {
+  display: flex;
+  align-items: center;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 16px;
   padding: 5px 10px;
-  font-size: 14px;
+  font-size: 15px;
+}
+
+.remove-chip {
+  background: none;
+  border: none;
+  color: var(--tg-theme-destructive-text-color);
+  font-size: 16px;
+  margin-left: 5px;
+  cursor: pointer;
 }
 
 .reset-button {
-  background-color: #ff4c4c;
-  color: white;
+  background-color: #f0f0f0;
+  color: var(--tg-theme-destructive-text-color);
   border: none;
   border-radius: 16px;
   padding: 5px 10px;

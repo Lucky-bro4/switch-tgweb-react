@@ -76,7 +76,7 @@ const SearchComponent = ({ onFilterChange }) => {
       <div className="search-row">
         {/* Кнопки для мужского и женского */}
         <button 
-          className={`category-button ${filters.gender === 'Female' ? 'active' : ''}`}
+          className={`category-button ${filters.gender === 'Male' ? 'active' : ''}`}
           onClick={() => handleGenderClick('Мужское')}
           >
             Мужское
@@ -94,18 +94,42 @@ const SearchComponent = ({ onFilterChange }) => {
         </button>
 
         <div className="active-filters">
-          {query && <span className="filter-chip">Поиск: {query}</span>}
-          {filters.gender && (
+          {query && (
             <span className="filter-chip">
-              Пол: {filters.gender === 'Male' ? 'Мужское' : 'Женское'}
+              Поиск: {query}
+              <button className="remove-chip" onClick={() => setQuery('')}>
+                ✖
+              </button>
             </span>
           )}
-          {filters.category && <span className="filter-chip">Категория: {filters.category}</span>}
-          {filters.priceRange && <span className="filter-chip">Ценовой диапазон: {filters.priceRange}</span>}
-
+          {filters.gender && (
+            <span className="filter-chip">
+              {filters.gender === 'Male' ? 'Мужское' : 'Женское'}
+              <button className="remove-chip" onClick={() => removeFilter('gender')}>
+                ✖
+              </button>
+            </span>
+          )}
+          {filters.category && (
+            <span className="filter-chip">
+              {filters.category}
+              <button className="remove-chip" onClick={() => removeFilter('category')}>
+                ✖
+              </button>
+            </span>
+          )}
+          {filters.priceRange && (
+            <span className="filter-chip">
+              Цена: {filters.priceRange}
+              <button className="remove-chip" onClick={() => removeFilter('priceRange')}>
+                ✖
+              </button>
+            </span>
+          )}
+          {/* Кнопка сброса всех фильтров */}
           {(query || filters.gender || filters.category || filters.priceRange) && (
             <button className="reset-button" onClick={resetFilters}>
-              Сбросить фильтры
+              Сбросить все
             </button>
           )}
         </div>
