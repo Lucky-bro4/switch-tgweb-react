@@ -1,7 +1,6 @@
 .search-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-rows: auto auto;
   gap: 10px;
   padding-top: 10px;
   width: 100%;
@@ -14,8 +13,6 @@
   width: 100%;
   max-width: 1200px; /* Ограничиваем максимальную ширину */
   margin: 0 auto; /* Центрирование строки */
-  position: relative; /* Для управления дочерними элементами */
-  overflow: hidden; /* Скрытие элементов при смещении */
 }
 
 .category-button {
@@ -143,7 +140,6 @@
 }
 
 .active-filters {
-  margin-top: 10px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;

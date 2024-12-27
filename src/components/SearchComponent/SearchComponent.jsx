@@ -110,6 +110,7 @@ const SearchComponent = ({ onFilterChange }) => {
           <span className="filter-icon">⚙️</span>
         </button>
 
+        
         <div className="active-filters">
           {query && (
             <span className="filter-chip">

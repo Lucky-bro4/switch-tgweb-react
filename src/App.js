@@ -28,8 +28,8 @@ function App() {
                 <Route path="/form" element={<Form />} />
                 <Route path="/adminPage" element={<AdminPage />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/favorites" element={<Favorites favoriteItems={favoriteItems} />} />
-                <Route path="/cart" element={<Cart addedItems={addedItems} />} />
+                <Route path="/favorites" element={<Favorites addedItems={addedItems} setAddedItems={setAddedItems} favoriteItems={favoriteItems} setFavoriteItems={setFavoriteItems} />} />
+                <Route path="/cart" element={<Cart addedItems={addedItems} setAddedItems={setAddedItems} favoriteItems={favoriteItems} setFavoriteItems={setFavoriteItems} />} />
                 {/* <Route path={'account'} element={<Account />}/> */}
                 
             </Routes>

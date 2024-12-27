@@ -6,6 +6,7 @@ import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
 import { useNavigate } from "react-router-dom";
 import Header from '../Header/Header';
+import Favorites from '../Favorites/Favorites';
 
 
 const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems }) => {
