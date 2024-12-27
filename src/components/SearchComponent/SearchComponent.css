@@ -143,6 +143,7 @@
 }
 
 .active-filters {
+  flex-direction: row;
   margin-top: 10px;
   display: flex;
   gap: 10px;
