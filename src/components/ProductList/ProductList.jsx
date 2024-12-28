@@ -6,10 +6,9 @@ import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
 import { useNavigate } from "react-router-dom";
 import Header from '../Header/Header';
-import Favorites from '../Favorites/Favorites';
 
 
-const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems }) => {
+const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems, productsInCart, setProductsInCart }) => {
 
     const { tg, queryId, user } = useTelegram();
 
@@ -27,7 +26,6 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [productsInCart, setProductsInCart] = useState([]);
 
     const navigate = useNavigate();
 
@@ -42,6 +40,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                 // setProducts(data.products)
                 setFilteredProducts(data.products || []);
                 setFavoriteItems(data.customer.favorite_items)
+                setProductsInCart(data.customer.cart_items)
 
                 // if (!data.customer.location && !data.customer.phone_number) {
                 //     setNewUser(true)
@@ -201,7 +200,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
 
     return (
         <div>
-            <Header />
+
             <SearchComponent onFilterChange={applyFilters} />
             <div className={'list'}>
                 {filteredProducts.length > 0 ? (
@@ -216,7 +215,6 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                             closedChainOrder={closedChainOrder}
                             favoriteItems={favoriteItems}
                             setFavoriteItems={setFavoriteItems}
-                            // userId={user.id}
                         />
                     ))
                 ) : (

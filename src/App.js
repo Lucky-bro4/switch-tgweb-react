@@ -20,11 +20,22 @@ function App() {
 
     const [addedItems, setAddedItems] = useState([]);
     const [favoriteItems, setFavoriteItems] = useState([]);
+    const [productsInCart, setProductsInCart] = useState([]);
 
     return (
         <div className="App">
+            <Header />
             <Routes>
-                <Route path="/" element={<ProductList addedItems={addedItems} setAddedItems={setAddedItems} favoriteItems={favoriteItems} setFavoriteItems={setFavoriteItems} />} />
+                <Route path="/" 
+                    element={<ProductList 
+                        addedItems={addedItems} 
+                        setAddedItems={setAddedItems} 
+                        favoriteItems={favoriteItems} 
+                        setFavoriteItems={setFavoriteItems}
+                        productsInCart={productsInCart}
+                        setProductsInCart={setProductsInCart}
+                    />} 
+                />
                 <Route path="/form" element={<Form />} />
                 <Route path="/adminPage" element={<AdminPage />} />
                 <Route path="/profile" element={<Profile />} />
