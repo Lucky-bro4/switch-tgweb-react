@@ -21,7 +21,6 @@
     max-width: 400px;
     max-height: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
     overflow-y: auto;
     animation: fadeIn 0.3s ease-out;
     display: flex;
@@ -69,6 +68,7 @@ p {
 }
 
 .product-image {
+    position: relative;
     background-color: #fff;
     width: 100%;
     height: 350px;
