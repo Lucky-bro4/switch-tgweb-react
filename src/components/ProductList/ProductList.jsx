@@ -200,7 +200,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
 
     return (
         <div>
-
+            <Header />
             <SearchComponent onFilterChange={applyFilters} />
             <div className={'list'}>
                 {filteredProducts.length > 0 ? (

@@ -9,7 +9,6 @@ import Profile from './components/Profile/Profile';
 import Favorites from './components/Favorites/Favorites';
 import Cart from './components/Cart/Cart';
 import AdminPage from './components/AdminPage/AdminPage';
-import Header from './components/Header/Header';
 
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
             <Routes>
                 <Route path="/" 
                     element={<ProductList 
