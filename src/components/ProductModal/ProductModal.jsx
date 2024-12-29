@@ -113,19 +113,19 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                                 <img src={image} alt={`${product.brand} - ${index + 1}`} className="product-image" />
                             </SwiperSlide>
                         ))}
+                        <div 
+                            className="favorite-icon" 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleFavoriteClick(e);
+                            }}
+                        >
+                            <img 
+                                src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
+                                alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
+                            />
+                        </div>
                     </Swiper>
-                    <div 
-                        className="favorite-icon" 
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            handleFavoriteClick(e);
-                        }}
-                    >
-                        <img 
-                            src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
-                            alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
-                        />
-                    </div>
                 </div>
                 <div class="product-info">
                     <div class="column">
