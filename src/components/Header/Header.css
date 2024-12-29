@@ -1,11 +1,11 @@
-.header {
+/* .header {
     display: flex;
-    justify-content: center;  /* Центрируем по горизонтали */
-    align-items: center;      /* Центрируем по вертикали */
-    height: 230px;            /* Занимает всю высоту экрана */
+    justify-content: center;  
+    align-items: center; 
+    height: 230px;            
     width: 100%;
     padding-top: 5px;
-}
+} */
 
 .header {
     width: 100%;
