@@ -561,7 +561,7 @@ const AdminPage = () => {
                                         type="text"
                                         className="input"
                                         placeholder={getPlaceholder(key)}
-                                        value={value || ''}
+                                        value={''}
                                         onChange={(e) =>
                                             onChangeMeasurements({
                                                 ...measurements,
