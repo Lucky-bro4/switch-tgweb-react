@@ -23,6 +23,24 @@ const AdminPage = () => {
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
 
+    const categoryMeasurements = {
+        "Худи": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
+        "Свитшот": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
+        "Футболка": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
+        "Штаны": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
+        "Джинсы": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
+        "Джоггеры": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
+        "Другое": { other: "" },
+    };
+
+    useEffect(() => {
+        if (category in categoryMeasurements) {
+            setMeasurements(categoryMeasurements[category]);
+        } else {
+            setMeasurements({});
+        }
+    }, [category]);
+
 
     const handlePhotoChange = (event) => {
         const files = Array.from(event.target.files);
@@ -106,8 +124,11 @@ const AdminPage = () => {
         setCondition(e.target.value);
     };
     
-    const onChangeMeasurements = (e) => {
-        setMeasurements(e.target.value);
+    const onChangeMeasurements = (field, value) => {
+        setMeasurements((prevMeasurements) => ({
+            ...prevMeasurements, // Сохраняем предыдущие значения
+            [field]: value,      // Обновляем конкретное поле
+        }));
     };
 
     const onChangeBrandSize = (e) => {
@@ -520,6 +541,25 @@ const AdminPage = () => {
                             onChange={onChangeCondition}
                         />
                         <div className="measurements-input">
+                            {Object.entries(measurements).map(([key, value]) => (
+                                <div key={key} className="measurement-field">
+                                    <input
+                                        type="text"
+                                        placeholder={getPlaceholder(key)}
+                                        value={value || ''}
+                                        onChange={(e) =>
+                                            onChangeMeasurements({
+                                                ...measurements,
+                                                [key]: e.target.value,
+                                            })
+                                        }
+                                    />
+                                </div>
+                            ))}
+                            {/* Отображение текущих данных */}
+                            <pre>{JSON.stringify(measurements, null, 2)}</pre>
+                        </div>
+                        {/* <div className="measurements-input">
                             {(["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
                                 <>
                                     <input
@@ -580,7 +620,7 @@ const AdminPage = () => {
                                     cols="50"
                                 ></textarea>
                             )}
-                        </div>
+                        </div> */}
                         {/* <textarea
                             className="input"
                             placeholder="Measurements"
