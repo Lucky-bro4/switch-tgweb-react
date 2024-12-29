@@ -1,11 +1,21 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useTelegram } from "../../hooks/useTelegram";
 import "./Favorites.css";
 
 
 const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems }) => {
 
+    const navigate = useNavigate();
+
+    const handleHomeClick = () => {
+        navigate('/');
+    };
+
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const { user } = useTelegram();
 
     const calculateTotalPrice = (items = []) => {
         return items.reduce((acc, item) => acc + item.price, 0);
@@ -68,7 +78,7 @@ const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems 
     return (
         <div className="favorites-section">
             <h1>
-                <span className="catalog-icon" onClick={() => window.location.href = '/'}>
+                <span className="catalog-icon" onClick = {handleHomeClick}>
                     <img 
                         src="/Images/mainLogo_withoutRental&Back.png" 
                         width={40} 
@@ -137,7 +147,7 @@ const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems 
             </div>
             {favoriteItems.length > 0 && (
                 <div className="total-price">
-                    <h2>Общая сумма: {totalPrice} Р</h2>
+                    <h2>Общая сумма: {totalPrice} ₽</h2>
                 </div>
             )}
         </div>
