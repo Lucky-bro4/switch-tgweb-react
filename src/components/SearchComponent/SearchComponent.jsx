@@ -140,7 +140,7 @@ const SearchComponent = ({ onFilterChange }) => {
               >
                 <option value="">Все категории</option>
                 <option value="Худи">Худи</option>
-                <option value="Футболка">Футболки</option>
+                <option value="Футболки">Футболки</option>
                 <option value="Штаны">Штаны</option>
                 <option value="Джинсы">Джинсы</option>
               </select>
