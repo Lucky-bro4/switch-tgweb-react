@@ -11,7 +11,7 @@ const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems 
         return items.reduce((acc, item) => acc + item.price, 0);
     };
 
-    const totalPrice = calculateTotalPrice(addedItems);
+    const totalPrice = calculateTotalPrice(favoriteItems);
 
     const handleFavoriteClick = async (e, product) => {
         e.stopPropagation();
