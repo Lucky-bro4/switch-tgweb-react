@@ -30,7 +30,9 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
         //     type: 'main',
         // }]
 
-        tg.MainButton.hide();
+        if (tg.MainButton.isVisible) {
+            tg.MainButton.hide();
+        }
   
     };
 
@@ -44,7 +46,7 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
         
         tg.onEvent('mainButtonClicked', onAddHandler)
         return () => {
-        tg.offEvent('mainButtonClicked', onAddHandler)
+            tg.offEvent('mainButtonClicked', onAddHandler)
         }
         
     }, [product, addedItems])
