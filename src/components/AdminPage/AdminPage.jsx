@@ -260,7 +260,7 @@ const AdminPage = () => {
             price: Number(price),
             rentPrice: Number(rentPrice),
             condition: condition,
-            measurements: measurements,
+            measurements: savedMeasurements,
             brandSize: brandSize,
             color: color,
             description: description,
@@ -565,7 +565,7 @@ const AdminPage = () => {
                         />
                         {category && (
                             <div className="measurements-input">
-                                <h2>Введите замеры для категории: {category}</h2>
+                                <h3>Введите замеры для: {category}</h3>
                                 {Object.entries(measurements).map(([key, value]) => (
                                     <div key={key} className="measurement-field">
                                         <input
