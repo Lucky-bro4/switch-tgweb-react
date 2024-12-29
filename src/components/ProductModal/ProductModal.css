@@ -114,6 +114,7 @@ p {
 
 .product-info .column {
     flex: 1;
+    justify-content: left;
 }
 
 .modal-close {
