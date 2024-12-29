@@ -39,8 +39,12 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                 
                 // setProducts(data.products)
                 setFilteredProducts(data.products || []);
-                setFavoriteItems(data.customer.favorite_items)
-                setProductsInCart(data.customer.cart_items)
+                if (customer.favorite_items) {
+                    setFavoriteItems(data.customer.favorite_items)
+                }
+                if (customer.cart_items) {
+                    setProductsInCart(data.customer.cart_items)
+                }
 
                 // if (!data.customer.location && !data.customer.phone_number) {
                 //     setNewUser(true)

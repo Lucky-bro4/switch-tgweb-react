@@ -14,6 +14,7 @@ const AdminPage = () => {
     const [rentPrice, setRentPrice] = useState(0);
     const [condition, setCondition] = useState('');
     const [measurements, setMeasurements] = useState({});
+    const [savedMeasurements, setSavedMeasurements] = useState({});
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
     const [description, setDescription] = useState('');
@@ -23,7 +24,7 @@ const AdminPage = () => {
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
 
-    const categoryMeasurements = {
+    const categoryFields = {
         "Худи": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
         "Свитшот": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
         "Футболка": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
@@ -48,8 +49,8 @@ const AdminPage = () => {
     };
 
     useEffect(() => {
-        if (category in categoryMeasurements) {
-            setMeasurements(categoryMeasurements[category]);
+        if (category) {
+            setMeasurements(savedMeasurements[category] || categoryFields[category] || {});
         } else {
             setMeasurements({});
         }
@@ -143,6 +144,14 @@ const AdminPage = () => {
             ...prevMeasurements, // Сохраняем предыдущие значения
             [field]: value,      // Обновляем конкретное поле
         }));
+    };
+
+    const saveMeasurements = () => {
+        setSavedMeasurements((prev) => ({
+            ...prev,
+            [category]: measurements,
+        }));
+        alert('Замеры сохранены!');
     };
 
     const onChangeBrandSize = (e) => {
@@ -554,26 +563,25 @@ const AdminPage = () => {
                             value={condition}
                             onChange={onChangeCondition}
                         />
-                        <div className="measurements-input">
-                            {Object.entries(measurements).map(([key, value]) => (
-                                <div key={key} className="measurement-field">
-                                    <input
-                                        type="text"
-                                        className="input"
-                                        placeholder={getPlaceholder(key)}
-                                        value={''}
-                                        onChange={(e) =>
-                                            onChangeMeasurements({
-                                                ...measurements,
-                                                [key]: e.target.value,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            ))}
-                            {/* Отображение текущих данных */}
-                            <pre>{JSON.stringify(measurements, null, 2)}</pre>
-                        </div>
+                        {category && (
+                            <div className="measurements-input">
+                                <h2>Введите замеры для категории: {category}</h2>
+                                {Object.entries(measurements).map(([key, value]) => (
+                                    <div key={key} className="measurement-field">
+                                        <input
+                                            id={`measurement-${key}`}
+                                            type="text"
+                                            placeholder={key}
+                                            value={value}
+                                            onChange={(e) => onChangeMeasurements(key, e.target.value)}
+                                        />
+                                    </div>
+                                ))}
+                                <button type="button" onClick={saveMeasurements}>Сохранить замеры</button>
+                                {/* Отображение текущих данных */}
+                                <pre>{JSON.stringify(measurements, null, 2)}</pre>
+                            </div>
+                        )}
                         {/* <div className="measurements-input">
                             {(["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
                                 <>
