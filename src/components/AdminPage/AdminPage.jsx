@@ -476,13 +476,13 @@ const AdminPage = () => {
                             <option value="Мужское">Мужское</option>
                             <option value="Женское">Женское</option>
                         </select>
-                        <input
+                        {/* <input
                         className="input"
                         type="text"
                         placeholder="Category"
                         value={category}
                         onChange={onChangeCategory}
-                        />
+                        /> */}
                         <select
                             name="Category"
                             placeholder="Category"
