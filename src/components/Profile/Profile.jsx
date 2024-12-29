@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import './Profile.css';
+import { useNavigate } from 'react-router-dom';
 import { useTelegram } from '../../hooks/useTelegram';
+import './Profile.css';
 
 const Profile = () => {
+
+    const navigate = useNavigate();
+    
+    const handleHomeClick = () => {
+        navigate('/');
+    };
 
     const { tg, user } = useTelegram();
 
@@ -55,10 +62,11 @@ const Profile = () => {
         }
     };
 
+
     return (
         <div className="profile-section">
             <h1>
-                <span className="catalog-icon" onClick={() => window.location.href = '/'}>
+                <span className="catalog-icon" onClick = {handleHomeClick}>
                     <img 
                         src="/Images/mainLogo_withoutRental&Back.png" 
                         width={40} 

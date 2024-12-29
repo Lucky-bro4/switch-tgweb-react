@@ -1,9 +1,16 @@
 import React, {useCallback, useEffect, useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import { useTelegram } from "../../hooks/useTelegram";
 import "./Cart.css";
 
 
 const Cart = ({ addedItems, favoriteItems, setFavoriteItems }) => {
+
+    const navigate = useNavigate();
+    
+    const handleHomeClick = () => {
+        navigate('/');
+    };
 
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -105,7 +112,7 @@ const Cart = ({ addedItems, favoriteItems, setFavoriteItems }) => {
     return (
         <div className="cart-section">
             <h1>
-                <span className="catalog-icon" onClick={() => window.location.href = '/'}>
+                <span className="catalog-icon" onClick = {handleHomeClick}>
                     <img 
                         src="/Images/mainLogo_withoutRental&Back.png" 
                         width={40} 
