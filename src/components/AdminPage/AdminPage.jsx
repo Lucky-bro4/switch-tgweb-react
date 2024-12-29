@@ -33,6 +33,20 @@ const AdminPage = () => {
         "Другое": { other: "" },
     };
 
+    const getPlaceholder = (key) => {
+        const placeholders = {
+            shoulders: 'Плечи',
+            sleeveLength: 'Длина рукава',
+            underarms: 'Подмышки',
+            backLength: 'Длина по спине',
+            outerLegLength: 'Длина внешнего шва',
+            innerLegLength: 'Длина внутреннего шва',
+            waistWidth: 'Ширина талии',
+            other: 'Прочие замеры',
+        };
+        return placeholders[key] || key; // Если нет перевода, оставить ключ
+    };
+
     useEffect(() => {
         if (category in categoryMeasurements) {
             setMeasurements(categoryMeasurements[category]);
