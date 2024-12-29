@@ -3,9 +3,9 @@
     font-family: Arial, sans-serif;
     color: var(--tg-theme-text-color, black);
     background: var(--tg-theme-bg-color);
-    padding: 20px;
     border-radius: 10px;
     max-width: 500px;
+    max-height: 100hv;
     margin: auto;
     padding-bottom: 70px;
 }
