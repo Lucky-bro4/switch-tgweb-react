@@ -152,10 +152,10 @@ const SearchComponent = ({ onFilterChange }) => {
                 className="filter-select"
               >
                 <option value="">Все цены</option>
-                <option value="low">До 1000</option>
-                <option value="medium">1000-3000</option>
-                <option value="medium-high">3000-5000</option>
-                <option value="high">Больше 5000</option>
+                <option value="до 1000">До 1000</option>
+                <option value="1000-3000">1000-3000</option>
+                <option value="3000-5000">3000-5000</option>
+                <option value="от 5000">Больше 5000</option>
               </select>
             </div>
 
@@ -189,7 +189,7 @@ const SearchComponent = ({ onFilterChange }) => {
         )}
         {filters.priceRange && (
           <span className="filter-chip">
-            Цена: {filters.priceRange}
+            ₽ {filters.priceRange}
             <button className="remove-chip" onClick={() => removeFilter('priceRange')}>
               ✖
             </button>
