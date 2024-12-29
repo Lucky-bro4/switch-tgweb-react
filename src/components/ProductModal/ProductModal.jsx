@@ -102,17 +102,19 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                             ></div>
                         ))}
                     </div>
-                    <Swiper
-                        spaceBetween={10}
-                        slidesPerView={1}
-                        onSlideChange={handleSlideChange}
-                        style={{ width: "100%", height: "auto" }}
-                    >
-                        {product.image.map((image, index) => (
-                            <SwiperSlide key={index}>
-                                <img src={image} alt={`${product.brand} - ${index + 1}`} className="product-image" />
-                            </SwiperSlide>
-                        ))}
+                    <div className="img-container">
+                        <Swiper
+                            spaceBetween={10}
+                            slidesPerView={1}
+                            onSlideChange={handleSlideChange}
+                            style={{ width: "100%", height: "auto" }}
+                        >
+                            {product.image.map((image, index) => (
+                                <SwiperSlide key={index}>
+                                    <img src={image} alt={`${product.brand} - ${index + 1}`} className="product-image" />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                         <div 
                             className="favorite-icon" 
                             onClick={(e) => {
@@ -125,7 +127,7 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                                 alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
                             />
                         </div>
-                    </Swiper>
+                    </div>
                 </div>
                 <div class="product-info">
                     <div class="column">
