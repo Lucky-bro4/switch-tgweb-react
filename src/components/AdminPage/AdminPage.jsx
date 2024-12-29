@@ -559,6 +559,7 @@ const AdminPage = () => {
                                 <div key={key} className="measurement-field">
                                     <input
                                         type="text"
+                                        className="input"
                                         placeholder={getPlaceholder(key)}
                                         value={value || ''}
                                         onChange={(e) =>
