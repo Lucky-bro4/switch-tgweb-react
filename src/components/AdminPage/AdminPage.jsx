@@ -473,8 +473,8 @@ const AdminPage = () => {
                             className="input"
                         >
                             <option value="">Для кого?</option>
-                            <option value="Male">Мужское</option>
-                            <option value="Female">Женское</option>
+                            <option value="Мужское">Мужское</option>
+                            <option value="Женское">Женское</option>
                         </select>
                         <input
                         className="input"
@@ -483,19 +483,41 @@ const AdminPage = () => {
                         value={category}
                         onChange={onChangeCategory}
                         />
+                        <select
+                            name="Category"
+                            placeholder="Category"
+                            value={category}
+                            onChange={onChangeCategory}
+                            className="input"
+                        >
+                            <option value="">Категория</option>
+                            <option value="Худи">Худи</option>
+                            <option value="Свитшот">Свитшот</option>
+                            <option value="Футболка">Футболка</option>
+                            <option value="Кофта">Кофта</option>
+                            <option value="Джемпер">Джемпер</option>
+                            <option value="Куртка">Куртка</option>
+                            <option value="Зип-худи">Зип-худи</option>
+                            <option value="Топ">Топ</option>
+                            <option value="Лонгслив">Лонгслив</option>
+                            <option value="Штаны">Штаны</option>
+                            <option value="Джинсы">Джинсы</option>
+                            <option value="Джоггеры">Джоггеры</option>
+                            <option value="Шорты">Шорты</option>
+                        </select>
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Brand"
-                        value={brand}
-                        onChange={onChangeName}
+                            className="input"
+                            type="text"
+                            placeholder="Brand"
+                            value={brand}
+                            onChange={onChangeName}
                         />
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Condition"
-                        value={condition}
-                        onChange={onChangeCondition}
+                            className="input"
+                            type="text"
+                            placeholder="Condition"
+                            value={condition}
+                            onChange={onChangeCondition}
                         />
                         <div className="measurements-input">
                             {(["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
@@ -526,7 +548,7 @@ const AdminPage = () => {
                                     />
                                 </>
                             )}
-                            {(["Штаны", "Джинсы", "Джоггеры"].includes(category)) && (
+                            {(["Штаны", "Джинсы", "Джоггеры", "Шорты"].includes(category)) && (
                                 <>
                                     <input
                                         type="text"
@@ -559,14 +581,14 @@ const AdminPage = () => {
                                 ></textarea>
                             )}
                         </div>
-                        <textarea
+                        {/* <textarea
                             className="input"
                             placeholder="Measurements"
                             value={measurements}
                             onChange={onChangeMeasurements}
                             rows="10"
                             cols="50"
-                        ></textarea>
+                        ></textarea> */}
                         <input
                         className="input"
                         type="text"
