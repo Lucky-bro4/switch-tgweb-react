@@ -13,7 +13,7 @@ const AdminPage = () => {
     const [price, setPrice] = useState(0);
     const [rentPrice, setRentPrice] = useState(0);
     const [condition, setCondition] = useState('');
-    const [measurements, setMeasurements] = useState('');
+    const [measurements, setMeasurements] = useState({});
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
     const [description, setDescription] = useState('');
@@ -255,7 +255,7 @@ const AdminPage = () => {
                 const data = await response.json();
 
                 if (response.ok) {
-                    alert('Товар успешно добавлен')
+                    alert(`Товар "${category} ${brand}" успешно добавлен`)
                 }
 
                 console.log('Ответ от сервера по фото:', data);
@@ -497,30 +497,30 @@ const AdminPage = () => {
                         value={condition}
                         onChange={onChangeCondition}
                         />
-                        {/* <div className="measurements-input">
+                        <div className="measurements-input">
                             {(["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
                                 <>
                                     <input
                                         type="text"
-                                        placeholder="Shoulders"
+                                        placeholder="Плечи"
                                         value={measurements.shoulders || ''}
                                         onChange={(e) => onChangeMeasurements({ ...measurements, shoulders: e.target.value })}
                                     />
                                     <input
                                         type="text"
-                                        placeholder="Sleeve Length"
+                                        placeholder="Длина рукава"
                                         value={measurements.sleeveLength || ''}
                                         onChange={(e) => onChangeMeasurements({ ...measurements, sleeveLength: e.target.value })}
                                     />
                                     <input
                                         type="text"
-                                        placeholder="Underarms"
+                                        placeholder="Подмышки"
                                         value={measurements.underarms || ''}
                                         onChange={(e) => onChangeMeasurements({ ...measurements, underarms: e.target.value })}
                                     />
                                     <input
                                         type="text"
-                                        placeholder="Back Length"
+                                        placeholder="Длина по спине"
                                         value={measurements.backLength || ''}
                                         onChange={(e) => onChangeMeasurements({ ...measurements, backLength: e.target.value })}
                                     />
@@ -558,7 +558,7 @@ const AdminPage = () => {
                                     cols="50"
                                 ></textarea>
                             )}
-                        </div> */}
+                        </div>
                         <textarea
                             className="input"
                             placeholder="Measurements"
