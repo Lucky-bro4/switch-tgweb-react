@@ -48,8 +48,8 @@
 
 .badge-favorites {
   position: absolute;
-  top: -5px;
-  right: -3px;
+  top: -7px;
+  right: -6px;
   background-color: rgba(226, 45, 96);
   color: white;
   border-radius: 50%;
@@ -64,8 +64,8 @@
 
 .badge-cart {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: -7px;
+  right: -6px;
   background-color: rgba(226, 45, 96);
   color: white;
   border-radius: 50%;
