@@ -44,8 +44,8 @@ const Cart = ({ addedItems, favoriteItems, setFavoriteItems }) => {
     useEffect(() => {
         if (addedItems.length > 0) {
 
-            tg.BottomButton.show();
-            tg.BottomButton.setParams({
+            tg.MainButton.show();
+            tg.MainButton.setParams({
                 text: 'Оформить заказ',
             })
 
