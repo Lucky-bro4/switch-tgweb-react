@@ -93,13 +93,13 @@ const SearchComponent = ({ onFilterChange }) => {
       <div className="search-row">
         {/* Кнопки для мужского и женского */}
         <button 
-          className={`category-button ${filters.gender === 'Male' ? 'active' : ''}`}
+          className={`category-button ${filters.gender === 'Мужское' ? 'active' : ''}`}
           onClick={() => handleGenderClick('Мужское')}
           >
             Мужское
         </button>
         <button 
-          className={`category-button ${filters.gender === 'Female' ? 'active' : ''}`}
+          className={`category-button ${filters.gender === 'Женское' ? 'active' : ''}`}
           onClick={() => handleGenderClick('Женское')}
         >
           Женское
@@ -173,7 +173,7 @@ const SearchComponent = ({ onFilterChange }) => {
         )}
         {filters.gender && (
           <span className="filter-chip">
-            {filters.gender === 'Male' ? 'Мужское' : 'Женское'}
+            {filters.gender === 'Мужское' ? 'Мужское' : 'Женское'}
             <button className="remove-chip" onClick={() => removeFilter('gender')}>
               ✖
             </button>
