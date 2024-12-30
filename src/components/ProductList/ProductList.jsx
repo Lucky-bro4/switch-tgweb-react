@@ -6,7 +6,7 @@ import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
 import Header from "../Header/Header"
 
-const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems, productsInCart, setProductsInCart }) => {
+const ProductList = ({ filteredProducts, setFilteredProducts, addedItems, setAddedItems, favoriteItems, setFavoriteItems, productsInCart, setProductsInCart }) => {
 
     const { tg, queryId, user } = useTelegram();
 
@@ -21,48 +21,48 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
 
     const [alertShown, setAlertShown] = useState(false)
 
-    const [filteredProducts, setFilteredProducts] = useState(products || []);
+    // const [filteredProducts, setFilteredProducts] = useState(products || []);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
 
-    useEffect(() => {
-        const getProducts = async () => {
-            try {
-                console.log('chatId: ', user)
-                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
-                // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
-                const data = await response.json();
+    // useEffect(() => {
+    //     const getProducts = async () => {
+    //         try {
+    //             console.log('chatId: ', user)
+    //             const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+    //             // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
+    //             const data = await response.json();
                 
-                // setProducts(data.products)
-                setFilteredProducts(data.products || []);
-                if (customer.favorite_items) {
-                    setFavoriteItems(data.customer.favorite_items)
-                }
-                if (customer.cart_items) {
-                    setProductsInCart(data.customer.cart_items)
-                }
+    //             // setProducts(data.products)
+    //             setFilteredProducts(data.products || []);
+    //             if (customer.favorite_items) {
+    //                 setFavoriteItems(data.customer.favorite_items)
+    //             }
+    //             if (customer.cart_items) {
+    //                 setProductsInCart(data.customer.cart_items)
+    //             }
 
-                // if (!data.customer.location && !data.customer.phone_number) {
-                //     setNewUser(true)
-                // }
+    //             // if (!data.customer.location && !data.customer.phone_number) {
+    //             //     setNewUser(true)
+    //             // }
 
-                // if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
-                //     setCosts(180);
-                //     if (data.successOrder.comment === 'Аренда скоро закончится') {
-                //         setClosedChainOrder(false);
-                //     } else {
-                //         setClosedChainOrder(true);
-                //     }
-                // }
+    //             // if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
+    //             //     setCosts(180);
+    //             //     if (data.successOrder.comment === 'Аренда скоро закончится') {
+    //             //         setClosedChainOrder(false);
+    //             //     } else {
+    //             //         setClosedChainOrder(true);
+    //             //     }
+    //             // }
 
-            } catch (e) {
-                console.log('Ошибка при получении списка товаров:', e)
-            }
-        }
+    //         } catch (e) {
+    //             console.log('Ошибка при получении списка товаров:', e)
+    //         }
+    //     }
 
-        getProducts();
-    }, [products])
+    //     getProducts();
+    // }, [products])
 
     const applyFilters = ({ query, filters }) => {
         let updatedProducts = products || [];

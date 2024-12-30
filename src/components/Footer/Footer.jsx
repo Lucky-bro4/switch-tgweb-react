@@ -58,17 +58,6 @@ const Footer = ({ addedItems, favoriteItems }) => {
                 )}
           </i>
         </div>
-        {/* <div className="cart-icon" onClick={() => navigate("/profile")}>
-            <div className="icon">
-            <img 
-                src="/Images/icons/shopping_basket.png" 
-                width={30} 
-                alt="shopping_basket" />
-            {addedItems.length > 0 && (
-                <div className="badge">{addedItems.length}</div>
-            )}
-          </div>
-        </div> */}
         <div className="footer-section" onClick={handleCartClick}>
             <i className="icon-cart">
                 <img 
