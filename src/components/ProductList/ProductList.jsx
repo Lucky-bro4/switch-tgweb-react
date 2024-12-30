@@ -4,8 +4,6 @@ import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
-import { useNavigate } from "react-router-dom";
-import Header from '../Header/Header';
 
 
 const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems, productsInCart, setProductsInCart }) => {
@@ -26,8 +24,6 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         const getProducts = async () => {
