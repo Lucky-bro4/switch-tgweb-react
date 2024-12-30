@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './ProductModal.css';
+import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTelegram } from '../../hooks/useTelegram';
 import 'swiper/css';
+import './ProductModal.css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
@@ -10,6 +11,8 @@ import 'swiper/css/navigation';
 const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteItems, setFavoriteItems }) => {
 
     const { tg, user } = useTelegram();
+
+    const navigate = useNavigate();
 
     const [activeIndex, setActiveIndex] = useState(0);
     const [isFavorite, setIsFavorite] = useState(false);
@@ -165,7 +168,7 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                         <button 
                             className="go-to-cart" 
                             style={{ backgroundColor: '#E22D60', color: 'white', marginLeft: '10px' }}
-                            onClick={() => navigateToCart()}
+                            onClick={() => navigate('/cart')}
                         >
                             Перейти в корзину
                         </button>
