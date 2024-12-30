@@ -737,7 +737,9 @@ const AdminPage = () => {
                         <select value={status} onChange={onChangeStatus} className="input">
                             <option value="available">Доступен</option>
                             <option value="reserved">Зарезервирован</option>
-                            <option value="in order">В заказе</option>
+                            <option value="in_order">В заказе</option>
+                            <option value="in_shipping">В доставке (Покупка)</option>
+                            <option value="bought">Куплен</option>
                             <option value="fake">Фэйк</option>
                         </select>
                         <select value={available} onChange={onChangeAvailable} className="input">
