@@ -18,6 +18,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
     const [order, setOrder] = useState(0)
     const [closedChainOrder, setClosedChainOrder] = useState(false)
     const [newUser, setNewUser] = useState(false)
+
     const [alertShown, setAlertShown] = useState(false)
 
     const [filteredProducts, setFilteredProducts] = useState(products || []);
@@ -71,22 +72,22 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
         }
     
         if (filters?.priceRange) {
-        updatedProducts = updatedProducts.filter(product => {
-            switch (filters.priceRange) {
-            case 'low':
-                return product.price < 1000;
-            case 'medium':
-                return product.price >= 1000 && product.price <= 3000;
-            case 'medium-high':
-                return product.price > 3000 && product.price <= 5000;
-            case 'high':
-                return product.price > 5000;
-            default:
-                return true;
-            }
-        });
+            updatedProducts = updatedProducts.filter(product => {
+                switch (filters.priceRange) {
+                case 'до 1000':
+                    return product.price < 1000;
+                case '1000-3000':
+                    return product.price >= 1000 && product.price <= 3000;
+                case '3000-5000':
+                    return product.price > 3000 && product.price <= 5000;
+                case 'от 5000':
+                    return product.price > 5000;
+                default:
+                    return true;
+                }
+            });
         }
-    
+ 
         if (query) {
         updatedProducts = updatedProducts.filter(product =>
             product.title.toLowerCase().includes(query.toLowerCase())
