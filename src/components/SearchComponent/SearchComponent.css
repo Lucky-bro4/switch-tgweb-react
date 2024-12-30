@@ -21,7 +21,7 @@
 }
 
 .category-button.active {
-  background-color: #82d83f;
+  background-color: var(--tg-theme-button-color);
   color: white;
 }
 
