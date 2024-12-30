@@ -144,7 +144,7 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                                 ))}
                             </ul>
                         ) : (
-                            <p>{product.measurements || 'Нет данных'}</p>
+                            <p>{product.measurements && typeof product.measurements === 'string' ? product.measurements : 'Нет данных'}</p>
                         )}
                     </div>
             
