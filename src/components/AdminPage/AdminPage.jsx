@@ -251,6 +251,7 @@ const AdminPage = () => {
     };
 
     const sendData = async (e) => {
+
         e.preventDefault();
 
         const newProduct = {
@@ -260,7 +261,7 @@ const AdminPage = () => {
             price: Number(price),
             rentPrice: Number(rentPrice),
             condition: condition,
-            measurements: savedMeasurements,
+            measurements: measurements,
             brandSize: brandSize,
             color: color,
             description: description,
@@ -269,7 +270,8 @@ const AdminPage = () => {
             available: available
         };
 
-        console.log(newProduct);
+        console.log("Замеры: ", measurements);
+        console.log("Новый товар: ", newProduct);
 
         const productResponse = await fetch('https://bottry-lucky-bro4.amvera.io/newProduct', {
             method: 'POST',
