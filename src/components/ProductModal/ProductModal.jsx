@@ -24,32 +24,32 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
         setActiveIndex(swiper.activeIndex);
     };
 
-    const onAddHandler = () => {    
-        setAddedItems([...addedItems, product]);
-        // tg.BottomButton [{
-        //     type: 'main',
-        // }]
+    // const onAddHandler = () => {    
+    //     setAddedItems([...addedItems, product]);
+    //     // tg.BottomButton [{
+    //     //     type: 'main',
+    //     // }]
 
-        if (tg.MainButton.isVisible) {
-            tg.MainButton.hide();
-        }
+    //     if (tg.MainButton.isVisible) {
+    //         tg.MainButton.hide();
+    //     }
   
-    };
+    // };
 
-    useEffect(() => {
-        tg.MainButton.show();
-        tg.MainButton.setParams({
-            type: 'main',
-            text: 'Добавить в корзину',
-            color: '#E22D60'
-        })
+    // useEffect(() => {
+    //     tg.MainButton.show();
+    //     tg.MainButton.setParams({
+    //         type: 'main',
+    //         text: 'Добавить в корзину',
+    //         color: '#E22D60'
+    //     })
         
-        tg.onEvent('mainButtonClicked', onAddHandler)
-        return () => {
-            tg.offEvent('mainButtonClicked', onAddHandler)
-        }
+    //     tg.onEvent('mainButtonClicked', onAddHandler)
+    //     return () => {
+    //         tg.offEvent('mainButtonClicked', onAddHandler)
+    //     }
         
-    }, [product, addedItems])
+    // }, [product, addedItems])
 
     useEffect(() => {
         setIsFavorite(favoriteItems.includes(product.id));
@@ -151,6 +151,34 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                         <p><strong>О товаре:</strong> {product.description}</p>
                     </div>
                 </div>
+            </div>
+            <div className="cart-button-container">
+                {addedItems.includes(product) ? (
+                    <div>
+                        <button 
+                            className="remove-from-cart" 
+                            style={{ backgroundColor: '#E22D60', color: 'white' }}
+                            onClick={() => setAddedItems(addedItems.filter(item => item !== product))}
+                        >
+                            Удалить из корзины
+                        </button>
+                        <button 
+                            className="go-to-cart" 
+                            style={{ backgroundColor: '#E22D60', color: 'white', marginLeft: '10px' }}
+                            onClick={() => navigateToCart()}
+                        >
+                            Перейти в корзину
+                        </button>
+                    </div>
+                ) : (
+                    <button 
+                        className="add-to-cart" 
+                        style={{ backgroundColor: '#E22D60', color: 'white' }}
+                        onClick={() => setAddedItems([...addedItems, product])}
+                    >
+                        Добавить в корзину
+                    </button>
+                )}
             </div>
         </div>
     );
