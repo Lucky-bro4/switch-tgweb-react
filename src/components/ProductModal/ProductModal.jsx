@@ -160,14 +160,12 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                     <div>
                         <button 
                             className="remove-from-cart" 
-                            style={{ backgroundColor: '#E22D60', color: 'white' }}
                             onClick={() => setAddedItems(addedItems.filter(item => item !== product))}
                         >
                             Удалить из корзины
                         </button>
                         <button 
                             className="go-to-cart" 
-                            style={{ backgroundColor: '#E22D60', color: 'white', marginLeft: '10px' }}
                             onClick={() => navigate('/cart')}
                         >
                             Перейти в корзину
@@ -176,7 +174,6 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                 ) : (
                     <button 
                         className="add-to-cart" 
-                        style={{ backgroundColor: '#E22D60', color: 'white' }}
                         onClick={() => setAddedItems([...addedItems, product])}
                     >
                         Добавить в корзину
