@@ -54,15 +54,8 @@ const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems 
             );
 
         } catch (error) {
-            console.error('Error updating favorite status:', error);
-
-            // Откат состояния при ошибке
-            setIsFavorite(!newFavoriteState);
-            if (!newFavoriteState) {
-                setFavoriteItems([...favoriteItems, product.id]);
-            } else {
-                setFavoriteItems(favoriteItems.filter(id => id !== product.id));
-            }
+            
+            console.error("Error updating favorite status:", error);
         }
     };
 
