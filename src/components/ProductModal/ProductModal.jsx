@@ -154,31 +154,33 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                         <p><strong>О товаре:</strong> {product.description}</p>
                     </div>
                 </div>
-            </div>
-            <div className="cart-button-container">
-                {addedItems.includes(product) ? (
-                    <div>
+
+                {/* Кнопки для модального окна */}
+                <div className="cart-button-container">
+                    {addedItems.includes(product) ? (
+                        <div>
+                            <button 
+                                className="remove-from-cart" 
+                                onClick={() => setAddedItems(addedItems.filter(item => item !== product))}
+                            >
+                                Удалить из корзины
+                            </button>
+                            <button 
+                                className="go-to-cart" 
+                                onClick={() => navigate('/cart')}
+                            >
+                                Перейти в корзину
+                            </button>
+                        </div>
+                    ) : (
                         <button 
-                            className="remove-from-cart" 
-                            onClick={() => setAddedItems(addedItems.filter(item => item !== product))}
+                            className="add-to-cart" 
+                            onClick={() => setAddedItems([...addedItems, product])}
                         >
-                            Удалить из корзины
+                            Добавить в корзину
                         </button>
-                        <button 
-                            className="go-to-cart" 
-                            onClick={() => navigate('/cart')}
-                        >
-                            Перейти в корзину
-                        </button>
-                    </div>
-                ) : (
-                    <button 
-                        className="add-to-cart" 
-                        onClick={() => setAddedItems([...addedItems, product])}
-                    >
-                        Добавить в корзину
-                    </button>
-                )}
+                    )}
+                </div>
             </div>
         </div>
     );
