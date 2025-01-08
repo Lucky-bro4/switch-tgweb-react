@@ -67,7 +67,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
             }
         }
 
-    }, [products, user.id])
+    }, [products])
 
     useEffect(() => {
         applyFilters(searchParams);
