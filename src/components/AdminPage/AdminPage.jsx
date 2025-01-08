@@ -747,18 +747,18 @@ const AdminPage = () => {
                             <option value={0}>Не доступен</option>
                         </select>
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="UserId"
-                        value={itemUserId}
-                        onChange={onChangeItemUserId}
+                            className="input"
+                            type="text"
+                            placeholder="UserId"
+                            value={itemUserId}
+                            onChange={onChangeItemUserId}
                         />
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="OrderId"
-                        value={itemOrderId}
-                        onChange={onChangeItemOrderId}
+                            className="input"
+                            type="text"
+                            placeholder="OrderId"
+                            value={itemOrderId}
+                            onChange={onChangeItemOrderId}
                         />
                         <div>
                         <Button className="btn-add-clothes" onClick={sendData}>
