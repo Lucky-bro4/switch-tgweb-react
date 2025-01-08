@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import AdminPanel from './AdminPanel';
 import './AdminPage.css';
 import './AdminPreview.css';
-import Button from '../Button/Button';
 
 const AdminPage = () => {
     
@@ -14,7 +12,7 @@ const AdminPage = () => {
     const [rentPrice, setRentPrice] = useState(0);
     const [condition, setCondition] = useState('');
     const [measurements, setMeasurements] = useState({});
-    const [savedMeasurements, setSavedMeasurements] = useState({});
+    // const [savedMeasurements, setSavedMeasurements] = useState({});
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
     const [description, setDescription] = useState('');
@@ -32,20 +30,6 @@ const AdminPage = () => {
         "Джинсы": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
         "Джоггеры": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
         "Другое": { other: "" },
-    };
-
-    const getPlaceholder = (key) => {
-        const placeholders = {
-            shoulders: 'Плечи',
-            sleeveLength: 'Длина рукава',
-            underarms: 'Подмышки',
-            backLength: 'Длина по спине',
-            outerLegLength: 'Длина внешнего шва',
-            innerLegLength: 'Длина внутреннего шва',
-            waistWidth: 'Ширина талии',
-            other: 'Прочие замеры',
-        };
-        return placeholders[key] || key; // Если нет перевода, оставить ключ
     };
 
     useEffect(() => {
@@ -146,13 +130,13 @@ const AdminPage = () => {
         }));
     };
 
-    const saveMeasurements = () => {
-        setSavedMeasurements((prev) => ({
-            ...prev,
-            [category]: measurements,
-        }));
-        alert('Замеры сохранены!');
-    };
+    // const saveMeasurements = () => {
+    //     setSavedMeasurements((prev) => ({
+    //         ...prev,
+    //         [category]: measurements,
+    //     }));
+    //     alert('Замеры сохранены!');
+    // };
 
     const onChangeBrandSize = (e) => {
         setBrandSize(e.target.value);
