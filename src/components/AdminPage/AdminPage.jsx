@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Button from '../Button/Button';
 import './AdminPage.css';
 import './AdminPreview.css';
 
