@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import SearchComponent from '../SearchComponent/SearchComponent';
-import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
 import Header from "../Header/Header"
+import './ProductList.css';
 
 const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems, productsInCart, setProductsInCart }) => {
 

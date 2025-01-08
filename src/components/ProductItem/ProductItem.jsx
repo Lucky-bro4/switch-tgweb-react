@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './ProductItem.css';
 import { useTelegram } from "../../hooks/useTelegram";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import './ProductItem.css';
 
 const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount, favoriteItems, setFavoriteItems }) => {
 

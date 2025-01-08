@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTelegram } from '../../hooks/useTelegram';
-import 'swiper/css';
 import './ProductModal.css';
+import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
