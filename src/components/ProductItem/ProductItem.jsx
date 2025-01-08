@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ProductItem.css';
 import { useTelegram } from "../../hooks/useTelegram";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
 
 const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount, favoriteItems, setFavoriteItems }) => {
 
@@ -15,6 +16,10 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
     useEffect(() => {
         setIsFavorite(favoriteItems.includes(product.id));
     }, [favoriteItems, product.id]);
+
+    const handleSlideChange = (swiper) => {
+        setActiveIndex(swiper.activeIndex);
+    };
 
     // const handleAdd = (e) => {
     //     e.stopPropagation(); // Предотвращает распространение клика на родительский элемент
@@ -72,7 +77,22 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, sel
     return (
         <div key={product.id} className={'product ' + className} onClick={() => onClick(product)}>
             <div className="img-container">
-                <img className="img" src={product.image[0]} alt={`${product.category} ${product.brand}`} />
+                <Swiper
+                    spaceBetween={10}
+                    slidesPerView={1}
+                    onSlideChange={handleSlideChange}
+                    style={{ width: "100%", height: "auto" }}
+                >
+                    {product.image.map((image, index) => (
+                        <SwiperSlide key={index}>
+                            <img
+                                src={image}
+                                alt={`${product.brand} - ${index + 1}`}
+                                className="product-image"
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
                 <div 
                     className="favorite-icon-catalog" 
                     onClick={handleFavoriteClick}
