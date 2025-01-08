@@ -24,10 +24,15 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
     const [filteredProducts, setFilteredProducts] = useState(products || []);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchParams, setSearchParams] = useState({ query: '', filters: {} });
 
+    const handleFilterChange = (params) => {
+        setSearchParams(params);
+    };
 
     useEffect(() => {
         const getProducts = async () => {
+
             try {
                 console.log('chatId: ', user)
                 const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
@@ -35,6 +40,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                 const data = await response.json();
                 
                 // setProducts(data.products)
+                setProducts(data.products || []);
                 setFilteredProducts(data.products || []);
                 if (customer.favorite_items) {
                     setFavoriteItems(data.customer.favorite_items)
@@ -61,8 +67,11 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
             }
         }
 
-        getProducts();
-    }, [products])
+    }, [products, user.id])
+
+    useEffect(() => {
+        applyFilters(searchParams);
+    }, [searchParams]);
 
     const applyFilters = ({ query, filters }) => {
         let updatedProducts = products || [];
@@ -87,15 +96,21 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                 }
             });
         }
+
+        if (filters?.gender) {
+            updatedProducts = updatedProducts.filter(
+                product => product.gender === filters.gender
+            );
+        }
  
         if (query) {
-        updatedProducts = updatedProducts.filter(product =>
-            product.title.toLowerCase().includes(query.toLowerCase())
-        );
+            updatedProducts = updatedProducts.filter(product =>
+                product.category.toLowerCase().includes(query.toLowerCase())
+            );
         }
     
         setFilteredProducts(updatedProducts);
-      };
+    };
 
     const onProductClick = (product) => {
         setSelectedProduct(product);
@@ -202,7 +217,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
     return (
         <div>
             <Header />
-            <SearchComponent onFilterChange={applyFilters} />
+            <SearchComponent onFilterChange={handleFilterChange} />
             <div className={'list'}>
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map(item => (
