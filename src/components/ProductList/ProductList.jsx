@@ -24,7 +24,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
     const [filteredProducts, setFilteredProducts] = useState(products || []);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [searchParams, setSearchParams] = useState({ query: '', filters: {} });
+    const [searchParams, setSearchParams] = useState({ query: '', filters: {}, gender: '' });
 
     const handleFilterChange = (params) => {
         setSearchParams(params);
@@ -73,7 +73,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
         applyFilters(searchParams);
     }, [searchParams]);
 
-    const applyFilters = ({ query, filters }) => {
+    const applyFilters = ({ query, filters, gender }) => {
         let updatedProducts = products || [];
     
         if (filters?.category) {
@@ -97,9 +97,9 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
             });
         }
 
-        if (filters?.gender) {
+        if (gender) {
             updatedProducts = updatedProducts.filter(
-                product => product.gender === filters.gender
+                product => product.gender === gender
             );
         }
  

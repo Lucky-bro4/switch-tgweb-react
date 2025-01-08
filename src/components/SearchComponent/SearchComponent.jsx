@@ -15,21 +15,12 @@ const SearchComponent = ({ onFilterChange }) => {
 
   const handleGenderClick = (gender) => {
     const updatedFilters = {
+      gender: gender,
       ...filters,
-      gender,
     };
     setFilters(updatedFilters);
-    onFilterChange({ query, filters: updatedFilters });
+    onFilterChange({ query, filters: updatedFilters, gender: gender });
   };
-
-  // const handleCategoryClick = (category) => {
-  //   const updatedFilters = {
-  //     ...filters,
-  //     category,
-  //   };
-  //   setFilters(updatedFilters);
-  //   onFilterChange({ query, filters: updatedFilters });
-  // };
 
   const handleFilterChange = (e) => {
     const updatedFilters = {
