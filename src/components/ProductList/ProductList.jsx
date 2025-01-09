@@ -62,12 +62,16 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                 //     }
                 // }
 
+                // Call applyFilters after setting products
+                applyFilters(searchParams);
+
             } catch (e) {
                 console.log('Ошибка при получении списка товаров:', e)
             }
         }
 
-    }, [products])
+        getProducts();
+    }, [user])
 
     useEffect(() => {
         applyFilters(searchParams);
