@@ -12,7 +12,7 @@ const AdminPage = () => {
     const [price, setPrice] = useState(0);
     const [rentPrice, setRentPrice] = useState(0);
     const [condition, setCondition] = useState('');
-    const [measurements, setMeasurements] = useState([]);
+    const [measurements, setMeasurements] = useState({});
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
     const [description, setDescription] = useState('');
@@ -20,6 +20,14 @@ const AdminPage = () => {
 
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
+
+    // const [shoulders, setShoulders] = useState(''); 
+    // const [sleeveLength, setSleeveLength] = useState(''); 
+    // const [underarms, setUnderarms] = useState(''); 
+    // const [backLength, setBackLength] = useState(''); 
+    // const [outerLegLength, setOuterLegLength] = useState(''); 
+    // const [innerLegLength, setInnerLegLength] = useState(''); 
+    // const [waistWidth, setWaistWidth] = useState(''); 
 
     const [categoryFields, setCategoryFields] = useState([
         { category: "Худи", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
@@ -31,25 +39,11 @@ const AdminPage = () => {
         { category: "Другое", fields: { other: "" } },
     ]);
 
-    useEffect(() => {
-        if (category) {
-            const selectedCategory = categoryFields.find(field => field.category === category);
-            if (selectedCategory) {
-                setMeasurements(Object.entries(selectedCategory.fields).map(([key, value]) => ({ key, value })));
-            } else {
-                setMeasurements([]);
-            }
-        } else {
-            setMeasurements([]);
-        }
-    }, [category]);
-
     const onChangeMeasurements = (key, value) => {
-        setMeasurements(prevMeasurements =>
-            prevMeasurements.map(measurement =>
-                measurement.key === key ? { ...measurement, value } : measurement
-            )
-        );
+        setMeasurements(prevMeasurements => ({
+            ...prevMeasurements,
+            [key]: value
+        }));
     };
 
     const handlePhotoChange = (event) => {
@@ -548,10 +542,10 @@ const AdminPage = () => {
                             className="input"
                         >
                             <option value="">Выбери категорию</option>
-                            {/* {Object.keys(categoryFields).map((key) => (
+                            {Object.keys(categoryFields).map((key) => (
                                 <option key={key} value={key}>{key}</option>
-                            ))} */}
-                            <option value="Худи">Худи</option>
+                            ))}
+                            {/* <option value="Худи">Худи</option>
                             <option value="Свитшот">Свитшот</option>
                             <option value="Футболка">Футболка</option>
                             <option value="Кофта">Кофта</option>
@@ -563,7 +557,7 @@ const AdminPage = () => {
                             <option value="Штаны">Штаны</option>
                             <option value="Джинсы">Джинсы</option>
                             <option value="Джоггеры">Джоггеры</option>
-                            <option value="Шорты">Шорты</option>
+                            <option value="Шорты">Шорты</option> */}
                         </select>
                         <input
                             className="input"
@@ -582,18 +576,78 @@ const AdminPage = () => {
                         {category && (
                             <div className="measurements-input">
                                 <h3>Введите замеры для: {category}</h3>
-                                {measurements.map(({ key, value }) => (
-                                    <div key={key} className="measurement-field">
-                                        <input
-                                            id={`measurement-${key}`}
-                                            type="text"
-                                            placeholder={key}
-                                            value={value}
-                                            onChange={(e) => onChangeMeasurements(key, e.target.value)}
-                                        />
-                                    </div>
-                                ))}
-                                {/* Отображение текущих данных */}
+                                {(() => {
+                                    if (category === 'Худи' || category === 'Свитшот' || category === 'Футболка') {
+                                        return (
+                                            <>
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="Плечи (Shoulders)"
+                                                    value={measurements?.shoulders || ''}
+                                                    onChange={(e) => onChangeMeasurements('shoulders', e.target.value)}
+                                                />
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="Длина рукава (Sleeve Length)"
+                                                    value={measurements?.sleeveLength || ''}
+                                                    onChange={(e) => onChangeMeasurements('sleeveLength', e.target.value)}
+                                                />
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="Подмышки (Underarms)"
+                                                    value={measurements?.underarms || ''}
+                                                    onChange={(e) => onChangeMeasurements('underarms', e.target.value)}
+                                                />
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="Длина спины (Back Length)"
+                                                    value={measurements?.backLength || ''}
+                                                    onChange={(e) => onChangeMeasurements('backLength', e.target.value)}
+                                                />
+                                            </>
+                                        );
+                                    } else if (category === 'Штаны' || category === 'Джинсы' || category === 'Джоггеры') {
+                                        return (
+                                            <>
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="Длина внешнего шва (Outer Leg Length)"
+                                                    value={measurements?.outerLegLength || ''}
+                                                    onChange={(e) => onChangeMeasurements('outerLegLength', e.target.value)}
+                                                />
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="Длина внутреннего шва (Inner Leg Length)"
+                                                    value={measurements?.innerLegLength || ''}
+                                                    onChange={(e) => onChangeMeasurements('innerLegLength', e.target.value)}
+                                                />
+                                                <input
+                                                    className="input"
+                                                    type="text"
+                                                    placeholder="Ширина талии (Waist Width)"
+                                                    value={measurements?.waistWidth || ''}
+                                                    onChange={(e) => onChangeMeasurements('waistWidth', e.target.value)}
+                                                />
+                                            </>
+                                        );
+                                    } else if (category === 'Другое') {
+                                        return (
+                                            <input
+                                                className="input"
+                                                type="text"
+                                                placeholder="Другое (Other)"
+                                                value={measurements?.other || ''}
+                                                onChange={(e) => onChangeMeasurements('other', e.target.value)}
+                                            />
+                                        );
+                                    }
+                                })()}
                                 <pre>{JSON.stringify(measurements, null, 2)}</pre>
                             </div>
                         )}
