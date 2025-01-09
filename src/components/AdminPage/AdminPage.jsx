@@ -32,12 +32,8 @@ const AdminPage = () => {
     };
 
     useEffect(() => {
-        console.log(categoryFields);
-    }, []);
-
-    useEffect(() => {
         if (category) {
-            setMeasurements(savedMeasurements[category] || categoryFields[category] || {});
+            setMeasurements(categoryFields[category] || {});
         } else {
             setMeasurements({});
         }
@@ -126,10 +122,10 @@ const AdminPage = () => {
         setCondition(e.target.value);
     };
     
-    const onChangeMeasurements = (field, value) => {
+    const onChangeMeasurements = (key, value) => {
         setMeasurements((prevMeasurements) => ({
             ...prevMeasurements, // Сохраняем предыдущие значения
-            [field]: value,      // Обновляем конкретное поле
+            [key]: value,      // Обновляем конкретное поле
         }));
     };
 
@@ -566,94 +562,23 @@ const AdminPage = () => {
                                         />
                                     </div>
                                 ))}
-                                <button type="button" onClick={saveMeasurements}>Сохранить замеры</button>
                                 {/* Отображение текущих данных */}
                                 <pre>{JSON.stringify(measurements, null, 2)}</pre>
                             </div>
                         )}
-                        {/* <div className="measurements-input">
-                            {(["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
-                                <>
-                                    <input
-                                        type="text"
-                                        placeholder="Плечи"
-                                        value={measurements.shoulders || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, shoulders: e.target.value })}
-                                    />
-                                    <input
-                                        type="text"
-                                        placeholder="Длина рукава"
-                                        value={measurements.sleeveLength || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, sleeveLength: e.target.value })}
-                                    />
-                                    <input
-                                        type="text"
-                                        placeholder="Подмышки"
-                                        value={measurements.underarms || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, underarms: e.target.value })}
-                                    />
-                                    <input
-                                        type="text"
-                                        placeholder="Длина по спине"
-                                        value={measurements.backLength || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, backLength: e.target.value })}
-                                    />
-                                </>
-                            )}
-                            {(["Штаны", "Джинсы", "Джоггеры", "Шорты"].includes(category)) && (
-                                <>
-                                    <input
-                                        type="text"
-                                        placeholder="Outer Leg Length"
-                                        value={measurements.outerLegLength || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, outerLegLength: e.target.value })}
-                                    />
-                                    <input
-                                        type="text"
-                                        placeholder="Inner Leg Length"
-                                        value={measurements.innerLegLength || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, innerLegLength: e.target.value })}
-                                    />
-                                    <input
-                                        type="text"
-                                        placeholder="Waist Width"
-                                        value={measurements.waistWidth || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, waistWidth: e.target.value })}
-                                    />
-                                </>
-                            )}
-                            {(!["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив", "Штаны", "Джинсы", "Джоггеры"].includes(category)) && (
-                                <textarea
-                                    className="input"
-                                    placeholder="Measurements"
-                                    value={measurements.other || ''}
-                                    onChange={(e) => onChangeMeasurements({ ...measurements, other: e.target.value })}
-                                    rows="10"
-                                    cols="50"
-                                ></textarea>
-                            )}
-                        </div> */}
-                        {/* <textarea
-                            className="input"
-                            placeholder="Measurements"
-                            value={measurements}
-                            onChange={onChangeMeasurements}
-                            rows="10"
-                            cols="50"
-                        ></textarea> */}
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Brand size"
-                        value={brandSize}
-                        onChange={onChangeBrandSize}
+                            className="input"
+                            type="text"
+                            placeholder="Brand size"
+                            value={brandSize}
+                            onChange={onChangeBrandSize}
                         />
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Color"
-                        value={color}
-                        onChange={onChangeColor}
+                            className="input"
+                            type="text"
+                            placeholder="Color"
+                            value={color}
+                            onChange={onChangeColor}
                         />
                         <input
                         className="input"
