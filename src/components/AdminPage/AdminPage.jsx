@@ -39,6 +39,12 @@ const AdminPage = () => {
         }
     }, [category]);
 
+    const onChangeMeasurements = (key, value) => {
+        setMeasurements(prevMeasurements => ({
+            ...prevMeasurements,
+            [key]: value
+        }));
+    };
 
     const handlePhotoChange = (event) => {
         const files = Array.from(event.target.files);
@@ -123,13 +129,6 @@ const AdminPage = () => {
         setCondition(e.target.value);
     };
     
-    const onChangeMeasurements = (key, value) => {
-        setMeasurements((prevMeasurements) => ({
-            ...prevMeasurements, // Сохраняем предыдущие значения
-            [key]: value,      // Обновляем конкретное поле
-        }));
-    };
-
     // const saveMeasurements = () => {
     //     setSavedMeasurements((prev) => ({
     //         ...prev,
