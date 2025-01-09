@@ -19,7 +19,7 @@ const SearchComponent = ({ onFilterChange }) => {
       ...filters,
     };
     setFilters(updatedFilters);
-    onFilterChange({ query, filters: updatedFilters, gender: gender });
+    onFilterChange({ query, filters: updatedFilters });
   };
 
   const handleFilterChange = (e) => {
