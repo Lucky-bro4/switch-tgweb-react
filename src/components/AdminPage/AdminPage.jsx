@@ -12,7 +12,7 @@ const AdminPage = () => {
     const [price, setPrice] = useState(0);
     const [rentPrice, setRentPrice] = useState(0);
     const [condition, setCondition] = useState('');
-    const [measurements, setMeasurements] = useState({});
+    const [measurements, setMeasurements] = useState([]);
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
     const [description, setDescription] = useState('');
@@ -33,17 +33,23 @@ const AdminPage = () => {
 
     useEffect(() => {
         if (category) {
-            setMeasurements(categoryFields[category] || {});
+            const selectedCategory = categoryFields.find(field => field.category === category);
+            if (selectedCategory) {
+                setMeasurements(Object.entries(selectedCategory.fields).map(([key, value]) => ({ key, value })));
+            } else {
+                setMeasurements([]);
+            }
         } else {
-            setMeasurements({});
+            setMeasurements([]);
         }
     }, [category]);
 
     const onChangeMeasurements = (key, value) => {
-        setMeasurements(prevMeasurements => ({
-            ...prevMeasurements,
-            [key]: value
-        }));
+        setMeasurements(prevMeasurements =>
+            prevMeasurements.map(measurement =>
+                measurement.key === key ? { ...measurement, value } : measurement
+            )
+        );
     };
 
     const handlePhotoChange = (event) => {
@@ -576,7 +582,7 @@ const AdminPage = () => {
                         {category && (
                             <div className="measurements-input">
                                 <h3>Введите замеры для: {category}</h3>
-                                {measurements.map(([key, value]) => (
+                                {measurements.map(({ key, value }) => (
                                     <div key={key} className="measurement-field">
                                         <input
                                             id={`measurement-${key}`}
