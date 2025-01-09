@@ -57,6 +57,7 @@ const AdminPage = () => {
 
     const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
+
     const [itemUserId, setItemUserId] = useState(0);
     const [itemOrderId, setItemOrderId] = useState(0);
 
@@ -236,6 +237,11 @@ const AdminPage = () => {
     const sendData = async (e) => {
 
         e.preventDefault();
+
+        if (!gender || !category || !brand || !price || !rentPrice || !condition || !measurements || !brandSize || !color || !description || !avitoUrl || !status || !available) {
+            alert('All fields are required.');
+            return;
+        }
 
         const newProduct = {
             gender: gender,
