@@ -288,6 +288,8 @@ const AdminPage = () => {
                 }
 
                 console.log('Ответ от сервера по фото:', data);
+                window.location.reload();
+                
             } catch (error) {
                 console.error('Ошибка при отправке данных по фото:', error);
             }
