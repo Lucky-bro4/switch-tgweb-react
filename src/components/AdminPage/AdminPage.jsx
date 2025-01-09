@@ -5,26 +5,23 @@ import './AdminPreview.css';
 
 const AdminPage = () => {
     
-    const [formData, setFormData] = useState({
-        id: 0,
-        gender: '',
-        category: '',
-        brand: '',
-        price: 0,
-        rentPrice: 0,
-        condition: '',
-        measurements: {},
-        brandSize: '',
-        color: '',
-        description: '',
-        avitoUrl: '',
-        status: 'available',
-        available: 1,
-        photos: [],
-        photoPaths: []
-    });
+    const [id, setId] = useState(0)
+    const [gender, setGender] = useState('');
+    const [category, setCategory] = useState('');
+    const [brand, setBrand] = useState('');
+    const [price, setPrice] = useState(0);
+    const [rentPrice, setRentPrice] = useState(0);
+    const [condition, setCondition] = useState('');
+    const [measurements, setMeasurements] = useState({});
+    const [brandSize, setBrandSize] = useState('');
+    const [color, setColor] = useState('');
+    const [description, setDescription] = useState('');
+    const [avitoUrl, setAvitoUrl] = useState('');
 
-    const [categoryFields, setCategoryFields] = useState({
+    const [photos, setPhotos] = useState([]);
+    const [photoPaths, setPhotoPaths] = useState([]);
+
+    const [categoryFields, setCategoryFields] = useState([{
         "Худи": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
         "Свитшот": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
         "Футболка": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
@@ -32,52 +29,35 @@ const AdminPage = () => {
         "Джинсы": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
         "Джоггеры": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
         "Другое": { other: "" },
-    });
+    }]);
 
     useEffect(() => {
-        if (formData.category) {
-            setFormData((prevData) => ({
-                ...prevData,
-                measurements: categoryFields[formData.category] || {}
-            }));
+        if (category) {
+            setMeasurements(categoryFields[category] || {});
+        } else {
+            setMeasurements({});
         }
-    }, [formData.category, categoryFields]);
+    }, [category]);
 
-    const handleChange = (key, value) => {
-        setFormData((prevData) => ({
-            ...prevData,
+    const onChangeMeasurements = (key, value) => {
+        setMeasurements(prevMeasurements => ({
+            ...prevMeasurements,
             [key]: value
-        }));
-    };
-
-    const handleMeasurementChange = (key, value) => {
-        setFormData((prevData) => ({
-            ...prevData,
-            measurements: {
-                ...prevData.measurements,
-                [key]: value
-            }
         }));
     };
 
     const handlePhotoChange = (event) => {
         const files = Array.from(event.target.files);
         const newPhotos = files.map((file) => URL.createObjectURL(file));
-        const newPhotoPaths = files;
+        setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
 
-        setFormData((prevData) => ({
-            ...prevData,
-            photos: [...prevData.photos, ...newPhotos],
-            photoPaths: [...prevData.photoPaths, ...newPhotoPaths]
-        }));
+        const newPhotoPaths = files.map((file) => file);
+        setPhotoPaths((prevPaths) => [...prevPaths, ...newPhotoPaths]);
     };
 
     const handleRemovePhoto = (index) => {
-        setFormData((prevData) => ({
-            ...prevData,
-            photos: prevData.photos.filter((_, i) => i !== index),
-            photoPaths: prevData.photoPaths.filter((_, i) => i !== index)
-        }));
+        setPhotos(photos.filter((_, i) => i !== index));
+        setPhotoPaths(photoPaths.filter((_, i) => i !== index));
     };
 
 
@@ -253,128 +233,86 @@ const AdminPage = () => {
         return response.json(); 
     };
 
-    // const sendData = async (e) => {
-
-    //     e.preventDefault();
-
-    //     const missingFields = [];
-    //     if (!gender) missingFields.push('gender');
-    //     if (!category) missingFields.push('category');
-    //     if (!brand) missingFields.push('brand');
-    //     if (!price) missingFields.push('price');
-    //     if (!rentPrice) missingFields.push('rentPrice');
-    //     if (!condition) missingFields.push('condition');
-    //     if (!measurements || Object.keys(measurements).length === 0) missingFields.push('measurements');
-    //     if (!brandSize) missingFields.push('brandSize');
-    //     if (!color) missingFields.push('color');
-    //     if (!description) missingFields.push('description');
-    //     if (!avitoUrl) missingFields.push('avitoUrl');
-    //     if (!status) missingFields.push('status');
-    //     if (!available) missingFields.push('available');
-
-    //     if (missingFields.length > 0) {
-    //         alert(`Незаполненные поля: ${missingFields.join(', ')}`);
-    //         return;
-    //     }
-
-    //     const newProduct = {
-    //         gender: gender,
-    //         category: category,
-    //         brand: brand,
-    //         price: Number(price),
-    //         rentPrice: Number(rentPrice),
-    //         condition: condition,
-    //         measurements: measurements,
-    //         brandSize: brandSize,
-    //         color: color,
-    //         description: description,
-    //         avitoUrl: avitoUrl,
-    //         status: status,
-    //         available: available
-    //     };
-
-    //     console.log("Замеры: ", measurements);
-    //     console.log("Новый товар: ", newProduct);
-
-    //     const productResponse = await fetch('https://bottry-lucky-bro4.amvera.io/newProduct', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(newProduct),
-    //     });
-
-    //     const { itemId } = await productResponse.json();
-
-    //     if (itemId && photos.length > 0){
-
-    //         const formData = new FormData();
-    //         photoPaths.forEach((file) => formData.append('photos', file));
-    //         formData.append('itemId', String(itemId));
-
-    //         for (let [key, value] of formData.entries()) {
-    //             console.log(key, value);
-    //           }
-            
-    //         try {
-    //             // Отправляем файлы на сервер
-    //             const response = await fetch('https://bottry-lucky-bro4.amvera.io/upload', {
-    //                 method: 'POST',
-    //                 body: formData,
-    //             });
-        
-    //             const data = await response.json();
-
-    //             if (response.ok) {
-    //                 alert(`Товар "${category} ${brand}" успешно добавлен`)
-    //             }
-
-    //             console.log('Ответ от сервера по фото:', data);
-    //             window.location.reload();
-                
-    //         } catch (error) {
-    //             console.error('Ошибка при отправке данных по фото:', error);
-    //         }
-    //     }
-    // };
-
     const sendData = async (e) => {
+
         e.preventDefault();
 
-        const missingFields = Object.entries(formData)
-            .filter(([key, value]) => key !== 'photos' && key !== 'photoPaths' && !value)
-            .map(([key]) => key);
+        const missingFields = [];
+        if (!gender) missingFields.push('gender');
+        if (!category) missingFields.push('category');
+        if (!brand) missingFields.push('brand');
+        if (!price) missingFields.push('price');
+        if (!rentPrice) missingFields.push('rentPrice');
+        if (!condition) missingFields.push('condition');
+        if (!measurements || Object.keys(measurements).length === 0) missingFields.push('measurements');
+        if (!brandSize) missingFields.push('brandSize');
+        if (!color) missingFields.push('color');
+        if (!description) missingFields.push('description');
+        if (!avitoUrl) missingFields.push('avitoUrl');
+        if (!status) missingFields.push('status');
+        if (!available) missingFields.push('available');
 
         if (missingFields.length > 0) {
-            alert(`Missing fields: ${missingFields.join(', ')}`);
+            alert(`Незаполненные поля: ${missingFields.join(', ')}`);
             return;
         }
 
-        try {
-            const response = await fetch('https://bottry-lucky-bro4.amvera.io/newProduct', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            });
+        const newProduct = {
+            gender: gender,
+            category: category,
+            brand: brand,
+            price: Number(price),
+            rentPrice: Number(rentPrice),
+            condition: condition,
+            measurements: measurements,
+            brandSize: brandSize,
+            color: color,
+            description: description,
+            avitoUrl: avitoUrl,
+            status: status,
+            available: available
+        };
 
-            const { itemId } = await response.json();
+        console.log("Замеры: ", measurements);
+        console.log("Новый товар: ", newProduct);
 
-            if (itemId && formData.photos.length > 0) {
-                const formDataUpload = new FormData();
-                formData.photoPaths.forEach((file) => formDataUpload.append('photos', file));
-                formDataUpload.append('itemId', String(itemId));
+        const productResponse = await fetch('https://bottry-lucky-bro4.amvera.io/newProduct', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newProduct),
+        });
 
-                const uploadResponse = await fetch('https://bottry-lucky-bro4.amvera.io/upload', {
+        const { itemId } = await productResponse.json();
+
+        if (itemId && photos.length > 0){
+
+            const formData = new FormData();
+            photoPaths.forEach((file) => formData.append('photos', file));
+            formData.append('itemId', String(itemId));
+
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+              }
+            
+            try {
+                // Отправляем файлы на сервер
+                const response = await fetch('https://bottry-lucky-bro4.amvera.io/upload', {
                     method: 'POST',
-                    body: formDataUpload,
+                    body: formData,
                 });
+        
+                const data = await response.json();
 
-                if (uploadResponse.ok) {
-                    alert('Product added successfully!');
-                    window.location.reload();
+                if (response.ok) {
+                    alert(`Товар "${category} ${brand}" успешно добавлен`)
                 }
+
+                console.log('Ответ от сервера по фото:', data);
+                window.location.reload();
+                
+            } catch (error) {
+                console.error('Ошибка при отправке данных по фото:', error);
             }
-        } catch (error) {
-            console.error('Error submitting product:', error);
-            alert('Failed to submit product.');
         }
     };
 
@@ -572,16 +510,16 @@ const AdminPage = () => {
                     <form className="form">
                         <h3>Добавление товара</h3>
                         <input
-                            className="input"
-                            type="number"
-                            placeholder="Id"
-                            value={formData.id}
-                            onChange={onChangeId}
+                        className="input"
+                        type="number"
+                        placeholder="Id"
+                        value={id}
+                        onChange={onChangeId}
                         />
                         <select
                             name="Gender"
                             placeholder="Gender"
-                            value={formData.gender}
+                            value={gender}
                             onChange={onChangeGender}
                             className="input"
                         >
@@ -599,7 +537,7 @@ const AdminPage = () => {
                         <select
                             name="Category"
                             placeholder="Category"
-                            value={formData.category}
+                            value={category}
                             onChange={onChangeCategory}
                             className="input"
                         >
@@ -625,67 +563,68 @@ const AdminPage = () => {
                             className="input"
                             type="text"
                             placeholder="Brand"
-                            value={formData.brand}
+                            value={brand}
                             onChange={onChangeName}
                         />
                         <input
                             className="input"
                             type="text"
                             placeholder="Condition"
-                            value={formData.condition}
+                            value={condition}
                             onChange={onChangeCondition}
                         />
-                        {formData.category && (
+                        {category && (
                             <div className="measurements-input">
-                                <h3>Введите замеры для: {formData.category}</h3>
-                                {Object.key(formData.measurements).map((key) => (
-                                    <div key={key}>
-                                        <label>{key}:</label>
+                                <h3>Введите замеры для: {category}</h3>
+                                {Object.entries(measurements).map(([key, value]) => (
+                                    <div key={key} className="measurement-field">
                                         <input
+                                            id={`measurement-${key}`}
                                             type="text"
-                                            value={formData.measurements[key]}
-                                            onChange={(e) => handleMeasurementChange(key, e.target.value)}
+                                            placeholder={key}
+                                            value={value}
+                                            onChange={(e) => onChangeMeasurements(key, e.target.value)}
                                         />
                                     </div>
                                 ))}
                                 {/* Отображение текущих данных */}
-                                <pre>{JSON.stringify(formData.measurements, null, 2)}</pre>
+                                <pre>{JSON.stringify(measurements, null, 2)}</pre>
                             </div>
                         )}
                         <input
                             className="input"
                             type="text"
                             placeholder="Brand size"
-                            value={formData.brandSize}
+                            value={brandSize}
                             onChange={onChangeBrandSize}
                         />
                         <input
                             className="input"
                             type="text"
                             placeholder="Color"
-                            value={formData.color}
+                            value={color}
                             onChange={onChangeColor}
                         />
                         <input
-                            className="input"
-                            type="text"
-                            placeholder="Description"
-                            value={formData.description}
-                            onChange={onChangeDescription}
+                        className="input"
+                        type="text"
+                        placeholder="Description"
+                        value={description}
+                        onChange={onChangeDescription}
                         />
                         <input
-                            className="input"
-                            type="text"
-                            placeholder="Avito Url"
-                            value={formData.avitoUrl}
-                            onChange={onChangeAvitoUrl}
+                        className="input"
+                        type="text"
+                        placeholder="Avito Url"
+                        value={avitoUrl}
+                        onChange={onChangeAvitoUrl}
                         />
                         <div>
                         <input
                             className="input"
                             type="number"
                             placeholder="Price"
-                            value={formData.price}
+                            value={price}
                             onChange={onChangePrice}
                         /> Price
                         </div>
@@ -694,9 +633,9 @@ const AdminPage = () => {
                             className="input"
                             type="number"
                             placeholder="RentPrice"
-                            value={formData.rentPrice}
+                            value={rentPrice}
                             onChange={onChangeRentPrice}
-                        /> Rent Price ( {formData.price / 20 * 1.2 + 25} руб/день )
+                        /> Rent Price ( {price / 20 * 1.2 + 25} руб/день )
                         </div>
                         {/* <input
                         className="input"
@@ -708,22 +647,18 @@ const AdminPage = () => {
                         <div className="admin-panel">
                             <div className="photo-upload-section">
                                 <h3>Загрузка фотографий товара</h3>
-                                <input 
-                                    type="file" 
-                                    multiple accept="image/*" 
-                                    onChange={handlePhotoChange} 
-                                />
+                                <input type="file" multiple accept="image/*" onChange={handlePhotoChange} />
                                 <div className="photo-preview">
-                                    {formData.photos.length > 0 && (
+                                    {photos.length > 0 && (
                                         <>
-                                            {formData.photos.length === 1 ? (
+                                            {photos.length === 1 ? (
                                                 <div>
                                                     <img className="photo-preview-single" src={photos[0]} alt="Превью товара" />
                                                     <button onClick={() => handleRemovePhoto(index)}>Удалить</button>
                                                 </div>
                                             ) : (
                                                 <div className="photo-preview-collage">
-                                                    {formData.photos.map((photo, index) => (
+                                                    {photos.map((photo, index) => (
                                                         <div key={index} className="photo-collage-item">
                                                             <img src={photo} alt={`Фото ${index + 1}`} />
                                                             <button onClick={() => handleRemovePhoto(index)}>Удалить</button>
@@ -789,27 +724,27 @@ const AdminPage = () => {
                 </div> */}
                 <div className="admin-preview">
                     <div className="example">
-                        <div className={`example_photos ${formData.photos.length > 1 ? 'multiple' : 'single'}`}>
-                            {formData.photos.length === 1 ? (
-                                <img className="example_img" src={formData.photos[0]} alt={formData.brand} />
+                        <div className={`example_photos ${photos.length > 1 ? 'multiple' : 'single'}`}>
+                            {photos.length === 1 ? (
+                                <img className="example_img" src={photos[0]} alt={brand} />
                             ) : (
-                                formData.photos.map((photo, index) => (
+                                photos.map((photo, index) => (
                                     <img
                                         key={index}
                                         className="example_img collage"
                                         src={photo}
-                                        alt={`${formData.brand} ${index + 1}`}
+                                        alt={`${brand} ${index + 1}`}
                                     />
                                 ))
                             )}
                         </div>
                         <div className="example_name">
-                            <b>{formData.brand}</b>
+                            <b>{brand}</b>
                         </div>
-                        <div className="example_description">{formData.price}</div>
-                        <div className="example_description">{formData.brand}</div>
-                        <div className="example_category">{formData.category}</div>
-                        <div className="example_size">Размер: {formData.brandSize}</div>
+                        <div className="example_description">{price}</div>
+                        <div className="example_description">{brand}</div>
+                        <div className="example_category">{category}</div>
+                        <div className="example_size">Размер: {brandSize}</div>
                     </div>
                 </div>
             </div>
@@ -834,10 +769,10 @@ const AdminPage = () => {
                 <div>
                 <div className="input-container">
                     <input
-                        className="inputItem"
-                        type="text"
-                        placeholder="item1"
-                        value={orderItem1}
+                    className="inputItem"
+                    type="text"
+                    placeholder="item1"
+                    value={orderItem1}
                     />
                     <label>
                     <input
