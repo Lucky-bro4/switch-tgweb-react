@@ -15,8 +15,8 @@ const SearchComponent = ({ onFilterChange }) => {
 
   const handleGenderClick = (gender) => {
     const updatedFilters = {
-      gender: gender,
       ...filters,
+      gender
     };
     setFilters(updatedFilters);
     onFilterChange({ query, filters: updatedFilters });

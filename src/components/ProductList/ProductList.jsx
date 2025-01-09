@@ -103,7 +103,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
 
         if (gender) {
             updatedProducts = updatedProducts.filter(
-                product => product.gender === gender
+                product => product.gender === filters.gender
             );
         }
  
