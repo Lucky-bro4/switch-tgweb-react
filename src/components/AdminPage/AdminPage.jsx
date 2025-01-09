@@ -789,27 +789,27 @@ const AdminPage = () => {
                 </div> */}
                 <div className="admin-preview">
                     <div className="example">
-                        <div className={`example_photos ${photos.length > 1 ? 'multiple' : 'single'}`}>
-                            {photos.length === 1 ? (
-                                <img className="example_img" src={photos[0]} alt={brand} />
+                        <div className={`example_photos ${formData.photos.length > 1 ? 'multiple' : 'single'}`}>
+                            {formData.photos.length === 1 ? (
+                                <img className="example_img" src={formData.photos[0]} alt={formData.brand} />
                             ) : (
-                                photos.map((photo, index) => (
+                                formData.photos.map((photo, index) => (
                                     <img
                                         key={index}
                                         className="example_img collage"
                                         src={photo}
-                                        alt={`${brand} ${index + 1}`}
+                                        alt={`${formData.brand} ${index + 1}`}
                                     />
                                 ))
                             )}
                         </div>
                         <div className="example_name">
-                            <b>{brand}</b>
+                            <b>{formData.brand}</b>
                         </div>
-                        <div className="example_description">{price}</div>
-                        <div className="example_description">{brand}</div>
-                        <div className="example_category">{category}</div>
-                        <div className="example_size">Размер: {brandSize}</div>
+                        <div className="example_description">{formData.price}</div>
+                        <div className="example_description">{formData.brand}</div>
+                        <div className="example_category">{formData.category}</div>
+                        <div className="example_size">Размер: {formData.brandSize}</div>
                     </div>
                 </div>
             </div>
@@ -834,10 +834,10 @@ const AdminPage = () => {
                 <div>
                 <div className="input-container">
                     <input
-                    className="inputItem"
-                    type="text"
-                    placeholder="item1"
-                    value={orderItem1}
+                        className="inputItem"
+                        type="text"
+                        placeholder="item1"
+                        value={orderItem1}
                     />
                     <label>
                     <input
