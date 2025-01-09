@@ -542,10 +542,10 @@ const AdminPage = () => {
                             className="input"
                         >
                             <option value="">Выбери категорию</option>
-                            {Object.keys(categoryFields).map((key) => (
+                            {/* {Object.keys(categoryFields).map((key) => (
                                 <option key={key} value={key}>{key}</option>
-                            ))}
-                            {/* <option value="Худи">Худи</option>
+                            ))} */}
+                            <option value="Худи">Худи</option>
                             <option value="Свитшот">Свитшот</option>
                             <option value="Футболка">Футболка</option>
                             <option value="Кофта">Кофта</option>
@@ -557,7 +557,7 @@ const AdminPage = () => {
                             <option value="Штаны">Штаны</option>
                             <option value="Джинсы">Джинсы</option>
                             <option value="Джоггеры">Джоггеры</option>
-                            <option value="Шорты">Шорты</option> */}
+                            <option value="Шорты">Шорты</option>
                         </select>
                         <input
                             className="input"
@@ -576,7 +576,7 @@ const AdminPage = () => {
                         {category && (
                             <div className="measurements-input">
                                 <h3>Введите замеры для: {category}</h3>
-                                {Object.entries(measurements).map(([key, value]) => (
+                                {measurements.map(([key, value]) => (
                                     <div key={key} className="measurement-field">
                                         <input
                                             id={`measurement-${key}`}
