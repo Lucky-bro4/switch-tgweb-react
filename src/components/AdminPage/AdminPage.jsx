@@ -238,8 +238,23 @@ const AdminPage = () => {
 
         e.preventDefault();
 
-        if (!gender || !category || !brand || !price || !rentPrice || !condition || !measurements || !brandSize || !color || !description || !avitoUrl || !status || !available) {
-            alert('All fields are required.');
+        const missingFields = [];
+        if (!gender) missingFields.push('gender');
+        if (!category) missingFields.push('category');
+        if (!brand) missingFields.push('brand');
+        if (!price) missingFields.push('price');
+        if (!rentPrice) missingFields.push('rentPrice');
+        if (!condition) missingFields.push('condition');
+        if (!measurements || Object.keys(measurements).length === 0) missingFields.push('measurements');
+        if (!brandSize) missingFields.push('brandSize');
+        if (!color) missingFields.push('color');
+        if (!description) missingFields.push('description');
+        if (!avitoUrl) missingFields.push('avitoUrl');
+        if (!status) missingFields.push('status');
+        if (!available) missingFields.push('available');
+
+        if (missingFields.length > 0) {
+            alert(`Незаполненные поля: ${missingFields.join(', ')}`);
             return;
         }
 
