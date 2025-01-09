@@ -21,15 +21,15 @@ const AdminPage = () => {
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
 
-    const [categoryFields, setCategoryFields] = useState([{
-        "Худи": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
-        "Свитшот": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
-        "Футболка": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
-        "Штаны": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
-        "Джинсы": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
-        "Джоггеры": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
-        "Другое": { other: "" },
-    }]);
+    const [categoryFields, setCategoryFields] = useState([
+        { category: "Худи", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
+        { category: "Свитшот", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
+        { category: "Футболка", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
+        { category: "Штаны", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
+        { category: "Джинсы", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
+        { category: "Джоггеры", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
+        { category: "Другое", fields: { other: "" } },
+    ]);
 
     useEffect(() => {
         if (category) {
