@@ -13,12 +13,10 @@ const AdminPage = () => {
     const [rentPrice, setRentPrice] = useState(0);
     const [condition, setCondition] = useState('');
     const [measurements, setMeasurements] = useState({});
-    // const [savedMeasurements, setSavedMeasurements] = useState({});
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
     const [description, setDescription] = useState('');
     const [avitoUrl, setAvitoUrl] = useState('');
-    // const [photo, setPhoto] = useState('/Images/Одежда/');
 
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
@@ -32,6 +30,10 @@ const AdminPage = () => {
         "Джоггеры": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
         "Другое": { other: "" },
     };
+
+    useEffect(() => {
+        console.log(categoryFields);
+    }, []);
 
     useEffect(() => {
         if (category) {
