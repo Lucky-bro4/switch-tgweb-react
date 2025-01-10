@@ -690,32 +690,32 @@ const AdminPage = () => {
                             cols="50"
                         ></textarea> */}
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Brand size"
-                        value={brandSize}
-                        onChange={onChangeBrandSize}
+                            className="input"
+                            type="text"
+                            placeholder="Brand size"
+                            value={brandSize}
+                            onChange={onChangeBrandSize}
                         />
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Color"
-                        value={color}
-                        onChange={onChangeColor}
+                            className="input"
+                            type="text"
+                            placeholder="Какой цвет?"
+                            value={color}
+                            onChange={onChangeColor}
                         />
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Description"
-                        value={description}
-                        onChange={onChangeDescription}
+                            className="input"
+                            type="text"
+                            placeholder="Description"
+                            value={description}
+                            onChange={onChangeDescription}
                         />
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Avito Url"
-                        value={avitoUrl}
-                        onChange={onChangeAvitoUrl}
+                            className="input"
+                            type="text"
+                            placeholder="Avito Url"
+                            value={avitoUrl}
+                            onChange={onChangeAvitoUrl}
                         />
                         <div>
                         <input
