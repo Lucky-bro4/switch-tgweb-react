@@ -680,14 +680,14 @@ const AdminPage = () => {
                                 ></textarea>
                             )}
                         </div>
-                        <textarea
+                        {/* <textarea
                             className="input"
                             placeholder="Measurements"
                             value={measurements}
                             onChange={onChangeMeasurements}
                             rows="10"
                             cols="50"
-                        ></textarea>
+                        ></textarea> */}
                         <input
                         className="input"
                         type="text"
@@ -983,7 +983,7 @@ const AdminPage = () => {
                         <td>{availableItem.price}</td>
                         <td>{availableItem.rentPrice}</td>
                         <td>{availableItem.condition}</td>
-                        <td>{availableItem.measurements}</td>
+                        {/* <td>{availableItem.measurements}</td> */}
                         <td>{availableItem.brandSize}</td>
                         <td>{availableItem.color}</td>
                         <td>{availableItem.description}</td>
