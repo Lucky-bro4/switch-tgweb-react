@@ -549,10 +549,24 @@ const AdminPage = () => {
                         <input
                             className="input"
                             type="text"
-                            placeholder="Condition"
+                            placeholder=""
                             value={condition}
                             onChange={onChangeCondition}
                         />
+                        <select
+                            name="Condition"
+                            placeholder="Condition"
+                            value={condition}
+                            onChange={onChangeCondition}
+                            className="input"
+                        >
+                            <option value="">В каком состоянии</option>
+                            <option value="Как новое">Как новое</option>
+                            <option value="Очень хорошее">Очень хорошее</option>
+                            <option value="Хорошее">Хорошее</option>
+                            <option value="Удовлетворительное">Удовлетворительное</option>
+                            <option value="Для дома или творчества">Для дома или творчества</option>
+                        </select>
                         {/* {category && (
                             <div className="measurements-input">
                                 <h3>Введите замеры для: {category}</h3>
