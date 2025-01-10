@@ -24,6 +24,15 @@ const AdminPage = () => {
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
 
+    const [shoulders, setShoulders] = useState('');
+    const [sleeveLength, setSleeveLength] = useState('');
+    const [underarms, setUnderarms] = useState('');
+    const [backLength, setBackLength] = useState('');
+    const [outerLegLength, setOuterLegLength] = useState('');
+    const [innerLegLength, setInnerLegLength] = useState('');
+    const [waistWidth, setWaistWidth] = useState('');
+    const [other, setOther] = useState('');
+
     // const categoryFields = {
     //     "Худи": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
     //     "Свитшот": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
@@ -585,26 +594,26 @@ const AdminPage = () => {
                                     <input
                                         type="text"
                                         placeholder="Плечи"
-                                        value={measurements.shoulders || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, shoulders: e.target.value })}
+                                        value={shoulders}
+                                        onChange={(e) => setShoulders(e.target.value)}
                                     />
                                     <input
                                         type="text"
                                         placeholder="Длина рукава"
-                                        value={measurements.sleeveLength || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, sleeveLength: e.target.value })}
+                                        value={sleeveLength}
+                                        onChange={(e) => setSleeveLength(e.target.value)}
                                     />
                                     <input
                                         type="text"
                                         placeholder="Подмышки"
-                                        value={measurements.underarms || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, underarms: e.target.value })}
+                                        value={underarms}
+                                        onChange={(e) => setUnderarms(e.target.value)}
                                     />
                                     <input
                                         type="text"
                                         placeholder="Длина по спине"
-                                        value={measurements.backLength || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, backLength: e.target.value })}
+                                        value={backLength}
+                                        onChange={(e) => setBackLength(e.target.value)}
                                     />
                                 </>
                             )}
@@ -613,20 +622,20 @@ const AdminPage = () => {
                                     <input
                                         type="text"
                                         placeholder="Outer Leg Length"
-                                        value={measurements.outerLegLength || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, outerLegLength: e.target.value })}
+                                        value={outerLegLength}
+                                        onChange={(e) => setOuterLegLength(e.target.value)}
                                     />
                                     <input
                                         type="text"
                                         placeholder="Inner Leg Length"
-                                        value={measurements.innerLegLength || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, innerLegLength: e.target.value })}
+                                        value={innerLegLength}
+                                        onChange={(e) => setInnerLegLength(e.target.value)}
                                     />
                                     <input
                                         type="text"
                                         placeholder="Waist Width"
-                                        value={measurements.waistWidth || ''}
-                                        onChange={(e) => onChangeMeasurements({ ...measurements, waistWidth: e.target.value })}
+                                        value={waistWidth}
+                                        onChange={(e) => setWaistWidth(e.target.value)}
                                     />
                                 </>
                             )}
@@ -634,8 +643,8 @@ const AdminPage = () => {
                                 <textarea
                                     className="input"
                                     placeholder="Measurements"
-                                    value={measurements.other || ''}
-                                    onChange={(e) => onChangeMeasurements({ ...measurements, other: e.target.value })}
+                                    value={other}
+                                    onChange={(e) => setOther(e.target.value)}
                                     rows="10"
                                     cols="50"
                                 ></textarea>
