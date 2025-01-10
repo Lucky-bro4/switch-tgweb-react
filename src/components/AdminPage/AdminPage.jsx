@@ -14,7 +14,7 @@ const AdminPage = () => {
     const [rentPrice, setRentPrice] = useState(0);
     const [condition, setCondition] = useState('');
     const [measurements, setMeasurements] = useState({});
-    const [savedMeasurements, setSavedMeasurements] = useState({});
+    // const [savedMeasurements, setSavedMeasurements] = useState({});
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
     const [description, setDescription] = useState('');
@@ -24,37 +24,23 @@ const AdminPage = () => {
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
 
-    const categoryFields = {
-        "Худи": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
-        "Свитшот": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
-        "Футболка": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
-        "Штаны": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
-        "Джинсы": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
-        "Джоггеры": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
-        "Другое": { other: "" },
-    };
+    // const categoryFields = {
+    //     "Худи": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
+    //     "Свитшот": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
+    //     "Футболка": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
+    //     "Штаны": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
+    //     "Джинсы": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
+    //     "Джоггеры": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
+    //     "Другое": { other: "" },
+    // };
 
-    const getPlaceholder = (key) => {
-        const placeholders = {
-            shoulders: 'Плечи',
-            sleeveLength: 'Длина рукава',
-            underarms: 'Подмышки',
-            backLength: 'Длина по спине',
-            outerLegLength: 'Длина внешнего шва',
-            innerLegLength: 'Длина внутреннего шва',
-            waistWidth: 'Ширина талии',
-            other: 'Прочие замеры',
-        };
-        return placeholders[key] || key; // Если нет перевода, оставить ключ
-    };
-
-    useEffect(() => {
-        if (category) {
-            setMeasurements(savedMeasurements[category] || categoryFields[category] || {});
-        } else {
-            setMeasurements({});
-        }
-    }, [category]);
+    // useEffect(() => {
+    //     if (category) {
+    //         setMeasurements(savedMeasurements[category] || categoryFields[category] || {});
+    //     } else {
+    //         setMeasurements({});
+    //     }
+    // }, [category]);
 
 
     const handlePhotoChange = (event) => {
@@ -141,18 +127,18 @@ const AdminPage = () => {
     
     const onChangeMeasurements = (field, value) => {
         setMeasurements((prevMeasurements) => ({
-            ...prevMeasurements, // Сохраняем предыдущие значения
-            [field]: value,      // Обновляем конкретное поле
+            ...prevMeasurements, 
+            [field]: value,      
         }));
     };
 
-    const saveMeasurements = () => {
-        setSavedMeasurements((prev) => ({
-            ...prev,
-            [category]: measurements,
-        }));
-        alert('Замеры сохранены!');
-    };
+    // const saveMeasurements = () => {
+    //     setSavedMeasurements((prev) => ({
+    //         ...prev,
+    //         [category]: measurements,
+    //     }));
+    //     alert('Замеры сохранены!');
+    // };
 
     const onChangeBrandSize = (e) => {
         setBrandSize(e.target.value);
