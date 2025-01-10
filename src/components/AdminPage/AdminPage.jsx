@@ -567,7 +567,7 @@ const AdminPage = () => {
                             value={condition}
                             onChange={onChangeCondition}
                         />
-                        {category && (
+                        {/* {category && (
                             <div className="measurements-input">
                                 <h3>Введите замеры для: {category}</h3>
                                 {Object.entries(measurements).map(([key, value]) => (
@@ -582,11 +582,11 @@ const AdminPage = () => {
                                     </div>
                                 ))}
                                 <button type="button" onClick={saveMeasurements}>Сохранить замеры</button>
-                                {/* Отображение текущих данных */}
+                                
                                 <pre>{JSON.stringify(measurements, null, 2)}</pre>
                             </div>
-                        )}
-                        {/* <div className="measurements-input">
+                        )} */}
+                        <div className="measurements-input">
                             {(["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
                                 <>
                                     <input
@@ -647,15 +647,15 @@ const AdminPage = () => {
                                     cols="50"
                                 ></textarea>
                             )}
-                        </div> */}
-                        {/* <textarea
+                        </div>
+                        <textarea
                             className="input"
                             placeholder="Measurements"
                             value={measurements}
                             onChange={onChangeMeasurements}
                             rows="10"
                             cols="50"
-                        ></textarea> */}
+                        ></textarea>
                         <input
                         className="input"
                         type="text"
