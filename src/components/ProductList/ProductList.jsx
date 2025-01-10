@@ -77,7 +77,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
         applyFilters(searchParams);
     }, [searchParams]);
 
-    const applyFilters = ({ query, filters, gender }) => {
+    const applyFilters = ({ query, filters }) => {
         let updatedProducts = products || [];
     
         if (filters?.category) {
@@ -101,7 +101,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
             });
         }
 
-        if (gender) {
+        if (filters?.gender) {
             updatedProducts = updatedProducts.filter(
                 product => product.gender === filters.gender
             );
