@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AdminPanel from './AdminPanel';
 import './AdminPage.css';
 import './AdminPreview.css';
 import Button from '../Button/Button';
@@ -267,7 +266,7 @@ const AdminPage = () => {
         if (!price) missingFields.push('price');
         if (!rentPrice) missingFields.push('rentPrice');
         if (!condition) missingFields.push('condition');
-        if (!measurements || Object.keys(measurements).length === 0) missingFields.push('measurements');
+        // if (!measurements || Object.keys(measurements).length === 0) missingFields.push('measurements');
         if (!brandSize) missingFields.push('brandSize');
         if (!color) missingFields.push('color');
         if (!description) missingFields.push('description');
