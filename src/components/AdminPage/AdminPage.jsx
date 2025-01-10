@@ -567,6 +567,7 @@ const AdminPage = () => {
                             <option value="Худи">Худи</option>
                             <option value="Свитшот">Свитшот</option>
                             <option value="Футболка">Футболка</option>
+                            <option value="Рубашка">Рубашка</option>
                             <option value="Кофта">Кофта</option>
                             <option value="Джемпер">Джемпер</option>
                             <option value="Куртка">Куртка</option>
@@ -619,7 +620,7 @@ const AdminPage = () => {
                             </div>
                         )} */}
                         <div className="measurements-input">
-                            {(["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
+                            {(["Худи", "Свитшот", "Футболка", "Рубашка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
                                 <>
                                     <input
                                         type="text"
