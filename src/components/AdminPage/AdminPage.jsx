@@ -546,13 +546,6 @@ const AdminPage = () => {
                             value={brand}
                             onChange={onChangeName}
                         />
-                        <input
-                            className="input"
-                            type="text"
-                            placeholder=""
-                            value={condition}
-                            onChange={onChangeCondition}
-                        />
                         <select
                             name="Condition"
                             placeholder="Condition"
