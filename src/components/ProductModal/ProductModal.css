@@ -36,13 +36,13 @@ body.modal-open {
 h2 {
     font-size: 1.4rem;
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 p {
     margin: 8px 0;
     font-size: 1rem;
-    text-align: center;
+    text-align: left;
 }
 
 .slider-container {
