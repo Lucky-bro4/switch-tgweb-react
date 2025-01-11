@@ -9,7 +9,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     z-index: 1000;
 }
 
@@ -67,6 +66,10 @@ p {
 
 .progress-bar-segment.active {
     background: var(--tg-theme-button-color);
+}
+
+.img-container {
+    position: relative;
 }
 
 .product-image {
