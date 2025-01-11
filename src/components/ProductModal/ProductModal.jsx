@@ -108,19 +108,7 @@ const ProductModal = ({ product, onClose }) => {
                             ></div>
                         ))}
                     </div>
-                    <div>
-                        <div 
-                            className="favorite-icon" 
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                handleFavoriteClick(e);
-                            }}
-                        >
-                            <img 
-                                src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
-                                alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
-                            />
-                        </div>
+                    <div className="img-container">
                         <Swiper
                             spaceBetween={10}
                             slidesPerView={1}
@@ -133,6 +121,18 @@ const ProductModal = ({ product, onClose }) => {
                                 </SwiperSlide>
                             ))}
                         </Swiper>
+                        <div 
+                            className="favorite-icon" 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleFavoriteClick(e);
+                            }}
+                        >
+                            <img 
+                                src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
+                                alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
+                            />
+                        </div>
                     </div>
                 </div>
                 <div class="product-info">
