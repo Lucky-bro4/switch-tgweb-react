@@ -108,29 +108,31 @@ const ProductModal = ({ product, onClose }) => {
                             ></div>
                         ))}
                     </div>
-                    <Swiper
-                        spaceBetween={10}
-                        slidesPerView={1}
-                        onSlideChange={handleSlideChange}
-                        style={{ width: "100%", height: "auto" }}
-                    >
-                        {product.image.map((image, index) => (
-                            <SwiperSlide key={index}>
-                                <img src={image} alt={`${product.brand} - ${index + 1}`} className="product-image" />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                    <div 
-                        className="favorite-icon" 
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            handleFavoriteClick(e);
-                        }}
-                    >
-                        <img 
-                            src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
-                            alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
-                        />
+                    <div>
+                        <div 
+                            className="favorite-icon" 
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                handleFavoriteClick(e);
+                            }}
+                        >
+                            <img 
+                                src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
+                                alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
+                            />
+                        </div>
+                        <Swiper
+                            spaceBetween={10}
+                            slidesPerView={1}
+                            onSlideChange={handleSlideChange}
+                            style={{ width: "100%", height: "auto" }}
+                        >
+                            {product.image.map((image, index) => (
+                                <SwiperSlide key={index}>
+                                    <img src={image} alt={`${product.brand} - ${index + 1}`} className="product-image" />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                 </div>
                 <div class="product-info">
