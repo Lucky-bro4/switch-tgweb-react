@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { useTelegram } from '../hooks/useTelegram';
 
 export const AppContext = createContext();
