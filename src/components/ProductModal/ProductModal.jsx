@@ -151,7 +151,16 @@ const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteIte
                     <div class="column">
                         <p><strong>Размер бренда:</strong> {product.brandSize}</p>
                         <p><strong>Цвет:</strong> {product.color}</p>
-                        <p><strong>О товаре:</strong> {product.description}</p>
+                        <p><strong>О товаре:</strong></p>
+                        {product.description && typeof product.description === 'object' ? (
+                            <ul>
+                                {Object.entries(product.description).map(([key, value]) => (
+                                    <li key={key}><strong>{key}:</strong> {value}</li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>{product.description && typeof product.description === 'string' ? product.description : 'Нет данных'}</p>
+                        )}
                     </div>
                 </div>
 
