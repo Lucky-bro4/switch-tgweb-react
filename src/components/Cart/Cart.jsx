@@ -176,9 +176,9 @@ const Cart = () => {
                     <ProductModal
                         product={selectedProduct} 
                         onClose={closeModal}
-                        addedItems={addedItems}
-                        favoriteItems={favoriteItems}
-                        setFavoriteItems={setFavoriteItems}
+                        // addedItems={addedItems}
+                        // favoriteItems={favoriteItems}
+                        // setFavoriteItems={setFavoriteItems}
                     />
                 )}
             </div>

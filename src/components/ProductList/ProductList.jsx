@@ -45,7 +45,7 @@ const ProductList = () => {
                 // setProducts(data.products)
                 setProducts(data.products || []);
                 setFilteredProducts(data.products || []);
-                if (customer.favorite_items) {
+                if (data.customer.favorite_items) {
                     setFavoriteItems(data.customer.favorite_items)
                 }
                 if (customer.cart_items) {
