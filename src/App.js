@@ -58,8 +58,8 @@ function App() {
                 
             </Routes>
             <Footer 
-                addedItems={addedItems} 
-                favoriteItems={favoriteItems} 
+                // addedItems={addedItems} 
+                // favoriteItems={favoriteItems} 
             />
         </div>
     );
