@@ -1,11 +1,14 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState, useContext } from "react";
+import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
 import "./Cart.css";
 
 
-const Cart = ({ addedItems, favoriteItems, setFavoriteItems }) => {
+const Cart = () => {
+
+    const { addedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
     const navigate = useNavigate();
     

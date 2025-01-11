@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 import { useTelegram } from "../../hooks/useTelegram";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
@@ -6,7 +7,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import './ProductItem.css';
 
-const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder, selectedCount, favoriteItems, setFavoriteItems }) => {
+const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) => {
+
+    const { favoriteItems, setFavoriteItems } = useContext(AppContext);
 
     const { tg, user } = useTelegram();
 

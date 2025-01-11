@@ -1,12 +1,15 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useContext} from 'react';
 import SearchComponent from '../SearchComponent/SearchComponent';
 import ProductItem from "../ProductItem/ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
+import { AppContext } from '../context/AppContext';
 import ProductModal from "../ProductModal/ProductModal";
 import Header from "../Header/Header"
 import './ProductList.css';
 
-const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems, productsInCart, setProductsInCart }) => {
+const ProductList = () => {
+
+    const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
     const { tg, queryId, user } = useTelegram();
 
@@ -46,7 +49,7 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                     setFavoriteItems(data.customer.favorite_items)
                 }
                 if (customer.cart_items) {
-                    setProductsInCart(data.customer.cart_items)
+                    setAddedItems(data.customer.cart_items)
                 }
 
                 // if (!data.customer.location && !data.customer.phone_number) {
@@ -229,12 +232,11 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                             key={item.id}
                             product={item}
                             onAdd={onAdd}
-                            selectedCount={order}
                             onClick={() => onProductClick(item)}
                             className={'item'}
                             closedChainOrder={closedChainOrder}
-                            favoriteItems={favoriteItems}
-                            setFavoriteItems={setFavoriteItems}
+                            // favoriteItems={favoriteItems}
+                            // setFavoriteItems={setFavoriteItems}
                         />
                     ))
                 ) : (
@@ -247,12 +249,12 @@ const ProductList = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItem
                 <ProductModal
                     product={selectedProduct} 
                     onClose={closeModal} 
-                    onAdd={onAdd}
-                    addedItems={addedItems}
-                    setAddedItems={setAddedItems}
-                    selectedCount={order}
-                    favoriteItems={favoriteItems}
-                    setFavoriteItems={setFavoriteItems}
+                    // onAdd={onAdd}
+                    // addedItems={addedItems}
+                    // setAddedItems={setAddedItems}
+                    // selectedCount={order}
+                    // favoriteItems={favoriteItems}
+                    // setFavoriteItems={setFavoriteItems}
                 />
             )}
         </div>

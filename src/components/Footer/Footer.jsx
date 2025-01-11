@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Footer.css';
 
-const Footer = ({ addedItems, favoriteItems }) => {
+const Footer = () => {
+
+  const { addedItems, favoriteItems } = useContext(AppContext);
 
   const location = useLocation();
   const navigate = useNavigate();

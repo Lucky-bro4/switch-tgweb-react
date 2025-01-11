@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
 import "./Favorites.css";
 
 
-const Favorites = ({ addedItems, setAddedItems, favoriteItems, setFavoriteItems }) => {
+const Favorites = () => {
+
+    const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
     const navigate = useNavigate();
 

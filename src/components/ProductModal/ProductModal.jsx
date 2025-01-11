@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTelegram } from '../../hooks/useTelegram';
 import './ProductModal.css';
@@ -8,7 +9,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 
-const ProductModal = ({ product, onClose, addedItems, setAddedItems, favoriteItems, setFavoriteItems }) => {
+const ProductModal = ({ product, onClose }) => {
+
+    const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
     const { tg, user } = useTelegram();
 
