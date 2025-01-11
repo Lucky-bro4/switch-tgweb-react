@@ -16,7 +16,7 @@ const AdminPage = () => {
     // const [savedMeasurements, setSavedMeasurements] = useState({});
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
-    const [description, setDescription] = useState('');
+    // const [description, setDescription] = useState('');
     const [avitoUrl, setAvitoUrl] = useState('');
     // const [photo, setPhoto] = useState('/Images/Одежда/');
 
@@ -31,6 +31,23 @@ const AdminPage = () => {
     const [innerLegLength, setInnerLegLength] = useState('');
     const [waistWidth, setWaistWidth] = useState('');
     const [other, setOther] = useState('');
+
+    const initialdescription = {
+        Материал: '',
+        Пол: '',
+        Стиль: '',
+        Сезон: '',
+        Описание: '',
+    };
+
+    const [description, setDescription] = useState(initialdescription);
+
+    const handleChange = (key, value) => {
+        setDescription((prev) => ({
+            ...prev,
+            [key]: value,
+        }));
+    };
 
     // const categoryFields = {
     //     "Худи": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
@@ -703,13 +720,29 @@ const AdminPage = () => {
                             value={color}
                             onChange={onChangeColor}
                         />
-                        <input
-                            className="input"
-                            type="text"
-                            placeholder="Description"
-                            value={description}
-                            onChange={onChangeDescription}
-                        />
+                        <div>
+                            {Object.keys(description).map((key) => (
+                                <div key={key} style={{ marginBottom: '8px' }}>
+                                    <label>
+                                        {key}:
+                                        <input
+                                            className="input"
+                                            type="text"
+                                            placeholder={`Введите ${key.toLowerCase()}`}
+                                            value={description[key]}
+                                            onChange={(e) => handleChange(key, e.target.value)}
+                                        />
+                                    </label>
+                                </div>
+                            ))}
+                            
+                            <div style={{ marginTop: '16px' }}>
+                                <h3>Текущие данные:</h3>
+                                <pre style={{ background: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
+                                    {JSON.stringify(description, null, 2)}
+                                </pre>
+                            </div>
+                        </div>
                         <input
                             className="input"
                             type="text"
@@ -882,11 +915,11 @@ const AdminPage = () => {
                     </label>
                 </div>
                 <div className="input-container">
-                    <input
-                    className="inputItem"
-                    type="text"
-                    placeholder="item2"
-                    value={orderItem2}
+                        <input
+                        className="inputItem"
+                        type="text"
+                        placeholder="item2"
+                        value={orderItem2}
                     />
                     <label>
                     <input
@@ -899,10 +932,10 @@ const AdminPage = () => {
                 </div>
                 <div className="input-container">
                     <input
-                    className="inputItem"
-                    type="text"
-                    placeholder="item3"
-                    value={orderItem3}
+                        className="inputItem"
+                        type="text"
+                        placeholder="item3"
+                        value={orderItem3}
                     />
                     <label>
                     <input
@@ -931,10 +964,10 @@ const AdminPage = () => {
                 </div>
                 </div>
                 <select value={statusOrder} onChange={onChangestatusOrder} className="input">
-                <option value="success">Заказ принят полностью или частично</option>
-                <option value="canceled">Отмена заказа</option>
-                <option value="closed">Завершить заказ</option>
-                <option value="renew">Продлить заказ</option>
+                    <option value="success">Заказ принят полностью или частично</option>
+                    <option value="canceled">Отмена заказа</option>
+                    <option value="closed">Завершить заказ</option>
+                    <option value="renew">Продлить заказ</option>
                 </select>
                 <input
                 className="input-comment"
@@ -989,7 +1022,7 @@ const AdminPage = () => {
                         {/* <td>{availableItem.measurements}</td> */}
                         <td>{availableItem.brandSize}</td>
                         <td>{availableItem.color}</td>
-                        <td>{availableItem.description}</td>
+                        {/* <td>{availableItem.description}</td> */}
                         <td>{availableItem.status}</td>
                         <td>{availableItem.image[0]}</td>
                         <td>{availableItem.userId}</td>
@@ -1023,7 +1056,7 @@ const AdminPage = () => {
                         <td>{orderItem.category}</td>
                         <td>{orderItem.brand}</td>
                         <td>{orderItem.condition}</td>
-                        <td>{orderItem.description}</td>
+                        {/* <td>{orderItem.description}</td> */}
                         <td>{orderItem.brandSize}</td>
                         <td>{orderItem.price}</td>
                         <td>{orderItem.rentPrice}</td>
@@ -1056,7 +1089,7 @@ const AdminPage = () => {
                         <td>{laundryItem.category}</td>
                         <td>{laundryItem.brand}</td>
                         <td>{laundryItem.condition}</td>
-                        <td>{laundryItem.description}</td>
+                        {/* <td>{laundryItem.description}</td> */}
                         <td>{laundryItem.brandSize}</td>
                         <td>{laundryItem.userId}</td>
                         <td>{laundryItem.orderId}</td>
@@ -1090,7 +1123,7 @@ const AdminPage = () => {
                         <td>{otherItem.category}</td>
                         <td>{otherItem.brand}</td>
                         <td>{otherItem.condition}</td>
-                        <td>{otherItem.description}</td>
+                        {/* <td>{otherItem.description}</td> */}
                         <td>{otherItem.brandSize}</td>
                         <td>{otherItem.price}</td>
                         <td>{otherItem.rentPrice}</td>
