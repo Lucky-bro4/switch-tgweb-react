@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Footer.css';
 

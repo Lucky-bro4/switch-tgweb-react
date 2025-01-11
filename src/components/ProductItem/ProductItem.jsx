@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 import { useTelegram } from "../../hooks/useTelegram";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';

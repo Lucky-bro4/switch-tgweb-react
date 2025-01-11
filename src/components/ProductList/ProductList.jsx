@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback, useContext} from 'react';
 import SearchComponent from '../SearchComponent/SearchComponent';
 import ProductItem from "../ProductItem/ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 import ProductModal from "../ProductModal/ProductModal";
 import Header from "../Header/Header"
 import './ProductList.css';

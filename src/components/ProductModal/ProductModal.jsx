@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../context/AppContext';
+import { AppContext } from '../../context/AppContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTelegram } from '../../hooks/useTelegram';
 import './ProductModal.css';
