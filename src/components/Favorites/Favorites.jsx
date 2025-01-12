@@ -126,6 +126,24 @@ const Favorites = () => {
                                 <p>Размер бренда: {item.brandSize}</p>
                                 <p>Состояние: {item.condition}</p>
                             </div>
+                            <div className="cart-button-container">
+                                {addedItems.includes(item) ? (
+                                    <div>
+                                        <button 
+                                            className="remove-from-cart" 
+                                        >
+                                            Товар добавлен в корзину
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <button 
+                                        className="add-to-cart" 
+                                        onClick={() => setAddedItems([...addedItems, item])}
+                                    >
+                                        Добавить в корзину
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     ))
                 ) : (
