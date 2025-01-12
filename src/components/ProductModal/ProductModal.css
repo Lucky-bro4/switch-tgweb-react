@@ -112,11 +112,12 @@ p {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    justify-content: left;
+    /* justify-content: left; */
 }
 
 .product-info .column {
-    flex: 1;
+    flex: 1 1 45%; /* 45% ширины для двух колонок */
+    box-sizing: border-box;
 }
 
 .modal-close {
