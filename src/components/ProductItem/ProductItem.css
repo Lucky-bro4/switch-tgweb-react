@@ -79,9 +79,10 @@
     justify-content: left;
 } */
 
-.product-info {
+.product-item-info {
     display: flex;
     flex-direction: column;
+    row-gap: 2px;
     /* align-items: flex-start; */
     font-size: calc(1em + 1px); /* Увеличиваем текст на 1px */
     z-index: 2;

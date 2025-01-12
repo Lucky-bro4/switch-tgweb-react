@@ -109,7 +109,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
                     />
                 </div>
             </div>
-            <div className='product-info'>
+            <div className='product-item-info'>
                 <div className={'price'}><p>{product.price} ₽</p></div>
                 <div className={'brand'}><p>{product.brand}</p></div>
                 <div className={'category'}><p>{product.category}</p></div>
