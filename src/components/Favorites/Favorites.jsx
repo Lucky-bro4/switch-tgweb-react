@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
 import "./Favorites.css";
+import useFavorite from './useFavorite';
 
 
 const Favorites = () => {
@@ -27,40 +28,42 @@ const Favorites = () => {
 
     const totalPrice = calculateTotalPrice(favoriteItems);
 
-    const handleFavoriteClick = async (e, product) => {
-        e.stopPropagation();
+    const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
 
-        const isCurrentlyFavorite = favoriteItems.includes(product.id);
-        const newFavoriteState = !isCurrentlyFavorite;
+    // const handleFavoriteClick = async (e, product) => {
+    //     e.stopPropagation();
 
-        // Обновить глобальный или серверный список избранного
-        if (newFavoriteState) {
-            setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
-        } else {
-            setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
-        }
+    //     const isCurrentlyFavorite = favoriteItems.includes(product.id);
+    //     const newFavoriteState = !isCurrentlyFavorite;
 
-        try {
-            // Запрос для обновления на сервере
-            await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
-                method: newFavoriteState ? 'POST' : 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ chatId: user.id }),
-            });
+    //     // Обновить глобальный или серверный список избранного
+    //     if (newFavoriteState) {
+    //         setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
+    //     } else {
+    //         setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
+    //     }
 
-            setFavoriteItems((prevFavorites) =>
-                newFavoriteState
-                    ? [...prevFavorites, product.id]
-                    : prevFavorites.filter((id) => id !== product.id)
-            );
+    //     try {
+    //         // Запрос для обновления на сервере
+    //         await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
+    //             method: newFavoriteState ? 'POST' : 'DELETE',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({ chatId: user.id }),
+    //         });
 
-        } catch (error) {
+    //         setFavoriteItems((prevFavorites) =>
+    //             newFavoriteState
+    //                 ? [...prevFavorites, product.id]
+    //                 : prevFavorites.filter((id) => id !== product.id)
+    //         );
+
+    //     } catch (error) {
             
-            console.error("Error updating favorite status:", error);
-        }
-    };
+    //         console.error("Error updating favorite status:", error);
+    //     }
+    // };
 
     const onProductClick = (product) => {
         setSelectedProduct(product);
@@ -102,7 +105,7 @@ const Favorites = () => {
                             </div>
                             <div 
                                 className="favorite-icon-catalog" 
-                                onClick={(e) => handleFavoriteClick(e, item)}
+                                onClick={() => handleFavoriteClick(item)}
                             >
                                 <img 
                                     src={
