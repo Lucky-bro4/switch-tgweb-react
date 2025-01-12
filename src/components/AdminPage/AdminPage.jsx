@@ -585,28 +585,28 @@ const AdminPage = () => {
                                                     type="text"
                                                     placeholder="Плечи (Shoulders)"
                                                     value={measurements?.shoulders || ''}
-                                                    onChange={(e) => onChangeMeasurements('shoulders', e.target.value)}
+                                                    onChange={(e) => onChangeMeasurements('Плечи', e.target.value)}
                                                 />
                                                 <input
                                                     className="input"
                                                     type="text"
                                                     placeholder="Длина рукава (Sleeve Length)"
                                                     value={measurements?.sleeveLength || ''}
-                                                    onChange={(e) => onChangeMeasurements('sleeveLength', e.target.value)}
+                                                    onChange={(e) => onChangeMeasurements('Длина рукава', e.target.value)}
                                                 />
                                                 <input
                                                     className="input"
                                                     type="text"
                                                     placeholder="Подмышки (Underarms)"
                                                     value={measurements?.underarms || ''}
-                                                    onChange={(e) => onChangeMeasurements('underarms', e.target.value)}
+                                                    onChange={(e) => onChangeMeasurements('Подмышки', e.target.value)}
                                                 />
                                                 <input
                                                     className="input"
                                                     type="text"
                                                     placeholder="Длина спины (Back Length)"
                                                     value={measurements?.backLength || ''}
-                                                    onChange={(e) => onChangeMeasurements('backLength', e.target.value)}
+                                                    onChange={(e) => onChangeMeasurements('Длина по спине', e.target.value)}
                                                 />
                                             </>
                                         );
@@ -618,21 +618,21 @@ const AdminPage = () => {
                                                     type="text"
                                                     placeholder="Длина внешнего шва (Outer Leg Length)"
                                                     value={measurements?.outerLegLength || ''}
-                                                    onChange={(e) => onChangeMeasurements('outerLegLength', e.target.value)}
+                                                    onChange={(e) => onChangeMeasurements('Длина шва (внешний)', e.target.value)}
                                                 />
                                                 <input
                                                     className="input"
                                                     type="text"
                                                     placeholder="Длина внутреннего шва (Inner Leg Length)"
                                                     value={measurements?.innerLegLength || ''}
-                                                    onChange={(e) => onChangeMeasurements('innerLegLength', e.target.value)}
+                                                    onChange={(e) => onChangeMeasurements('Длина шва (внутренний)', e.target.value)}
                                                 />
                                                 <input
                                                     className="input"
                                                     type="text"
                                                     placeholder="Ширина талии (Waist Width)"
                                                     value={measurements?.waistWidth || ''}
-                                                    onChange={(e) => onChangeMeasurements('waistWidth', e.target.value)}
+                                                    onChange={(e) => onChangeMeasurements('Ширина талии', e.target.value)}
                                                 />
                                             </>
                                         );
@@ -643,7 +643,7 @@ const AdminPage = () => {
                                                 type="text"
                                                 placeholder="Другое (Other)"
                                                 value={measurements?.other || ''}
-                                                onChange={(e) => onChangeMeasurements('other', e.target.value)}
+                                                onChange={(e) => onChangeMeasurements('Другое', e.target.value)}
                                             />
                                         );
                                     }

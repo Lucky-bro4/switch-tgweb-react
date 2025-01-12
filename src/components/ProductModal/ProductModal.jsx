@@ -139,9 +139,9 @@ const ProductModal = ({ product, onClose }) => {
                     <div class="column">
                         {/* <p><strong>{`${product.gender} ${product.category} ${product.brand}`}</strong></p> */}
                         <p><strong>Бренд:</strong> {product.brand}</p>
-                        <p><strong>Цена:</strong> {product.price} р.</p>
+                        <p><strong>Размер бренда:</strong> {product.brandSize}</p>
                         <p><strong>Состояние:</strong> {product.condition}</p>
-                        <p><strong>Замеры:</strong></p>
+                        <p><strong>Замеры (см):</strong></p>
                         {product.measurements && typeof product.measurements === 'object' ? (
                             <ul>
                                 {Object.entries(product.measurements).map(([key, value]) => (
@@ -154,7 +154,7 @@ const ProductModal = ({ product, onClose }) => {
                     </div>
             
                     <div class="column">
-                        <p><strong>Размер бренда:</strong> {product.brandSize}</p>
+                        <p><strong>Цена:</strong> {product.price} р.</p>    
                         <p><strong>Цвет:</strong> {product.color}</p>
                         <p><strong>О товаре:</strong></p>
                         {product.description && typeof product.description === 'object' ? (
