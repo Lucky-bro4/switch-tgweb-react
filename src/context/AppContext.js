@@ -20,7 +20,7 @@ export const AppProvider = ({ children }) => {
             if (data.customer.favorite_items) {
                 setFavoriteItems(data.customer.favorite_items)
             }
-            if (customer.cart_items) {
+            if (data.customer.cart_items) {
                 setAddedItems(data.customer.cart_items)
             }
         } catch (e) {
