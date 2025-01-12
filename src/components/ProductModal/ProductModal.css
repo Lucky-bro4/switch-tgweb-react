@@ -120,6 +120,12 @@ p {
     box-sizing: border-box;
 }
 
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--tg-theme-button-color);
+}
+
 .modal-close {
     position: absolute;
     top: 10px;

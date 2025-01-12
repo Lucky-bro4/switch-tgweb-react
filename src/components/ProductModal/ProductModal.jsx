@@ -154,7 +154,7 @@ const ProductModal = ({ product, onClose }) => {
                     </div>
             
                     <div class="column">
-                        <p><strong>Цена:</strong> {product.price} р.</p>    
+                        <p className='price'><strong>Цена:</strong> {product.price} р.</p>    
                         <p><strong>Цвет:</strong> {product.color}</p>
                         <p><strong>О товаре:</strong></p>
                         {product.description && typeof product.description === 'object' ? (
