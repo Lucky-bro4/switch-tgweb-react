@@ -82,7 +82,7 @@
 .product-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     font-size: calc(1em + 1px); /* Увеличиваем текст на 1px */
     z-index: 2;
 }
