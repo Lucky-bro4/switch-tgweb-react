@@ -4,11 +4,11 @@ import { AppContext } from '../../context/AppContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTelegram } from '../../hooks/useTelegram';
 import { useFavorite } from '../../hooks/useFavorite';
+import { useCart } from '../../hooks/useCart';
 import './ProductModal.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { use } from 'react';
 
 
 const ProductModal = ({ product, onClose }) => {
@@ -32,7 +32,7 @@ const ProductModal = ({ product, onClose }) => {
     };
 
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
-
+    const { handleCartClick } = useCart({ addedItems, setAddedItems, user });
 
     // const onAddHandler = () => {    
     //     setAddedItems([...addedItems, product]);
@@ -147,7 +147,7 @@ const ProductModal = ({ product, onClose }) => {
                         <div>
                             <button 
                                 className="remove-from-cart" 
-                                onClick={() => setAddedItems(addedItems.filter(item => item !== product))}
+                                onClick={() => handleCartClick(product)}
                             >
                                 Удалить из корзины
                             </button>
@@ -161,7 +161,7 @@ const ProductModal = ({ product, onClose }) => {
                     ) : (
                         <button 
                             className="add-to-cart" 
-                            onClick={() => setAddedItems([...addedItems, product])}
+                            onClick={() => handleCartClick(product)}
                         >
                             Добавить в корзину
                         </button>

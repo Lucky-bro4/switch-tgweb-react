@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback, useContext} from 'react';
 import SearchComponent from '../SearchComponent/SearchComponent';
 import ProductItem from "../ProductItem/ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
+// import { useCart } from "../../hooks/useCart";
 import { AppContext } from '../../context/AppContext';
 import ProductModal from "../ProductModal/ProductModal";
 import Header from "../Header/Header"
@@ -28,6 +29,8 @@ const ProductList = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [searchParams, setSearchParams] = useState({ query: '', filters: {}, gender: '' });
+
+    // const { handleCartClick } = useCart({ addedItems, setAddedItems, user });
 
     const handleFilterChange = (params) => {
         setSearchParams(params);

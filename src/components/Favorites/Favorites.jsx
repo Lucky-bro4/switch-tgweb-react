@@ -2,14 +2,16 @@ import React, { useState, useContext } from "react";
 import { AppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { useTelegram } from "../../hooks/useTelegram";
-import ProductModal from "../ProductModal/ProductModal";
 import { useFavorite } from '../../hooks/useFavorite';
+import { useCart } from '../../hooks/useCart';
+import ProductModal from "../ProductModal/ProductModal";
 import "./Favorites.css";
 
 
 const Favorites = () => {
 
     const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
+    const { user } = useTelegram();
 
     const navigate = useNavigate();
 
@@ -20,8 +22,6 @@ const Favorites = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const { user } = useTelegram();
-
     const calculateTotalPrice = (items = []) => {
         return items.reduce((acc, item) => acc + item.price, 0);
     };
@@ -29,6 +29,7 @@ const Favorites = () => {
     const totalPrice = calculateTotalPrice(favoriteItems);
 
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
+    const { handleCartClick } = useCart({ addedItems, setAddedItems, user });
 
     // const handleFavoriteClick = async (e, product) => {
     //     e.stopPropagation();
@@ -141,7 +142,7 @@ const Favorites = () => {
                                 ) : (
                                     <button 
                                         className="add-to-cart" 
-                                        onClick={() => setAddedItems([...addedItems, item])}
+                                        onClick={() => handleCartClick(item)}
                                     >
                                         Добавить в корзину
                                     </button>
@@ -150,7 +151,7 @@ const Favorites = () => {
                         </div>
                     ))
                 ) : (
-                    <p>В избранном ничего нет</p>
+                    <div>В избранном ничего нет</div>
                 )}
                 {isModalOpen && selectedProduct && (
                     <ProductModal
