@@ -41,7 +41,7 @@ h2 {
 
 p {
     margin: 8px 0;
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-align: left;
 }
 
@@ -112,7 +112,7 @@ p {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    /* justify-content: left; */
+    margin-left: 3px;
 }
 
 .product-info .column {
@@ -120,10 +120,15 @@ p {
     box-sizing: border-box;
 }
 
-.price {
+.product-modal-price {
     font-size: 1.2rem;
     font-weight: bold;
-    color: var(--tg-theme-button-color);
+    color: #E22D60;
+}
+
+.product-modal-brand {
+    font-size: 1rem;
+    color: #f7e7e7;
 }
 
 .modal-close {

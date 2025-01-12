@@ -138,7 +138,7 @@ const ProductModal = ({ product, onClose }) => {
                 <div class="product-info">
                     <div class="column">
                         {/* <p><strong>{`${product.gender} ${product.category} ${product.brand}`}</strong></p> */}
-                        <p><strong>Бренд:</strong> {product.brand}</p>
+                        <p className='product-modal-brand'><strong>Бренд:</strong> {product.brand}</p>
                         <p><strong>Размер бренда:</strong> {product.brandSize}</p>
                         <p><strong>Состояние:</strong> {product.condition}</p>
                         <p><strong>Замеры (см):</strong></p>
@@ -154,7 +154,7 @@ const ProductModal = ({ product, onClose }) => {
                     </div>
             
                     <div class="column">
-                        <p className='price'><strong>Цена:</strong> {product.price} р.</p>    
+                        <p className='product-modal-price'><strong>Цена:</strong> {product.price} ₽</p>    
                         <p><strong>Цвет:</strong> {product.color}</p>
                         <p><strong>О товаре:</strong></p>
                         {product.description && typeof product.description === 'object' ? (
