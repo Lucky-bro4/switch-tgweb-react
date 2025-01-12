@@ -28,22 +28,30 @@ const Cart = () => {
 
     const totalPrice = calculateTotalPrice(addedItems);
 
-    const onSendData = useCallback(() => {
-            
-            const data = {
-                items: addedItems,
-                totalPrice,
-                queryId,
-                user
-            }
-            fetch('https://bottry-lucky-bro4.amvera.io/web-data', {
+    const onSendData = useCallback(async () => {
+        const data = {
+            items: addedItems,
+            totalPrice,
+            queryId,
+            user
+        };
+        try {
+            const response = await fetch('https://bottry-lucky-bro4.amvera.io/web-data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data)
-            })
-        }, [addedItems, totalPrice, queryId, user])
+            });
+
+            const result = await response.json();
+            if (!response.ok) {
+                tg.showAlert(`Произошла ошибка: ${result.message}. Попробуйте позже.`);
+            }
+        } catch (error) {
+            alert(`Error: ${error.message}`);
+        }
+    }, [addedItems, totalPrice, queryId, user]);
 
     useEffect(() => {
         if (addedItems.length > 0) {
