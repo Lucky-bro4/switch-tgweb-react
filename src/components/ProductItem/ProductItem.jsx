@@ -93,7 +93,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
                             <img
                                 src={image}
                                 alt={`${product.brand} - ${index + 1}`}
-                                className="product-image"
+                                className="product-item-image"
                             />
                         </SwiperSlide>
                     ))}
