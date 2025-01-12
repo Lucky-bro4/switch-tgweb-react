@@ -69,47 +69,47 @@ const Cart = () => {
         
     }, [addedItems, onSendData, tg])
 
-    const handleFavoriteClick = async (e, product) => {
-        e.stopPropagation();
+    // const handleFavoriteClick = async (e, product) => {
+    //     e.stopPropagation();
 
-        const isCurrentlyFavorite = favoriteItems.includes(product.id);
-        const newFavoriteState = !isCurrentlyFavorite;
+    //     const isCurrentlyFavorite = favoriteItems.includes(product.id);
+    //     const newFavoriteState = !isCurrentlyFavorite;
 
-        // Обновить глобальный или серверный список избранного
-        if (newFavoriteState) {
-            setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
-        } else {
-            setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
-        }
+    //     // Обновить глобальный или серверный список избранного
+    //     if (newFavoriteState) {
+    //         setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
+    //     } else {
+    //         setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
+    //     }
 
-        try {
-            // Запрос для обновления на сервере
-            await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
-                method: newFavoriteState ? 'POST' : 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ chatId: user.id }),
-            });
+    //     try {
+    //         // Запрос для обновления на сервере
+    //         await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
+    //             method: newFavoriteState ? 'POST' : 'DELETE',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({ chatId: user.id }),
+    //         });
 
-            setFavoriteItems((prevFavorites) =>
-                newFavoriteState
-                    ? [...prevFavorites, product.id]
-                    : prevFavorites.filter((id) => id !== product.id)
-            );
+    //         setFavoriteItems((prevFavorites) =>
+    //             newFavoriteState
+    //                 ? [...prevFavorites, product.id]
+    //                 : prevFavorites.filter((id) => id !== product.id)
+    //         );
 
-        } catch (error) {
-            console.error('Error updating favorite status:', error);
+    //     } catch (error) {
+    //         console.error('Error updating favorite status:', error);
 
-            // Откат состояния при ошибке
-            setIsFavorite(!newFavoriteState);
-            if (!newFavoriteState) {
-                setFavoriteItems([...favoriteItems, product.id]);
-            } else {
-                setFavoriteItems(favoriteItems.filter(id => id !== product.id));
-            }
-        }
-    };
+    //         // Откат состояния при ошибке
+    //         setIsFavorite(!newFavoriteState);
+    //         if (!newFavoriteState) {
+    //             setFavoriteItems([...favoriteItems, product.id]);
+    //         } else {
+    //             setFavoriteItems(favoriteItems.filter(id => id !== product.id));
+    //         }
+    //     }
+    // };
 
     const onProductClick = (product) => {
         setSelectedProduct(product);

@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTelegram } from '../../hooks/useTelegram';
+import { useFavorite } from '../../hooks/useFavorite';
 import './ProductModal.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { use } from 'react';
 
 
 const ProductModal = ({ product, onClose }) => {
@@ -18,7 +20,6 @@ const ProductModal = ({ product, onClose }) => {
     const navigate = useNavigate();
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const [isFavorite, setIsFavorite] = useState(false);
 
     const handleOverlayClick = (e) => {
         if (e.target.classList.contains("modal-overlay")) {
@@ -29,6 +30,9 @@ const ProductModal = ({ product, onClose }) => {
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
     };
+
+    const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
+
 
     // const onAddHandler = () => {    
     //     setAddedItems([...addedItems, product]);
@@ -57,40 +61,8 @@ const ProductModal = ({ product, onClose }) => {
         
     // }, [product, addedItems])
 
-    useEffect(() => {
-        setIsFavorite(favoriteItems.includes(product.id));
-    }, [favoriteItems, product.id]);
 
-
-    const handleFavoriteClick = async (e) => {
-        e.stopPropagation();
-        const newFavoriteState = !isFavorite;
-        setIsFavorite(newFavoriteState);
-        setFavoriteItems([...favoriteItems, product]);
-
-        // Обновить глобальный или серверный список избранного
-        try {
-            const response = await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
-                method: newFavoriteState ? 'POST' : 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({chatId: user.id}),
-            });
     
-            if (!response.ok) {
-                throw new Error('Failed to update favorite status');
-            }
-    
-            const data = await response.json();
-            console.log('Favorite status updated successfully:', data);
-        } catch (error) {
-            console.error('Error updating favorite status:', error);
-            // Revert state change in case of error
-            setIsFavorite(!newFavoriteState);
-        }
-
-    };
 
 
     return (
@@ -125,12 +97,12 @@ const ProductModal = ({ product, onClose }) => {
                             className="favorite-icon" 
                             onClick={(e) => {
                                 e.stopPropagation();
-                                handleFavoriteClick(e);
+                                handleFavoriteClick(product);
                             }}
                         >
                             <img 
-                                src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
-                                alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}    
+                                src={favoriteItems.includes(product.id) ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
+                                alt={favoriteItems.includes(product.id) ? 'Remove from Favorites' : 'Add to Favorites'}    
                             />
                         </div>
                     </div>

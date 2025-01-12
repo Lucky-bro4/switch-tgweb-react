@@ -3,8 +3,8 @@ import { AppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { useTelegram } from "../../hooks/useTelegram";
 import ProductModal from "../ProductModal/ProductModal";
+import { useFavorite } from '../../hooks/useFavorite';
 import "./Favorites.css";
-import useFavorite from './useFavorite';
 
 
 const Favorites = () => {

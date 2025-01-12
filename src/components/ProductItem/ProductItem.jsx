@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
 import { useTelegram } from "../../hooks/useTelegram";
+import { useFavorite } from "../../hooks/useFavorite";
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -13,14 +14,11 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
 
     const { tg, user } = useTelegram();
 
-    const [isFavorite, setIsFavorite] = useState(false);
+    const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
+
+    // const [isFavorite, setIsFavorite] = useState(false);
     // const [status, setStatus] = useState('add-btn')
     // const [content, setContent] = useState('Добавить')
-
-
-    useEffect(() => {
-        setIsFavorite(favoriteItems.includes(product.id));
-    }, [favoriteItems, product.id]);
 
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
@@ -42,41 +40,41 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
     //     }
     // }
 
-    const handleFavoriteClick = async (e) => {
-        e.stopPropagation();
+    // const handleFavoriteClick = async (e) => {
+    //     e.stopPropagation();
 
-        const newFavoriteState = !isFavorite;
-        setIsFavorite(newFavoriteState);
-        setFavoriteItems([...favoriteItems, product]);
+    //     const newFavoriteState = !isFavorite;
+    //     setIsFavorite(newFavoriteState);
+    //     setFavoriteItems([...favoriteItems, product]);
 
-        // Обновить глобальный или серверный список избранного
-        if (newFavoriteState) {
-            setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
-        } else {
-            setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
-        }
+    //     // Обновить глобальный или серверный список избранного
+    //     if (newFavoriteState) {
+    //         setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
+    //     } else {
+    //         setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
+    //     }
 
-        try {
-            // Запрос для обновления на сервере
-            await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
-                method: newFavoriteState ? 'POST' : 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ chatId: user.id }),
-            });
-        } catch (error) {
-            console.error('Error updating favorite status:', error);
+    //     try {
+    //         // Запрос для обновления на сервере
+    //         await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
+    //             method: newFavoriteState ? 'POST' : 'DELETE',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({ chatId: user.id }),
+    //         });
+    //     } catch (error) {
+    //         console.error('Error updating favorite status:', error);
 
-            // Откат состояния при ошибке
-            setIsFavorite(!newFavoriteState);
-            if (!newFavoriteState) {
-                setFavoriteItems([...favoriteItems, product.id]);
-            } else {
-                setFavoriteItems(favoriteItems.filter(id => id !== product.id));
-            }
-        }
-    };
+    //         // Откат состояния при ошибке
+    //         setIsFavorite(!newFavoriteState);
+    //         if (!newFavoriteState) {
+    //             setFavoriteItems([...favoriteItems, product.id]);
+    //         } else {
+    //             setFavoriteItems(favoriteItems.filter(id => id !== product.id));
+    //         }
+    //     }
+    // };
 
 
     return (
@@ -100,12 +98,12 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
                 </Swiper>
                 <div 
                     className="favorite-icon-catalog" 
-                    onClick={handleFavoriteClick}
+                    onClick={() => handleFavoriteClick(product)}
                 >
                     <img 
-                        src={isFavorite ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
-                        alt={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
-                        className={isFavorite ? 'active' : ''}
+                        src={favoriteItems.includes(product.id) ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
+                        alt={favoriteItems.includes(product.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+                        className={favoriteItems.includes(product.id) ? 'active' : ''}
                     />
                 </div>
             </div>
