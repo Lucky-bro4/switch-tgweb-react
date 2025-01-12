@@ -42,14 +42,6 @@ const Footer = () => {
                 alt="icon-home" />
           </i>
         </div>
-        <div className="footer-section" onClick={handleProfileClick}>
-          <i className="icon-user">
-          <img 
-                src={isProfileActive ? "/Images/icons/icon-profile-active.png" : "/Images/icons/icon-profile-not-active.png"}
-                width={30} 
-                alt="icon-profile" />
-          </i>
-        </div>
         <div className="footer-section" onClick={handleFavoritesClick}>
           <i className="icon-favorites">
           <img 
@@ -71,6 +63,14 @@ const Footer = () => {
                     <div className="badge-cart">{addedItems.length}</div>
                 )}
             </i>
+        </div>
+        <div className="footer-section" onClick={handleProfileClick}>
+          <i className="icon-user">
+          <img 
+                src={isProfileActive ? "/Images/icons/icon-profile-active.png" : "/Images/icons/icon-profile-not-active.png"}
+                width={30} 
+                alt="icon-profile" />
+          </i>
         </div>
       </div>
     </footer>
