@@ -29,6 +29,7 @@
     object-fit: contain; /* Сохранение пропорций изображения без обрезки */
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 .favorites-details .favorites-price .price-highlight {

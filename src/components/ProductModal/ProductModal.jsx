@@ -145,7 +145,7 @@ const ProductModal = ({ product, onClose }) => {
                         {product.measurements && typeof product.measurements === 'object' ? (
                             <ul>
                                 {Object.entries(product.measurements).map(([key, value]) => (
-                                    <li key={key}><strong>{key}:</strong> {value}</li>
+                                    <li key={key}><p>{key}:</p> {value}</li>
                                 ))}
                             </ul>
                         ) : (
@@ -160,7 +160,7 @@ const ProductModal = ({ product, onClose }) => {
                         {product.description && typeof product.description === 'object' ? (
                             <ul>
                                 {Object.entries(product.description).map(([key, value]) => (
-                                    <li key={key}><strong>{key}:</strong> {value}</li>
+                                    <li key={key}><p>{key}:</p> {value}</li>
                                 ))}
                             </ul>
                         ) : (
