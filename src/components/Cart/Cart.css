@@ -65,10 +65,10 @@
     font-weight: bold;
 }
 
-/* .cart-details p {
+.cart-details p {
     font-size: 14px;
-    color: #555;
-} */
+    /* color: #555; */
+}
 
 .cart-section h1 {
     font-size: 24px;
