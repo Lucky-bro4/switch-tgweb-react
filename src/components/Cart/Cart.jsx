@@ -56,7 +56,7 @@ const Cart = () => {
 
     useEffect(() => {
         if (addedItems.length > 0) {
-
+            tg.showAlert('Продукты не пустые!')
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: 'Оформить заказ',
