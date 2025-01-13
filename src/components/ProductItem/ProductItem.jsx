@@ -79,7 +79,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
 
     return (
         <div key={product.id} className={'product ' + className} onClick={() => onClick(product)}>
-            <div className="img-container">
+            <div className="product-img-container">
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={1}
@@ -97,7 +97,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
                     ))}
                 </Swiper>
                 <div 
-                    className="favorite-icon-catalog" 
+                    className="product-favorite-icon-catalog" 
                     onClick={() => handleFavoriteClick(product)}
                 >
                     <img 

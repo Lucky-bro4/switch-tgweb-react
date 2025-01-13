@@ -3,7 +3,7 @@ export const useCart = ({ addedItems, setAddedItems, user }) => {
     const handleCartClick = async (product) => {
         const isCurrentlyCart = addedItems.some((item) => item.id === product.id);
         const newCartState = !isCurrentlyCart;
-        // setIsFavorite(newFavoriteState);
+        
 
         // Локальное обновление избранного
         setAddedItems((prevItems) =>
