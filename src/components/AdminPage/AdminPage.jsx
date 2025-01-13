@@ -21,23 +21,23 @@ const AdminPage = () => {
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
 
-    // const [shoulders, setShoulders] = useState(''); 
-    // const [sleeveLength, setSleeveLength] = useState(''); 
-    // const [underarms, setUnderarms] = useState(''); 
-    // const [backLength, setBackLength] = useState(''); 
-    // const [outerLegLength, setOuterLegLength] = useState(''); 
-    // const [innerLegLength, setInnerLegLength] = useState(''); 
-    // const [waistWidth, setWaistWidth] = useState(''); 
+    const [shoulders, setShoulders] = useState(''); 
+    const [sleeveLength, setSleeveLength] = useState(''); 
+    const [underarms, setUnderarms] = useState(''); 
+    const [backLength, setBackLength] = useState(''); 
+    const [outerLegLength, setOuterLegLength] = useState(''); 
+    const [innerLegLength, setInnerLegLength] = useState(''); 
+    const [waistWidth, setWaistWidth] = useState(''); 
 
-    const [categoryFields, setCategoryFields] = useState([
-        { category: "Худи", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
-        { category: "Свитшот", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
-        { category: "Футболка", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
-        { category: "Штаны", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
-        { category: "Джинсы", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
-        { category: "Джоггеры", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
-        { category: "Другое", fields: { other: "" } },
-    ]);
+    // const [categoryFields, setCategoryFields] = useState([
+    //     { category: "Худи", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
+    //     { category: "Свитшот", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
+    //     { category: "Футболка", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
+    //     { category: "Штаны", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
+    //     { category: "Джинсы", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
+    //     { category: "Джоггеры", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
+    //     { category: "Другое", fields: { other: "" } },
+    // ]);
 
     const onChangeMeasurements = (key, value) => {
         setMeasurements(prevMeasurements => ({
