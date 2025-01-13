@@ -2,13 +2,16 @@ import React, { useCallback, useEffect, useState, useContext } from "react";
 import { AppContext } from '../../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { useTelegram } from "../../hooks/useTelegram";
+import { useFavorite } from "../../hooks/useFavorite";
 import ProductModal from "../ProductModal/ProductModal";
 import "./Cart.css";
 
 
 const Cart = () => {
 
+    const { tg, queryId, user } = useTelegram();
     const { addedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
+    const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
 
     const navigate = useNavigate();
     
@@ -19,8 +22,6 @@ const Cart = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     // const [isFavoriteMap, setIsFavoriteMap] = useState({});
-
-    const { tg, queryId, user } = useTelegram();
 
     const calculateTotalPrice = (items = []) => {
         return items.reduce((acc, item) => acc + item.price, 0);
