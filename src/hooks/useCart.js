@@ -1,4 +1,4 @@
-const useCart = ({ addedItems, setAddedItems, user }) => {
+export const useCart = ({ addedItems, setAddedItems, user }) => {
 
     const handleCartClick = async (product) => {
         const isCurrentlyCart = addedItems.some((item) => item.id === product.id);
@@ -45,4 +45,4 @@ const useCart = ({ addedItems, setAddedItems, user }) => {
     };
 };
 
-export default useCart;
+// export default useCart;
