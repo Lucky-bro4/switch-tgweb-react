@@ -178,7 +178,7 @@ const Cart = () => {
                         </div>
                     ))
                 ) : (
-                    <p>Корзина пуста</p>
+                    <div>Корзина пуста</div>
                 )}
                 {isModalOpen && selectedProduct && (
                     <ProductModal
