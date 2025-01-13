@@ -1,4 +1,4 @@
-const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
+export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
     // const [isFavorite, setIsFavorite] = useState(false);
 
     const handleFavoriteClick = async (product) => {
@@ -47,4 +47,4 @@ const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
     };
 };
 
-export default useFavorite;
+// export default useFavorite;
