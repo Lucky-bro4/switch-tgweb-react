@@ -615,7 +615,7 @@ const AdminPage = () => {
                             <option value="Удовлетворительное">Удовлетворительное</option>
                             <option value="Для дома или творчества">Для дома или творчества</option>
                         </select>
-                        {/* {category && (
+                        {/* {category && ( ..
                             <div className="measurements-input">
                                 <h3>Введите замеры для: {category}</h3>
                                 {Object.entries(measurements).map(([key, value]) => (
