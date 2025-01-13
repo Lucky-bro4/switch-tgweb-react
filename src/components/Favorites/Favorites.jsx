@@ -124,29 +124,31 @@ const Favorites = () => {
                                     }
                                 />
                             </div>
-                            <div className="favorites-details">
-                                <h2>{item.category + ' ' + item.brand}</h2>
-                                <p className="favorites-price">Цена: {item.price} ₽</p>
-                                <p>Размер бренда: {item.brandSize}</p>
-                                <p>Состояние: {item.condition}</p>
-                            </div>
-                            <div className="cart-button-container">
-                                {addedItems.includes(item) ? (
-                                    <div>
+                            <div>
+                                <div className="favorites-details">
+                                    <h2>{item.category + ' ' + item.brand}</h2>
+                                    <p className="favorites-price">Цена: {item.price} ₽</p>
+                                    <p>Размер бренда: {item.brandSize}</p>
+                                    <p>Состояние: {item.condition}</p>
+                                </div>
+                                <div className="cart-button-container">
+                                    {addedItems.includes(item) ? (
+                                        <div>
+                                            <button 
+                                                className="remove-from-cart" 
+                                            >
+                                                Товар добавлен в корзину
+                                            </button>
+                                        </div>
+                                    ) : (
                                         <button 
-                                            className="remove-from-cart" 
+                                            className="add-to-cart" 
+                                            onClick={() => handleCartClick(item)}
                                         >
-                                            Товар добавлен в корзину
+                                            Добавить в корзину
                                         </button>
-                                    </div>
-                                ) : (
-                                    <button 
-                                        className="add-to-cart" 
-                                        onClick={() => handleCartClick(item)}
-                                    >
-                                        Добавить в корзину
-                                    </button>
-                                )}
+                                    )}
+                                </div>
                             </div>
                         </div>
                     ))
