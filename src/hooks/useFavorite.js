@@ -2,7 +2,7 @@ export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
     // const [isFavorite, setIsFavorite] = useState(false);
 
     const handleFavoriteClick = async (product) => {
-        const isCurrentlyFavorite = favoriteItems.some((item) => item.id === product.id);
+        const isCurrentlyFavorite = favoriteItems.some((item) => String(item.id) === String(product.id));
         const newFavoriteState = !isCurrentlyFavorite;
         // setIsFavorite(newFavoriteState);
 
@@ -10,7 +10,7 @@ export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
         setFavoriteItems((prevItems) =>
             newFavoriteState
                 ? [...prevItems, product]
-                : prevItems.filter((item) => item.id !== product.id)
+                : prevItems.filter((item) => String(item.id) !== String(product.id))
         );
 
         try {
@@ -36,7 +36,7 @@ export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
             setFavoriteItems((prevItems) =>
                 isCurrentlyFavorite
                     ? [...prevItems, product]
-                    : prevItems.filter((item) => item.id !== product.id)
+                    : prevItems.filter((item) => String(item.id) !== String(product.id))
             );
         }
     };
