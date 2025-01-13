@@ -40,7 +40,7 @@
     width: 100%;
     height: auto;
     max-height: 150px;
-    /* object-fit: contain; */
+    object-fit: contain;
 }
 
 .favorite-icon-catalog {
@@ -88,13 +88,13 @@
     z-index: 2;
 }
 
-.product-info .price p {
+.product-item-info .price p {
     font-weight: bold; /* Цена выделена жирным */
     margin: 0;
 }
 
-.product-info .brand p,
-.product-info .category p,
-.product-info .brandSize p {
+.product-item-info .brand p,
+.product-item-info .category p,
+.product-item-info .brandSize p {
     margin: 0;
 }
