@@ -97,7 +97,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
                     ))}
                 </Swiper>
                 <div 
-                    className="product-favorite-icon-catalog" 
+                    className="favorite-icon-catalog" 
                     onClick={() => handleFavoriteClick(product)}
                 >
                     <img 

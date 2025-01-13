@@ -41,9 +41,10 @@
     height: auto;
     max-height: 150px;
     object-fit: contain;
+    z-index: 3;
 }
 
-.product-favorite-icon-catalog {
+.favorite-icon-catalog {
     position: absolute;
     top: 10px;
     right: 10px;
