@@ -64,11 +64,12 @@
 .favorites-details h2 {
     font-size: 16px;
     font-weight: bold;
+    color: #555;
 }
 
 .favorites-details p {
     font-size: 14px;
-    /* color: #555; */
+    color: #555;
 }
 
 .favorites-section h1 {
