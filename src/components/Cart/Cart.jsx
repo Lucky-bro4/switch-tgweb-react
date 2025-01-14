@@ -151,7 +151,6 @@ const Cart = () => {
                                     alt={item.category + ' ' + item.brand} 
                                     className="cart-image" 
                                 />
-                            </div>
                             <div 
                                 className="favorite-icon-cart" 
                                 onClick={(e) => handleFavoriteClick(e, item)}
@@ -172,6 +171,8 @@ const Cart = () => {
                                     }
                                 />
                             </div>
+                            </div>
+                            
                             <div className="cart-details">
                                 <h2>{item.category + ' ' + item.brand}</h2>
                                 <p className="cart-price">Цена: {item.price} ₽</p>
