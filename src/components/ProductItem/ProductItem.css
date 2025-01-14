@@ -1,4 +1,4 @@
-.product {
+.product-card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -11,18 +11,16 @@
     color: black;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* z-index: 1; */
 }
 
-.product:hover {
+.product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.product-img-container {
+.product-card-img-container {
     width: 100%;
     height: 200px;
-    /* margin: 0 auto; */
     margin: 1px;
     background: white;
     border-radius: 10px;
@@ -30,22 +28,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* z-index: 2; */
 }
-
-/* .product-item-image {
-    z-index: 3;
-} */
 
 .img {
     width: 100%;
     height: auto;
     max-height: 200px;
     object-fit: contain;
-    /* z-index: 3; */
 }
 
-.favorite-icon-catalog {
+.product-card-favorite-icon {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -59,44 +51,37 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    /* z-index: 4; */
 }
 
-.favorite-icon-catalog:hover {
+.product-card-favorite-icon:hover {
     transform: scale(1.1);
     background-color: rgba(255, 255, 255, 1);
 }
 
-.favorite-icon-catalog img {
+.product-card-favorite-icon img {
     transition: filter 0.3s ease, transform 0.3s ease;
     width: 18px;
     height: 18px;
 }
 
-.favorite-icon-catalog img.active {
+.product-card-favorite-icon img.active {
     filter: brightness(1.5);
 }
 
-/* .product-info {
-    justify-content: left;
-} */
-
-.product-item-info {
+.product-card-item-info {
     display: flex;
     flex-direction: column;
     row-gap: 2px;
-    /* align-items: flex-start; */
-    font-size: calc(1em + 1px); /* Увеличиваем текст на 1px */
-    /* z-index: 2; */
+    font-size: calc(1em + 1px);
 }
 
-.product-item-info .price p {
-    font-weight: bold; /* Цена выделена жирным */
+.product-card-item-info .product-card-price p {
+    font-weight: bold;
     margin: 0;
 }
 
-.product-item-info .brand p,
-.product-item-info .category p,
-.product-item-info .brandSize p {
+.product-card-item-info .product-card-brand p,
+.product-card-item-info .product-card-category p,
+.product-card-item-info .product-card-brandSize p {
     margin: 0;
 }
