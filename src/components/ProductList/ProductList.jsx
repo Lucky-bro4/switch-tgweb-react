@@ -10,7 +10,7 @@ import './ProductList.css';
 
 const ProductList = () => {
 
-    const { filteredProducts, setFilteredProducts, addedItems, setAddedItems } = useContext(AppContext);
+    const { products, filteredProducts, setFilteredProducts, addedItems, setAddedItems } = useContext(AppContext);
 
     const { tg, queryId, user } = useTelegram();
 
