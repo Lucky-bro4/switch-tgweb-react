@@ -41,8 +41,8 @@ const ProductList = () => {
 
             try {
                 console.log('chatId: ', user)
-                // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
-                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
+                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+                // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
                 const data = await response.json();
                 
                 setProducts(data.products || []);

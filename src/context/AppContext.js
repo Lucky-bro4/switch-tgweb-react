@@ -29,8 +29,8 @@ export const AppProvider = ({ children }) => {
         const getProducts = async () => {
 
             try {
-                // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
-                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
+                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+                // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
                 const data = await response.json();
                 
                 if (data.customer.favorite_items) {
