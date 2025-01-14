@@ -59,8 +59,6 @@ const ProductList = () => {
                 //     setAddedItems(data.customer.cart_items)
                 // }
 
-                tg.showAlert(`Всего товаров: ${data.products?.length || 0}`)
-
                 // if (!data.customer.location && !data.customer.phone_number) {
                 //     setNewUser(true)
                 // }
