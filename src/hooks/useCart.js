@@ -1,7 +1,7 @@
 export const useCart = ({ addedItems, setAddedItems, user }) => {
 
     const handleCartClick = async (product) => {
-        const isCurrentlyCart = addedItems.some((item) => item.id === product.id);
+        const isCurrentlyCart = addedItems.includes(product.id);
         const newCartState = !isCurrentlyCart;
         
 
@@ -9,7 +9,7 @@ export const useCart = ({ addedItems, setAddedItems, user }) => {
         setAddedItems((prevItems) =>
             newCartState
                 ? [...prevItems, product]
-                : prevItems.filter((item) => item.id !== product.id)
+                : prevItems.filter((id) => id !== product.id)
         );
 
         try {
@@ -34,7 +34,7 @@ export const useCart = ({ addedItems, setAddedItems, user }) => {
             setAddedItems((prevItems) =>
                 isCurrentlyCart
                     ? [...prevItems, product]
-                    : prevItems.filter((item) => item.id !== product.id)
+                    : prevItems.filter((id) => id !== product.id)
             );
         }
     };
