@@ -1,7 +1,7 @@
 .cart-section {
     padding: 20px;
     font-family: Arial, sans-serif;
-    color: black;
+    color: var(--tg-theme-text-color, black);
     background: var(--tg-theme-bg-color);
     border-radius: 10px;
     max-width: 500px;
@@ -33,7 +33,7 @@
 }
 
 .cart-details .cart-price .price-highlight {
-    color: red; /* Выделение цены красным */
+    color: red; 
 }
 
 .favorite-icon {
@@ -68,7 +68,7 @@
 
 .cart-details p {
     font-size: 14px;
-    /* color: #555; */
+    color: #555;
 }
 
 .cart-section h1 {
