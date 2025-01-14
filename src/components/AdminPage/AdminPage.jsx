@@ -396,34 +396,66 @@ const AdminPage = () => {
     const changeData = async (e) => {
         e.preventDefault();
 
-        const changeProduct = {
-            id: Number(id),
-            gender: gender,
-            category: category,
-            brand: brand,
-            price: Number(price),
-            rentPrice: Number(rentPrice),
-            condition: condition,
-            measurements: measurements,
-            brandSize: brandSize,
-            color: color,
-            description: description,
-            avitoUrl: avitoUrl,
-            // photo: photos,
-            status: status,
-            available: Boolean(available),
-            userId: itemUserId,
-            orderId: itemOrderId
-        };
+        if (id && photos.length > 0) {
 
-        console.log(changeProduct);
+            const formData = new FormData();
+            photoPaths.forEach((file) => formData.append('photos', file));
+            formData.append('itemId', String(itemId));
 
-        try {
-            const data = await postData('https://bottry-lucky-bro4.amvera.io/changeProduct', changeProduct);
-            console.log(data);
-        } catch (error) {
-            console.error('Ошибка при отправке данных:', error);
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+                }
+
+            try {
+                // Отправляем файлы на сервер
+                const response = await fetch('https://bottry-lucky-bro4.amvera.io/upload', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(`Товар "${category} ${brand}" успешно добавлен`)
+                }
+
+                console.log('Ответ от сервера по фото:', data);
+                window.location.reload();
+
+            } catch (error) {
+                console.error('Ошибка при отправке данных по фото:', error);
+            }
         }
+
+        // const changeProduct = {
+        //     id: Number(id),
+        //     gender: gender,
+        //     category: category,
+        //     brand: brand,
+        //     price: Number(price),
+        //     rentPrice: Number(rentPrice),
+        //     condition: condition,
+        //     measurements: measurements,
+        //     brandSize: brandSize,
+        //     color: color,
+        //     description: description,
+        //     avitoUrl: avitoUrl,
+        //     // photo: photos,
+        //     status: status,
+        //     available: Boolean(available),
+        //     userId: itemUserId,
+        //     orderId: itemOrderId
+        // };
+        
+
+        // console.log(changeProduct);
+
+        // try {
+        //     const data = await postData('https://bottry-lucky-bro4.amvera.io/changeProduct', changeProduct);
+        //     console.log(data);
+        // } catch (error) {
+        //     console.error('Ошибка при отправке данных:', error);
+        // }
     };
 
     const changeStatus = async (e) => {
