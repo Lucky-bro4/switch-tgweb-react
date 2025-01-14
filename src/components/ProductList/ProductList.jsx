@@ -45,7 +45,6 @@ const ProductList = () => {
                 const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
                 const data = await response.json();
                 
-                // setProducts(data.products)
                 setProducts(data.products || []);
                 setFilteredProducts(data.products || []);
                 if (data.customer.favorite_items) {
