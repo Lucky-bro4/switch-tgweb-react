@@ -153,7 +153,7 @@ const Cart = () => {
                                 />
                             </div>
                             <div 
-                                className="favorite-icon-catalog" 
+                                className="favorite-icon-cart" 
                                 onClick={(e) => handleFavoriteClick(e, item)}
                             >
                                 <img 
