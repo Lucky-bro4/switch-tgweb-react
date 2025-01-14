@@ -100,5 +100,6 @@
 .product-item-info .brand p,
 .product-item-info .category p,
 .product-item-info .brandSize p {
+    font-size: 16px;
     margin: 0;
 }
