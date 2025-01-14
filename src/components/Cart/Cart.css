@@ -22,11 +22,10 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 200px; /* Укажите фиксированную высоту, чтобы изображение не вылезало */
+    height: 200px;
 }
 
 .cart-image {
-    position: relative;
     object-fit: contain; /* Сохранение пропорций изображения без обрезки */
     width: 100%;
     height: 100%;
@@ -38,17 +37,28 @@
 }
 
 .favorite-icon-cart {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
+    top: 10px; /* Расстояние от верхней границы */
+    right: 10px; /* Расстояние от правой границы */
+    width: 30px; /* Размер иконки */
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    border-radius: 50%; /* Округлённая форма */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+    transition: transform 0.2s ease-in-out;
+}
+
+.favorite-icon-cart:hover {
+    transform: scale(1.1); /* Эффект увеличения при наведении */
+    background-color: rgba(255, 255, 255, 1);
 }
 
 .favorite-active {
-    color: red; /* Цвет иконки, когда товар в избранном */
+    color: red; /* Цвет активного состояния иконки */
+    transition: color 0.3s ease;
 }
 
 .cart-item {
