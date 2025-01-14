@@ -1,16 +1,16 @@
 export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
-    // const [isFavorite, setIsFavorite] = useState(false);
 
     const handleFavoriteClick = async (product) => {
-        const isCurrentlyFavorite = favoriteItems.some((item) => String(item.id) === String(product.id));
+        const isCurrentlyFavorite = favoriteItems.includes(product.id);
         const newFavoriteState = !isCurrentlyFavorite;
+
         // setIsFavorite(newFavoriteState);
 
         // Локальное обновление избранного
         setFavoriteItems((prevItems) =>
             newFavoriteState
                 ? [...prevItems, product]
-                : prevItems.filter((item) => String(item.id) !== String(product.id))
+                : prevItems.filter((id) => id !== product.id)
         );
 
         try {
@@ -36,7 +36,7 @@ export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
             setFavoriteItems((prevItems) =>
                 isCurrentlyFavorite
                     ? [...prevItems, product]
-                    : prevItems.filter((item) => String(item.id) !== String(product.id))
+                    : prevItems.filter((id) => id !== product.id)
             );
         }
     };
