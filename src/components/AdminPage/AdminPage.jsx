@@ -4,7 +4,7 @@ import './AdminPage.css';
 import './AdminPreview.css';
 
 const AdminPage = () => {
-    
+
     const [id, setId] = useState(0)
     const [gender, setGender] = useState('');
     const [category, setCategory] = useState('');
@@ -13,38 +13,58 @@ const AdminPage = () => {
     const [rentPrice, setRentPrice] = useState(0);
     const [condition, setCondition] = useState('');
     const [measurements, setMeasurements] = useState({});
+    // const [savedMeasurements, setSavedMeasurements] = useState({});
     const [brandSize, setBrandSize] = useState('');
     const [color, setColor] = useState('');
-    const [description, setDescription] = useState('');
+    // const [description, setDescription] = useState('');
+    
     const [avitoUrl, setAvitoUrl] = useState('');
+    // const [photo, setPhoto] = useState('/Images/Одежда/');
 
     const [photos, setPhotos] = useState([]);
     const [photoPaths, setPhotoPaths] = useState([]);
 
-    // const [shoulders, setShoulders] = useState(''); 
-    // const [sleeveLength, setSleeveLength] = useState(''); 
-    // const [underarms, setUnderarms] = useState(''); 
-    // const [backLength, setBackLength] = useState(''); 
-    // const [outerLegLength, setOuterLegLength] = useState(''); 
-    // const [innerLegLength, setInnerLegLength] = useState(''); 
-    // const [waistWidth, setWaistWidth] = useState(''); 
+    const [shoulders, setShoulders] = useState('');
+    const [sleeveLength, setSleeveLength] = useState('');
+    const [underarms, setUnderarms] = useState('');
+    const [backLength, setBackLength] = useState('');
+    const [outerLegLength, setOuterLegLength] = useState('');
+    const [innerLegLength, setInnerLegLength] = useState('');
+    const [waistWidth, setWaistWidth] = useState('');
+    const [other, setOther] = useState('');
 
-    const [categoryFields, setCategoryFields] = useState([
-        { category: "Худи", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
-        { category: "Свитшот", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
-        { category: "Футболка", fields: { shoulders: "", sleeveLength: "", underarms: "", backLength: "" } },
-        { category: "Штаны", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
-        { category: "Джинсы", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
-        { category: "Джоггеры", fields: { outerLegLength: "", innerLegLength: "", waistWidth: "" } },
-        { category: "Другое", fields: { other: "" } },
-    ]);
-
-    const onChangeMeasurements = (key, value) => {
-        setMeasurements(prevMeasurements => ({
-            ...prevMeasurements,
-            [key]: value
+    const initialdescription = {
+        Материал: '',
+        Пол: '',
+        Стиль: '',
+        Сезон: '',
+        Описание: '',
+    };
+    const [description, setDescription] = useState(initialdescription);
+    const handleChange = (key, value) => {
+        setDescription((prev) => ({
+            ...prev,
+            [key]: value,
         }));
     };
+    // const categoryFields = {
+    //     "Худи": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
+    //     "Свитшот": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
+    //     "Футболка": { shoulders: "", sleeveLength: "", underarms: "", backLength: "" },
+    //     "Штаны": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
+    //     "Джинсы": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
+    //     "Джоггеры": { outerLegLength: "", innerLegLength: "", waistWidth: "" },
+    //     "Другое": { other: "" },
+    // };
+
+    // useEffect(() => {
+    //     if (category) {
+    //         setMeasurements(savedMeasurements[category] || categoryFields[category] || {});
+    //     } else {
+    //         setMeasurements({});
+    //     }
+    // }, [category]);
+
 
     const handlePhotoChange = (event) => {
         const files = Array.from(event.target.files);
@@ -63,7 +83,6 @@ const AdminPage = () => {
 
     const [status, setStatus] = useState('available');
     const [available, setAvailable] = useState(1);
-
     const [itemUserId, setItemUserId] = useState(0);
     const [itemOrderId, setItemOrderId] = useState(0);
 
@@ -124,11 +143,18 @@ const AdminPage = () => {
     const onChangeRentPrice = (e) => {
         setRentPrice(e.target.value);
     };
-    
+
     const onChangeCondition = (e) => {
         setCondition(e.target.value);
     };
-    
+
+    const onChangeMeasurements = (field, value) => {
+        setMeasurements((prevMeasurements) => ({
+            ...prevMeasurements, 
+            [field]: value,      
+        }));
+    };
+
     // const saveMeasurements = () => {
     //     setSavedMeasurements((prev) => ({
     //         ...prev,
@@ -191,7 +217,7 @@ const AdminPage = () => {
     const changeOrderItem3 = (text) => setOrderItem3(text);
     const changeItem4 = (id) => setItem4(id);
     const changeOrderItem4 = (text) => setOrderItem4(text);
-    
+
 
     const onChangeCheckboxItem1 = () => {
         setCheckboxItem1(!checkboxItem1);
@@ -237,6 +263,17 @@ const AdminPage = () => {
 
         e.preventDefault();
 
+
+        if (shoulders) measurements.shoulders = shoulders;
+        if (sleeveLength) measurements.sleeveLength = sleeveLength;
+        if (underarms) measurements.underarms = underarms;
+        if (backLength) measurements.backLength = backLength;
+        if (outerLegLength) measurements.outerLegLength = outerLegLength;
+        if (innerLegLength) measurements.innerLegLength = innerLegLength;
+        if (waistWidth) measurements.waistWidth = waistWidth;
+
+        setMeasurements({ ...measurements });
+
         const missingFields = [];
         if (!gender) missingFields.push('gender');
         if (!category) missingFields.push('category');
@@ -244,7 +281,7 @@ const AdminPage = () => {
         if (!price) missingFields.push('price');
         if (!rentPrice) missingFields.push('rentPrice');
         if (!condition) missingFields.push('condition');
-        if (!measurements || Object.keys(measurements).length === 0) missingFields.push('measurements');
+        // if (!measurements || Object.keys(measurements).length === 0) missingFields.push('measurements');
         if (!brandSize) missingFields.push('brandSize');
         if (!color) missingFields.push('color');
         if (!description) missingFields.push('description');
@@ -293,14 +330,14 @@ const AdminPage = () => {
             for (let [key, value] of formData.entries()) {
                 console.log(key, value);
               }
-            
+
             try {
                 // Отправляем файлы на сервер
                 const response = await fetch('https://bottry-lucky-bro4.amvera.io/upload', {
                     method: 'POST',
                     body: formData,
                 });
-        
+
                 const data = await response.json();
 
                 if (response.ok) {
@@ -309,7 +346,7 @@ const AdminPage = () => {
 
                 console.log('Ответ от сервера по фото:', data);
                 window.location.reload();
-                
+
             } catch (error) {
                 console.error('Ошибка при отправке данных по фото:', error);
             }
@@ -317,7 +354,7 @@ const AdminPage = () => {
     };
 
     const getAllData = async () => {
- 
+
         try {
             const response = await fetch('https://bottry-lucky-bro4.amvera.io/allData');
             const data = await response.json();
@@ -541,13 +578,11 @@ const AdminPage = () => {
                             onChange={onChangeCategory}
                             className="input"
                         >
-                            <option value="">Выбери категорию</option>
-                            {/* {Object.keys(categoryFields).map((key) => (
-                                <option key={key} value={key}>{key}</option>
-                            ))} */}
+                            <option value="">Категория</option>
                             <option value="Худи">Худи</option>
                             <option value="Свитшот">Свитшот</option>
                             <option value="Футболка">Футболка</option>
+                            <option value="Рубашка">Рубашка</option>
                             <option value="Кофта">Кофта</option>
                             <option value="Джемпер">Джемпер</option>
                             <option value="Куртка">Куртка</option>
@@ -566,91 +601,109 @@ const AdminPage = () => {
                             value={brand}
                             onChange={onChangeName}
                         />
-                        <input
-                            className="input"
-                            type="text"
+                        <select
+                            name="Condition"
                             placeholder="Condition"
                             value={condition}
                             onChange={onChangeCondition}
-                        />
-                        {category && (
+                            className="input"
+                        >
+                            <option value="">В каком состоянии</option>
+                            <option value="Как новое">Как новое</option>
+                            <option value="Очень хорошее">Очень хорошее</option>
+                            <option value="Хорошее">Хорошее</option>
+                            <option value="Удовлетворительное">Удовлетворительное</option>
+                            <option value="Для дома или творчества">Для дома или творчества</option>
+                        </select>
+                        {/* {category && ( ..
                             <div className="measurements-input">
                                 <h3>Введите замеры для: {category}</h3>
-                                {(() => {
-                                    if (category === 'Худи' || category === 'Свитшот' || category === 'Футболка') {
-                                        return (
-                                            <>
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    placeholder="Плечи (Shoulders)"
-                                                    value={measurements?.shoulders || ''}
-                                                    onChange={(e) => onChangeMeasurements('Плечи', e.target.value)}
-                                                />
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    placeholder="Длина рукава (Sleeve Length)"
-                                                    value={measurements?.sleeveLength || ''}
-                                                    onChange={(e) => onChangeMeasurements('Длина рукава', e.target.value)}
-                                                />
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    placeholder="Подмышки (Underarms)"
-                                                    value={measurements?.underarms || ''}
-                                                    onChange={(e) => onChangeMeasurements('Подмышки', e.target.value)}
-                                                />
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    placeholder="Длина спины (Back Length)"
-                                                    value={measurements?.backLength || ''}
-                                                    onChange={(e) => onChangeMeasurements('Длина по спине', e.target.value)}
-                                                />
-                                            </>
-                                        );
-                                    } else if (category === 'Штаны' || category === 'Джинсы' || category === 'Джоггеры') {
-                                        return (
-                                            <>
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    placeholder="Длина внешнего шва (Outer Leg Length)"
-                                                    value={measurements?.outerLegLength || ''}
-                                                    onChange={(e) => onChangeMeasurements('Длина внешнего шва', e.target.value)}
-                                                />
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    placeholder="Длина внутреннего шва (Inner Leg Length)"
-                                                    value={measurements?.innerLegLength || ''}
-                                                    onChange={(e) => onChangeMeasurements('Длина внутреннего шва', e.target.value)}
-                                                />
-                                                <input
-                                                    className="input"
-                                                    type="text"
-                                                    placeholder="Ширина талии (Waist Width)"
-                                                    value={measurements?.waistWidth || ''}
-                                                    onChange={(e) => onChangeMeasurements('Ширина талии', e.target.value)}
-                                                />
-                                            </>
-                                        );
-                                    } else if (category === 'Другое') {
-                                        return (
-                                            <input
-                                                className="input"
-                                                type="text"
-                                                placeholder="Другое (Other)"
-                                                value={measurements?.other || ''}
-                                                onChange={(e) => onChangeMeasurements('Другое', e.target.value)}
-                                            />
-                                        );
-                                    }
-                                })()}
+                                {Object.entries(measurements).map(([key, value]) => (
+                                    <div key={key} className="measurement-field">
+                                        <input
+                                            id={`measurement-${key}`}
+                                            type="text"
+                                            placeholder={key}
+                                            value={value}
+                                            onChange={(e) => onChangeMeasurements(key, e.target.value)}
+                                        />
+                                    </div>
+                                ))}
+                                <button type="button" onClick={saveMeasurements}>Сохранить замеры</button>
+                                
                                 <pre>{JSON.stringify(measurements, null, 2)}</pre>
                             </div>
-                        )}
+                        )} */}
+                        <div className="measurements-input">
+                            {(["Худи", "Свитшот", "Футболка", "Рубашка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив"].includes(category)) && (
+                                <>
+                                    <input
+                                        type="text"
+                                        placeholder="Плечи"
+                                        value={shoulders}
+                                        onChange={(e) => setShoulders(e.target.value)}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Длина рукава"
+                                        value={sleeveLength}
+                                        onChange={(e) => setSleeveLength(e.target.value)}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Подмышки"
+                                        value={underarms}
+                                        onChange={(e) => setUnderarms(e.target.value)}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Длина по спине"
+                                        value={backLength}
+                                        onChange={(e) => setBackLength(e.target.value)}
+                                    />
+                                </>
+                            )}
+                            {(["Штаны", "Джинсы", "Джоггеры", "Шорты"].includes(category)) && (
+                                <>
+                                    <input
+                                        type="text"
+                                        placeholder="Outer Leg Length"
+                                        value={outerLegLength}
+                                        onChange={(e) => setOuterLegLength(e.target.value)}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Inner Leg Length"
+                                        value={innerLegLength}
+                                        onChange={(e) => setInnerLegLength(e.target.value)}
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Waist Width"
+                                        value={waistWidth}
+                                        onChange={(e) => setWaistWidth(e.target.value)}
+                                    />
+                                </>
+                            )}
+                            {(!["Худи", "Свитшот", "Футболка", "Кофта", "Джемпер", "Куртка", "Зип-худи", "Топ", "Лонгслив", "Штаны", "Джинсы", "Джоггеры"].includes(category)) && (
+                                <textarea
+                                    className="input"
+                                    placeholder="Measurements"
+                                    value={other}
+                                    onChange={(e) => setOther(e.target.value)}
+                                    rows="10"
+                                    cols="50"
+                                ></textarea>
+                            )}
+                        </div>
+                        {/* <textarea
+                            className="input"
+                            placeholder="Measurements"
+                            value={measurements}
+                            onChange={onChangeMeasurements}
+                            rows="10"
+                            cols="50"
+                        ></textarea> */}
                         <input
                             className="input"
                             type="text"
@@ -661,23 +714,46 @@ const AdminPage = () => {
                         <input
                             className="input"
                             type="text"
-                            placeholder="Color"
+                            placeholder="Какой цвет?"
                             value={color}
                             onChange={onChangeColor}
                         />
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Description"
-                        value={description}
-                        onChange={onChangeDescription}
+                            className="input"
+                            type="text"
+                            placeholder="Description"
+                            value={description}
+                            onChange={onChangeDescription}
                         />
+                        <div>
+                            {Object.keys(description).map((key) => (
+                                <div key={key} style={{ marginBottom: '8px' }}>
+                                    <label>
+                                        {key}:
+                                        <input
+                                            className="input"
+                                            type="text"
+                                            placeholder={`Введите ${key.toLowerCase()}`}
+                                            value={description[key]}
+                                            onChange={(e) => handleChange(key, e.target.value)}
+                                        />
+                                    </label>
+                                </div>
+                            ))}
+                            
+                            <div style={{ marginTop: '16px' }}>
+                                <h3>Текущие данные:</h3>
+                                <pre style={{ background: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
+                                    {JSON.stringify(description, null, 2)}
+                                </pre>
+                            </div>
+                        </div>
                         <input
-                        className="input"
-                        type="text"
-                        placeholder="Avito Url"
-                        value={avitoUrl}
-                        onChange={onChangeAvitoUrl}
+                            className="input"
+                            type="text"
+                            placeholder="Avito Url"
+                            value={avitoUrl}
+                            onChange={onChangeAvitoUrl}
                         />
                         <div>
                         <input
@@ -845,10 +921,16 @@ const AdminPage = () => {
                 </div>
                 <div className="input-container">
                     <input
-                    className="inputItem"
-                    type="text"
-                    placeholder="item2"
-                    value={orderItem2}
+                        className="inputItem"
+                        type="text"
+                        placeholder="item2"
+                        value={orderItem2}
+                    />
+                    <input
+                        className="inputItem"
+                        type="text"
+                        placeholder="item2"
+                        value={orderItem2}
                     />
                     <label>
                     <input
@@ -861,10 +943,16 @@ const AdminPage = () => {
                 </div>
                 <div className="input-container">
                     <input
-                    className="inputItem"
-                    type="text"
-                    placeholder="item3"
-                    value={orderItem3}
+                        className="inputItem"
+                        type="text"
+                        placeholder="item3"
+                        value={orderItem3}
+                    />
+                    <input
+                        className="inputItem"
+                        type="text"
+                        placeholder="item3"
+                        value={orderItem3}
                     />
                     <label>
                     <input
@@ -897,6 +985,10 @@ const AdminPage = () => {
                 <option value="canceled">Отмена заказа</option>
                 <option value="closed">Завершить заказ</option>
                 <option value="renew">Продлить заказ</option>
+                    <option value="success">Заказ принят полностью или частично</option>
+                    <option value="canceled">Отмена заказа</option>
+                    <option value="closed">Завершить заказ</option>
+                    <option value="renew">Продлить заказ</option>
                 </select>
                 <input
                 className="input-comment"
@@ -923,13 +1015,15 @@ const AdminPage = () => {
                     <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Для кого</th>
                         <th>Категория</th>
-                        <th>Название</th>
-                        <th>Состояние</th>
-                        <th>Описание</th>
-                        <th>Размер</th>
+                        <th>Бренд</th>
                         <th>Цена</th>
                         <th>Цена аренды</th>
+                        <th>Состояние</th>                        
+                        <th>Размер</th>
+                        <th>Цвет</th>
+                        <th>Описание</th>
                         <th>Статус</th>
                         <th>Первое фото</th>
                         <th>userId</th>
@@ -946,10 +1040,10 @@ const AdminPage = () => {
                         <td>{availableItem.price}</td>
                         <td>{availableItem.rentPrice}</td>
                         <td>{availableItem.condition}</td>
-                        <td>{availableItem.measurements}</td>
+                        {/* <td>{availableItem.measurements}</td> */}
                         <td>{availableItem.brandSize}</td>
                         <td>{availableItem.color}</td>
-                        <td>{availableItem.description}</td>
+                        {/* <td>{availableItem.description}</td> */}
                         <td>{availableItem.status}</td>
                         <td>{availableItem.image[0]}</td>
                         <td>{availableItem.userId}</td>
@@ -983,7 +1077,7 @@ const AdminPage = () => {
                         <td>{orderItem.category}</td>
                         <td>{orderItem.brand}</td>
                         <td>{orderItem.condition}</td>
-                        <td>{orderItem.description}</td>
+                        {/* <td>{orderItem.description}</td> */}
                         <td>{orderItem.brandSize}</td>
                         <td>{orderItem.price}</td>
                         <td>{orderItem.rentPrice}</td>
@@ -1016,7 +1110,7 @@ const AdminPage = () => {
                         <td>{laundryItem.category}</td>
                         <td>{laundryItem.brand}</td>
                         <td>{laundryItem.condition}</td>
-                        <td>{laundryItem.description}</td>
+                        {/* <td>{laundryItem.description}</td> */}
                         <td>{laundryItem.brandSize}</td>
                         <td>{laundryItem.userId}</td>
                         <td>{laundryItem.orderId}</td>
@@ -1050,7 +1144,7 @@ const AdminPage = () => {
                         <td>{otherItem.category}</td>
                         <td>{otherItem.brand}</td>
                         <td>{otherItem.condition}</td>
-                        <td>{otherItem.description}</td>
+                        {/* <td>{otherItem.description}</td> */}
                         <td>{otherItem.brandSize}</td>
                         <td>{otherItem.price}</td>
                         <td>{otherItem.rentPrice}</td>
