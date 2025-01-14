@@ -33,7 +33,6 @@ export const AppProvider = ({ children }) => {
                 const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
                 const data = await response.json();
                 
-                setFilteredProducts(data.products || []);
                 if (data.customer.favorite_items) {
                     setFavoriteItems(data.customer.favorite_items)
                 }
