@@ -120,7 +120,7 @@ const SearchComponent = ({ onFilterChange }) => {
       {isModalOpen && (
         <div className="search-modal">
           <div className="search-modal-content">
-            <button onClick={closeModal} className="search-close-modal">✖</button>
+            <button onClick={closeModal} className="close-modal">✖</button>
 
             <div className="filters">
               <select
