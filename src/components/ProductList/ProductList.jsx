@@ -47,6 +47,8 @@ const ProductList = () => {
                 
                 setProducts(data.products || []);
                 setFilteredProducts(data.products || []);
+
+                console.log('filtered products:', filteredProducts)
                 if (data.customer.favorite_items) {
                     setFavoriteItems(data.customer.favorite_items)
                 }
