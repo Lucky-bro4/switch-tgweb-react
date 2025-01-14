@@ -98,7 +98,10 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
                 </Swiper>
                 <div 
                     className="favorite-icon-catalog" 
-                    onClick={() => handleFavoriteClick(product)}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleFavoriteClick(product);
+                    }}
                 >
                     <img 
                         src={favoriteItems.includes(product.id) ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
