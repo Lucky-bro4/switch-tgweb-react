@@ -88,11 +88,11 @@
     display: flex;
     flex-direction: column;
     row-gap: 2px;
-    font-size: 20px;
     /* z-index: 2; */
 }
 
 .product-item-info .price p {
+    font-size: 20px;
     font-weight: bold; /* Цена выделена жирным */
     margin: 0;
 }
