@@ -143,7 +143,7 @@ const ProductModal = ({ product, onClose }) => {
 
                 {/* Кнопки для модального окна */}
                 <div className="cart-button-container">
-                    {addedItems.includes(product) ? (
+                    {addedItems.includes(product.id) ? (
                         <div>
                             <button 
                                 className="remove-from-cart" 
