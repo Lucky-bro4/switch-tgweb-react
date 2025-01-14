@@ -12,8 +12,8 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
 
         try {
-            // const response = fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
-            const response = fetch(`https://bottry-lucky-bro4.amvera.io/products`);
+            const response = fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+            // const response = fetch(`https://bottry-lucky-bro4.amvera.io/products`);
             const data = response.json();
             
             if (data.customer.favorite_items) {
