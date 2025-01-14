@@ -47,7 +47,7 @@ export const AppProvider = ({ children }) => {
 
     //     getProducts();
 
-    }, [user])
+    }, [user, setFavoriteItems, setAddedItems])
 
     return (
         <AppContext.Provider value={{ addedItems, setAddedItems, favoriteItems, setFavoriteItems }}>

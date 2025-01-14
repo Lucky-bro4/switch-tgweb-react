@@ -38,23 +38,28 @@ const ProductList = () => {
 
     useEffect(() => {
         const getProducts = async () => {
-
             try {
                 console.log('chatId: ', user)
                 const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
                 // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
                 const data = await response.json();
                 
-                setProducts(data.products || []);
-                setFilteredProducts(data.products || []);
+                if (data.products) {
+                    setProducts(data.products);
+                    setFilteredProducts(data.products);
+                } else {
+                    setProducts([]); // Если товаров нет, установить пустой массив
+                    setFilteredProducts([]);
+                }
 
-                tg.showAlert('filtered products:', filteredProducts.length)
-                if (data.customer.favorite_items) {
-                    setFavoriteItems(data.customer.favorite_items)
-                }
-                if (data.customer.cart_items) {
-                    setAddedItems(data.customer.cart_items)
-                }
+                // if (data.customer.favorite_items) {
+                //     setFavoriteItems(data.customer.favorite_items)
+                // }
+                // if (data.customer.cart_items) {
+                //     setAddedItems(data.customer.cart_items)
+                // }
+
+                tg.showAlert(`Всего товаров: ${data.products?.length || 0}`)
 
                 // if (!data.customer.location && !data.customer.phone_number) {
                 //     setNewUser(true)
@@ -70,7 +75,7 @@ const ProductList = () => {
                 // }
 
                 // Call applyFilters after setting products
-                applyFilters(searchParams);
+                // applyFilters(searchParams);
 
             } catch (e) {
                 console.log('Ошибка при получении списка товаров:', e)
