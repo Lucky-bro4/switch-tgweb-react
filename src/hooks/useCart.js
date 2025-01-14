@@ -8,7 +8,7 @@ export const useCart = ({ addedItems, setAddedItems, user }) => {
         // Локальное обновление избранного
         setAddedItems((prevItems) =>
             newCartState
-                ? [...prevItems, product]
+                ? [...prevItems, product.id]
                 : prevItems.filter((id) => id !== product.id)
         );
 
