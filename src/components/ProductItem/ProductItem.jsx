@@ -78,8 +78,8 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
 
 
     return (
-        <div key={product.id} className={'product-card ' + className} onClick={() => onClick(product)}>
-            <div className="product-card-img-container">
+        <div key={product.id} className={'product ' + className} onClick={() => onClick(product)}>
+            <div className="product-img-container">
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={1}
@@ -91,13 +91,13 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
                             <img
                                 src={image}
                                 alt={`${product.brand} - ${index + 1}`}
-                                className="product-card-item-image"
+                                className="product-item-image"
                             />
                         </SwiperSlide>
                     ))}
                 </Swiper>
                 <div 
-                    className="product-card-favorite-icon" 
+                    className="favorite-icon-catalog" 
                     onClick={() => handleFavoriteClick(product)}
                 >
                     <img 
@@ -107,7 +107,7 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
                     />
                 </div>
             </div>
-            <div className='product-card-item-info'>
+            <div className='product-item-info'>
                 <div className={'price'}><p>{product.price} ₽</p></div>
                 <div className={'brand'}><p>{product.brand}</p></div>
                 <div className={'category'}><p>{product.category}</p></div>

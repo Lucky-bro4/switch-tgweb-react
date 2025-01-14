@@ -1,4 +1,4 @@
-.product-card {
+.product {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -11,16 +11,18 @@
     color: black;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* z-index: 1; */
 }
 
-.product-card:hover {
+.product:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.product-card-img-container {
+.product-img-container {
     width: 100%;
     height: 200px;
+    /* margin: 0 auto; */
     margin: 1px;
     background: white;
     border-radius: 10px;
@@ -28,16 +30,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* z-index: 2; */
 }
+
+/* .product-item-image {
+    z-index: 3;
+} */
 
 .img {
     width: 100%;
     height: auto;
     max-height: 200px;
     object-fit: contain;
+    /* z-index: 3; */
 }
 
-.product-card-favorite-icon {
+.favorite-icon-catalog {
     position: absolute;
     top: 12px;
     right: 12px;
@@ -51,37 +59,44 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    /* z-index: 4; */
 }
 
-.product-card-favorite-icon:hover {
+.favorite-icon-catalog:hover {
     transform: scale(1.1);
     background-color: rgba(255, 255, 255, 1);
 }
 
-.product-card-favorite-icon img {
+.favorite-icon-catalog img {
     transition: filter 0.3s ease, transform 0.3s ease;
     width: 18px;
     height: 18px;
 }
 
-.product-card-favorite-icon img.active {
+.favorite-icon-catalog img.active {
     filter: brightness(1.5);
 }
 
-.product-card-item-info {
+/* .product-info {
+    justify-content: left;
+} */
+
+.product-item-info {
     display: flex;
     flex-direction: column;
     row-gap: 2px;
-    font-size: calc(1em + 1px);
+    /* align-items: flex-start; */
+    font-size: calc(1em + 1px); /* Увеличиваем текст на 1px */
+    /* z-index: 2; */
 }
 
-.product-card-item-info .product-card-price p {
-    font-weight: bold;
+.product-item-info .price p {
+    font-weight: bold; /* Цена выделена жирным */
     margin: 0;
 }
 
-.product-card-item-info .product-card-brand p,
-.product-card-item-info .product-card-category p,
-.product-card-item-info .product-card-brandSize p {
+.product-item-info .brand p,
+.product-item-info .category p,
+.product-item-info .brandSize p {
     margin: 0;
 }
