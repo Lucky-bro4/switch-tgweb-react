@@ -139,7 +139,7 @@ const Favorites = () => {
                                             <button 
                                                 className="remove-from-cart" 
                                             >
-                                                Товар добавлен в корзину
+                                                Товар в корзине
                                             </button>
                                         </div>
                                     ) : (
