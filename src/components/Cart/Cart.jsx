@@ -153,7 +153,10 @@ const Cart = () => {
                                 />
                                 <div 
                                     className="favorite-icon-cart" 
-                                    onClick={(e) => handleFavoriteClick(e, item)}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleFavoriteClick(item);
+                                    }}
                                 >
                                     <img 
                                         src={
