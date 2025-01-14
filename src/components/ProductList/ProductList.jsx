@@ -10,11 +10,11 @@ import './ProductList.css';
 
 const ProductList = () => {
 
-    const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
+    const { filteredProducts, setFilteredProducts, addedItems, setAddedItems } = useContext(AppContext);
 
     const { tg, queryId, user } = useTelegram();
 
-    const [products, setProducts] = useState([]);
+    
 
     // const [addedItems, setAddedItems] = useState([]);
     
@@ -25,7 +25,9 @@ const ProductList = () => {
 
     const [alertShown, setAlertShown] = useState(false)
 
-    const [filteredProducts, setFilteredProducts] = useState(products || []);
+    // const [products, setProducts] = useState([]);
+    // const [filteredProducts, setFilteredProducts] = useState(products || []);
+
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [searchParams, setSearchParams] = useState({ query: '', filters: {}, gender: '' });
@@ -36,52 +38,52 @@ const ProductList = () => {
         setSearchParams(params);
     };
 
-    useEffect(() => {
-        const getProducts = async () => {
-            try {
-                console.log('chatId: ', user)
-                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
-                // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
-                const data = await response.json();
+    // useEffect(() => {
+    //     const getProducts = async () => {
+    //         try {
+    //             console.log('chatId: ', user)
+    //             const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+    //             // const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products`);
+    //             const data = await response.json();
                 
-                if (data.products) {
-                    setProducts(data.products);
-                    setFilteredProducts(data.products);
-                } else {
-                    setProducts([]); // Если товаров нет, установить пустой массив
-                    setFilteredProducts([]);
-                }
+    //             if (data.products) {
+    //                 setProducts(data.products);
+    //                 setFilteredProducts(data.products);
+    //             } else {
+    //                 setProducts([]); // Если товаров нет, установить пустой массив
+    //                 setFilteredProducts([]);
+    //             }
 
-                // if (data.customer.favorite_items) {
-                //     setFavoriteItems(data.customer.favorite_items)
-                // }
-                // if (data.customer.cart_items) {
-                //     setAddedItems(data.customer.cart_items)
-                // }
+    //             // if (data.customer.favorite_items) {
+    //             //     setFavoriteItems(data.customer.favorite_items)
+    //             // }
+    //             // if (data.customer.cart_items) {
+    //             //     setAddedItems(data.customer.cart_items)
+    //             // }
 
-                // if (!data.customer.location && !data.customer.phone_number) {
-                //     setNewUser(true)
-                // }
+    //             // if (!data.customer.location && !data.customer.phone_number) {
+    //             //     setNewUser(true)
+    //             // }
 
-                // if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
-                //     setCosts(180);
-                //     if (data.successOrder.comment === 'Аренда скоро закончится') {
-                //         setClosedChainOrder(false);
-                //     } else {
-                //         setClosedChainOrder(true);
-                //     }
-                // }
+    //             // if (data.successOrder.status === 'in delivery' || data.successOrder.status === 'order_confirm') {
+    //             //     setCosts(180);
+    //             //     if (data.successOrder.comment === 'Аренда скоро закончится') {
+    //             //         setClosedChainOrder(false);
+    //             //     } else {
+    //             //         setClosedChainOrder(true);
+    //             //     }
+    //             // }
 
-                // Call applyFilters after setting products
-                // applyFilters(searchParams);
+    //             // Call applyFilters after setting products
+    //             // applyFilters(searchParams);
 
-            } catch (e) {
-                console.log('Ошибка при получении списка товаров:', e)
-            }
-        }
+    //         } catch (e) {
+    //             console.log('Ошибка при получении списка товаров:', e)
+    //         }
+    //     }
 
-        getProducts();
-    }, [user])
+    //     getProducts();
+    // }, [user])
 
     useEffect(() => {
         applyFilters(searchParams);

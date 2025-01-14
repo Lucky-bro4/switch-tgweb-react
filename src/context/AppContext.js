@@ -4,6 +4,10 @@ import { useTelegram } from '../hooks/useTelegram';
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState(products || []);
+
     const [addedItems, setAddedItems] = useState([]);
     const [favoriteItems, setFavoriteItems] = useState([]);
 
@@ -18,6 +22,14 @@ export const AppProvider = ({ children }) => {
                 }
 
                 const data = await response.json();
+
+                if (data.products) {
+                    setProducts(data.products);
+                    setFilteredProducts(data.products);
+                } else {
+                    setProducts([]);
+                    setFilteredProducts([]);
+                }
 
                 if (data.customer?.favorite_items) {
                     setFavoriteItems(data.customer.favorite_items);
@@ -36,7 +48,16 @@ export const AppProvider = ({ children }) => {
     }, [user]);
 
     return (
-        <AppContext.Provider value={{ addedItems, setAddedItems, favoriteItems, setFavoriteItems }}>
+        <AppContext.Provider value={{ 
+            products, 
+            setProducts, 
+            filteredProducts, 
+            setFilteredProducts, 
+            addedItems, 
+            setAddedItems, 
+            favoriteItems, 
+            setFavoriteItems 
+        }}>
             {children}
         </AppContext.Provider>
     );

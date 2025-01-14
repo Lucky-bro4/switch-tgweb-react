@@ -10,7 +10,7 @@ import "./Cart.css";
 const Cart = () => {
 
     const { tg, queryId, user } = useTelegram();
-    const { addedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
+    const { products, addedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
 
     const navigate = useNavigate();
@@ -23,11 +23,13 @@ const Cart = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     // const [isFavoriteMap, setIsFavoriteMap] = useState({});
 
+    const cartProducts = products.filter(product => addedItems.includes(product.id));
+
     const calculateTotalPrice = (items = []) => {
         return items.reduce((acc, item) => acc + item.price, 0);
     };
 
-    const totalPrice = calculateTotalPrice(addedItems);
+    const totalPrice = calculateTotalPrice(cartProducts);
 
     const onSendData = useCallback(async () => {
         const data = {
@@ -52,7 +54,7 @@ const Cart = () => {
         } catch (error) {
             alert(`Error: ${error.message}`);
         }
-    }, [addedItems, totalPrice, queryId, user]);
+    }, [cartProducts, totalPrice, queryId, user]);
 
     useEffect(() => {
         if (addedItems.length > 0) {
@@ -68,7 +70,7 @@ const Cart = () => {
             }
         }
         
-    }, [addedItems, onSendData, tg])
+    }, [cartProducts, onSendData, tg])
 
     // const handleFavoriteClick = async (e, product) => {
     //     e.stopPropagation();
@@ -136,8 +138,8 @@ const Cart = () => {
                 Корзина
             </h1>
             <div className="cart-list">
-                {addedItems.length > 0 ? (
-                    addedItems.map((item) => (
+                {cartProducts.length > 0 ? (
+                    cartProducts.map((item) => (
                         <div 
                             key={item.id} 
                             className="cart-item"

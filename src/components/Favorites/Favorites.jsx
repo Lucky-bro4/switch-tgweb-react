@@ -10,7 +10,7 @@ import "./Favorites.css";
 
 const Favorites = () => {
 
-    const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
+    const { products, addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
     const { user } = useTelegram();
 
     const navigate = useNavigate();
@@ -22,11 +22,13 @@ const Favorites = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const favoriteProducts = products.filter(product => favoriteItems.includes(product.id));
+
     const calculateTotalPrice = (items = []) => {
         return items.reduce((acc, item) => acc + item.price, 0);
     };
 
-    const totalPrice = calculateTotalPrice(favoriteItems);
+    const totalPrice = calculateTotalPrice(favoriteProducts);
 
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
     const { handleCartClick } = useCart({ addedItems, setAddedItems, user });
@@ -90,8 +92,8 @@ const Favorites = () => {
                 Избранное
             </h1>
             <div className="favorites-list">
-                {favoriteItems.length > 0 ? (
-                    favoriteItems.map((item) => (
+                {favoriteProducts.length > 0 ? (
+                    favoriteProducts.map((item) => (
                         <div 
                             key={item.id} 
                             className="favorites-item"
@@ -132,7 +134,7 @@ const Favorites = () => {
                                     <p>Состояние: {item.condition}</p>
                                 </div>
                                 <div className="cart-button-container">
-                                    {addedItems.includes(item) ? (
+                                    {addedItems.includes(item.id) ? (
                                         <div>
                                             <button 
                                                 className="remove-from-cart" 
@@ -159,10 +161,10 @@ const Favorites = () => {
                     <ProductModal
                         product={selectedProduct} 
                         onClose={closeModal}
-                        addedItems={addedItems}
-                        setAddedItems={setAddedItems}
-                        favoriteItems={favoriteItems}
-                        setFavoriteItems={setFavoriteItems}
+                        // addedItems={addedItems}
+                        // setAddedItems={setAddedItems}
+                        // favoriteItems={favoriteItems}
+                        // setFavoriteItems={setFavoriteItems}
                     />
                 )}
             </div>
