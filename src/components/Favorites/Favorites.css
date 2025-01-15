@@ -110,9 +110,10 @@
 }
 
 .remove-from-cart {
-    background-color: black;
-    color: white;
-    border: none;
+    /* background-color: black; */
+    background-color: whitesmoke;
+    color: black;
+    border: black;
     border-radius: 10px;
     padding: 10px 20px;
     cursor: pointer;
