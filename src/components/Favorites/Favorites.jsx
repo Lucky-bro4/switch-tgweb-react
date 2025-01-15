@@ -137,7 +137,7 @@ const Favorites = () => {
                                     <p>Состояние: {item.condition}</p>
                                 </div>
                                 <div className="cart-button-container">
-                                    {addedItems.includes(item.id) ? (
+                                    {addedItems.some(product => product.id === item.id) ? (
                                         <div>
                                             <button 
                                                 className="remove-from-cart" 
