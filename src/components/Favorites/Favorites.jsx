@@ -105,30 +105,31 @@ const Favorites = () => {
                                     alt={item.category + ' ' + item.brand} 
                                     className="favorites-image"
                                 />
+                                <div 
+                                    className="favorite-icon-favorites" 
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleFavoriteClick(item);
+                                    }}
+                                >
+                                    <img 
+                                        src={
+                                            favoriteItems.some(product => product.id === item.id)
+                                                ? "/Images/icons/icon-already-add.png"
+                                                : "/Images/icons/icon-not-add.png"
+                                        } 
+                                        alt={
+                                            favoriteItems.some(product => product.id === item.id)
+                                                ? "Remove from Favorites"
+                                                : "Add to Favorites"
+                                        }
+                                        className={
+                                            favoriteItems.some(product => product.id === item.id) ? "active" : ""
+                                        }
+                                    />
+                                </div>
                             </div>
-                            <div 
-                                className="favorite-icon-favorites" 
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleFavoriteClick(item);
-                                }}
-                            >
-                                <img 
-                                    src={
-                                        favoriteItems.some(product => product.id === item.id)
-                                            ? "/Images/icons/icon-already-add.png"
-                                            : "/Images/icons/icon-not-add.png"
-                                    } 
-                                    alt={
-                                        favoriteItems.some(product => product.id === item.id)
-                                            ? "Remove from Favorites"
-                                            : "Add to Favorites"
-                                    }
-                                    className={
-                                        favoriteItems.some(product => product.id === item.id) ? "active" : ""
-                                    }
-                                />
-                            </div>
+                            
                             <div>
                                 <div className="favorites-details">
                                     <h2>{item.category + ' ' + item.brand}</h2>
