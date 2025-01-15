@@ -52,6 +52,11 @@
     transition: transform 0.2s ease-in-out;
 }
 
+.favorite-icon img {
+    width: 23px;
+    height: 23px;
+}
+
 .favorite-icon-cart:hover {
     transform: scale(1.1); /* Эффект увеличения при наведении */
     background-color: rgba(255, 255, 255, 1);

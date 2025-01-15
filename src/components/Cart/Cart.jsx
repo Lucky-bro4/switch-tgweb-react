@@ -151,29 +151,29 @@ const Cart = () => {
                                     alt={item.category + ' ' + item.brand} 
                                     className="cart-image" 
                                 />
-                            </div>
-                            <div 
-                                className="favorite-icon-cart" 
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleFavoriteClick(item);
-                                }}
-                            >
-                                <img 
-                                    src={
-                                        favoriteItems.includes(item.id)
-                                            ? "/Images/icons/icon-already-add.png"
-                                            : "/Images/icons/icon-not-add.png"
-                                    } 
-                                    alt={
-                                        favoriteItems.includes(item.id)
-                                            ? "Remove from Favorites"
-                                            : "Add to Favorites"
-                                    }
-                                    className={
-                                        favoriteItems.includes(item.id) ? "active" : ""
-                                    }
-                                />
+                                <div 
+                                    className="favorite-icon-cart" 
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        handleFavoriteClick(item);
+                                    }}
+                                >
+                                    <img 
+                                        src={
+                                            favoriteItems.some(product => product.id === item.id)
+                                                ? "/Images/icons/icon-already-add.png"
+                                                : "/Images/icons/icon-not-add.png"
+                                        } 
+                                        alt={
+                                            favoriteItems.some(product => product.id === item.id)
+                                                ? "Remove from Favorites"
+                                                : "Add to Favorites"
+                                        }
+                                        className={
+                                            favoriteItems.some(product => product.id === item.id) ? "active" : ""
+                                        }
+                                    />
+                                </div>
                             </div>
                             
                             <div className="cart-details">
