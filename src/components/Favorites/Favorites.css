@@ -109,8 +109,9 @@
     transition: background-color 0.3s ease;
 }
 
-.remove-from-cart {
+.already-in-cart {
     /* background-color: black; */
+    font-weight: bold;
     background-color: whitesmoke;
     color: black;
     border: black;

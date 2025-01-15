@@ -141,7 +141,7 @@ const Favorites = () => {
                                     {addedItems.some(product => product.id === item.id) ? (
                                         <div>
                                             <button 
-                                                className="remove-from-cart" 
+                                                className="already-in-cart" 
                                             >
                                                 Товар в корзине
                                             </button>
