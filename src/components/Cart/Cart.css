@@ -52,7 +52,7 @@
     transition: transform 0.2s ease-in-out;
 }
 
-.favorite-icon img {
+.favorite-icon-cart img {
     width: 23px;
     height: 23px;
 }
