@@ -115,17 +115,17 @@ const Favorites = () => {
                             >
                                 <img 
                                     src={
-                                        favoriteItems.includes(item.id)
+                                        favoriteItems.some(product => product.id === item.id)
                                             ? "/Images/icons/icon-already-add.png"
                                             : "/Images/icons/icon-not-add.png"
                                     } 
                                     alt={
-                                        favoriteItems.includes(item.id)
+                                        favoriteItems.some(product => product.id === item.id)
                                             ? "Remove from Favorites"
                                             : "Add to Favorites"
                                     }
                                     className={
-                                        favoriteItems.includes(item.id) ? "active" : ""
+                                        favoriteItems.some(product => product.id === item.id) ? "active" : ""
                                     }
                                 />
                             </div>
