@@ -37,6 +37,7 @@
 }
 
 .favorite-icon-cart {
+    position: absolute;
     top: 10px; /* Расстояние от верхней границы */
     right: 10px; /* Расстояние от правой границы */
     width: 30px; /* Размер иконки */

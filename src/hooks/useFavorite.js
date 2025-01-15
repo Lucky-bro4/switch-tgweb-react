@@ -23,15 +23,15 @@ export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
             });
 
             if (!response.ok) {
-                alert('Failed to update favorite status');
+                // alert('Failed to update favorite status');
                 throw new Error('Failed to update favorite status');
             }
 
             const data = await response.json();
-            alert('Favorite status updated successfully:', data);
+            // alert('Favorite status updated successfully:', data);
             console.log('Favorite status updated successfully:', data);
         } catch (error) {
-            alert('Error updating favorite status:', error);
+            // alert('Error updating favorite status:', error);
             console.error('Error updating favorite status:', error);
 
             // Откат изменений в случае ошибки
