@@ -9,7 +9,7 @@ export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
         // Локальное обновление избранного
         setFavoriteItems((prevItems) =>
             newFavoriteState
-                ? [...prevItems, product.ifd]
+                ? [...prevItems, product]
                 : prevItems.filter((item) => item.id !== product.id)
         );
 
