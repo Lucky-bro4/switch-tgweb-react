@@ -22,13 +22,13 @@ export const useCart = ({ addedItems, setAddedItems, user }) => {
             });
 
             if (!response.ok) {
-                alert('Failed to update cart status');
+                // alert('Failed to update cart status');
                 throw new Error('Failed to update cart status');
             }
 
             const data = await response.json();
             console.log('Cart status updated successfully:', data);
-            alert('Cart status updated successfully:', data);
+            // alert('Cart status updated successfully:', data);
         } catch (error) {
             console.error('Error updating cart status:', error);
 
