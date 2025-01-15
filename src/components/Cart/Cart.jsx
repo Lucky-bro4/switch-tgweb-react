@@ -23,7 +23,7 @@ const Cart = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     // const [isFavoriteMap, setIsFavoriteMap] = useState({});
 
-    const cartProducts = products.filter(product => addedItems.includes(product.id));
+    const cartProducts = products.filter(product => addedItems.some(item => item.id === product.id));
 
     const calculateTotalPrice = (items = []) => {
         return items.reduce((acc, item) => acc + item.price, 0);
@@ -75,7 +75,7 @@ const Cart = () => {
     // const handleFavoriteClick = async (e, product) => {
     //     e.stopPropagation();
 
-    //     const isCurrentlyFavorite = favoriteItems.includes(product.id);
+    //     const isCurrentlyFavorite = favoriteItems.some(item => item.id === product.id);
     //     const newFavoriteState = !isCurrentlyFavorite;
 
     //     // Обновить глобальный или серверный список избранного

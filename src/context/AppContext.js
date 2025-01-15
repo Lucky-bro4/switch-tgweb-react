@@ -26,17 +26,28 @@ export const AppProvider = ({ children }) => {
                 if (data.products) {
                     setProducts(data.products);
                     setFilteredProducts(data.products);
+
+                    if (data.customer?.favorite_items) {
+                        const favoriteItems = data.customer.favorite_items
+                            .map(id => data.products.find(product => product.id === id))
+                            .filter(product => product); // Убираем null/undefined, если id нет в data.products
+                        setFavoriteItems(favoriteItems);
+                    }
+    
+                    if (data.customer?.cart_items) {
+                        const addedItems = data.customer.cart_items
+                            .map(id => data.products.find(product => product.id === id))
+                            .filter(product => product); // Убираем null/undefined, если id нет в data.products
+                        setAddedItems(addedItems);
+                    }
+
                 } else {
                     setProducts([]);
                     setFilteredProducts([]);
+                    setFavoriteItems([]);
+                    setAddedItems([]);
                 }
 
-                if (data.customer?.favorite_items) {
-                    setFavoriteItems(data.customer.favorite_items);
-                }
-                if (data.customer?.cart_items) {
-                    setAddedItems(data.customer.cart_items);
-                }
             } catch (e) {
                 console.error('Ошибка при получении данных в AppContext:', e);
             }

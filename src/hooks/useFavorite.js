@@ -1,7 +1,7 @@
 export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
 
     const handleFavoriteClick = async (product) => {
-        const isCurrentlyFavorite = favoriteItems.includes(product.id);
+        const isCurrentlyFavorite = favoriteItems.some(item => item.id === product.id)
         const newFavoriteState = !isCurrentlyFavorite;
 
         // setIsFavorite(newFavoriteState);
@@ -10,7 +10,7 @@ export const useFavorite = ({ favoriteItems, setFavoriteItems, user }) => {
         setFavoriteItems((prevItems) =>
             newFavoriteState
                 ? [...prevItems, product.ifd]
-                : prevItems.filter((id) => id !== product.id)
+                : prevItems.filter((item) => item.id !== product.id)
         );
 
         try {

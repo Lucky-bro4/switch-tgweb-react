@@ -104,9 +104,9 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
                     }}
                 >
                     <img 
-                        src={favoriteItems.includes(product.id) ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
-                        alt={favoriteItems.includes(product.id) ? 'Remove from Favorites' : 'Add to Favorites'}
-                        className={favoriteItems.includes(product.id) ? 'active' : ''}
+                        src={favoriteItems.some(item => item.id === product.id) ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
+                        alt={favoriteItems.some(item => item.id === product.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+                        className={favoriteItems.some(item => item.id === product.id) ? 'active' : ''}
                     />
                 </div>
             </div>

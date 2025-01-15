@@ -54,6 +54,7 @@ const Profile = () => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+            
             tg.showAlert('Данные успешно сохранены')
             
         } catch (error) {

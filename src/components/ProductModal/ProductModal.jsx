@@ -101,8 +101,8 @@ const ProductModal = ({ product, onClose }) => {
                             }}
                         >
                             <img 
-                                src={favoriteItems.includes(product.id) ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
-                                alt={favoriteItems.includes(product.id) ? 'Remove from Favorites' : 'Add to Favorites'}    
+                                src={favoriteItems.some(item => item.id === product.id) ? '/Images/icons/icon-already-add.png' : '/Images/icons/icon-not-add.png'} 
+                                alt={favoriteItems.some(item => item.id === product.id) ? 'Remove from Favorites' : 'Add to Favorites'}    
                             />
                         </div>
                     </div>
@@ -143,7 +143,7 @@ const ProductModal = ({ product, onClose }) => {
 
                 {/* Кнопки для модального окна */}
                 <div className="cart-button-container">
-                    {addedItems.includes(product.id) ? (
+                    {addedItems.some(item => item.id === product.id) ? (
                         <div>
                             <button 
                                 className="remove-from-cart" 
