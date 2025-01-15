@@ -107,7 +107,7 @@ const Favorites = () => {
                                 />
                             </div>
                             <div 
-                                className="favorite-icon-catalog" 
+                                className="favorite-icon-favorites" 
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     handleFavoriteClick(item);
