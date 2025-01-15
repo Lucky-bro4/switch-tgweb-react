@@ -148,8 +148,11 @@ const Favorites = () => {
                                         </div>
                                     ) : (
                                         <button 
-                                            className="add-to-cart" 
-                                            onClick={() => handleCartClick(item)}
+                                            className="add-to-cart"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleCartClick(item);
+                                            }}
                                         >
                                             Добавить в корзину
                                         </button>
