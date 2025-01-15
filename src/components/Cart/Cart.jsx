@@ -23,13 +23,13 @@ const Cart = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     // const [isFavoriteMap, setIsFavoriteMap] = useState({});
 
-    const cartProducts = products.filter(product => addedItems.some(item => item.id === product.id));
+    // const addedItems = products.filter(product => addedItems.some(item => item.id === product.id));
 
     const calculateTotalPrice = (items = []) => {
         return items.reduce((acc, item) => acc + item.price, 0);
     };
 
-    const totalPrice = calculateTotalPrice(cartProducts);
+    const totalPrice = calculateTotalPrice(addedItems);
 
     const onSendData = useCallback(async () => {
         const data = {
@@ -54,7 +54,7 @@ const Cart = () => {
         } catch (error) {
             alert(`Error: ${error.message}`);
         }
-    }, [cartProducts, totalPrice, queryId, user]);
+    }, [addedItems, totalPrice, queryId, user]);
 
     useEffect(() => {
         if (addedItems.length > 0) {
@@ -70,7 +70,7 @@ const Cart = () => {
             }
         }
         
-    }, [cartProducts, onSendData, tg])
+    }, [addedItems, onSendData, tg])
 
     // const handleFavoriteClick = async (e, product) => {
     //     e.stopPropagation();
@@ -138,8 +138,8 @@ const Cart = () => {
                 Корзина
             </h1>
             <div className="cart-list">
-                {cartProducts.length > 0 ? (
-                    cartProducts.map((item) => (
+                {addedItems.length > 0 ? (
+                    addedItems.map((item) => (
                         <div 
                             key={item.id} 
                             className="cart-item"
