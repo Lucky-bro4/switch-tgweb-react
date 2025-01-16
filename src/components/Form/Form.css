@@ -33,7 +33,7 @@
 .label {
     margin-bottom: 10px;
     font-size: 16px;
-    color: #333;
+    color: #146eeb;
 }
 
 .slider {
@@ -49,8 +49,8 @@
 
 .star {
     font-size: 24px;
-    /* color: #ccc; */
-    color: #146eeb;
+    color: #ccc;
+    /* color: #146eeb; */
     margin: 0 2px;
 }
 
