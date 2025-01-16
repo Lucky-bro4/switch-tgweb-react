@@ -378,7 +378,7 @@ const AdminPage = () => {
                     other = [...other, data.allProducts[i]]
                 }
             }
-//
+
             setAvailableProducts(available)
             setOrderProducts(order)
             setLaundryProducts(laundry)
