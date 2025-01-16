@@ -95,7 +95,7 @@ const ProductModal = ({ product, onClose, location }) => {
             tg.MainButton
                 .setParams({ 
                     text: 'Добавить в корзину',
-                    color: '#E22D60',
+                    color: '000000',
                     // position: 'left'
                 })
                 .show();
