@@ -66,7 +66,10 @@ const Cart = () => {
 
         if (isCartActive && addedItems.length > 0) {
             tg.MainButton
-                .setParams({ text: 'Оформить заказ' }) // Устанавливаем текст кнопки
+                .setParams({ 
+                    text: 'Оформить заказ',
+                    color: '#ffffff'
+                }) // Устанавливаем текст кнопки
                 .show(); // Показываем кнопку
 
             tg.MainButton.onClick(handleButtonClick);
