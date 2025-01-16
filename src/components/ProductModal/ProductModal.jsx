@@ -29,25 +29,25 @@ const ProductModal = ({ product, onClose, location }) => {
         }
     };
 
-    const changeAfterRemoveButton = () => {
-        tg.MainButton
-            .setParams({ 
-                text: 'Добавить в корзину',
-                color: '#E22D60',
-            })
+    // const changeAfterRemoveButton = () => {
+    //     tg.MainButton
+    //         .setParams({ 
+    //             text: 'Добавить в корзину',
+    //             color: '#E22D60',
+    //         })
 
-        handleCartClick(product);
-    }
+    //     handleCartClick(product);
+    // }
 
-    const changeAddProductButton = () => {
-        tg.MainButton
-            .setParams({ 
-                text: 'Перейти в корзину',
-                color: '#82d83f',
-            })
+    // const changeAddProductButton = () => {
+    //     tg.MainButton
+    //         .setParams({ 
+    //             text: 'Перейти в корзину',
+    //             color: '#82d83f',
+    //         })
 
-        handleCartClick(product);
-    }
+    //     handleCartClick(product);
+    // }
 
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
@@ -85,7 +85,7 @@ const ProductModal = ({ product, onClose, location }) => {
     
                 tg.MainButton.onClick(() => {
                     tg.MainButton.offClick(); // Убираем текущий обработчик перед изменением
-                    changeAfterRemoveButton();
+                    handleCartClick(product);
                 });
             } else {
                 tg.MainButton
@@ -110,7 +110,7 @@ const ProductModal = ({ product, onClose, location }) => {
     
             tg.MainButton.onClick(() => {
                 tg.MainButton.offClick(); // Убираем текущий обработчик перед изменением
-                changeAddProductButton();
+                handleCartClick(product);
             });
         }
     
