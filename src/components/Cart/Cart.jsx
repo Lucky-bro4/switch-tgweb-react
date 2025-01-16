@@ -164,7 +164,7 @@ const Cart = () => {
                     <ProductModal
                         product={selectedProduct} 
                         onClose={closeModal}
-                        // location={isCartActive}
+                        location={isCartActive}
                     />
                 )}
             </div>

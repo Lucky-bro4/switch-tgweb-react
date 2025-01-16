@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 
-const ProductModal = ({ product, onClose }) => {
+const ProductModal = ({ product, onClose, location }) => {
 
     const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
@@ -19,7 +19,7 @@ const ProductModal = ({ product, onClose }) => {
     
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const location = useLocation();
+    // const location = useLocation();
     const navigate = useNavigate();
 
 
@@ -52,7 +52,7 @@ const ProductModal = ({ product, onClose }) => {
 
     useEffect(() => {
         if (addedItems.some(item => item.id === product.id)) {
-            if (location.pathname === "/cart") {
+            if (location) {
                 tg.MainButton
                     .setParams({ 
                         text: 'Удалить из корзины',
