@@ -14,7 +14,6 @@ const Favorites = () => {
     const { tg, user } = useTelegram();
 
     const navigate = useNavigate();
-    onToggleButton();
 
     const handleHomeClick = () => {
         navigate('/');
