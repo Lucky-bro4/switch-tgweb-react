@@ -28,9 +28,8 @@ const Profile = () => {
 
     useEffect(() => {
         tg.showAlert('Заполните параметры/замеры, чтобы видеть персонализированный каталог')
+        onToggleButton();
     }, [tg]);
-
-    onToggleButton();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
