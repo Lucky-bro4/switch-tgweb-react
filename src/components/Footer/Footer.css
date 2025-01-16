@@ -47,6 +47,10 @@
   position: relative;
 }
 
+.icon-user {
+  border-radius: 50%;
+}
+
 .badge-favorites {
   position: absolute;
   top: -7px;
