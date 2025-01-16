@@ -88,7 +88,7 @@ const ProductModal = ({ product, onClose, location }) => {
         //     tg.MainButton.offClick(handleButtonClick);
         // };
 
-    }, [tg, addedItems, product, location]);
+    }, [tg]);
 
     // useEffect(() => {
     
