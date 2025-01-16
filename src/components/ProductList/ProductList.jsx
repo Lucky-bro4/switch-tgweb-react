@@ -32,7 +32,7 @@ const ProductList = () => {
         setSearchParams(params);
     };
 
-    // onToggleButton();
+    onToggleButton();
 
     // useEffect(() => {
     //     const getProducts = async () => {
@@ -165,59 +165,59 @@ const ProductList = () => {
     // }, [onSendData])
 
 
-    const onAdd = (product) => {
+    // const onAdd = (product) => {
 
-        const alreadyAdded = addedItems.find(item => item.id === product.id);
+    //     const alreadyAdded = addedItems.find(item => item.id === product.id);
     
-        let newItems = [];
+    //     let newItems = [];
         
-    
-        if(alreadyAdded) {
-            newItems = addedItems.filter(item => item.id !== product.id);
-        } else {
-            newItems = [...addedItems, product];
-        }
+    //
+    //     if(alreadyAdded) {
+    //         newItems = addedItems.filter(item => item.id !== product.id);
+    //     } else {
+    //         newItems = [...addedItems, product];
+    //     }
 
 
-        if (newItems.length > 4) {
-            tg.showAlert('Вы можете выбрать максимум 4 вещи');
-            acceptSuccess(newItems, success)
-            newItems.pop();
-        } else if (newItems.length === 1 && newUser && !alertShown) {
-            tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена!')
-            setAlertShown(true)
-        }
+    //     if (newItems.length > 4) {
+    //         tg.showAlert('Вы можете выбрать максимум 4 вещи');
+    //         acceptSuccess(newItems, success)
+    //         newItems.pop();
+    //     } else if (newItems.length === 1 && newUser && !alertShown) {
+    //         tg.showAlert('Стоимость аренды рассчитывается с учетом доставки. Чем больше вещей в заказе - тем выгоднее цена!')
+    //         setAlertShown(true)
+    //     }
 
-        setOrder(newItems.length)
-        setAddedItems(newItems)
+    //     setOrder(newItems.length)
+    //     setAddedItems(newItems)
 
-        // if(newItems.length === 0) {
-        //     tg.MainButton.hide();
-        // } else if (closedChainOrder) {
-        //     tg.MainButton.show()
-        //     tg.MainButton.setParams({
-        //         text: `Аренда за ${getTotalPrice(newItems)} Р`,
-        //         color: '#ccc'
-        //     })
-        //     tg.onEvent('mainButtonClicked', onShowAlert)
-        // } else {
-        //     tg.MainButton.show();
-        //     tg.MainButton.setParams({
-        //         text: `Арендовать за ${getTotalPrice(newItems)} Р`
-        //     })
-        // } 
+    //     // if(newItems.length === 0) {
+    //     //     tg.MainButton.hide();
+    //     // } else if (closedChainOrder) {
+    //     //     tg.MainButton.show()
+    //     //     tg.MainButton.setParams({
+    //     //         text: `Аренда за ${getTotalPrice(newItems)} Р`,
+    //     //         color: '#ccc'
+    //     //     })
+    //     //     tg.onEvent('mainButtonClicked', onShowAlert)
+    //     // } else {
+    //     //     tg.MainButton.show();
+    //     //     tg.MainButton.setParams({
+    //     //         text: `Арендовать за ${getTotalPrice(newItems)} Р`
+    //     //     })
+    //     // } 
 
-        if(newItems.length === 0) {
-            tg.MainButton.hide();
-        } else {
-            tg.MainButton.show();
-            tg.MainButton.setParams({
-                text: `Посмотреть заказ`
-            })
-            tg.onEvent('mainButtonClicked', onShowAlert)
-        } 
+    //     if(newItems.length === 0) {
+    //         tg.MainButton.hide();
+    //     } else {
+    //         tg.MainButton.show();
+    //         tg.MainButton.setParams({
+    //             text: `Посмотреть заказ`
+    //         })
+    //         tg.onEvent('mainButtonClicked', onShowAlert)
+    //     } 
 
-    }
+    // }
 
     const getTotalPrice = (items = []) => {
         return items.reduce((acc, item) => {
