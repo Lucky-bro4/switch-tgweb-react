@@ -73,52 +73,46 @@ const ProductModal = ({ product, onClose, location }) => {
     useEffect(() => {
         // Очистка всех предыдущих обработчиков перед назначением новых
         tg.MainButton.offClick();
+
+        const handleButtonClick = () => {
+            if (addedItems.some(item => item.id === product.id)) {
+                if (location === 'true') {
+                    handleCartClick(product); // Удаляем товар из корзины
+                } else {
+                    goToCart(); // Переход в корзину
+                }
+            } else {
+                handleCartClick(product); // Добавляем товар в корзину
+            }
+        };
     
         if (addedItems.some(item => item.id === product.id)) {
             if (location === 'true') {
-                tg.MainButton
-                    .setParams({
-                        text: 'Удалить из корзины',
-                        color: '#000000',
-                    })
-                    .show();
+                tg.MainButton.setParams({
+                    text: 'Удалить из корзины',
+                    color: '#000000',
+                }).show();
     
-                tg.MainButton.onClick(() => {
-                    tg.MainButton.offClick(); // Убираем текущий обработчик перед изменением
-                    handleCartClick(product);
-                });
             } else {
-                tg.MainButton
-                    .setParams({
-                        text: 'Перейти в корзину',
-                        color: '#82d83f',
-                    })
-                    .show();
-    
-                tg.MainButton.onClick(() => {
-                    tg.MainButton.offClick(); // Убираем текущий обработчик перед изменением
-                    goToCart();
-                });
+                tg.MainButton.setParams({
+                    text: 'Перейти в корзину',
+                    color: '#82d83f',
+                }).show();
             }
         } else {
-            tg.MainButton
-                .setParams({
-                    text: 'Добавить в корзину',
-                    color: '#E22D60',
-                })
-                .show();
-    
-            tg.MainButton.onClick(() => {
-                tg.MainButton.offClick(); // Убираем текущий обработчик перед изменением
-                handleCartClick(product);
-            });
+            tg.MainButton.setParams({
+                text: 'Добавить в корзину',
+                color: '#E22D60',
+            }).show();
         }
+
+        tg.MainButton.onClick(handleButtonClick);
     
         // Очистка обработчиков при размонтировании компонента
         return () => {
             tg.MainButton.offClick();
         };
-    }, [addedItems, location, product.id, tg]);
+    }, [addedItems, location, product, tg, handleCartClick]);
 
     // useEffect(() => {
     
