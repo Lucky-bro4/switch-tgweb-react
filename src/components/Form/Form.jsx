@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import './Form.css';
+import Header from '../Header/Header';
 import {useTelegram} from "../../hooks/useTelegram";
+import './Form.css';
 
 const Form = () => {
     const [quest1, setQuest1] = useState('');
@@ -72,46 +73,49 @@ const Form = () => {
     };
 
     return (
-        <div className="form-container">
-            <input
-                className="input"
-                type="text"
-                placeholder="Что стоило бы улучшить в сервисе?"
-                value={quest1}
-                onChange={onChangeQuest1}
-            />
-            <input
-                className="input"
-                type="text"
-                placeholder="Что мы могли бы улучшить в дизайне или навигации?"
-                value={quest2}
-                onChange={onChangeQuest2}
-            />
-            <input
-                className="input"
-                type="text"
-                placeholder="Есть ли что-то еще, что вы бы хотели сообщить нам?"
-                value={quest3}
-                onChange={onChangeQuest3}
-            />
-            <input
-                className="input"
-                type="text"
-                placeholder="Какой стиль в одежде вы предпочитаете?"
-                value={update}
-                onChange={onChangeUpdate}
-            />
-            <div className="label">Общая оценка</div>
-            <input
-                    type="range"
-                    min="1"
-                    max="5"
-                    value={grade}
-                    onChange={onChangeGrade}
-                    className="slider"
+        <div>
+            <Header />
+            <div className="form-container">
+                <input
+                    className="input"
+                    type="text"
+                    placeholder="Как думаете что стоит улучшить в сервисе?"
+                    value={quest1}
+                    onChange={onChangeQuest1}
                 />
-            <div className="stars">
-                {renderStars()}
+                <input
+                    className="input"
+                    type="text"
+                    placeholder="Что мы могли бы улучшить в дизайне или навигации?"
+                    value={quest2}
+                    onChange={onChangeQuest2}
+                />
+                <input
+                    className="input"
+                    type="text"
+                    placeholder="Есть ли что-то еще, что вы бы хотели сообщить нам?"
+                    value={quest3}
+                    onChange={onChangeQuest3}
+                />
+                <input
+                    className="input"
+                    type="text"
+                    placeholder="Какой стиль в одежде вы предпочитаете?"
+                    value={update}
+                    onChange={onChangeUpdate}
+                />
+                <div className="label">Общая оценка</div>
+                <input
+                        type="range"
+                        min="1"
+                        max="5"
+                        value={grade}
+                        onChange={onChangeGrade}
+                        className="slider"
+                    />
+                <div className="stars">
+                    {renderStars()}
+                </div>
             </div>
         </div>
     );
