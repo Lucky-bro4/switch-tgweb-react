@@ -66,98 +66,100 @@ const Profile = () => {
 
 
     return (
-        <div className="profile-section">
-            <h1>
-                <span className="catalog-icon" onClick = {handleHomeClick}>
-                    <img 
-                        src="/Images/mainLogo_withoutRental&Back.png" 
-                        width={40} 
-                        alt="Go to catalog" 
-                        title="Go to Catalog"
-                    />
-                </span>
-                Профиль
-            </h1>
-            <h3 className='user-info'>
-                {user.username}
-            </h3>
-            <div className="measurements">
-                <label>
-                    <span>Плечи (см):</span>
-                    <input
-                        type="number"
-                        name="shoulders"
-                        value={measurements.shoulders}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    <span>Длина рукава (см):</span>
-                    <input
-                        type="number"
-                        name="sleeveLength"
-                        value={measurements.sleeveLength}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    <span>Подмышки (см):</span>
-                    <input
-                        type="number"
-                        name="underarms"
-                        value={measurements.underarms}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    <span>Длина по спине (см):</span>
-                    <input
-                        type="number"
-                        name="backLength"
-                        value={measurements.backLength}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    <span>Длина ноги внешняя (см):</span>
-                    <input
-                        type="number"
-                        name="outerLegLength"
-                        value={measurements.outerLegLength}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    <span>Длина ноги внутренняя (см):</span>
-                    <input
-                        type="number"
-                        name="innerLegLength"
-                        value={measurements.innerLegLength}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label>
-                    <span>Ширина талии (см):</span>
-                    <input
-                        type="number"
-                        name="waistWidth"
-                        value={measurements.waistWidth}
-                        onChange={handleChange}
-                    />
-                </label>
+        <div>
+            <div className="profile-section">
+                <h1>
+                    <span className="catalog-icon" onClick = {handleHomeClick}>
+                        <img 
+                            src="/Images/mainLogo_withoutRental&Back.png" 
+                            width={40} 
+                            alt="Go to catalog" 
+                            title="Go to Catalog"
+                        />
+                    </span>
+                    Профиль
+                </h1>
+                <h3 className='user-info'>
+                    {user.username}
+                </h3>
+                <div className="measurements">
+                    <label>
+                        <span>Плечи (см):</span>
+                        <input
+                            type="number"
+                            name="shoulders"
+                            value={measurements.shoulders}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label>
+                        <span>Длина рукава (см):</span>
+                        <input
+                            type="number"
+                            name="sleeveLength"
+                            value={measurements.sleeveLength}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label>
+                        <span>Подмышки (см):</span>
+                        <input
+                            type="number"
+                            name="underarms"
+                            value={measurements.underarms}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label>
+                        <span>Длина по спине (см):</span>
+                        <input
+                            type="number"
+                            name="backLength"
+                            value={measurements.backLength}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label>
+                        <span>Длина ноги внешняя (см):</span>
+                        <input
+                            type="number"
+                            name="outerLegLength"
+                            value={measurements.outerLegLength}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label>
+                        <span>Длина ноги внутренняя (см):</span>
+                        <input
+                            type="number"
+                            name="innerLegLength"
+                            value={measurements.innerLegLength}
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label>
+                        <span>Ширина талии (см):</span>
+                        <input
+                            type="number"
+                            name="waistWidth"
+                            value={measurements.waistWidth}
+                            onChange={handleChange}
+                        />
+                    </label>
+                </div>
+                <div className="email-section">
+                    <label>
+                        Почта:
+                        <input
+                            type="email"
+                            placeholder='email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </label>
+                </div>
+                <button className="save-button" onClick={handleSave}>Сохранить</button>
             </div>
-            <div className="email-section">
-                <label>
-                    Почта:
-                    <input
-                        type="email"
-                        placeholder='email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </label>
-            </div>
-            <button className="save-button" onClick={handleSave}>Сохранить</button>
             <Footer />
         </div>
     );

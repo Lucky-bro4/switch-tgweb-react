@@ -61,27 +61,26 @@ const Cart = () => {
     }, [addedItems, totalPrice, queryId, user]);
 
     useEffect(() => {
-        if (addedItems.length > 0 && isCartActive) {
-            
+        if (addedItems.length === 0 || !isCartActive) {
+
+            tg.MainButton.hide();
+
+        } else {
+
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: 'Оформить заказ',
             })
-
+            
             tg.onEvent('mainButtonClicked', onSendData)
             return () => {
                 tg.offEvent('mainButtonClicked', onSendData)
             }
-
-        } else {
-            tg.MainButton.disable();
-            tg.MainButton.hide();
-
         }
         
     }, [addedItems, onSendData, tg, isCartActive]);
 
-    
+    // tg.onEvent('mainButtonClicked', onShowAlert)
 
     const onProductClick = (product) => {
         setSelectedProduct(product);
@@ -94,81 +93,83 @@ const Cart = () => {
     }
 
     return (
-        <div className="cart-section">
-            <h1>
-                <span className="catalog-icon" onClick = {handleHomeClick}>
-                    <img 
-                        src="/Images/mainLogo_withoutRental&Back.png" 
-                        width={40} 
-                        alt="Go to catalog" 
-                        title="Go to Catalog"
-                    />
-                </span>
-                Корзина
-            </h1>
-            <div className="cart-list">
-                {addedItems.length > 0 ? (
-                    addedItems.map((item) => (
-                        <div 
-                            key={item.id} 
-                            className="cart-item"
-                            onClick={() => onProductClick(item)}
-                        >
-                            <div className="cart-image-wrapper">
-                                <img 
-                                    src={item.image[0]} 
-                                    alt={item.category + ' ' + item.brand} 
-                                    className="cart-image" 
-                                />
-                                <div 
-                                    className="favorite-icon-cart" 
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleFavoriteClick(item);
-                                    }}
-                                >
+        <div>
+            <div className="cart-section">
+                <h1>
+                    <span className="catalog-icon" onClick = {handleHomeClick}>
+                        <img 
+                            src="/Images/mainLogo_withoutRental&Back.png" 
+                            width={40} 
+                            alt="Go to catalog" 
+                            title="Go to Catalog"
+                        />
+                    </span>
+                    Корзина
+                </h1>
+                <div className="cart-list">
+                    {addedItems.length > 0 ? (
+                        addedItems.map((item) => (
+                            <div 
+                                key={item.id} 
+                                className="cart-item"
+                                onClick={() => onProductClick(item)}
+                            >
+                                <div className="cart-image-wrapper">
                                     <img 
-                                        src={
-                                            favoriteItems.some(product => product.id === item.id)
-                                                ? "/Images/icons/icon-already-add.png"
-                                                : "/Images/icons/icon-not-add.png"
-                                        } 
-                                        alt={
-                                            favoriteItems.some(product => product.id === item.id)
-                                                ? "Remove from Favorites"
-                                                : "Add to Favorites"
-                                        }
-                                        className={
-                                            favoriteItems.some(product => product.id === item.id) ? "active" : ""
-                                        }
+                                        src={item.image[0]} 
+                                        alt={item.category + ' ' + item.brand} 
+                                        className="cart-image" 
                                     />
+                                    <div 
+                                        className="favorite-icon-cart" 
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleFavoriteClick(item);
+                                        }}
+                                    >
+                                        <img 
+                                            src={
+                                                favoriteItems.some(product => product.id === item.id)
+                                                    ? "/Images/icons/icon-already-add.png"
+                                                    : "/Images/icons/icon-not-add.png"
+                                            } 
+                                            alt={
+                                                favoriteItems.some(product => product.id === item.id)
+                                                    ? "Remove from Favorites"
+                                                    : "Add to Favorites"
+                                            }
+                                            className={
+                                                favoriteItems.some(product => product.id === item.id) ? "active" : ""
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                
+                                <div className="cart-details">
+                                    <h2>{item.category + ' ' + item.brand}</h2>
+                                    <p className="cart-price">Цена: {item.price} ₽</p>
+                                    <p>Размер бренда: {item.brandSize}</p>
+                                    <p>Состояние: {item.condition}</p>
                                 </div>
                             </div>
-                            
-                            <div className="cart-details">
-                                <h2>{item.category + ' ' + item.brand}</h2>
-                                <p className="cart-price">Цена: {item.price} ₽</p>
-                                <p>Размер бренда: {item.brandSize}</p>
-                                <p>Состояние: {item.condition}</p>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <div>Корзина пуста</div>
-                )}
-                {isModalOpen && selectedProduct && (
-                    <ProductModal
-                        product={selectedProduct} 
-                        onClose={closeModal}
+                        ))
+                    ) : (
+                        <div>Корзина пуста</div>
+                    )}
+                    {isModalOpen && selectedProduct && (
+                        <ProductModal
+                            product={selectedProduct} 
+                            onClose={closeModal}
 
-                    />
+                        />
+                    )}
+                </div>
+                {addedItems.length > 0 && (
+                    <div className="total-price">
+                        <h2>Общая сумма: {totalPrice} ₽</h2>
+                    </div>
                 )}
             </div>
-            {addedItems.length > 0 && (
-                <div className="total-price">
-                    <h2>Общая сумма: {totalPrice} ₽</h2>
-                </div>
-            )}
             <Footer />
         </div>
     );
