@@ -85,7 +85,7 @@ const ProductModal = ({ product, onClose, location }) => {
         }
 
         return () => {
-            tg.MainButton.offClick(handleButtonClick);
+            tg.MainButton.offClick(handleCartClick(product));
         };
 
     }, [tg, addedItems]);
