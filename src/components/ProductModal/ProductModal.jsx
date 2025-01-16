@@ -124,32 +124,33 @@ const ProductModal = ({ product, onClose }) => {
                         )}
                     </div>
                 </div>
-            </div>
-            {/* Кнопки для модального окна */}
-            <div className="cart-button-container">
-                {addedItems.some(item => item.id === product.id) ? (
-                    <div>
+
+                {/* Кнопки для модального окна */}
+                <div className="cart-button-container">
+                    {addedItems.some(item => item.id === product.id) ? (
+                        <div>
+                            <button 
+                                className="remove-from-cart" 
+                                onClick={() => handleCartClick(product)}
+                            >
+                                Удалить из корзины
+                            </button>
+                            <button 
+                                className="go-to-cart" 
+                                onClick={() => navigate('/cart')}
+                            >
+                                Перейти в корзину
+                            </button>
+                        </div>
+                    ) : (
                         <button 
-                            className="remove-from-cart" 
+                            className="add-to-cart" 
                             onClick={() => handleCartClick(product)}
                         >
-                            Удалить из корзины
+                            Добавить в корзину
                         </button>
-                        <button 
-                            className="go-to-cart" 
-                            onClick={() => navigate('/cart')}
-                        >
-                            Перейти в корзину
-                        </button>
-                    </div>
-                ) : (
-                    <button 
-                        className="add-to-cart" 
-                        onClick={() => handleCartClick(product)}
-                    >
-                        Добавить в корзину
-                    </button>
-                )}
+                    )}
+                </div>
             </div>
         </div>
     );
