@@ -69,8 +69,7 @@ const Footer = () => {
         <div className="footer-section" onClick={handleProfileClick}>
           <i className="icon-user">
           <img 
-                // src={isProfileActive ? "/Images/icons/icon-profile-active.png" : "/Images/icons/icon-profile-not-active.png"}
-                src={user.photo_url}
+                src={isProfileActive ? "/Images/icons/icon-profile-active.png" : "/Images/icons/icon-profile-not-active.png"}
                 width={30} 
                 alt="icon-profile" />
           </i>
