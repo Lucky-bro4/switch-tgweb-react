@@ -73,9 +73,9 @@ const Cart = () => {
             })
             
             tg.onEvent('mainButtonClicked', onSendData)
-            return () => {
-                tg.offEvent('mainButtonClicked', onSendData)
-            }
+            // return () => {
+            //     tg.offEvent('mainButtonClicked', onSendData)
+            // }
         }
         
     }, [addedItems, onSendData, tg, isCartActive]);
