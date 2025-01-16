@@ -32,7 +32,7 @@ const ProductList = () => {
         setSearchParams(params);
     };
 
-    onToggleButton();
+    // onToggleButton();
 
     // useEffect(() => {
     //     const getProducts = async () => {
