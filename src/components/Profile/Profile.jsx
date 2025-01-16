@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTelegram } from '../../hooks/useTelegram';
+import Footer from '../Footer/Footer';
 import './Profile.css';
 
 const Profile = () => {
@@ -157,6 +158,7 @@ const Profile = () => {
                 </label>
             </div>
             <button className="save-button" onClick={handleSave}>Сохранить</button>
+            <Footer />
         </div>
     );
 };

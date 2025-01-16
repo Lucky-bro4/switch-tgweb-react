@@ -5,6 +5,7 @@ import { useTelegram } from "../../hooks/useTelegram";
 import { useFavorite } from '../../hooks/useFavorite';
 import { useCart } from '../../hooks/useCart';
 import ProductModal from "../ProductModal/ProductModal";
+import Footer from "../Footer/Footer";
 import "./Favorites.css";
 
 
@@ -180,6 +181,7 @@ const Favorites = () => {
                     <h2>Общая сумма: {totalPrice} ₽</h2>
                 </div>
             )}
+            <Footer />
         </div>
     );
 };

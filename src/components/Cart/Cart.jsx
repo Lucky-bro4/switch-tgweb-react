@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useTelegram } from "../../hooks/useTelegram";
 import { useFavorite } from "../../hooks/useFavorite";
 import ProductModal from "../ProductModal/ProductModal";
+import Footer from "../Footer/Footer";
 import "./Cart.css";
 
 
@@ -159,9 +160,7 @@ const Cart = () => {
                     <ProductModal
                         product={selectedProduct} 
                         onClose={closeModal}
-                        // addedItems={addedItems}
-                        // favoriteItems={favoriteItems}
-                        // setFavoriteItems={setFavoriteItems}
+
                     />
                 )}
             </div>
@@ -170,6 +169,7 @@ const Cart = () => {
                     <h2>Общая сумма: {totalPrice} ₽</h2>
                 </div>
             )}
+            <Footer />
         </div>
     );
 };

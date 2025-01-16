@@ -2,7 +2,7 @@ import React, {useState, useEffect, useCallback, useContext} from 'react';
 import SearchComponent from '../SearchComponent/SearchComponent';
 import ProductItem from "../ProductItem/ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
-// import { useCart } from "../../hooks/useCart";
+import Footer from '../Footer/Footer';
 import { AppContext } from '../../context/AppContext';
 import ProductModal from "../ProductModal/ProductModal";
 import Header from "../Header/Header"
@@ -258,14 +258,9 @@ const ProductList = () => {
                 <ProductModal
                     product={selectedProduct} 
                     onClose={closeModal} 
-                    // onAdd={onAdd}
-                    // addedItems={addedItems}
-                    // setAddedItems={setAddedItems}
-                    // selectedCount={order}
-                    // favoriteItems={favoriteItems}
-                    // setFavoriteItems={setFavoriteItems}
                 />
             )}
+            <Footer />
         </div>
     );
 };
