@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 
-const ProductModal = ({ product, onClose, location }) => {
+const ProductModal = ({ product, onClose }) => {
 
     const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
