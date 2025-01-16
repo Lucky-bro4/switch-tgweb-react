@@ -15,7 +15,7 @@ const Cart = () => {
 
     const handleButtonClick = useCallback(() => {
         onSendData();
-        tg.showAlert('Кнопка нажата!'); // Показываем уведомление
+        tg.showAlert('Вы оформили заказ!'); // Показываем уведомление
     }, [tg]);
 
 
@@ -64,7 +64,7 @@ const Cart = () => {
 
     useEffect(() => {
 
-        if (addedItems.length > 0) {
+        if (isCartActive && addedItems.length > 0) {
             tg.MainButton
                 .setParams({ text: 'Оформить заказ' }) // Устанавливаем текст кнопки
                 .show(); // Показываем кнопку
