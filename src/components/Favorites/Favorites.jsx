@@ -11,7 +11,7 @@ import "./Favorites.css";
 const Favorites = () => {
 
     const { products, addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
-    const { user, onToggleButton } = useTelegram();
+    const { tg, user } = useTelegram();
 
     const navigate = useNavigate();
     onToggleButton();
@@ -34,41 +34,6 @@ const Favorites = () => {
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
     const { handleCartClick } = useCart({ addedItems, setAddedItems, user });
 
-    // const handleFavoriteClick = async (e, product) => {
-    //     e.stopPropagation();
-
-    //     const isCurrentlyFavorite = favoriteItems.some(item => item.id === product.id);
-    //     const newFavoriteState = !isCurrentlyFavorite;
-
-    //     // Обновить глобальный или серверный список избранного
-    //     if (newFavoriteState) {
-    //         setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
-    //     } else {
-    //         setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
-    //     }
-
-    //     try {
-    //         // Запрос для обновления на сервере
-    //         await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
-    //             method: newFavoriteState ? 'POST' : 'DELETE',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ chatId: user.id }),
-    //         });
-
-    //         setFavoriteItems((prevFavorites) =>
-    //             newFavoriteState
-    //                 ? [...prevFavorites, product.id]
-    //                 : prevFavorites.filter((id) => id !== product.id)
-    //         );
-
-    //     } catch (error) {
-            
-    //         console.error("Error updating favorite status:", error);
-    //     }
-    // };
-
     const onProductClick = (product) => {
         setSelectedProduct(product);
         setIsModalOpen(true);
@@ -78,6 +43,13 @@ const Favorites = () => {
         setSelectedProduct(null);
         setIsModalOpen(false);
     }
+
+    useEffect(() => {
+        if (tg.MainButton.isVisible) {
+            tg.MainButton.hide();
+        }
+    }, [tg]);
+
 
     return (
         <div className="favorites-section">

@@ -17,7 +17,7 @@ const Cart = () => {
         onSendData();
     }, []);
 
-    onToggleButton();
+    // onToggleButton();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -74,7 +74,6 @@ const Cart = () => {
             tg.MainButton.hide();
         }
 
-        // Удаление обработчика при размонтировании или смене условий
         return () => {
             tg.MainButton.offClick(handleButtonClick);
         };
