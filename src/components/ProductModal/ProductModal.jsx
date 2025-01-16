@@ -29,6 +29,26 @@ const ProductModal = ({ product, onClose, location }) => {
         }
     };
 
+    const changeAfterRemoveButton = () => {
+        tg.MainButton
+            .setParams({ 
+                text: 'Добавить в корзину',
+                color: '#E22D60',
+            })
+
+        handleCartClick(product);
+    }
+
+    const changeAddProductButton = () => {
+        tg.MainButton
+            .setParams({ 
+                text: 'Перейти в корзину',
+                color: '#82d83f',
+            })
+
+        handleCartClick(product);
+    }
+
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
     };
@@ -52,7 +72,7 @@ const ProductModal = ({ product, onClose, location }) => {
 
     useEffect(() => {
         if (addedItems.some(item => item.id === product.id)) {
-            if (location) {
+            if (location === 'true') {
                 tg.MainButton
                     .setParams({ 
                         text: 'Удалить из корзины',
@@ -60,7 +80,7 @@ const ProductModal = ({ product, onClose, location }) => {
                     })
                     .show();
 
-                tg.MainButton.onClick(handleCartClick(product));
+                tg.MainButton.onClick(changeAfterRemoveButton);
             } else {
                 tg.MainButton
                     .setParams({ 
@@ -76,19 +96,19 @@ const ProductModal = ({ product, onClose, location }) => {
                 .setParams({ 
                     text: 'Добавить в корзину',
                     color: '#E22D60',
-                    position: 'left'
+                    // position: 'left'
                 })
                 .show();
 
-            tg.MainButton.onClick(handleCartClick(product));
+            tg.MainButton.onClick(changeAddProductButton);
 
         }
 
-        return () => {
-            tg.MainButton.offClick(handleCartClick(product));
-        };
+        // return () => {
+        //     tg.MainButton.offClick(handleCartClick(product));
+        // };
 
-    }, [tg, addedItems]);
+    }, [tg]);
 
     // useEffect(() => {
     

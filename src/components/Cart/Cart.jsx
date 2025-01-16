@@ -20,6 +20,7 @@ const Cart = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const [locCart, setLocCart] = useState('true');
 
     const isCartActive = location.pathname === "/cart";
 
@@ -164,7 +165,7 @@ const Cart = () => {
                     <ProductModal
                         product={selectedProduct} 
                         onClose={closeModal}
-                        location={isCartActive}
+                        location={locCart}
                     />
                 )}
             </div>
