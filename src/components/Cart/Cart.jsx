@@ -15,10 +15,7 @@ const Cart = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
-    
-    const handleHomeClick = () => {
-        navigate('/');
-    };
+
 
     const isCartActive = location.pathname === "/cart";
 
@@ -55,41 +52,45 @@ const Cart = () => {
                 tg.showAlert(`Произошла ошибка: ${result.message}. Попробуйте позже.`);
             }
         } catch (error) {
-            alert(`Error: ${error.message}`);
+            console.log(`Error: ${error.message}`);
         }
-    }, [addedItems, totalPrice, queryId, user]);
+    }, [addedItems, totalPrice, queryId, user, tg]);
 
     useEffect(() => {
-        if (addedItems.length === 0 || !isCartActive) {
 
-            tg.MainButton.hide();
-
-        } else {
-
+        if (isCartActive && addedItems.length > 0) {
             tg.MainButton.show();
             tg.MainButton.setParams({
                 text: 'Оформить заказ',
-            })
-            
-            tg.onEvent('mainButtonClicked', onSendData)
-            // return () => {
-            //     tg.offEvent('mainButtonClicked', onSendData)
-            // }
+            });
+
+            tg.onEvent('mainButtonClicked', onSendData);
+        } else {
+            tg.MainButton.hide();
         }
+
+        // Удаление обработчика при размонтировании или смене условий
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData);
+        };
         
     }, [addedItems, onSendData, tg, isCartActive]);
 
-    // tg.onEvent('mainButtonClicked', onShowAlert)
+
+    const handleHomeClick = () => {
+        navigate('/');
+    };
 
     const onProductClick = (product) => {
         setSelectedProduct(product);
         setIsModalOpen(true);
-    }
+    };
 
     const closeModal = () => {
         setSelectedProduct(null);
         setIsModalOpen(false);
-    }
+    };
+    
 
     return (
         <div className="cart-section">
