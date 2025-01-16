@@ -60,7 +60,7 @@ const Cart = () => {
         } catch (error) {
             console.log(`Error: ${error.message}`);
         }
-    }, [addedItems, totalPrice, queryId, user, tg]);
+    }, [addedItems, totalPrice, queryId, user]);
 
     useEffect(() => {
 

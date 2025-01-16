@@ -120,7 +120,7 @@ const Profile = () => {
                         />
                     </label>
                     <label>
-                        <span>Длина ноги внешняя (см):</span>
+                        <span>Длина шва (внешнего) (см):</span>
                         <input
                             type="number"
                             name="outerLegLength"
@@ -129,7 +129,7 @@ const Profile = () => {
                         />
                     </label>
                     <label>
-                        <span>Длина ноги внутренняя (см):</span>
+                        <span>Длина шва (внутреннего) (см):</span>
                         <input
                             type="number"
                             name="innerLegLength"

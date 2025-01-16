@@ -10,13 +10,8 @@ import './ProductList.css';
 const ProductList = () => {
 
     const { products, filteredProducts, setFilteredProducts, addedItems, setAddedItems } = useContext(AppContext);
+    const { tg, queryId, user, onToggleButton } = useTelegram();
 
-    const { tg, queryId, user } = useTelegram();
-
-    
-
-    // const [addedItems, setAddedItems] = useState([]);
-    
     const [costs, setCosts] = useState(260)
     const [order, setOrder] = useState(0)
     const [closedChainOrder, setClosedChainOrder] = useState(false)
@@ -36,6 +31,8 @@ const ProductList = () => {
     const handleFilterChange = (params) => {
         setSearchParams(params);
     };
+
+    onToggleButton();
 
     // useEffect(() => {
     //     const getProducts = async () => {
@@ -156,7 +153,7 @@ const ProductList = () => {
 
     const onShowAlert = useCallback(() => {
         tg.showAlert('Заказ вещей сейчас недоступен. Опция будет разблокирована за 3 часа до конца текущей аренды.');
-    }, [])
+    }, [tg])
 
     // useEffect(() => {
     //     if (!closedChainOrder) {
