@@ -56,7 +56,7 @@ const ProductModal = ({ product, onClose, location }) => {
                 tg.MainButton
                     .setParams({ 
                         text: 'Удалить из корзины',
-                        color: '000000'
+                        color: '#82d83f'
                     })
                     .show();
 
@@ -88,7 +88,7 @@ const ProductModal = ({ product, onClose, location }) => {
         //     tg.MainButton.offClick(handleButtonClick);
         // };
 
-    }, [tg, addedItems]);
+    }, [tg, addedItems, product, location]);
 
     // useEffect(() => {
     
