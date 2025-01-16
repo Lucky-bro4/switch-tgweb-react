@@ -174,7 +174,7 @@ const ProductList = () => {
     
     //     let newItems = [];
         
-
+    //
     //     if(alreadyAdded) {
     //         newItems = addedItems.filter(item => item.id !== product.id);
     //     } else {
