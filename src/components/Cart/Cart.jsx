@@ -9,15 +9,13 @@ import "./Cart.css";
 
 const Cart = () => {
 
-    const { tg, queryId, user, onToggleButton } = useTelegram();
+    const { tg, queryId, user } = useTelegram();
     const { addedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
 
     const handleButtonClick = useCallback(() => {
         onSendData();
     }, []);
-
-    // onToggleButton();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -166,7 +164,7 @@ const Cart = () => {
                     <ProductModal
                         product={selectedProduct} 
                         onClose={closeModal}
-
+                        // location={isCartActive}
                     />
                 )}
             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTelegram } from '../../hooks/useTelegram';
@@ -11,7 +11,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 
-const ProductModal = ({ product, onClose }) => {
+const ProductModal = ({ product, onClose, location }) => {
 
     const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
@@ -19,6 +19,7 @@ const ProductModal = ({ product, onClose }) => {
     
     const [activeIndex, setActiveIndex] = useState(0);
 
+    const location = useLocation();
     const navigate = useNavigate();
 
 
@@ -51,15 +52,25 @@ const ProductModal = ({ product, onClose }) => {
 
     useEffect(() => {
         if (addedItems.some(item => item.id === product.id)) {
-            tg.MainButton
-                .setParams({ 
-                    text: 'Перейти в корзину',
-                    color: '#82d83f'
-                })
-                .show();
+            if (location.pathname === "/cart") {
+                tg.MainButton
+                    .setParams({ 
+                        text: 'Удалить из корзины',
+                        color: '000000'
+                    })
+                    .show();
 
-            tg.MainButton.onClick(goToCart);
+                tg.MainButton.onClick(handleCartClick(product));
+            } else {
+                tg.MainButton
+                    .setParams({ 
+                        text: 'Перейти в корзину',
+                        color: '#82d83f'
+                    })
+                    .show();
 
+                tg.MainButton.onClick(goToCart);
+            }
         } else {
             tg.MainButton
                 .setParams({ 
