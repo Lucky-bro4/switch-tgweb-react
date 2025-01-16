@@ -15,7 +15,7 @@ const ProductModal = ({ product, onClose }) => {
 
     const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
-    const { tg, user, onToggleButton } = useTelegram();
+    const { tg, user } = useTelegram();
     
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -45,12 +45,59 @@ const ProductModal = ({ product, onClose }) => {
         waistWidth: 'Ширина талии',
     };
 
-    useEffect(() => {
-        if (tg.MainButton.isVisible) {
-            tg.MainButton.hide();
-        }
-    }, [tg]);
+    const goToCart = () => {
+        navigate('/cart');
+    }
 
+    useEffect(() => {
+        if (addedItems.some(item => item.id === product.id)) {
+            tg.MainButton
+                .setParams({ 
+                    text: 'Перейти в корзину',
+                    color: '#82d83f'
+                })
+                .show();
+
+            tg.MainButton.onClick(goToCart);
+
+        } else {
+            tg.MainButton
+                .setParams({ 
+                    text: 'Добавить в корзину',
+                    color: '#E22D60'
+                })
+                .show();
+
+            tg.MainButton.onClick(handleCartClick(product));
+
+        }
+
+        return () => {
+            tg.MainButton.offClick(handleButtonClick);
+        };
+
+    }, [tg, addedItems]);
+
+    // useEffect(() => {
+    
+    //     if (isCartActive && addedItems.length > 0) {
+    //         tg.MainButton
+    //             .setParams({ 
+    //                 text: 'Оформить заказ',
+    //                 color: '#82d83f'
+    //             })
+    //             .show();
+
+    //         tg.MainButton.onClick(handleButtonClick);
+    //     } else {
+    //         tg.MainButton.hide();
+    //     }
+
+    //     return () => {
+    //         tg.MainButton.offClick(handleButtonClick);
+    //     };
+        
+    // }, [addedItems, handleButtonClick, tg]);
 
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
