@@ -112,7 +112,12 @@ const ProductModal = ({ product, onClose, location }) => {
         return () => {
             tg.MainButton.offClick();
         };
-    }, [addedItems, location, product, tg, handleCartClick]);
+    }, [location, product, tg, handleCartClick]);
+
+    // tg.onEvent('mainButtonClicked', onSendData)
+    // return () => {
+    //    tg.offEvent('mainButtonClicked', onSendData)
+    // }
 
     // useEffect(() => {
     
