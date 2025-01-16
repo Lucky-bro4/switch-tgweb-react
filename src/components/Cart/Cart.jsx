@@ -13,6 +13,12 @@ const Cart = () => {
     const { addedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
 
+    const handleButtonClick = useCallback(() => {
+        onSendData();
+        tg.showAlert('Кнопка нажата!'); // Показываем уведомление
+    }, [tg]);
+
+
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -58,23 +64,22 @@ const Cart = () => {
 
     useEffect(() => {
 
-        if (isCartActive && addedItems.length > 0) {
-            tg.MainButton.show();
-            tg.MainButton.setParams({
-                text: 'Оформить заказ',
-            });
+        if (addedItems.length > 0) {
+            tg.MainButton
+                .setParams({ text: 'Оформить заказ' }) // Устанавливаем текст кнопки
+                .show(); // Показываем кнопку
 
-            tg.onEvent('mainButtonClicked', onSendData);
+            tg.MainButton.onClick(handleButtonClick);
         } else {
             tg.MainButton.hide();
         }
 
         // Удаление обработчика при размонтировании или смене условий
         return () => {
-            tg.offEvent('mainButtonClicked', onSendData);
+            tg.MainButton.offClick(handleButtonClick);
         };
         
-    }, [addedItems, onSendData, tg, isCartActive]);
+    }, [addedItems, handleButtonClick, tg]);
 
 
     const handleHomeClick = () => {
@@ -90,7 +95,7 @@ const Cart = () => {
         setSelectedProduct(null);
         setIsModalOpen(false);
     };
-    
+
 
     return (
         <div className="cart-section">
