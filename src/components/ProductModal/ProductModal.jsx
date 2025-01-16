@@ -34,32 +34,15 @@ const ProductModal = ({ product, onClose }) => {
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
     const { handleCartClick } = useCart({ addedItems, setAddedItems, user });
 
-    // const onAddHandler = () => {    
-    //     setAddedItems([...addedItems, product]);
-    //     // tg.BottomButton [{
-    //     //     type: 'main',
-    //     // }]
-
-    //     if (tg.MainButton.isVisible) {
-    //         tg.MainButton.hide();
-    //     }
-  
-    // };
-
-    // useEffect(() => {
-    //     tg.MainButton.show();
-    //     tg.MainButton.setParams({
-    //         type: 'main',
-    //         text: 'Добавить в корзину',
-    //         color: '#E22D60'
-    //     })
-        
-    //     tg.onEvent('mainButtonClicked', onAddHandler)
-    //     return () => {
-    //         tg.offEvent('mainButtonClicked', onAddHandler)
-    //     }
-        
-    // }, [product, addedItems])
+    const keyTranslations = {
+        shoulders: 'Плечи',
+        sleeveLength: 'Длина рукава',
+        underarms: 'Подмышки',
+        backLength: 'Длина спинки',
+        outerLegLength: 'Длина внешней штанины',
+        innerLegLength: 'Длина внутренней штанины',
+        waistWidth: 'Ширина талии',
+    };
 
 
     
@@ -117,7 +100,8 @@ const ProductModal = ({ product, onClose }) => {
                         {product.measurements && typeof product.measurements === 'object' ? (
                             <ul>
                                 {Object.entries(product.measurements).map(([key, value]) => (
-                                    <li key={key}><p>{key}: {value}</p></li>
+                                    <li key={key}>
+                                        <p>{keyTranslations[key] || key}: {value}</p></li>
                                 ))}
                             </ul>
                         ) : (
