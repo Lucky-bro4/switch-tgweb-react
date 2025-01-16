@@ -281,7 +281,6 @@ const AdminPage = () => {
         if (!price) missingFields.push('price');
         if (!rentPrice) missingFields.push('rentPrice');
         if (!condition) missingFields.push('condition');
-        // if (!measurements || Object.keys(measurements).length === 0) missingFields.push('measurements');
         if (!brandSize) missingFields.push('brandSize');
         if (!color) missingFields.push('color');
         if (!description) missingFields.push('description');
@@ -427,35 +426,38 @@ const AdminPage = () => {
             }
         }
 
-        // const changeProduct = {
-        //     id: Number(id),
-        //     gender: gender,
-        //     category: category,
-        //     brand: brand,
-        //     price: Number(price),
-        //     rentPrice: Number(rentPrice),
-        //     condition: condition,
-        //     measurements: measurements,
-        //     brandSize: brandSize,
-        //     color: color,
-        //     description: description,
-        //     avitoUrl: avitoUrl,
-        //     // photo: photos,
-        //     status: status,
-        //     available: Boolean(available),
-        //     userId: itemUserId,
-        //     orderId: itemOrderId
-        // };
+        const changeProduct = {
+            id: Number(id),
+            gender: gender,
+            category: category,
+            brand: brand,
+            price: Number(price),
+            rentPrice: Number(rentPrice),
+            condition: condition,
+            measurements: measurements,
+            brandSize: brandSize,
+            color: color,
+            description: description,
+            avitoUrl: avitoUrl,
+            status: status,
+            available: Boolean(available),
+            userId: itemUserId,
+            orderId: itemOrderId
+        };
         
 
-        // console.log(changeProduct);
+        console.log(changeProduct);
 
-        // try {
-        //     const data = await postData('https://bottry-lucky-bro4.amvera.io/changeProduct', changeProduct);
-        //     console.log(data);
-        // } catch (error) {
-        //     console.error('Ошибка при отправке данных:', error);
-        // }
+        try {
+            const response = await postData('https://bottry-lucky-bro4.amvera.io/changeProduct', changeProduct);
+            if (response.ok) {
+                alert('Данные успешно изменены');
+            } else {
+                alert(response.message);
+            }
+        } catch (error) {
+            console.error('Ошибка при отправке данных:', error);
+        }
     };
 
     const changeStatus = async (e) => {
