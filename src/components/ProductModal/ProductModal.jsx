@@ -124,33 +124,32 @@ const ProductModal = ({ product, onClose }) => {
                         )}
                     </div>
                 </div>
-
-                {/* Кнопки для модального окна */}
-                <div className="cart-button-container">
-                    {addedItems.some(item => item.id === product.id) ? (
-                        <div>
-                            <button 
-                                className="remove-from-cart" 
-                                onClick={() => handleCartClick(product)}
-                            >
-                                Удалить из корзины
-                            </button>
-                            <button 
-                                className="go-to-cart" 
-                                onClick={() => navigate('/cart')}
-                            >
-                                Перейти в корзину
-                            </button>
-                        </div>
-                    ) : (
+            </div>
+            {/* Кнопки для модального окна */}
+            <div className="cart-button-container">
+                {addedItems.some(item => item.id === product.id) ? (
+                    <div>
                         <button 
-                            className="add-to-cart" 
+                            className="remove-from-cart" 
                             onClick={() => handleCartClick(product)}
                         >
-                            Добавить в корзину
+                            Удалить из корзины
                         </button>
-                    )}
-                </div>
+                        <button 
+                            className="go-to-cart" 
+                            onClick={() => navigate('/cart')}
+                        >
+                            Перейти в корзину
+                        </button>
+                    </div>
+                ) : (
+                    <button 
+                        className="add-to-cart" 
+                        onClick={() => handleCartClick(product)}
+                    >
+                        Добавить в корзину
+                    </button>
+                )}
             </div>
         </div>
     );
