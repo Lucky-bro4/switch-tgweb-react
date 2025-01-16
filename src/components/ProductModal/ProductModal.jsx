@@ -16,11 +16,11 @@ const ProductModal = ({ product, onClose }) => {
     const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
     const { tg, user, onToggleButton } = useTelegram();
+    
+    const [activeIndex, setActiveIndex] = useState(0);
 
     const navigate = useNavigate();
-    onToggleButton();
 
-    const [activeIndex, setActiveIndex] = useState(0);
 
     const handleOverlayClick = (e) => {
         if (e.target.classList.contains("modal-overlay")) {
@@ -45,8 +45,11 @@ const ProductModal = ({ product, onClose }) => {
         waistWidth: 'Ширина талии',
     };
 
-
-    
+    useEffect(() => {
+        if (tg.MainButton.isVisible) {
+            tg.MainButton.hide();
+        }
+    }, [tg]);
 
 
     return (
