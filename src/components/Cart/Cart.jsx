@@ -68,9 +68,9 @@ const Cart = () => {
             tg.MainButton
                 .setParams({ 
                     text: 'Оформить заказ',
-                    color: '#ffffff'
-                }) // Устанавливаем текст кнопки
-                .show(); // Показываем кнопку
+                    color: '#146eeb'
+                })
+                .show();
 
             tg.MainButton.onClick(handleButtonClick);
         } else {

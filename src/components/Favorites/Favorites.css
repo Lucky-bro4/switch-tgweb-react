@@ -26,7 +26,8 @@
 }
 
 .favorites-image {
-    object-fit: contain; /* Сохранение пропорций изображения без обрезки */
+    object-fit: contain;
+    border-color: whitesmoke;;
     width: 100%;
     height: 100%;
     cursor: pointer;
