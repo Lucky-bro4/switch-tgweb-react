@@ -71,44 +71,54 @@ const ProductModal = ({ product, onClose, location }) => {
     }
 
     useEffect(() => {
+        // Очистка всех предыдущих обработчиков перед назначением новых
+        tg.MainButton.offClick();
+    
         if (addedItems.some(item => item.id === product.id)) {
             if (location === 'true') {
                 tg.MainButton
-                    .setParams({ 
+                    .setParams({
                         text: 'Удалить из корзины',
-                        color: '#000000'
+                        color: '#000000',
                     })
                     .show();
-
-                tg.MainButton.onClick(changeAfterRemoveButton);
+    
+                tg.MainButton.onClick(() => {
+                    tg.MainButton.offClick(); // Убираем текущий обработчик перед изменением
+                    changeAfterRemoveButton();
+                });
             } else {
                 tg.MainButton
-                    .setParams({ 
+                    .setParams({
                         text: 'Перейти в корзину',
-                        color: '#82d83f'
+                        color: '#82d83f',
                     })
                     .show();
-
-                tg.MainButton.onClick(goToCart);
+    
+                tg.MainButton.onClick(() => {
+                    tg.MainButton.offClick(); // Убираем текущий обработчик перед изменением
+                    goToCart();
+                });
             }
         } else {
             tg.MainButton
-                .setParams({ 
+                .setParams({
                     text: 'Добавить в корзину',
                     color: '#E22D60',
-                    // position: 'left'
                 })
                 .show();
-
-            tg.MainButton.onClick(changeAddProductButton);
-
+    
+            tg.MainButton.onClick(() => {
+                tg.MainButton.offClick(); // Убираем текущий обработчик перед изменением
+                changeAddProductButton();
+            });
         }
-
-        // return () => {
-        //     tg.MainButton.offClick(handleCartClick(product));
-        // };
-
-    }, [tg]);
+    
+        // Очистка обработчиков при размонтировании компонента
+        return () => {
+            tg.MainButton.offClick();
+        };
+    }, [addedItems, location, product.id, tg]);
 
     // useEffect(() => {
     
