@@ -71,6 +71,8 @@ const Cart = () => {
             return () => {
                 tg.offEvent('mainButtonClicked', onSendData)
             }
+        } else {
+            tg.MainButton.hide();
         }
         
     }, [addedItems, onSendData, tg, isCartActive]);
