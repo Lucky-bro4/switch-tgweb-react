@@ -399,7 +399,7 @@ const AdminPage = () => {
 
             const formData = new FormData();
             photoPaths.forEach((file) => formData.append('photos', file));
-            formData.append('itemId', String(itemId));
+            formData.append('itemId', String(id));
 
             for (let [key, value] of formData.entries()) {
                 console.log(key, value);
