@@ -458,6 +458,9 @@ const AdminPage = () => {
         } catch (error) {
             console.error('Ошибка при отправке данных:', error);
         }
+
+        window.location.reload();
+        
     };
 
     const changeStatus = async (e) => {
