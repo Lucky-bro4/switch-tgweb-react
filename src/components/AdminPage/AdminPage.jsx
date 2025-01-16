@@ -426,6 +426,14 @@ const AdminPage = () => {
             }
         }
 
+        if (shoulders) measurements.shoulders = shoulders;
+        if (sleeveLength) measurements.sleeveLength = sleeveLength;
+        if (underarms) measurements.underarms = underarms;
+        if (backLength) measurements.backLength = backLength;
+        if (outerLegLength) measurements.outerLegLength = outerLegLength;
+        if (innerLegLength) measurements.innerLegLength = innerLegLength;
+        if (waistWidth) measurements.waistWidth = waistWidth;
+
         const changeProduct = {
             id: Number(id),
             gender: gender,
