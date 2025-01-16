@@ -2,7 +2,6 @@ import React, {useState, useEffect, useCallback, useContext} from 'react';
 import SearchComponent from '../SearchComponent/SearchComponent';
 import ProductItem from "../ProductItem/ProductItem";
 import { useTelegram } from "../../hooks/useTelegram";
-import Footer from '../Footer/Footer';
 import { AppContext } from '../../context/AppContext';
 import ProductModal from "../ProductModal/ProductModal";
 import Header from "../Header/Header"
@@ -260,7 +259,6 @@ const ProductList = () => {
                     onClose={closeModal} 
                 />
             )}
-            <Footer />
         </div>
     );
 };
