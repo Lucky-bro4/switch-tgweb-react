@@ -20,7 +20,7 @@ function App() {
         tg.ready();
     }, [])
 
-    const showFooter = location.pathname !== '/form';
+    const showFooter = location.pathname !== '/form' && location.pathname !== '/adminPage';
 
 
 
