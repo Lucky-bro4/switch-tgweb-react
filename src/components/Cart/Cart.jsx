@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState, useContext } from "react";
 import { AppContext } from '../../context/AppContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTelegram } from "../../hooks/useTelegram";
 import { useFavorite } from "../../hooks/useFavorite";
 import ProductModal from "../ProductModal/ProductModal";
@@ -10,14 +10,17 @@ import "./Cart.css";
 const Cart = () => {
 
     const { tg, queryId, user } = useTelegram();
-    const { products, addedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
+    const { addedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
 
+    const location = useLocation();
     const navigate = useNavigate();
     
     const handleHomeClick = () => {
         navigate('/');
     };
+
+    const isCartActive = location.pathname === "/cart";
 
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,7 +60,7 @@ const Cart = () => {
     }, [addedItems, totalPrice, queryId, user]);
 
     useEffect(() => {
-        if (addedItems.length > 0) {
+        if (addedItems.length > 0 && isCartActive) {
             
             tg.MainButton.show();
             tg.MainButton.setParams({
@@ -70,49 +73,9 @@ const Cart = () => {
             }
         }
         
-    }, [addedItems, onSendData, tg])
+    }, [addedItems, onSendData, tg, isCartActive]);
 
-    // const handleFavoriteClick = async (e, product) => {
-    //     e.stopPropagation();
-
-    //     const isCurrentlyFavorite = favoriteItems.some(item => item.id === product.id);
-    //     const newFavoriteState = !isCurrentlyFavorite;
-
-    //     // Обновить глобальный или серверный список избранного
-    //     if (newFavoriteState) {
-    //         setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
-    //     } else {
-    //         setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
-    //     }
-
-    //     try {
-    //         // Запрос для обновления на сервере
-    //         await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
-    //             method: newFavoriteState ? 'POST' : 'DELETE',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ chatId: user.id }),
-    //         });
-
-    //         setFavoriteItems((prevFavorites) =>
-    //             newFavoriteState
-    //                 ? [...prevFavorites, product.id]
-    //                 : prevFavorites.filter((id) => id !== product.id)
-    //         );
-
-    //     } catch (error) {
-    //         console.error('Error updating favorite status:', error);
-
-    //         // Откат состояния при ошибке
-    //         setIsFavorite(!newFavoriteState);
-    //         if (!newFavoriteState) {
-    //             setFavoriteItems([...favoriteItems, product.id]);
-    //         } else {
-    //             setFavoriteItems(favoriteItems.filter(id => id !== product.id));
-    //         }
-    //     }
-    // };
+    
 
     const onProductClick = (product) => {
         setSelectedProduct(product);
