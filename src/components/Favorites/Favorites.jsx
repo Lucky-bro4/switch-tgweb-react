@@ -11,9 +11,10 @@ import "./Favorites.css";
 const Favorites = () => {
 
     const { products, addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
-    const { user } = useTelegram();
+    const { user, onToggleButton } = useTelegram();
 
     const navigate = useNavigate();
+    onToggleButton();
 
     const handleHomeClick = () => {
         navigate('/');

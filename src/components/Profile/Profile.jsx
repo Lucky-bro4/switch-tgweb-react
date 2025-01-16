@@ -12,7 +12,7 @@ const Profile = () => {
         navigate('/');
     };
 
-    const { tg, user } = useTelegram();
+    const { tg, user, onToggleButton } = useTelegram();
 
     const [measurements, setMeasurements] = useState({
         Плечи: '',
@@ -28,7 +28,9 @@ const Profile = () => {
 
     useEffect(() => {
         tg.showAlert('Заполните параметры/замеры, чтобы видеть персонализированный каталог')
-    }, []);
+    }, [tg]);
+
+    onToggleButton();
 
     const handleChange = (e) => {
         const { name, value } = e.target;

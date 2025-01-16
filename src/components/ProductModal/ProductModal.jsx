@@ -15,9 +15,10 @@ const ProductModal = ({ product, onClose }) => {
 
     const { addedItems, setAddedItems, favoriteItems, setFavoriteItems } = useContext(AppContext);
 
-    const { tg, user } = useTelegram();
+    const { tg, user, onToggleButton } = useTelegram();
 
     const navigate = useNavigate();
+    onToggleButton();
 
     const [activeIndex, setActiveIndex] = useState(0);
 
