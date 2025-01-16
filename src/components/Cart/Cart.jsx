@@ -80,7 +80,7 @@ const Cart = () => {
             tg.MainButton.offClick(handleButtonClick);
         };
         
-    }, [addedItems, handleButtonClick, tg]);
+    }, [handleButtonClick, tg]);
 
 
     const handleHomeClick = () => {
