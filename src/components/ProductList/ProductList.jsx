@@ -32,7 +32,11 @@ const ProductList = () => {
         setSearchParams(params);
     };
 
-    onToggleButton();
+    useEffect(() => {
+        if (tg.MainButton.isVisible) {
+            tg.MainButton.hide();
+        }
+    }, [tg]);
 
     // useEffect(() => {
     //     const getProducts = async () => {
