@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTelegram } from '../../hooks/useTelegram';
 import { AppContext } from '../../context/AppContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Footer.css';
@@ -6,6 +7,7 @@ import './Footer.css';
 const Footer = () => {
 
   const { addedItems, favoriteItems } = useContext(AppContext);
+  const { user } = useTelegram();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -67,7 +69,8 @@ const Footer = () => {
         <div className="footer-section" onClick={handleProfileClick}>
           <i className="icon-user">
           <img 
-                src={isProfileActive ? "/Images/icons/icon-profile-active.png" : "/Images/icons/icon-profile-not-active.png"}
+                // src={isProfileActive ? "/Images/icons/icon-profile-active.png" : "/Images/icons/icon-profile-not-active.png"}
+                src={user.photo_url}
                 width={30} 
                 alt="icon-profile" />
           </i>
