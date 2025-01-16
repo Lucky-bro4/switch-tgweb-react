@@ -76,7 +76,7 @@ const ProductModal = ({ product, onClose, location }) => {
                 tg.MainButton
                     .setParams({ 
                         text: 'Удалить из корзины',
-                        color: '#82d83f'
+                        color: '#000000'
                     })
                     .show();
 
@@ -95,7 +95,7 @@ const ProductModal = ({ product, onClose, location }) => {
             tg.MainButton
                 .setParams({ 
                     text: 'Добавить в корзину',
-                    color: '000000',
+                    color: '#E22D60',
                     // position: 'left'
                 })
                 .show();
