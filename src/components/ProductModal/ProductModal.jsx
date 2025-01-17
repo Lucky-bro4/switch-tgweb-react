@@ -221,7 +221,7 @@ const ProductModal = ({ product, onClose, location }) => {
                 </div>
 
                 {/* Кнопки для модального окна */}
-                <div className="cart-button-container">
+                {/* <div className="cart-button-container">
                     {addedItems.some(item => item.id === product.id) ? (
                         <div>
                             <button 
@@ -245,7 +245,7 @@ const ProductModal = ({ product, onClose, location }) => {
                             Добавить в корзину
                         </button>
                     )}
-                </div>
+                </div> */}
             </div>
         </div>
     );
