@@ -92,7 +92,6 @@ const ProductModal = ({ product, onClose, location }) => {
                     text: 'Удалить из корзины',
                     color: '#000000',
                 }).show();
-                tg.MainButton.onClick(handleButtonClick);
             } else {
                 tg.MainButton.setParams({
                     text: 'Перейти в корзину',
@@ -104,9 +103,9 @@ const ProductModal = ({ product, onClose, location }) => {
                 text: 'Добавить в корзину',
                 color: '#E22D60',
             }).show();
-            tg.MainButton.onClick(handleButtonClick);
         }
     
+        tg.MainButton.onClick(handleButtonClick);
         // Очистка обработчиков при размонтировании компонента
         return () => {
             tg.MainButton.offClick();
