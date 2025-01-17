@@ -33,10 +33,10 @@ const ProductList = () => {
     };
 
     useEffect(() => {
-        if (tg.MainButton.isVisible) {
+        if (tg.MainButton.isVisible && !isModalOpen) {
             tg.MainButton.hide();
         }
-    }, [tg]);
+    }, [tg, isModalOpen]);
 
     // useEffect(() => {
     //     const getProducts = async () => {
