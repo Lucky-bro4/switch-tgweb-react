@@ -72,17 +72,17 @@ const ProductModal = ({ product, onClose, location }) => {
 
     useEffect(() => {
         // Очистка всех предыдущих обработчиков перед назначением новых
-        // tg.MainButton.offClick();
+        tg.MainButton.offClick();
 
         const handleButtonClick = () => {
             if (addedItems.some(item => item.id === product.id)) {
                 if (location === 'true') {
-                    return handleCartClick(product); // Удаляем товар из корзины
+                    handleCartClick(product); // Удаляем товар из корзины
                 } else {
                     goToCart(); // Переход в корзину
                 }
             } else {
-                return handleCartClick(product); // Добавляем товар в корзину
+                handleCartClick(product); // Добавляем товар в корзину
             }
         };
         
