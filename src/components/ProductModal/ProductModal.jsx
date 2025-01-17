@@ -72,7 +72,7 @@ const ProductModal = ({ product, onClose, location }) => {
 
     useEffect(() => {
         // Очистка всех предыдущих обработчиков перед назначением новых
-        tg.MainButton.offClick();
+        // tg.MainButton.offClick();
 
         const handleButtonClick = () => {
             if (addedItems.some(item => item.id === product.id)) {
@@ -104,13 +104,18 @@ const ProductModal = ({ product, onClose, location }) => {
                 color: '#E22D60',
             }).show();
         }
-    
-        tg.MainButton.onClick(handleButtonClick);
-        // Очистка обработчиков при размонтировании компонента
+
+        tg.onEvent('mainButtonClicked', handleButtonClick)
         return () => {
-            tg.MainButton.offClick();
-        };
-    }, [product, tg, handleCartClick]);
+           tg.offEvent('mainButtonClicked', handleButtonClick)
+        }
+    
+        // tg.MainButton.onClick(handleButtonClick);
+        // // Очистка обработчиков при размонтировании компонента
+        // return () => {
+        //     tg.MainButton.offClick();
+        // };
+    }, [tg]);
 
     // tg.onEvent('mainButtonClicked', onSendData)
     // return () => {
