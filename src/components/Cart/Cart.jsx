@@ -69,18 +69,19 @@ const Cart = () => {
                     text: 'Оформить заказ',
                     color: '#146eeb'
                 })
-                .show();
+                .disable();
 
-            tg.MainButton.onClick(handleButtonClick);
+            tg.onEvent('mainButtonClicked', handleButtonClick)
+            
         } else {
             tg.MainButton.hide();
         }
 
         return () => {
-            tg.MainButton.offClick(handleButtonClick);
-        };
+            tg.offEvent('mainButtonClicked', handleButtonClick)
+        }
         
-    }, [handleButtonClick, tg, isModalOpen, isCartActive, addedItems.length]);
+    }, [tg, isModalOpen, isCartActive, addedItems]);
 
      // useEffect(() => {
     //     if (!closedChainOrder) {

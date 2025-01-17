@@ -44,10 +44,10 @@ const Favorites = () => {
     }
 
     useEffect(() => {
-        if (tg.MainButton.isVisible) {
+        if (tg.MainButton.isVisible && !isModalOpen) {
             tg.MainButton.hide();
         }
-    }, [tg]);
+    }, [tg, isModalOpen]);
 
 
     return (
