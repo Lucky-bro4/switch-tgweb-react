@@ -76,11 +76,11 @@ const ProductModal = ({ product, onClose, location }) => {
 
         const handleButtonClick = () => {
             if (addedItems.some(item => item.id === product.id)) {
-                // if (location === 'true') {
+                if (location === 'true') {
                     handleCartClick(product); // Удаляем товар из корзины
-                // } else {
-                //     goToCart(); // Переход в корзину
-                // }
+                } else {
+                    goToCart(); // Переход в корзину
+                }
             } else {
                 handleCartClick(product); // Добавляем товар в корзину
             }
