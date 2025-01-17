@@ -11,7 +11,7 @@ export const AppProvider = ({ children }) => {
     const [addedItems, setAddedItems] = useState([]);
     const [favoriteItems, setFavoriteItems] = useState([]);
 
-    const { user } = useTelegram();
+    const { tg, user } = useTelegram();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,6 +22,10 @@ export const AppProvider = ({ children }) => {
                 }
 
                 const data = await response.json();
+
+                if (data.error) {
+                    return tg.showAlert('Каталог недоступен. Перезапустите бота командой /start')
+                }
 
                 if (data.products) {
                     setProducts(data.products);
