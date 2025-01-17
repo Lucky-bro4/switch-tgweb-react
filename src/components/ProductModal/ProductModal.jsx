@@ -115,7 +115,7 @@ const ProductModal = ({ product, onClose, location }) => {
         // return () => {
         //     tg.MainButton.offClick();
         // };
-    }, [tg]);
+    }, [tg, addedItems]);
 
     // tg.onEvent('mainButtonClicked', onSendData)
     // return () => {
