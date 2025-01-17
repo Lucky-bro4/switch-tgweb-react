@@ -87,17 +87,17 @@ const ProductModal = ({ product, onClose, location }) => {
         };
         
         if (addedItems.some(item => item.id === product.id)) {
-            // if (location === 'true') {
+            if (location === 'true') {
                 tg.MainButton.setParams({
                     text: 'Удалить из корзины',
                     color: '#000000',
                 }).show();
-            // } else {
-            //     tg.MainButton.setParams({
-            //         text: 'Перейти в корзину',
-            //         color: '#82d83f',
-            //     }).show();
-            // }
+            } else {
+                tg.MainButton.setParams({
+                    text: 'Перейти в корзину',
+                    color: '#82d83f',
+                }).show();
+            }
         } else {
             tg.MainButton.setParams({
                 text: 'Добавить в корзину',
