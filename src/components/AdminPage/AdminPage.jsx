@@ -1090,7 +1090,7 @@ const AdminPage = () => {
                         <td>{availableItem.color}</td>
                         {/* <td>{availableItem.description}</td> */}
                         <td>{availableItem.status}</td>
-                        {/* <td>{availableItem.image[0]}</td> */}
+                        <td>{availableItem.image[0]}</td>
                         <td>{availableItem.userId}</td>
                         <td>{availableItem.orderId}</td>
                         </tr>
