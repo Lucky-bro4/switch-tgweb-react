@@ -72,20 +72,20 @@ const ProductModal = ({ product, onClose, location }) => {
 
     useEffect(() => {
         // Очистка всех предыдущих обработчиков перед назначением новых
-        tg.MainButton.offClick();
+        // tg.MainButton.offClick();
 
         const handleButtonClick = () => {
             if (addedItems.some(item => item.id === product.id)) {
                 if (location === 'true') {
-                    handleCartClick(product); // Удаляем товар из корзины
+                    return handleCartClick(product); // Удаляем товар из корзины
                 } else {
                     goToCart(); // Переход в корзину
                 }
             } else {
-                handleCartClick(product); // Добавляем товар в корзину
+                return handleCartClick(product); // Добавляем товар в корзину
             }
         };
-    
+        
         if (addedItems.some(item => item.id === product.id)) {
             if (location === 'true') {
                 tg.MainButton.setParams({
@@ -112,7 +112,7 @@ const ProductModal = ({ product, onClose, location }) => {
         return () => {
             tg.MainButton.offClick();
         };
-    }, [location, product, tg, handleCartClick]);
+    }, [product, tg, handleCartClick]);
 
     // tg.onEvent('mainButtonClicked', onSendData)
     // return () => {
