@@ -63,7 +63,9 @@ const Cart = () => {
 
     useEffect(() => {
 
-        if (isCartActive && addedItems.length > 0 && !isModalOpen) {
+        if (addedItems.length === 0) {
+            tg.MainButton.hide();
+        } else if (isCartActive && addedItems.length > 0 && !isModalOpen) {
             tg.MainButton
                 .setParams({ 
                     text: 'Оформить заказ',
