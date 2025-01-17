@@ -130,10 +130,20 @@ const SearchComponent = ({ onFilterChange }) => {
                 className="filter-select"
               >
                 <option value="">Все категории</option>
+                <option value="Куртка">Куртка</option>
                 <option value="Худи">Худи</option>
-                <option value="Футболки">Футболки</option>
-                <option value="Штаны">Штаны</option>
+                <option value="Зип-худи">Зип-худи</option>
+                <option value="Свитшот">Свитшот</option>                            
+                <option value="Лонгслив">Лонгслив</option>
+                <option value="Футболка">Футболка</option>
+                <option value="Рубашка">Рубашка</option>
+                <option value="Джемпер">Джемпер</option>
+                <option value="Кофта">Кофта</option>
+                <option value="Топ">Топ</option>
                 <option value="Джинсы">Джинсы</option>
+                <option value="Штаны">Штаны</option>
+                <option value="Джоггеры">Джоггеры</option>
+                <option value="Шорты">Шорты</option>
               </select>
 
               <select
