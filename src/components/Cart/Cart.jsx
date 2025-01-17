@@ -63,7 +63,7 @@ const Cart = () => {
 
     useEffect(() => {
 
-        if (isCartActive && addedItems.length > 0) {
+        if (isCartActive && addedItems.length > 0 && !isModalOpen) {
             tg.MainButton
                 .setParams({ 
                     text: 'Оформить заказ',
@@ -80,7 +80,22 @@ const Cart = () => {
             tg.MainButton.offClick(handleButtonClick);
         };
         
-    }, [handleButtonClick, tg]);
+    }, [handleButtonClick, tg, isModalOpen, isCartActive, addedItems.length]);
+
+     // useEffect(() => {
+    //     if (!closedChainOrder) {
+    //         tg.onEvent('mainButtonClicked', onSendData)
+    //         return () => {
+    //         tg.offEvent('mainButtonClicked', onSendData)
+    //         }
+    //     }
+    // }, [onSendData])
+
+    // useEffect(() => {
+    //     if (tg.MainButton.isVisible) {
+    //         tg.MainButton.hide();
+    //     }
+    // }, [tg]);
 
 
     const handleHomeClick = () => {
