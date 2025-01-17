@@ -74,7 +74,7 @@ const Cart = () => {
             tg.onEvent('mainButtonClicked', handleButtonClick)
             
         } else {
-            tg.MainButton.disable();
+            tg.MainButton.hide();
         }
 
         return () => {
