@@ -63,7 +63,7 @@ const Cart = () => {
 
     useEffect(() => {
 
-        if (addedItems.length === 0) {
+        if (isCartActive && addedItems.length === 0 && !isModalOpen) {
             tg.MainButton.hide();
         } else if (isCartActive && addedItems.length > 0 && !isModalOpen) {
             tg.MainButton
