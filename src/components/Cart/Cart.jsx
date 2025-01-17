@@ -69,12 +69,12 @@ const Cart = () => {
                     text: 'Оформить заказ',
                     color: '#146eeb'
                 })
-                .disable();
+                .show();
 
             tg.onEvent('mainButtonClicked', handleButtonClick)
             
         } else {
-            tg.MainButton.hide();
+            tg.MainButton.disable();
         }
 
         return () => {
