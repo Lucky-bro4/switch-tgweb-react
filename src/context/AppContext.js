@@ -24,7 +24,7 @@ export const AppProvider = ({ children }) => {
                 const data = await response.json();
 
                 if (data.error) {
-                    return tg.showAlert('Каталог недоступен. Перезапустите бота командой /start')
+                    tg.close();
                 }
 
                 if (data.products) {
