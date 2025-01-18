@@ -101,7 +101,7 @@ const SearchComponent = ({ onFilterChange }) => {
           <span className="filter-icon">
             <img 
               src="/Images/icons/icons8-фильтр-30.png" 
-              width={20} 
+              width={25} 
               alt="filter-icon" 
             />
           </span>
