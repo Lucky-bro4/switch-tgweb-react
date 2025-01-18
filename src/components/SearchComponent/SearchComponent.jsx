@@ -100,7 +100,7 @@ const SearchComponent = ({ onFilterChange }) => {
         <button onClick={openModal} className="filter-button">
           <span className="filter-icon">
             <img 
-              src="icons8-фильтр-30.png" 
+              src="/Images/icons/icons8-фильтр-30.png" 
               width={20} 
               alt="filter-icon" 
             />
