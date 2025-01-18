@@ -84,7 +84,15 @@ const ProductModal = ({ product, onClose, location }) => {
             } else {
                 handleCartClick(product); // Добавляем товар в корзину
             }
+
+            if (typeof ym !== 'undefined') {
+                ym(99575777,'reachGoal','1', {
+                    productId: product.id,
+                    productName: product.brand,
+                });
+            }
         };
+
         
         if (addedItems.some(item => item.id === product.id)) {
             if (location === 'true') {
@@ -109,12 +117,7 @@ const ProductModal = ({ product, onClose, location }) => {
         return () => {
            tg.offEvent('mainButtonClicked', handleButtonClick)
         }
-    
-        // tg.MainButton.onClick(handleButtonClick);
-        // // Очистка обработчиков при размонтировании компонента
-        // return () => {
-        //     tg.MainButton.offClick();
-        // };
+
     }, [tg, addedItems]);
 
     // tg.onEvent('mainButtonClicked', onSendData)
