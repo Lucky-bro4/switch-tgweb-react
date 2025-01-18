@@ -244,8 +244,6 @@ const ProductList = () => {
                             onClick={() => onProductClick(item)}
                             className={'item'}
                             closedChainOrder={closedChainOrder}
-                            // favoriteItems={favoriteItems}
-                            // setFavoriteItems={setFavoriteItems}
                         />
                     ))
                 ) : (
