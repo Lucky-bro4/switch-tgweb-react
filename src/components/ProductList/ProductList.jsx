@@ -234,7 +234,7 @@ const ProductList = () => {
         <div>
             <Header />
             <SearchComponent onFilterChange={handleFilterChange} />
-            <div className={'list'}>
+            <div className={`list ${isModalOpen ? 'no-scroll' : ''}`}>
                 {filteredProducts.length > 0 ? (
                     filteredProducts.map(item => (
                         <ProductItem

@@ -7,6 +7,10 @@
     padding-bottom: 60px;
 }
 
+.list.no-scroll {
+    overflow: hidden;
+}
+
 .item {
     margin-right: 10px;
     margin-bottom: 10px;
