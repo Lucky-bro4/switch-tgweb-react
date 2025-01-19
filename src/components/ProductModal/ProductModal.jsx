@@ -60,7 +60,7 @@ const ProductModal = ({ product, onClose, location }) => {
         shoulders: 'Плечи',
         sleeveLength: 'Длина рукава',
         underarms: 'Подмышки',
-        backLength: 'Длина спинки',
+        backLength: 'Длина по спине',
         outerLegLength: 'Длина внешнего шва',
         innerLegLength: 'Длина внутреннего шва',
         waistWidth: 'Ширина талии',

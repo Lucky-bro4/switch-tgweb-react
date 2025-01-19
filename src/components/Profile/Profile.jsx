@@ -107,46 +107,51 @@ const Profile = () => {
                         />
                     </label>
                     <label>
-                        <span>Подмышки (см):</span>
+                        {/* <span>Подмышки (см):</span> */}
                         <input
                             type="number"
                             name="underarms"
+                            placeholder="Подмышки"
                             value={measurements.underarms}
                             onChange={handleChange}
                         />
                     </label>
                     <label>
-                        <span>Длина по спине (см):</span>
+                        {/* <span>Длина по спине (см):</span> */}
                         <input
                             type="number"
                             name="backLength"
+                            placeholder="Длина по спине"
                             value={measurements.backLength}
                             onChange={handleChange}
                         />
                     </label>
                     <label>
-                        <span>Длина шва (внешнего) (см):</span>
+                        {/* <span>Длина шва (внешнего) (см):</span> */}
                         <input
                             type="number"
                             name="outerLegLength"
+                            placeholder="Длина шва (внешнего)"
                             value={measurements.outerLegLength}
                             onChange={handleChange}
                         />
                     </label>
                     <label>
-                        <span>Длина шва (внутреннего) (см):</span>
+                        {/* <span>Длина шва (внутреннего) (см):</span> */}
                         <input
                             type="number"
                             name="innerLegLength"
+                            placeholder="Длина шва (внутреннего)"
                             value={measurements.innerLegLength}
                             onChange={handleChange}
                         />
                     </label>
                     <label>
-                        <span>Ширина талии (см):</span>
+                        {/* <span>Ширина талии (см):</span> */}
                         <input
                             type="number"
                             name="waistWidth"
+                            placeholder="Ширина талии"
                             value={measurements.waistWidth}
                             onChange={handleChange}
                         />
