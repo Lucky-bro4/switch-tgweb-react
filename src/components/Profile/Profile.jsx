@@ -91,16 +91,17 @@ const Profile = () => {
                         <input
                             type="number"
                             name="shoulders"
-                            placeholder="shoulders"
+                            placeholder="Плечи"
                             value={measurements.shoulders}
                             onChange={handleChange}
                         />
                     </label>
                     <label>
-                        <span>Длина рукава (см):</span>
+                        {/* <span>Длина рукава (см):</span> */}
                         <input
                             type="number"
                             name="sleeveLength"
+                            placeholder="Длина рукава"
                             value={measurements.sleeveLength}
                             onChange={handleChange}
                         />
@@ -153,7 +154,7 @@ const Profile = () => {
                 </div>
                 <div className="email-section">
                     <label>
-                        Почта:
+                        Почта
                         <input
                             type="email"
                             placeholder='email'
