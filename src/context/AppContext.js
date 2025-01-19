@@ -18,10 +18,13 @@ export const AppProvider = ({ children }) => {
             try {
                 const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
                 if (!response.ok) {
+                    tg.showAlert('Перезапустите бота командой /start в чате');
+                    tg.close();
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
                 const data = await response.json();
+                console.log('Response data:', data);
 
                 if (data.error) {
                     console.log('Error detected:', data.error);
