@@ -24,6 +24,7 @@ export const AppProvider = ({ children }) => {
                 const data = await response.json();
 
                 if (data.error) {
+                    console.log('Error detected:', data.error);
                     tg.showAlert('Перезапустите бота командой /start в чате');
                     tg.close();
                     return
