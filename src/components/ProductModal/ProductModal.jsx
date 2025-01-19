@@ -61,8 +61,8 @@ const ProductModal = ({ product, onClose, location }) => {
         sleeveLength: 'Длина рукава',
         underarms: 'Подмышки',
         backLength: 'Длина спинки',
-        outerLegLength: 'Длина внешней штанины',
-        innerLegLength: 'Длина внутренней штанины',
+        outerLegLength: 'Длина внешнего шва',
+        innerLegLength: 'Длина внутреннего шва',
         waistWidth: 'Ширина талии',
     };
 
