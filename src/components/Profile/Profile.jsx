@@ -87,10 +87,11 @@ const Profile = () => {
                 </h3>
                 <div className="measurements">
                     <label>
-                        <span>Плечи (см):</span>
+                        <span>Замеры (см)</span>
                         <input
                             type="number"
                             name="shoulders"
+                            placeholder="shoulders"
                             value={measurements.shoulders}
                             onChange={handleChange}
                         />
