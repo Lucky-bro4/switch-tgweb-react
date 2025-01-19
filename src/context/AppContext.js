@@ -24,7 +24,9 @@ export const AppProvider = ({ children }) => {
                 const data = await response.json();
 
                 if (data.error) {
+                    tg.showAlert('Перезапустите бота командой /start в чате');
                     tg.close();
+                    return
                 }
 
                 if (data.products) {
