@@ -150,6 +150,7 @@ const SearchComponent = ({ onFilterChange }) => {
                 <option value="Штаны">Штаны</option>
                 <option value="Джоггеры">Джоггеры</option>
                 <option value="Шорты">Шорты</option>
+                <option value="Головные уборы">Головные уборы</option>
               </select>
 
               <select

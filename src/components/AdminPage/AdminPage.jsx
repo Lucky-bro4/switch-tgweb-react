@@ -638,6 +638,7 @@ const AdminPage = () => {
                             <option value="Джинсы">Джинсы</option>
                             <option value="Джоггеры">Джоггеры</option>
                             <option value="Шорты">Шорты</option>
+                            <option value="Головные уборы">Головные уборы</option>
                         </select>
                         <input
                             className="input"
