@@ -5,6 +5,8 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 
+    const [customer, setCustomer] = useState({});
+
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState(products || []);
 
@@ -36,6 +38,10 @@ export const AppProvider = ({ children }) => {
                 if (data.products) {
                     setProducts(data.products);
                     setFilteredProducts(data.products);
+
+                    if (data.customer) {
+                        setCustomer(data.customer)
+                    }
 
                     if (data.customer?.favorite_items) {
                         const favoriteItems = data.customer.favorite_items
@@ -77,7 +83,8 @@ export const AppProvider = ({ children }) => {
             addedItems, 
             setAddedItems, 
             favoriteItems, 
-            setFavoriteItems 
+            setFavoriteItems,
+            customer
         }}>
             {children}
         </AppContext.Provider>

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTelegram } from '../../hooks/useTelegram';
+import { AppContext } from '../../context/AppContext';
 import Footer from '../Footer/Footer';
 import './Profile.css';
 
 const Profile = () => {
+
+    const { customer } = useContext(AppContext);
 
     const navigate = useNavigate();
     
@@ -15,7 +18,7 @@ const Profile = () => {
     const { tg, user } = useTelegram();
 
     const [measurements, setMeasurements] = useState({
-        Плечи: '',
+        shoulders: '',
         sleeveLength: '',
         underarms: '',
         backLength: '',
@@ -27,6 +30,24 @@ const Profile = () => {
     const [email, setEmail] = useState('');
 
     useEffect(() => {
+
+        if (Array.isArray(customer?.measurements) && customer.measurements.length === 7) {
+            setMeasurements({
+                shoulders: customer.measurements[0],
+                sleeveLength: customer.measurements[1],
+                underarms: customer.measurements[2],
+                backLength: customer.measurements[3],
+                outerLegLength: customer.measurements[4],
+                innerLegLength: customer.measurements[5],
+                waistWidth: customer.measurements[6],
+            });
+        }
+    
+        // Если есть email у customer, заполняем email
+        if (customer?.email) {
+            setEmail(customer.email);
+        }
+
         if (tg.MainButton.isVisible) {
             tg.MainButton.hide();
         }
