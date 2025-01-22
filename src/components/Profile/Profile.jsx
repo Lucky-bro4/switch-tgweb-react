@@ -88,6 +88,7 @@ const Profile = () => {
                 <div className="measurements">
                     <label>
                         <span>Замеры (см)</span>
+                        <span>Верх</span>
                         <input
                             type="number"
                             name="shoulders"
@@ -126,6 +127,7 @@ const Profile = () => {
                             onChange={handleChange}
                         />
                     </label>
+                    <span>Низ</span>
                     <label>
                         {/* <span>Длина шва (внешнего) (см):</span> */}
                         <input
