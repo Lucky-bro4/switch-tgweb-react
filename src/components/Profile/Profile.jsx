@@ -85,10 +85,10 @@ const Profile = () => {
                 <h3 className='user-info'>
                     {user.username}
                 </h3>
+                <span>Замеры (см) - Beta</span>
                 <div className="measurements">
+                    <span>Верх</span>
                     <label>
-                        <span>Замеры (см)</span>
-                        <span>Верх</span>
                         <input
                             type="number"
                             name="shoulders"
