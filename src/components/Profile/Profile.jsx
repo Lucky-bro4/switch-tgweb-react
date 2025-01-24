@@ -104,7 +104,7 @@ const Profile = () => {
                     Профиль
                 </h1>
                 <h3 className='user-info'>
-                    {user.username}
+                    {user.username ? user.username : 'Путник'}
                 </h3>
                 <span>Замеры (см) - Beta</span>
                 <div className="measurements">
