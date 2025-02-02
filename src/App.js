@@ -25,7 +25,7 @@ function App() {
             if (status === "missed") {
                 tg.addToHomeScreen();
             } else {
-                tg.alert({status});
+                tg.showAlert(status);
             }
         }
         checkStatus();
