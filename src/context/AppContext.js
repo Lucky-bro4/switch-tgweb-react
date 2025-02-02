@@ -36,8 +36,8 @@ export const AppProvider = ({ children }) => {
                 }
 
                 if (data.products) {
-                    // setProducts(data.products);
-                    // setFilteredProducts(data.products);
+                    setProducts(data.products);
+                    setFilteredProducts(data.products);
 
                     // if (data.customer) {
                     //     setCustomer(data.customer)
