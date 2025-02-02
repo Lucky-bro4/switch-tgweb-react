@@ -25,7 +25,7 @@ const Header = () => {
     return (
         <div className='header'>
             <img
-                src="/Images/mainLogo_withoutRental&Back.webp"
+                src="/Images/mainLogo_withoutRental_Back.webp"
                 width={150}
                 alt="Swich"
                 className="mainLogo"
