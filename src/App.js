@@ -19,11 +19,20 @@ function App() {
     useEffect(() => {
         tg.ready();
 
-        tg.checkHomeScreenStatus().then((status) => {
-            if (status === 'missed') {
+        function checkStatus() {
+            const status = tg.checkHomeScreenStatus();
+            console.log("Home Screen Status:", status);
+            if (status === "missed") {
                 tg.addToHomeScreen();
             }
-        })
+        }
+        checkStatus();
+
+        // tg.checkHomeScreenStatus().then((status) => {
+        //     if (status === 'missed') {
+        //         tg.addToHomeScreen();
+        //     }
+        // })
 
     }, [])
 
