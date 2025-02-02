@@ -19,11 +19,11 @@ export const AppProvider = ({ children }) => {
         const fetchData = async () => {
             try {
                 const response = await fetch(`https://bottry-lucky-bro4.amvera.io/allProducts`);
-                if (!response.ok) {
-                    tg.showAlert('Перезапустите бота командой /start в чате');
-                    tg.close();
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                // if (!response.ok) {
+                //     tg.showAlert('Перезапустите бота командой /start в чате');
+                //     tg.close();
+                //     throw new Error(`HTTP error! status: ${response.status}`);
+                // }
 
                 const data = await response.json();
                 console.log('Response data:', data);
@@ -69,10 +69,10 @@ export const AppProvider = ({ children }) => {
             }
         };
 
-        if (user?.id) {
-            fetchData();
-        }
-    }, [user]);
+        // if (user?.id) {
+        //     fetchData();
+        // }
+    }, []);
 
     return (
         <AppContext.Provider value={{ 
