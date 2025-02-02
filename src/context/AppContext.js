@@ -18,7 +18,7 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/products?chatId=${user.id}`);
+                const response = await fetch(`https://bottry-lucky-bro4.amvera.io/allProducts`);
                 if (!response.ok) {
                     tg.showAlert('Перезапустите бота командой /start в чате');
                     tg.close();
@@ -36,26 +36,26 @@ export const AppProvider = ({ children }) => {
                 }
 
                 if (data.products) {
-                    setProducts(data.products);
-                    setFilteredProducts(data.products);
+                    // setProducts(data.products);
+                    // setFilteredProducts(data.products);
 
-                    if (data.customer) {
-                        setCustomer(data.customer)
-                    }
+                    // if (data.customer) {
+                    //     setCustomer(data.customer)
+                    // }
 
-                    if (data.customer?.favorite_items) {
-                        const favoriteItems = data.customer.favorite_items
-                            .map(id => data.products.find(product => product.id === id))
-                            .filter(product => product); // Убираем null/undefined, если id нет в data.products
-                        setFavoriteItems(favoriteItems);
-                    }
+                    // if (data.customer?.favorite_items) {
+                    //     const favoriteItems = data.customer.favorite_items
+                    //         .map(id => data.products.find(product => product.id === id))
+                    //         .filter(product => product); // Убираем null/undefined, если id нет в data.products
+                    //     setFavoriteItems(favoriteItems);
+                    // }
     
-                    if (data.customer?.cart_items) {
-                        const addedItems = data.customer.cart_items
-                            .map(id => data.products.find(product => product.id === id))
-                            .filter(product => product); // Убираем null/undefined, если id нет в data.products
-                        setAddedItems(addedItems);
-                    }
+                    // if (data.customer?.cart_items) {
+                    //     const addedItems = data.customer.cart_items
+                    //         .map(id => data.products.find(product => product.id === id))
+                    //         .filter(product => product); // Убираем null/undefined, если id нет в data.products
+                    //     setAddedItems(addedItems);
+                    // }
 
                 } else {
                     setProducts([]);
