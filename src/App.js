@@ -18,10 +18,18 @@ function App() {
 
     useEffect(() => {
         tg.ready();
+
+        tg.checkHomeScreenStatus().then((status) => {
+            if (status === 'missed') {
+                tg.addToHomeScreen();
+            }
+        })
+
     }, [])
 
-    const showFooter = location.pathname !== '/form' && location.pathname !== '/adminPage';
 
+
+    const showFooter = location.pathname !== '/form' && location.pathname !== '/adminPage';
 
 
     return (
