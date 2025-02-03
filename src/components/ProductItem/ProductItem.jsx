@@ -16,69 +16,40 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
 
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
 
-    // const [isFavorite, setIsFavorite] = useState(false);
-    // const [status, setStatus] = useState('add-btn')
-    // const [content, setContent] = useState('Добавить')
+    const [animationActive, setAnimationActive] = useState(true);
 
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
     };
 
-    // const handleAdd = (e) => {
-    //     e.stopPropagation(); // Предотвращает распространение клика на родительский элемент
-    //     if (selectedCount >= 4) {
-    //         tg.alert('Вы не можете выбрать больше 4 товаров.');
-    //         return;
-    //     }
-    //     onAdd(product);
-    // };
+    useEffect(() => {
+        const animationPlayed = localStorage.getItem("productCardAnimationPlayed");
+    
+        if (!animationPlayed) {
+          const interval = setInterval(() => {
+            if (animationActive) {
+              const ripple = document.createElement("div");
+              ripple.classList.add("click-animation");
+              document.getElementById("product-card").appendChild(ripple);
+    
+              setTimeout(() => {
+                ripple.remove();
+              }, 1000);
+            }
+          }, 5000);
+    
+          return () => clearInterval(interval);
+        }
+    }, [animationActive]);
 
-    // const onAddHandler = () => {
-    //     if (selectedCount <= 4) {
-    //         onAdd(product)
-    //         changeButton()
-    //     }
-    // }
-
-    // const handleFavoriteClick = async (e) => {
-    //     e.stopPropagation();
-
-    //     const newFavoriteState = !isFavorite;
-    //     setIsFavorite(newFavoriteState);
-    //     setFavoriteItems([...favoriteItems, product]);
-
-    //     // Обновить глобальный или серверный список избранного
-    //     if (newFavoriteState) {
-    //         setFavoriteItems([...favoriteItems, product.id]); // Добавляем ID продукта
-    //     } else {
-    //         setFavoriteItems(favoriteItems.filter(id => id !== product.id)); // Убираем ID продукта
-    //     }
-
-    //     try {
-    //         // Запрос для обновления на сервере
-    //         await fetch(`https://bottry-lucky-bro4.amvera.io/favorites/${product.id}`, {
-    //             method: newFavoriteState ? 'POST' : 'DELETE',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ chatId: user.id }),
-    //         });
-    //     } catch (error) {
-    //         console.error('Error updating favorite status:', error);
-
-    //         // Откат состояния при ошибке
-    //         setIsFavorite(!newFavoriteState);
-    //         if (!newFavoriteState) {
-    //             setFavoriteItems([...favoriteItems, product.id]);
-    //         } else {
-    //             setFavoriteItems(favoriteItems.filter(id => id !== product.id));
-    //         }
-    //     }
-    // };
+    const handleClick = () => {
+        setAnimationActive(false);
+        localStorage.setItem("productCardAnimationPlayed", "true");
+    };
 
 
     return (
-        <div key={product.id} className={'product ' + className} onClick={() => onClick(product)}>
+        <div key={product.id} className={'product ' + className} onClick={handleClick}>
             <div className="product-img-container">
                 <Swiper
                     spaceBetween={10}
