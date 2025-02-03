@@ -16,40 +16,13 @@ const ProductItem = ({ product, className, onClick, onAdd, closedChainOrder }) =
 
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
 
-    const [animationActive, setAnimationActive] = useState(true);
-
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
     };
 
-    useEffect(() => {
-        const animationPlayed = localStorage.getItem("productCardAnimationPlayed");
-    
-        if (!animationPlayed) {
-          const interval = setInterval(() => {
-            if (animationActive) {
-              const ripple = document.createElement("div");
-              ripple.classList.add("click-animation");
-              document.getElementById("product-card").appendChild(ripple);
-    
-              setTimeout(() => {
-                ripple.remove();
-              }, 1000);
-            }
-          }, 5000);
-    
-          return () => clearInterval(interval);
-        }
-    }, [animationActive]);
-
-    const handleClick = () => {
-        setAnimationActive(false);
-        localStorage.setItem("productCardAnimationPlayed", "true");
-    };
-
 
     return (
-        <div key={product.id} className={'product ' + className} onClick={handleClick}>
+        <div key={product.id} className={'product ' + className} onClick={() => onClick(product)}>
             <div className="product-img-container">
                 <Swiper
                     spaceBetween={10}
