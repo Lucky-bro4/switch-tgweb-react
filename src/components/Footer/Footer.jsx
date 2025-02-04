@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="footer-section" onClick={handleHomeClick}>
           <i className="icon-home">
           <img 
-                src={isHomeActive ? "/Images/icons/mainLogo_withoutRental&Back-active.png" : "/Images/icons/mainLogo_withoutRental&Back-not-active.png"}
+                src={isHomeActive ? "/Images/icons/mainLogo_withoutRental_Back-active.webp" : "/Images/icons/mainLogo_withoutRental_Back-not-active.webp"}
                 width={30} 
                 alt="icon-home" />
           </i>
