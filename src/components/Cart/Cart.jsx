@@ -15,7 +15,9 @@ const Cart = () => {
 
     const handleButtonClick = useCallback(() => {
 
-        ym(99575777,'reachGoal','2')
+        ym(99575777,'reachGoal','2', {
+            totalPrice: totalPrice,
+        })
 
         onSendData();
     }, []);
