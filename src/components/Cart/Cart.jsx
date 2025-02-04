@@ -14,6 +14,9 @@ const Cart = () => {
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
 
     const handleButtonClick = useCallback(() => {
+
+        ym(99575777,'reachGoal','2')
+
         onSendData();
     }, []);
 
