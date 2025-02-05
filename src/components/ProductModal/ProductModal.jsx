@@ -32,8 +32,8 @@ const ProductModal = ({ product, onClose, location }) => {
     const getFormattedTitle = (gender, category, brand) => {
         // Словарь окончаний для согласования по роду
         const masculine = ['Футболка', 'Куртка', 'Рубашка', 'Кофта'];
-        const neutral = ['Худи', 'Зип-худи', 'Свитшот'];
-        const masculineAdj = ['Лонгслив', 'Джемпер', 'Топ'];
+        const neutral = ['Худи', 'Зип-худи'];
+        const masculineAdj = ['Лонгслив', 'Свитшот', 'Джемпер', 'Топ'];
         const plural = ['Джинсы', 'Штаны', 'Джоггеры', 'Шорты', 'Головные уборы'];
     
         let formattedGender = gender;
