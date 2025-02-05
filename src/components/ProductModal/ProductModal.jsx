@@ -3,13 +3,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { AppContext } from '../../context/AppContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTelegram } from '../../hooks/useTelegram';
-import { useFavorite } from '../../hooks/useFavorite';
 import { useCart } from '../../hooks/useCart';
+import { useFavorite } from '../../hooks/useFavorite';
 import './ProductModal.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { productTitle } from '../../hooks/productTitle';
 
 
 const ProductModal = ({ product, onClose, location }) => {
@@ -30,35 +29,34 @@ const ProductModal = ({ product, onClose, location }) => {
         }
     };
 
-    // const getFormattedTitle = (gender, category, brand) => {
-    //     // Словарь окончаний для согласования по роду
-    //     const masculine = ['Футболка', 'Куртка', 'Рубашка', 'Кофта'];
-    //     const neutral = ['Худи', 'Зип-худи', 'Свитшот'];
-    //     const masculineAdj = ['Лонгслив', 'Джемпер', 'Топ'];
-    //     const plural = ['Джинсы', 'Штаны', 'Джоггеры', 'Шорты', 'Головные уборы'];
+    const getFormattedTitle = (gender, category, brand) => {
+        // Словарь окончаний для согласования по роду
+        const masculine = ['Футболка', 'Куртка', 'Рубашка', 'Кофта'];
+        const neutral = ['Худи', 'Зип-худи', 'Свитшот'];
+        const masculineAdj = ['Лонгслив', 'Джемпер', 'Топ'];
+        const plural = ['Джинсы', 'Штаны', 'Джоггеры', 'Шорты', 'Головные уборы'];
     
-    //     let formattedGender = gender;
-    //     if (gender === 'Мужское') {
-    //       if (masculine.includes(category)) formattedGender = 'Мужская';
-    //       else if (neutral.includes(category)) formattedGender = 'Мужское';
-    //       else if (masculineAdj.includes(category)) formattedGender = 'Мужской';
-    //       else if (plural.includes(category)) formattedGender = 'Мужские';
-    //     } else if (gender === 'Женское') {
-    //       if (masculine.includes(category)) formattedGender = 'Женская';
-    //       else if (neutral.includes(category)) formattedGender = 'Женское';
-    //       else if (masculineAdj.includes(category)) formattedGender = 'Женский';
-    //       else if (plural.includes(category)) formattedGender = 'Женские';
-    //     }
+        let formattedGender = gender;
+        if (gender === 'Мужское') {
+          if (masculine.includes(category)) formattedGender = 'Мужская';
+          else if (neutral.includes(category)) formattedGender = 'Мужское';
+          else if (masculineAdj.includes(category)) formattedGender = 'Мужской';
+          else if (plural.includes(category)) formattedGender = 'Мужские';
+        } else if (gender === 'Женское') {
+          if (masculine.includes(category)) formattedGender = 'Женская';
+          else if (neutral.includes(category)) formattedGender = 'Женское';
+          else if (masculineAdj.includes(category)) formattedGender = 'Женский';
+          else if (plural.includes(category)) formattedGender = 'Женские';
+        }
     
-    //     const formattedCategory = category.toLowerCase();
-    //     return `${formattedGender} ${formattedCategory} ${brand}`;
-    // };
+        const formattedCategory = category.toLowerCase();
+        return `${formattedGender} ${formattedCategory} ${brand}`;
+    };
 
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
     };
 
-    const { getFormattedTitle } = productTitle({ gender, category, brand });
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
     const { handleCartClick } = useCart({ addedItems, setAddedItems, user });
 
