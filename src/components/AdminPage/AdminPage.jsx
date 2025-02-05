@@ -486,6 +486,13 @@ const AdminPage = () => {
         try {
             const data = await postData('https://bottry-lucky-bro4.amvera.io/changeProduct', changeProduct);
             console.log(data);
+
+            if (data.ok) {
+                alert(`Статус был успешно изменен на "${status}"`)
+            }
+            
+            window.location.reload();
+
         } catch (error) {
             console.error('Ошибка при отправке данных:', error);
         }

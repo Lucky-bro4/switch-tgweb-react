@@ -24,11 +24,10 @@ const Cart = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
-
-    const [locCart, setLocCart] = useState('true');
-
+    
     const isCartActive = location.pathname === "/cart";
-
+    
+    const [locCart, setLocCart] = useState('true');
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     // const [isFavoriteMap, setIsFavoriteMap] = useState({});

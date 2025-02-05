@@ -42,7 +42,6 @@ export const useCart = ({ addedItems, setAddedItems, user }) => {
     };
 
     return {
-        // isFavorite,
         handleCartClick,
     };
 };

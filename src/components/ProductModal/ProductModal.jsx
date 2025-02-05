@@ -9,6 +9,7 @@ import './ProductModal.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { productTitle } from '../../hooks/productTitle';
 
 
 const ProductModal = ({ product, onClose, location }) => {
@@ -29,30 +30,35 @@ const ProductModal = ({ product, onClose, location }) => {
         }
     };
 
-    // const changeAfterRemoveButton = () => {
-    //     tg.MainButton
-    //         .setParams({ 
-    //             text: 'Добавить в корзину',
-    //             color: '#E22D60',
-    //         })
-
-    //     handleCartClick(product);
-    // }
-
-    // const changeAddProductButton = () => {
-    //     tg.MainButton
-    //         .setParams({ 
-    //             text: 'Перейти в корзину',
-    //             color: '#82d83f',
-    //         })
-
-    //     handleCartClick(product);
-    // }
+    // const getFormattedTitle = (gender, category, brand) => {
+    //     // Словарь окончаний для согласования по роду
+    //     const masculine = ['Футболка', 'Куртка', 'Рубашка', 'Кофта'];
+    //     const neutral = ['Худи', 'Зип-худи', 'Свитшот'];
+    //     const masculineAdj = ['Лонгслив', 'Джемпер', 'Топ'];
+    //     const plural = ['Джинсы', 'Штаны', 'Джоггеры', 'Шорты', 'Головные уборы'];
+    
+    //     let formattedGender = gender;
+    //     if (gender === 'Мужское') {
+    //       if (masculine.includes(category)) formattedGender = 'Мужская';
+    //       else if (neutral.includes(category)) formattedGender = 'Мужское';
+    //       else if (masculineAdj.includes(category)) formattedGender = 'Мужской';
+    //       else if (plural.includes(category)) formattedGender = 'Мужские';
+    //     } else if (gender === 'Женское') {
+    //       if (masculine.includes(category)) formattedGender = 'Женская';
+    //       else if (neutral.includes(category)) formattedGender = 'Женское';
+    //       else if (masculineAdj.includes(category)) formattedGender = 'Женский';
+    //       else if (plural.includes(category)) formattedGender = 'Женские';
+    //     }
+    
+    //     const formattedCategory = category.toLowerCase();
+    //     return `${formattedGender} ${formattedCategory} ${brand}`;
+    // };
 
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
     };
 
+    const { getFormattedTitle } = productTitle({ gender, category, brand });
     const { handleFavoriteClick } = useFavorite({ favoriteItems, setFavoriteItems, user });
     const { handleCartClick } = useCart({ addedItems, setAddedItems, user });
 
@@ -120,37 +126,12 @@ const ProductModal = ({ product, onClose, location }) => {
 
     }, [tg, addedItems]);
 
-    // tg.onEvent('mainButtonClicked', onSendData)
-    // return () => {
-    //    tg.offEvent('mainButtonClicked', onSendData)
-    // }
-
-    // useEffect(() => {
-    
-    //     if (isCartActive && addedItems.length > 0) {
-    //         tg.MainButton
-    //             .setParams({ 
-    //                 text: 'Оформить заказ',
-    //                 color: '#82d83f'
-    //             })
-    //             .show();
-
-    //         tg.MainButton.onClick(handleButtonClick);
-    //     } else {
-    //         tg.MainButton.hide();
-    //     }
-
-    //     return () => {
-    //         tg.MainButton.offClick(handleButtonClick);
-    //     };
-        
-    // }, [addedItems, handleButtonClick, tg]);
 
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="modal-content">
                 <button className="modal-close" onClick={onClose}>×</button>
-                <h2>{product.gender + ' ' + product.category + ' ' + product.brand}</h2>
+                <h2>{getFormattedTitle(product.gender, product.category, product.brand)}</h2>
 
                 <div className="slider-container">
                     <div className="progress-bar">
