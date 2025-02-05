@@ -30,9 +30,30 @@ const Cart = () => {
     const [locCart, setLocCart] = useState('true');
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    // const [isFavoriteMap, setIsFavoriteMap] = useState({});
 
-    // const addedItems = products.filter(product => addedItems.some(item => item.id === product.id));
+    const getFormattedTitle = (gender, category, brand) => {
+        // Словарь окончаний для согласования по роду
+        const masculine = ['Футболка', 'Куртка', 'Рубашка', 'Кофта'];
+        const neutral = ['Худи', 'Зип-худи', 'Свитшот'];
+        const masculineAdj = ['Лонгслив', 'Джемпер', 'Топ'];
+        const plural = ['Джинсы', 'Штаны', 'Джоггеры', 'Шорты', 'Головные уборы'];
+    
+        let formattedGender = gender;
+        if (gender === 'Мужское') {
+          if (masculine.includes(category)) formattedGender = 'Мужская';
+          else if (neutral.includes(category)) formattedGender = 'Мужское';
+          else if (masculineAdj.includes(category)) formattedGender = 'Мужской';
+          else if (plural.includes(category)) formattedGender = 'Мужские';
+        } else if (gender === 'Женское') {
+          if (masculine.includes(category)) formattedGender = 'Женская';
+          else if (neutral.includes(category)) formattedGender = 'Женское';
+          else if (masculineAdj.includes(category)) formattedGender = 'Женский';
+          else if (plural.includes(category)) formattedGender = 'Женские';
+        }
+    
+        const formattedCategory = category ? category.toLowerCase() : '';
+        return `${formattedGender} ${formattedCategory} ${brand}`;
+    };
 
     const calculateTotalPrice = (items = []) => {
         return items.reduce((acc, item) => acc + item.price, 0);
@@ -41,8 +62,14 @@ const Cart = () => {
     const totalPrice = calculateTotalPrice(addedItems);
 
     const onSendData = useCallback(async () => {
+
+        const addedItemsWithTitles = addedItems.map((item) => ({
+            ...item,
+            title: getFormattedTitle(item.gender, item.category, item.brand)
+        }));
+
         const data = {
-            items: addedItems,
+            items: addedItemsWithTitles,
             totalPrice,
             queryId,
             user
