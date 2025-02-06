@@ -107,31 +107,12 @@ const Cart = () => {
             tg.onEvent('mainButtonClicked', handleButtonClick)
             
         } 
-        // 
-        // else if (isCartActive && addedItems.length > 0 && isModalOpen) {
-        //     tg.MainButton.hide();
-        // }
 
         return () => {
             tg.offEvent('mainButtonClicked', handleButtonClick)
         }
         
     }, [tg, isModalOpen, isCartActive, addedItems]);
-
-     // useEffect(() => {
-    //     if (!closedChainOrder) {
-    //         tg.onEvent('mainButtonClicked', onSendData)
-    //         return () => {
-    //         tg.offEvent('mainButtonClicked', onSendData)
-    //         }
-    //     }
-    // }, [onSendData])
-
-    // useEffect(() => {
-    //     if (tg.MainButton.isVisible) {
-    //         tg.MainButton.hide();
-    //     }
-    // }, [tg]);
 
 
     const handleHomeClick = () => {

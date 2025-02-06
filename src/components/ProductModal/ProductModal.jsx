@@ -75,8 +75,6 @@ const ProductModal = ({ product, onClose, location }) => {
     }
 
     useEffect(() => {
-        // Очистка всех предыдущих обработчиков перед назначением новых
-        // tg.MainButton.offClick();
 
         const handleButtonClick = () => {
             if (addedItems.some(item => item.id === product.id)) {
