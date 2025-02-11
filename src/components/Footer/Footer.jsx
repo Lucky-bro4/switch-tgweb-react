@@ -47,7 +47,7 @@ const Footer = () => {
         <div className="footer-section" onClick={handleFavoritesClick}>
           <i className="icon-favorites">
           <img 
-                src={isFavoritesActive ? "/Images/icons/icon-love-active.png" : "/Images/icons/icon-love-not-active.png"}  
+                src={isFavoritesActive ? "/Images/icons/icon-love-active.webp" : "/Images/icons/icon-love-not-active.webp"}  
                 width={30} 
                 alt="icon-favorites" />
                 {favoriteItems.length > 0 && (
@@ -58,7 +58,7 @@ const Footer = () => {
         <div className="footer-section" onClick={handleCartClick}>
             <i className="icon-cart">
                 <img 
-                    src={isCartActive ? "/Images/icons/icon-cart-active.png" : "/Images/icons/icon-cart-not-active.png"} 
+                    src={isCartActive ? "/Images/icons/icon-cart-active.webp" : "/Images/icons/icon-cart-not-active.webp"} 
                     width={30} 
                     alt="icon-cart" />
                 {addedItems.length > 0 && (
@@ -69,7 +69,7 @@ const Footer = () => {
         <div className="footer-section" onClick={handleProfileClick}>
           <i className="icon-user">
           <img 
-                src={isProfileActive ? "/Images/icons/icon-profile-active.png" : "/Images/icons/icon-profile-not-active.png"}
+                src={isProfileActive ? "/Images/icons/icon-profile-active.webp" : "/Images/icons/icon-profile-not-active.webp"}
                 width={30} 
                 alt="icon-profile" />
           </i>
